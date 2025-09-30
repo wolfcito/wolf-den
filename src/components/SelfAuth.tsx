@@ -40,19 +40,20 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
     setSelfApp(app);
   }, [userId]);
 
-  const handleSuccess = (data: any) => {
+  const handleSuccess = () => {
     setIsVerified(true);
     if (onSuccess) {
-      onSuccess(data);
+      onSuccess(null);
     }
-    console.log("Self verification successful!", data);
+    console.log("Self verification successful!");
   };
 
-  const handleError = (error: Error) => {
+  const handleError = (data: { error_code?: string; reason?: string }) => {
+    const error = new Error(data.reason || 'Verification failed');
     if (onError) {
       onError(error);
     }
-    console.error("Self verification error:", error);
+    console.error("Self verification error:", data);
   };
 
   return (
@@ -70,6 +71,7 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
             <SelfQRcodeWrapper
               selfApp={selfApp}
               onSuccess={handleSuccess}
+              onError={handleError}
             />
           )}
         </div>

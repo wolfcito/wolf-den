@@ -1,3 +1,5 @@
+'use client';
+
 import SelfAuth from '@/components/SelfAuth';
 
 export default function AuthPage() {
