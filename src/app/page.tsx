@@ -1,103 +1,283 @@
-import Image from "next/image";
+'use client';
+
+import { useState } from 'react';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [selectedCells, setSelectedCells] = useState<number[]>([]);
+  const [mineCount, setMineCount] = useState(1);
+  const [betAmount, setBetAmount] = useState(100);
+  const [isGameActive, setIsGameActive] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const gridSize = 25; // 5x5 grid
+  const balance = 100924;
+  const profit = 394.39;
+
+  const handleCellClick = (index: number) => {
+    if (!isGameActive) return;
+
+    if (selectedCells.includes(index)) {
+      setSelectedCells(selectedCells.filter(i => i !== index));
+    } else {
+      setSelectedCells([...selectedCells, index]);
+    }
+  };
+
+  const startGame = () => {
+    setIsGameActive(true);
+    setSelectedCells([]);
+  };
+
+  const cashout = () => {
+    setIsGameActive(false);
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white flex">
+      {/* Left Sidebar */}
+      <div className="w-64 bg-black/20 backdrop-blur-sm border-r border-white/10 p-4">
+        <div className="flex items-center gap-2 mb-8">
+          <div className="w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center">
+            <span className="text-black font-bold text-sm">W</span>
+          </div>
+          <span className="font-bold text-lg">WOLF DEN</span>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <div className="space-y-2">
+          <div className="text-xs text-gray-400 uppercase tracking-wider mb-3">MIND GAMES</div>
+
+          <div className="flex items-center gap-3 p-3 bg-purple-600/30 rounded-lg cursor-pointer">
+            <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
+              <span className="text-white text-xs">⚡</span>
+            </div>
+            <span className="text-sm">Puzzle Rush</span>
+          </div>
+
+          <div className="flex items-center gap-3 p-3 bg-purple-600/50 rounded-lg cursor-pointer border border-purple-400">
+            <div className="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center">
+              <span className="text-white text-xs">💎</span>
+            </div>
+            <span className="text-sm font-medium">Mines</span>
+          </div>
+
+          <div className="flex items-center gap-3 p-3 hover:bg-white/5 rounded-lg cursor-pointer">
+            <div className="w-8 h-8 bg-gray-600 rounded-lg flex items-center justify-center">
+              <span className="text-white text-xs">🎯</span>
+            </div>
+            <span className="text-sm">Memory Game</span>
+          </div>
+
+          <div className="flex items-center gap-3 p-3 hover:bg-white/5 rounded-lg cursor-pointer">
+            <div className="w-8 h-8 bg-gray-600 rounded-lg flex items-center justify-center">
+              <span className="text-white text-xs">🧩</span>
+            </div>
+            <span className="text-sm">Logic Puzzles</span>
+          </div>
+
+          <div className="flex items-center gap-3 p-3 hover:bg-white/5 rounded-lg cursor-pointer">
+            <div className="w-8 h-8 bg-gray-600 rounded-lg flex items-center justify-center">
+              <span className="text-white text-xs">🎲</span>
+            </div>
+            <span className="text-sm">Pattern Match</span>
+          </div>
+        </div>
+
+        <div className="mt-8 pt-4 border-t border-white/10">
+          <div className="text-xs text-gray-400 uppercase tracking-wider mb-3">OTHER FEATURES</div>
+          <div className="space-y-2 text-sm text-gray-300">
+            <div className="cursor-pointer hover:text-white">📊 Stats</div>
+            <div className="cursor-pointer hover:text-white">🏆 Leaderboard</div>
+            <div className="cursor-pointer hover:text-white">⚙️ Settings</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="flex-1 flex">
+        {/* Game Area */}
+        <div className="flex-1 p-6">
+          <div className="mb-6">
+            <div className="flex items-center gap-4 mb-2">
+              <button className="px-4 py-2 bg-white/10 rounded-lg text-sm">← BACK</button>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">💎</span>
+                <span className="text-xl font-bold">Mines</span>
+              </div>
+            </div>
+            <div className="bg-purple-600 text-white px-3 py-1 rounded-full text-xs inline-block">
+              WOLF DEN ORIGINALS
+            </div>
+          </div>
+
+          <div className="text-right mb-4">
+            <div className="text-2xl font-bold">€ {balance.toLocaleString()}</div>
+            <div className="text-sm text-gray-300">your profit</div>
+          </div>
+
+          {/* Game Grid */}
+          <div className="bg-black/20 backdrop-blur-sm rounded-2xl p-8 mb-6">
+            <div className="grid grid-cols-5 gap-3 max-w-md mx-auto">
+              {Array.from({ length: gridSize }, (_, index) => {
+                const isSelected = selectedCells.includes(index);
+                const isBomb = isSelected && Math.random() > 0.9;
+
+                return (
+                  <button
+                    key={index}
+                    onClick={() => handleCellClick(index)}
+                    className={`
+                      aspect-square rounded-lg border-2 transition-all duration-200 flex items-center justify-center text-2xl
+                      ${isSelected
+                        ? isBomb
+                          ? 'bg-red-500 border-red-400'
+                          : 'bg-orange-500 border-orange-400'
+                        : 'bg-white/10 border-white/20 hover:bg-white/20 hover:border-white/30'
+                      }
+                    `}
+                  >
+                    {isSelected && (isBomb ? '💣' : '💎')}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Game Controls */}
+          <div className="bg-black/20 backdrop-blur-sm rounded-xl p-6">
+            <div className="grid grid-cols-4 gap-4 mb-4">
+              <div>
+                <label className="text-xs text-gray-300 block mb-2">MINES</label>
+                <select
+                  value={mineCount}
+                  onChange={(e) => setMineCount(Number(e.target.value))}
+                  className="w-full bg-black/30 border border-white/20 rounded-lg px-3 py-2 text-white"
+                >
+                  <option value={1}>1</option>
+                  <option value={2}>2</option>
+                  <option value={3}>3</option>
+                  <option value={24}>24</option>
+                </select>
+              </div>
+              <div>
+                <label className="text-xs text-gray-300 block mb-2">BET</label>
+                <input
+                  type="number"
+                  value={betAmount}
+                  onChange={(e) => setBetAmount(Number(e.target.value))}
+                  className="w-full bg-black/30 border border-white/20 rounded-lg px-3 py-2 text-white"
+                />
+              </div>
+              <div>
+                <label className="text-xs text-gray-300 block mb-2">MULTIPLIER</label>
+                <div className="bg-black/30 border border-white/20 rounded-lg px-3 py-2 text-white">
+                  1.32x
+                </div>
+              </div>
+              <div>
+                <label className="text-xs text-gray-300 block mb-2">PROFIT</label>
+                <div className="bg-black/30 border border-white/20 rounded-lg px-3 py-2 text-green-400">
+                  €{profit}
+                </div>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              {!isGameActive ? (
+                <button
+                  onClick={startGame}
+                  className="flex-1 bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 rounded-lg transition-colors"
+                >
+                  Manual
+                </button>
+              ) : (
+                <button
+                  onClick={cashout}
+                  className="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg transition-colors"
+                >
+                  Cashout €{(betAmount * 1.32).toFixed(2)}
+                </button>
+              )}
+              <button className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-lg transition-colors">
+                Auto
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Sidebar - Chat/Stats */}
+        <div className="w-80 bg-black/20 backdrop-blur-sm border-l border-white/10 p-4">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-xs">👤</div>
+              <span className="text-sm font-medium">{profit.toFixed(2)}</span>
+              <span className="text-xs text-gray-400">your profit</span>
+            </div>
+          </div>
+
+          <div className="space-y-3 text-sm">
+            <div className="flex items-center gap-3 p-2 rounded">
+              <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-xs">GW</div>
+              <div className="flex-1">
+                <div className="text-white">GoodWolf95</div>
+                <div className="text-gray-400 text-xs">I didn't mine to lose but</div>
+              </div>
+              <div className="text-xs text-gray-400">24m ago</div>
+            </div>
+
+            <div className="flex items-center gap-3 p-2 rounded">
+              <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-xs">CT</div>
+              <div className="flex-1">
+                <div className="text-white">CryptoTiger</div>
+                <div className="text-gray-400 text-xs">Just hit 3 gems in a row!</div>
+              </div>
+              <div className="text-xs text-gray-400">18 sec ago</div>
+            </div>
+
+            <div className="flex items-center gap-3 p-2 rounded">
+              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-xs">MS</div>
+              <div className="flex-1">
+                <div className="text-white">MindSeeker</div>
+                <div className="text-gray-400 text-xs">Strategy is key in this game</div>
+              </div>
+              <div className="text-xs text-gray-400">2m ago</div>
+            </div>
+
+            <div className="flex items-center gap-3 p-2 rounded">
+              <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-xs">BH</div>
+              <div className="flex-1">
+                <div className="text-white">BrainHunter</div>
+                <div className="text-gray-400 text-xs">Working my way up the ranks</div>
+              </div>
+              <div className="text-xs text-gray-400">5m ago</div>
+            </div>
+          </div>
+
+          <div className="mt-6 pt-4 border-t border-white/10">
+            <div className="text-xs text-gray-400 uppercase tracking-wider mb-3">RECENT GAMES</div>
+            <div className="space-y-2">
+              <div className="flex justify-between items-center py-1">
+                <span className="text-xs">Crazy Time</span>
+                <span className="text-green-400 text-xs">+€139.5</span>
+              </div>
+              <div className="flex justify-between items-center py-1">
+                <span className="text-xs">Gates of Olympus</span>
+                <span className="text-red-400 text-xs">-€15</span>
+              </div>
+              <div className="flex justify-between items-center py-1">
+                <span className="text-xs">Starlight Princess</span>
+                <span className="text-green-400 text-xs">+€700.00</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <input
+              type="text"
+              placeholder="Message"
+              className="w-full bg-black/30 border border-white/20 rounded-lg px-3 py-2 text-white placeholder-gray-400 text-sm"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
