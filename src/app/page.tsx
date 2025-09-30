@@ -84,6 +84,7 @@ export default function Home() {
         <div className="mt-8 pt-4 border-t border-white/10">
           <div className="text-xs text-gray-400 uppercase tracking-wider mb-3">OTHER FEATURES</div>
           <div className="space-y-2 text-sm text-gray-300">
+            <a href="/auth" className="block cursor-pointer hover:text-white">🔐 Self Auth</a>
             <div className="cursor-pointer hover:text-white">📊 Stats</div>
             <div className="cursor-pointer hover:text-white">🏆 Leaderboard</div>
             <div className="cursor-pointer hover:text-white">⚙️ Settings</div>
