@@ -10,6 +10,14 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-wolf-bg: #0f172a;
+  --color-wolf-panel: #1b2550;
+  --color-wolf-soft: #334155;
+  --color-wolf-bone: #e2e8f0;
+  --color-wolf-cyan: #22d3ee;
+  --color-wolf-violet: #8b5cf6;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
 }
 
 @media (prefers-color-scheme: dark) {

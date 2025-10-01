@@ -1,16 +1,15 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import { getUniversalLink } from "@selfxyz/core";
 import {
-  SelfQRcodeWrapper,
-  SelfAppBuilder,
   type SelfApp,
+  SelfAppBuilder,
+  SelfQRcodeWrapper,
 } from "@selfxyz/qrcode";
 import { ethers } from "ethers";
+import { useEffect, useState } from "react";
 
 interface SelfAuthProps {
-  onSuccess?: (data: any) => void;
+  onSuccess?: (data: unknown) => void;
   onError?: (error: Error) => void;
 }
 
@@ -26,7 +25,7 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
       scope: "wolf-den",
       endpoint: process.env.NEXT_PUBLIC_SELF_ENDPOINT || "",
       logoBase64: "https://i.postimg.cc/mrmVf9hm/self.png",
-      userId: userId,
+      userId,
       endpointType: "staging_https",
       userIdType: "hex",
       userDefinedData: "Wolf Den Authentication",
@@ -34,7 +33,7 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
         minimumAge: 18,
         nationality: true,
         gender: true,
-      }
+      },
     }).build();
 
     setSelfApp(app);
@@ -49,7 +48,7 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
   };
 
   const handleError = (data: { error_code?: string; reason?: string }) => {
-    const error = new Error(data.reason || 'Verification failed');
+    const error = new Error(data.reason || "Verification failed");
     if (onError) {
       onError(error);
     }
@@ -57,16 +56,20 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-8 bg-black/20 backdrop-blur-sm rounded-lg">
+    <div className="flex flex-col items-center justify-center rounded-lg bg-black/20 p-8 backdrop-blur-sm">
       {isVerified ? (
         <div className="text-center">
-          <div className="text-green-400 text-xl mb-2">✓ Verified</div>
+          <div className="mb-2 text-xl text-green-400">✓ Verified</div>
           <p className="text-gray-300">Successfully authenticated with Self</p>
         </div>
       ) : (
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Verify with Self</h2>
-          <p className="text-gray-300 mb-6">Scan the QR code with the Self app to verify your identity</p>
+          <h2 className="mb-4 text-2xl font-bold text-white">
+            Verify with Self
+          </h2>
+          <p className="mb-6 text-gray-300">
+            Scan the QR code with the Self app to verify your identity
+          </p>
           {selfApp && (
             <SelfQRcodeWrapper
               selfApp={selfApp}

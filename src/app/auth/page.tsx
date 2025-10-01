@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import SelfAuth from '@/components/SelfAuth';
+import SelfAuth from "@/components/SelfAuth";
 
 export default function AuthPage() {
   return (
@@ -13,20 +13,25 @@ export default function AuthPage() {
             </div>
             <span className="font-bold text-3xl">WOLF DEN</span>
           </div>
-          <p className="text-gray-300 text-lg">Secure Authentication with Self</p>
+          <p className="text-gray-300 text-lg">
+            Secure Authentication with Self
+          </p>
         </div>
 
         <SelfAuth
           onSuccess={(data) => {
-            console.log('Authentication successful:', data);
+            console.log("Authentication successful:", data);
           }}
           onError={(error) => {
-            console.error('Authentication failed:', error);
+            console.error("Authentication failed:", error);
           }}
         />
 
         <div className="mt-8 text-center">
-          <a href="/" className="text-purple-400 hover:text-purple-300 underline">
+          <a
+            href="/"
+            className="text-purple-400 hover:text-purple-300 underline"
+          >
             Back to Games
           </a>
         </div>
