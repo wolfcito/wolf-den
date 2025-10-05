@@ -1,3 +1,5 @@
+import { MoonStar } from "lucide-react";
+
 interface HowlBadgeProps {
   level?: "Cachorro" | "Lobo" | "Alfa";
   className?: string;
@@ -31,9 +33,7 @@ export function HowlBadge({
     <span
       className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-[0.2em] ${badge.tone} ${className}`.trim()}
     >
-      <span className="text-base" aria-hidden>
-        🌕
-      </span>
+      <MoonStar className="h-4 w-4" aria-hidden />
       {badge.label}
     </span>
   );

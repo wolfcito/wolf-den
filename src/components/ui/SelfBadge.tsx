@@ -1,5 +1,12 @@
 "use client";
 
+import {
+  Loader2,
+  ShieldAlert,
+  ShieldCheck,
+  ShieldQuestion,
+} from "lucide-react";
+
 interface SelfBadgeProps {
   status?: "unverified" | "pending" | "verified" | "error";
   className?: string;
@@ -7,23 +14,31 @@ interface SelfBadgeProps {
 
 const statusCopy: Record<
   Required<SelfBadgeProps>["status"],
-  { label: string; tone: string }
+  {
+    label: string;
+    tone: string;
+    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  }
 > = {
   unverified: {
     label: "Self: unverified",
     tone: "bg-[#eef2ff] text-[#44506b] border-[#d1d7eb]",
+    icon: ShieldQuestion,
   },
   pending: {
     label: "Self: pending",
     tone: "bg-[#e0e7ff] text-[#2f3950] border-[#447bff]/60",
+    icon: Loader2,
   },
   verified: {
     label: "Self: verified",
     tone: "bg-[#447bff] text-white border-[#447bff]",
+    icon: ShieldCheck,
   },
   error: {
     label: "Self: error",
     tone: "bg-[#ffe4e4] text-[#a61b2a] border-[#ffb2b2]",
+    icon: ShieldAlert,
   },
 };
 
@@ -31,15 +46,16 @@ export function SelfBadge({
   status = "unverified",
   className = "",
 }: SelfBadgeProps) {
-  const { label, tone } = statusCopy[status];
+  const { label, tone, icon: Icon } = statusCopy[status];
 
   return (
     <span
       className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs uppercase tracking-[0.2em] transition ${tone} ${className}`.trim()}
     >
-      <span className="text-base" aria-hidden>
-        {status === "verified" ? "✅" : status === "error" ? "⚠️" : "🌀"}
-      </span>
+      <Icon
+        className={`h-4 w-4 ${status === "pending" ? "animate-spin" : ""}`}
+        aria-hidden
+      />
       {label}
     </span>
   );

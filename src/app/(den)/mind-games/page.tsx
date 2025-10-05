@@ -1,5 +1,6 @@
 "use client";
 
+import { Gem, Skull } from "lucide-react";
 import { useMemo, useState } from "react";
 
 export default function MindGamesPage() {
@@ -86,13 +87,18 @@ export default function MindGamesPage() {
                     ${
                       isSelected
                         ? isBomb
-                          ? "bg-[#ffe4e4] border-[#ffb2b2]"
+                          ? "bg-[#ffe4e4] border-[#ffb2b2] text-[#a61b2a]"
                           : "bg-[#447bff] border-[#447bff] text-white"
                         : "border-[#d1d7eb] bg-white hover:border-[#447bff] hover:bg-[#eef2ff]"
                     }
                   `}
                 >
-                  {isSelected && (isBomb ? "💣" : "💎")}
+                  {isSelected &&
+                    (isBomb ? (
+                      <Skull className="h-6 w-6" aria-hidden />
+                    ) : (
+                      <Gem className="h-6 w-6" aria-hidden />
+                    ))}
                 </button>
               );
             })}

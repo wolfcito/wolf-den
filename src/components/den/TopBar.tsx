@@ -1,5 +1,7 @@
 "use client";
 
+import { ArrowLeft } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HowlBadge } from "@/components/ui/HowlBadge";
@@ -42,6 +44,10 @@ const moduleMeta: Record<string, { title: string; description: string }> = {
     title: "Mind Games",
     description: "Flujos MVP y dinámicas",
   },
+  "/auth": {
+    title: "Self Auth",
+    description: "Verifica tu identidad con Self",
+  },
 };
 
 export function TopBar() {
@@ -60,21 +66,29 @@ export function TopBar() {
           href="/"
           className="flex items-center gap-2 rounded-full border border-[#d1d7eb] bg-white/80 px-3 py-1 text-xs text-[#0f1621] transition hover:border-[#447bff]"
         >
-          <span aria-hidden className="text-lg">
-            ←
-          </span>
+          <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
           <span>Back</span>
         </Link>
-        <div>
-          <div className="flex items-center gap-3 text-[#0f1621]">
-            <h1 className="text-xl font-semibold text-wolf-bone">
-              {meta.title}
-            </h1>
-            <span className="rounded-full bg-[#eef2ff] px-3 py-1 text-xs uppercase tracking-[0.3em] text-[#447bff]">
-              Wolf Den Originals
-            </span>
+        <div className="flex items-center gap-3">
+          <div className="relative h-10 w-10 overflow-hidden rounded-xl border border-[#d1d7eb] bg-[#eef2ff]">
+            <Image
+              src="/images/wolfs-den-logo.svg"
+              alt="Wolf's Den"
+              fill
+              className="object-contain"
+            />
           </div>
-          <p className="text-sm text-[#44506b]">{meta.description}</p>
+          <div>
+            <div className="flex items-center gap-3">
+              <h1 className="text-xl font-semibold text-[#0b1320]">
+                {meta.title}
+              </h1>
+              <span className="rounded-full bg-[#eef2ff] px-3 py-1 text-xs uppercase tracking-[0.3em] text-[#447bff]">
+                Wolf Den Originals
+              </span>
+            </div>
+            <p className="text-sm text-[#44506b]">{meta.description}</p>
+          </div>
         </div>
       </div>
 

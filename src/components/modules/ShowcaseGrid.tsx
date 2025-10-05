@@ -1,3 +1,5 @@
+import { Github, Play } from "lucide-react";
+
 const projects = [
   {
     id: "project-1",
@@ -37,14 +39,14 @@ export function ShowcaseGrid() {
               href={`https://${project.repo}`}
               className="flex items-center gap-2 text-[#0f1621] transition hover:text-[#447bff]"
             >
-              <span aria-hidden>📦</span>
+              <Github className="h-4 w-4" aria-hidden />
               {project.repo}
             </a>
             <a
               href={`https://${project.demo}`}
               className="flex items-center gap-2 text-[#447bff] transition hover:text-[#5d8cff]"
             >
-              <span aria-hidden>▶️</span>
+              <Play className="h-4 w-4" aria-hidden />
               {project.demo}
             </a>
           </div>

@@ -1,3 +1,5 @@
+import { Target } from "lucide-react";
+
 interface Quest {
   id: string;
   title: string;
@@ -49,11 +51,14 @@ export function QuestsGrid() {
           key={quest.id}
           className={`flex h-full flex-col justify-between rounded-2xl border p-5 shadow-[0_28px_75px_-60px_rgba(15,22,33,0.55)] transition hover:-translate-y-1 hover:border-[#447bff]/60 hover:bg-[#eef2ff]/60 ${questTone(quest.status)}`}
         >
-          <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
-              Quest
-            </p>
-            <h3 className="mt-2 text-lg font-semibold">{quest.title}</h3>
+          <div className="flex items-start gap-3">
+            <Target className="h-5 w-5 text-[#447bff]" aria-hidden />
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
+                Quest
+              </p>
+              <h3 className="mt-2 text-lg font-semibold">{quest.title}</h3>
+            </div>
           </div>
           <div className="mt-6 flex items-center justify-between text-sm">
             <span className="rounded-full bg-[#eef2ff] px-3 py-1 text-xs text-[#44506b]">

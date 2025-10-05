@@ -1,13 +1,26 @@
 "use client";
 
+import {
+  BarChart3,
+  Gamepad2,
+  Home,
+  MapPinned,
+  ScanQrCode,
+  Settings,
+  ShieldCheck,
+  Sparkles,
+  SquareStack,
+  Trophy,
+  UsersRound,
+} from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 interface NavItem {
   label: string;
   href: string;
-  description?: string;
-  icon?: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 }
 
 interface NavSection {
@@ -19,21 +32,22 @@ const navSections: NavSection[] = [
   {
     title: "Módulos",
     items: [
-      { label: "Quests", href: "/quests", icon: "🗺️" },
-      { label: "Check-in", href: "/checkin", icon: "📍" },
-      { label: "Mentoría", href: "/mentorship", icon: "🧠" },
-      { label: "Showcase", href: "/showcase", icon: "💎" },
-      { label: "Voting", href: "/voting", icon: "🗳️" },
-      { label: "Mind Games", href: "/mind-games", icon: "🎲" },
+      { label: "Dashboard", href: "/", icon: Home },
+      { label: "Quests", href: "/quests", icon: MapPinned },
+      { label: "Check-in", href: "/checkin", icon: ScanQrCode },
+      { label: "Mentoría", href: "/mentorship", icon: UsersRound },
+      { label: "Showcase", href: "/showcase", icon: SquareStack },
+      { label: "Voting", href: "/voting", icon: Trophy },
+      { label: "Mind Games", href: "/mind-games", icon: Gamepad2 },
     ],
   },
   {
     title: "Utilidades",
     items: [
-      { label: "Self Auth", href: "/auth", icon: "🔐" },
-      { label: "Stats", href: "/stats", icon: "📊" },
-      { label: "Leaderboard", href: "/leaderboard", icon: "🏆" },
-      { label: "Settings", href: "/settings", icon: "⚙️" },
+      { label: "Self Auth", href: "/auth", icon: ShieldCheck },
+      { label: "Stats", href: "/stats", icon: BarChart3 },
+      { label: "Leaderboard", href: "/leaderboard", icon: Sparkles },
+      { label: "Settings", href: "/settings", icon: Settings },
     ],
   },
 ];
@@ -44,9 +58,14 @@ export function SidebarNav() {
   return (
     <div className="flex h-full flex-col justify-between p-4 text-sm text-[#0f1621]">
       <div>
-        <div className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-[#0f1621] shadow-[0_20px_50px_-40px_rgba(15,22,33,0.55)]">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#eef2ff] text-lg text-[#0f1621]">
-            <span className="font-semibold text-[#447bff]">W</span>
+        <div className="flex flex-col items-start gap-3 rounded-2xl bg-white px-4 py-3 shadow-[0_20px_50px_-40px_rgba(15,22,33,0.55)]">
+          <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl border border-[#d1d7eb] bg-[#eef2ff]">
+            <Image
+              src="/images/wolfs-den-logo.svg"
+              alt="Wolf's Den"
+              fill
+              className="object-contain"
+            />
           </div>
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-[#5e6a84]">
@@ -70,8 +89,10 @@ export function SidebarNav() {
                       : pathname === item.href ||
                         pathname?.startsWith(`${item.href}/`);
 
+                  const Icon = item.icon;
+
                   return (
-                    <li key={item.href}>
+                    <li key={`${item.href}-${item.label}`}>
                       <Link
                         href={item.href}
                         className={`flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 transition-all duration-150
@@ -82,9 +103,7 @@ export function SidebarNav() {
                           }
                         `}
                       >
-                        <span className="text-lg" aria-hidden>
-                          {item.icon}
-                        </span>
+                        <Icon className="h-5 w-5" aria-hidden />
                         <span className="text-sm font-medium">
                           {item.label}
                         </span>

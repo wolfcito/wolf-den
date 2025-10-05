@@ -1,3 +1,5 @@
+import { CalendarClock, NotebookPen } from "lucide-react";
+
 const slots = [
   {
     id: "slot-1",
@@ -18,7 +20,10 @@ export function MentorBooking() {
   return (
     <div className="grid gap-6 text-[#0f1621] lg:grid-cols-[320px_1fr]">
       <div className="rounded-2xl border border-[#e2e6f5] bg-white p-6 shadow-[0_32px_85px_-65px_rgba(15,22,33,0.55)]">
-        <h3 className="text-lg font-semibold">Agenda</h3>
+        <div className="flex items-center gap-2">
+          <CalendarClock className="h-5 w-5 text-[#447bff]" aria-hidden />
+          <h3 className="text-lg font-semibold">Agenda</h3>
+        </div>
         <p className="mt-1 text-sm text-[#44506b]">
           Selecciona un slot y comparte tu objetivo.
         </p>
@@ -43,7 +48,10 @@ export function MentorBooking() {
         </ul>
       </div>
       <div className="rounded-2xl border border-[#e2e6f5] bg-white p-6 shadow-[0_32px_85px_-65px_rgba(15,22,33,0.55)]">
-        <h4 className="text-base font-semibold">Preparación</h4>
+        <div className="flex items-center gap-2">
+          <NotebookPen className="h-5 w-5 text-[#447bff]" aria-hidden />
+          <h4 className="text-base font-semibold">Preparación</h4>
+        </div>
         <div className="mt-3 space-y-3 text-sm text-[#44506b]">
           <p>• Objetivo de la sesión (1 frase)</p>
           <p>• Repositorios relevantes</p>
