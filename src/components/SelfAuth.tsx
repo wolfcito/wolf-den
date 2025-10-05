@@ -56,26 +56,36 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center rounded-lg bg-black/20 p-8 backdrop-blur-sm">
+    <div className="flex flex-col items-center justify-center gap-4 rounded-2xl border border-[#d1d7eb] bg-[#f5f7ff] p-8 text-center text-[#0f1621] shadow-[0_25px_70px_-60px_rgba(15,22,33,0.45)]">
       {isVerified ? (
-        <div className="text-center">
-          <div className="mb-2 text-xl text-green-400">✓ Verified</div>
-          <p className="text-gray-300">Successfully authenticated with Self</p>
+        <div>
+          <div className="mb-2 text-4xl">✅</div>
+          <h3 className="text-lg font-semibold text-[#0b1320]">
+            Verificación completada
+          </h3>
+          <p className="mt-2 text-sm text-[#44506b]">
+            Tu identidad está confirmada. ¡Explora el Wolf Den sin límites!
+          </p>
         </div>
       ) : (
-        <div className="text-center">
-          <h2 className="mb-4 text-2xl font-bold text-white">
-            Verify with Self
-          </h2>
-          <p className="mb-6 text-gray-300">
-            Scan the QR code with the Self app to verify your identity
-          </p>
-          {selfApp && (
+        <div className="space-y-4">
+          <div>
+            <h2 className="text-xl font-semibold text-[#0b1320]">
+              Verifica con Self
+            </h2>
+            <p className="mt-2 text-sm text-[#44506b]">
+              Escanea el QR con la app Self para sincronizar tu identidad con la
+              manada.
+            </p>
+          </div>
+          {selfApp ? (
             <SelfQRcodeWrapper
               selfApp={selfApp}
               onSuccess={handleSuccess}
               onError={handleError}
             />
+          ) : (
+            <p className="text-sm text-[#9aa5c3]">Generando QR…</p>
           )}
         </div>
       )}
