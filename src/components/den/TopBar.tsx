@@ -54,11 +54,11 @@ export function TopBar() {
     : { title: "Wolf Den", description: "Sé parte de la manada." };
 
   return (
-    <header className="flex flex-wrap items-center justify-between gap-4">
+    <header className="flex flex-wrap items-center justify-between gap-4 text-[#0f1621]">
       <div className="flex flex-wrap items-center gap-4">
         <Link
           href="/"
-          className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-wolf-bone/80 transition hover:bg-white/10"
+          className="flex items-center gap-2 rounded-full border border-[#d1d7eb] bg-white/80 px-3 py-1 text-xs text-[#0f1621] transition hover:border-[#447bff]"
         >
           <span aria-hidden className="text-lg">
             ←
@@ -66,19 +66,19 @@ export function TopBar() {
           <span>Back</span>
         </Link>
         <div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 text-[#0f1621]">
             <h1 className="text-xl font-semibold text-wolf-bone">
               {meta.title}
             </h1>
-            <span className="rounded-full bg-wolf-violet/20 px-3 py-1 text-xs uppercase tracking-[0.3em] text-wolf-violet/80">
+            <span className="rounded-full bg-[#eef2ff] px-3 py-1 text-xs uppercase tracking-[0.3em] text-[#447bff]">
               Wolf Den Originals
             </span>
           </div>
-          <p className="text-sm text-wolf-bone/70">{meta.description}</p>
+          <p className="text-sm text-[#44506b]">{meta.description}</p>
         </div>
       </div>
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 text-[#0f1621]">
         <HowlBadge level="Lobo" />
         <SelfBadge status="pending" />
       </div>

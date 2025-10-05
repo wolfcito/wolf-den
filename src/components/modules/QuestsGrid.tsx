@@ -35,27 +35,28 @@ const sampleQuests: Quest[] = [
 
 function questTone(status: Quest["status"]) {
   if (status === "submitted")
-    return "border-wolf-cyan/40 bg-wolf-cyan/10 text-wolf-cyan";
-  if (status === "locked") return "border-white/5 bg-white/5 text-wolf-bone/40";
-  return "border-white/10 bg-wolf-panel/40 text-wolf-bone";
+    return "border-[#447bff]/60 bg-[#eef2ff] text-[#0f1621]";
+  if (status === "locked")
+    return "border-[#d1d7eb] bg-[#eef1f8] text-[#9aa5c3]";
+  return "border-[#e2e6f5] bg-white text-[#0f1621]";
 }
 
 export function QuestsGrid() {
   return (
-    <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+    <div className="grid gap-4 text-[#0f1621] md:grid-cols-2 xl:grid-cols-4">
       {sampleQuests.map((quest) => (
         <div
           key={quest.id}
-          className={`flex h-full flex-col justify-between rounded-2xl border p-5 transition hover:border-wolf-violet/40 hover:bg-wolf-violet/10 ${questTone(quest.status)}`}
+          className={`flex h-full flex-col justify-between rounded-2xl border p-5 shadow-[0_28px_75px_-60px_rgba(15,22,33,0.55)] transition hover:-translate-y-1 hover:border-[#447bff]/60 hover:bg-[#eef2ff]/60 ${questTone(quest.status)}`}
         >
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-wolf-bone/50">
+            <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
               Quest
             </p>
             <h3 className="mt-2 text-lg font-semibold">{quest.title}</h3>
           </div>
           <div className="mt-6 flex items-center justify-between text-sm">
-            <span className="rounded-full bg-white/5 px-3 py-1 text-xs text-wolf-bone/60">
+            <span className="rounded-full bg-[#eef2ff] px-3 py-1 text-xs text-[#44506b]">
               {quest.points} pts
             </span>
             <button
@@ -63,8 +64,8 @@ export function QuestsGrid() {
               className={`rounded-xl px-4 py-2 text-sm font-medium transition
                 ${
                   quest.status === "locked"
-                    ? "cursor-not-allowed bg-white/5 text-wolf-bone/30"
-                    : "bg-wolf-violet/30 text-wolf-bone hover:bg-wolf-violet/50"
+                    ? "cursor-not-allowed bg-[#e3e6f2] text-[#9aa5c3]"
+                    : "bg-[#447bff] text-white hover:bg-[#5d8cff]"
                 }
               `}
               disabled={quest.status !== "available"}

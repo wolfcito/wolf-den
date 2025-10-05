@@ -24,8 +24,8 @@ const recentItems = [
 
 export function ActivityRail() {
   return (
-    <div className="flex h-full flex-col gap-4">
-      <section className="rounded-2xl border border-white/10 bg-white/5 p-4">
+    <div className="flex h-full flex-col gap-4 text-[#0f1621]">
+      <section className="rounded-2xl border border-[#e2e6f5] bg-white p-4 shadow-[0_24px_60px_-50px_rgba(15,22,33,0.55)]">
         <div className="mb-3 flex items-center justify-between">
           <p className="text-sm font-semibold text-wolf-bone">Actividad</p>
           <span className="text-[11px] uppercase tracking-[0.3em] text-wolf-bone/40">
@@ -39,7 +39,7 @@ export function ActivityRail() {
         </div>
       </section>
 
-      <section className="rounded-2xl border border-white/10 bg-white/5 p-4">
+      <section className="rounded-2xl border border-[#e2e6f5] bg-white p-4 shadow-[0_24px_60px_-50px_rgba(15,22,33,0.55)]">
         <div className="mb-3 flex items-center justify-between">
           <p className="text-sm font-semibold text-wolf-bone">Recent</p>
           <span className="text-[11px] uppercase tracking-[0.3em] text-wolf-bone/40">
@@ -61,7 +61,9 @@ export function ActivityRail() {
         </ul>
       </section>
 
-      <MiniChat />
+      <div className="rounded-2xl border border-[#e2e6f5] bg-white p-4 shadow-[0_24px_60px_-50px_rgba(15,22,33,0.55)]">
+        <MiniChat />
+      </div>
     </div>
   );
 }

@@ -9,15 +9,15 @@ const levelConfig: Record<
 > = {
   Cachorro: {
     label: "HOWL • Cachorro",
-    tone: "bg-white/5 text-wolf-bone/70 border-white/10",
+    tone: "bg-[#eef2ff] text-[#44506b] border-[#d1d7eb]",
   },
   Lobo: {
     label: "HOWL • Lobo",
-    tone: "bg-wolf-cyan/15 text-wolf-cyan border-wolf-cyan/40",
+    tone: "bg-[#447bff]/15 text-[#447bff] border-[#447bff]/40",
   },
   Alfa: {
     label: "HOWL • Alfa",
-    tone: "bg-wolf-violet/15 text-wolf-violet border-wolf-violet/40",
+    tone: "bg-[#0b1320]/15 text-[#0b1320] border-[#0b1320]/40",
   },
 };
 

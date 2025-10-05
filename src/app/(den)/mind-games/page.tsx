@@ -42,31 +42,33 @@ export default function MindGamesPage() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="rounded-2xl border border-white/10 bg-wolf-panel/40 p-6 text-sm text-wolf-bone/70">
-        <p className="font-medium text-wolf-bone">Mines</p>
-        <p className="mt-1">
+    <div className="space-y-6 text-[#0f1621]">
+      <div className="rounded-2xl border border-[#e2e6f5] bg-white p-6 shadow-[0_35px_90px_-70px_rgba(15,22,33,0.55)]">
+        <p className="font-medium text-[#0f1621]">Mines</p>
+        <p className="mt-1 text-sm text-[#44506b]">
           Flujos MVP de Mind Games. Mantén la estética original mientras
           agregamos lógica conectada a Self.
         </p>
       </div>
 
       <div className="flex flex-col gap-6 lg:flex-row">
-        <section className="flex-1 space-y-6 rounded-2xl border border-white/10 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 p-6 text-white">
-          <div className="flex items-center justify-between">
+        <section className="flex-1 space-y-6 rounded-2xl border border-[#e2e6f5] bg-white p-6 shadow-[0_40px_100px_-70px_rgba(15,22,33,0.55)]">
+          <div className="flex items-center justify-between rounded-2xl border border-[#d1d7eb] bg-[#eef2ff] px-4 py-4">
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-white/70">
+              <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
                 Balance
               </p>
-              <p className="text-2xl font-semibold">
+              <p className="text-2xl font-semibold text-[#0f1621]">
                 € {balance.toLocaleString()}
               </p>
             </div>
             <div className="text-right">
-              <p className="text-xs uppercase tracking-[0.3em] text-white/70">
+              <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
                 Profit
               </p>
-              <p className="text-lg font-semibold">€ {profit.toFixed(2)}</p>
+              <p className="text-lg font-semibold text-[#0f1621]">
+                € {profit.toFixed(2)}
+              </p>
             </div>
           </div>
 
@@ -80,13 +82,13 @@ export default function MindGamesPage() {
                   key={id}
                   type="button"
                   onClick={() => handleCellClick(index)}
-                  className={`aspect-square rounded-lg border-2 transition-all duration-200 flex items-center justify-center text-2xl
+                  className={`flex aspect-square items-center justify-center rounded-lg border-2 text-2xl transition-all duration-200
                     ${
                       isSelected
                         ? isBomb
-                          ? "bg-red-500 border-red-400"
-                          : "bg-orange-500 border-orange-400"
-                        : "bg-white/10 border-white/20 hover:bg-white/20 hover:border-white/30"
+                          ? "bg-[#ffe4e4] border-[#ffb2b2]"
+                          : "bg-[#447bff] border-[#447bff] text-white"
+                        : "border-[#d1d7eb] bg-white hover:border-[#447bff] hover:bg-[#eef2ff]"
                     }
                   `}
                 >
@@ -97,11 +99,11 @@ export default function MindGamesPage() {
           </div>
         </section>
 
-        <aside className="w-full max-w-sm space-y-4 rounded-2xl border border-white/10 bg-wolf-panel/60 p-6 text-sm text-wolf-bone">
+        <aside className="w-full max-w-sm space-y-4 rounded-2xl border border-[#e2e6f5] bg-white p-6 shadow-[0_35px_90px_-70px_rgba(15,22,33,0.55)]">
           <div className="space-y-2">
             <label
               htmlFor={mineSelectId}
-              className="text-xs uppercase tracking-[0.3em] text-wolf-bone/40"
+              className="text-xs uppercase tracking-[0.3em] text-[#8894b3]"
             >
               Mines
             </label>
@@ -109,7 +111,7 @@ export default function MindGamesPage() {
               id={mineSelectId}
               value={mineCount}
               onChange={(event) => setMineCount(Number(event.target.value))}
-              className="w-full rounded-xl border border-white/10 bg-wolf-panel/80 px-3 py-2 text-wolf-bone"
+              className="w-full rounded-xl border border-[#d1d7eb] bg-white px-3 py-2 text-[#0f1621]"
             >
               {[1, 2, 3, 24].map((option) => (
                 <option key={option} value={option}>
@@ -122,7 +124,7 @@ export default function MindGamesPage() {
           <div className="space-y-2">
             <label
               htmlFor={betInputId}
-              className="text-xs uppercase tracking-[0.3em] text-wolf-bone/40"
+              className="text-xs uppercase tracking-[0.3em] text-[#8894b3]"
             >
               Bet amount
             </label>
@@ -131,7 +133,7 @@ export default function MindGamesPage() {
               type="number"
               value={betAmount}
               onChange={(event) => setBetAmount(Number(event.target.value))}
-              className="w-full rounded-xl border border-white/10 bg-wolf-panel/80 px-3 py-2 text-wolf-bone"
+              className="w-full rounded-xl border border-[#d1d7eb] bg-white px-3 py-2 text-[#0f1621]"
             />
           </div>
 
@@ -139,7 +141,7 @@ export default function MindGamesPage() {
             <button
               type="button"
               onClick={startGame}
-              className="flex-1 rounded-xl bg-wolf-cyan/20 px-4 py-2 font-medium text-wolf-cyan transition hover:bg-wolf-cyan/30"
+              className="flex-1 rounded-xl bg-[#447bff] px-4 py-2 font-medium text-white transition hover:bg-[#5d8cff]"
             >
               Start
             </button>
@@ -147,7 +149,7 @@ export default function MindGamesPage() {
               type="button"
               onClick={cashout}
               disabled={!isGameActive}
-              className="flex-1 rounded-xl bg-wolf-violet/30 px-4 py-2 font-medium text-wolf-bone transition hover:bg-wolf-violet/40 disabled:cursor-not-allowed disabled:bg-white/5 disabled:text-wolf-bone/40"
+              className="flex-1 rounded-xl bg-[#0b1320] px-4 py-2 font-medium text-white transition hover:bg-[#131d30] disabled:cursor-not-allowed disabled:bg-[#e3e6f2] disabled:text-[#9aa5c3]"
             >
               Cashout
             </button>

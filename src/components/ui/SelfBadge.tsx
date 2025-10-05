@@ -11,19 +11,19 @@ const statusCopy: Record<
 > = {
   unverified: {
     label: "Self: unverified",
-    tone: "bg-white/5 text-wolf-bone/70 border-white/10",
+    tone: "bg-[#eef2ff] text-[#44506b] border-[#d1d7eb]",
   },
   pending: {
     label: "Self: pending",
-    tone: "bg-wolf-violet/15 text-wolf-violet border-wolf-violet/40",
+    tone: "bg-[#e0e7ff] text-[#2f3950] border-[#447bff]/60",
   },
   verified: {
     label: "Self: verified",
-    tone: "bg-wolf-cyan/15 text-wolf-cyan border-wolf-cyan/40",
+    tone: "bg-[#447bff] text-white border-[#447bff]",
   },
   error: {
     label: "Self: error",
-    tone: "bg-red-500/10 text-red-300 border-red-400/40",
+    tone: "bg-[#ffe4e4] text-[#a61b2a] border-[#ffb2b2]",
   },
 };
 

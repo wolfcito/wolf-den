@@ -7,24 +7,22 @@ const leaderboard = [
 
 export function LeaderboardList() {
   return (
-    <div className="rounded-2xl border border-white/10 bg-wolf-panel/40 p-5">
-      <h3 className="text-lg font-semibold text-wolf-bone">Leaderboard</h3>
-      <p className="text-sm text-wolf-bone/60">Ranking semanal de la manada.</p>
+    <div className="rounded-2xl border border-[#e2e6f5] bg-white p-5 text-[#0f1621] shadow-[0_32px_85px_-65px_rgba(15,22,33,0.55)]">
+      <h3 className="text-lg font-semibold">Leaderboard</h3>
+      <p className="text-sm text-[#44506b]">Ranking semanal de la manada.</p>
       <div className="mt-4 space-y-3">
         {leaderboard.map((entry) => (
           <div
             key={entry.team}
-            className="flex items-center justify-between rounded-2xl bg-white/5 px-4 py-3"
+            className="flex items-center justify-between rounded-2xl border border-[#d1d7eb] bg-[#eef2ff] px-4 py-3"
           >
-            <div className="flex items-center gap-3 text-sm text-wolf-bone">
-              <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-wolf-violet/30 text-wolf-violet">
+            <div className="flex items-center gap-3 text-sm">
+              <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#447bff]/15 text-[#447bff]">
                 #{entry.position}
               </span>
               <p className="font-medium">{entry.team}</p>
             </div>
-            <span className="text-sm text-wolf-bone/70">
-              {entry.points} pts
-            </span>
+            <span className="text-sm text-[#44506b]">{entry.points} pts</span>
           </div>
         ))}
       </div>

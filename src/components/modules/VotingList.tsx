@@ -23,32 +23,30 @@ const demos = [
 
 export function VotingList() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 text-[#0f1621]">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h3 className="text-lg font-semibold text-wolf-bone">Demo Day</h3>
+        <h3 className="text-lg font-semibold">Demo Day</h3>
         <SelfBadge status="pending" />
       </div>
       <div className="space-y-3">
         {demos.map((demo) => (
           <div
             key={demo.id}
-            className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-wolf-panel/40 px-5 py-4"
+            className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[#e2e6f5] bg-white px-5 py-4 shadow-[0_32px_85px_-65px_rgba(15,22,33,0.55)]"
           >
             <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-wolf-bone/50">
+              <p className="text-sm uppercase tracking-[0.3em] text-[#8894b3]">
                 {demo.team}
               </p>
-              <p className="text-lg font-semibold text-wolf-bone">
-                {demo.name}
-              </p>
+              <p className="text-lg font-semibold">{demo.name}</p>
             </div>
             <button
               type="button"
               className={`rounded-xl px-4 py-2 text-sm font-medium transition
                 ${
                   demo.status === "open"
-                    ? "bg-wolf-cyan/20 text-wolf-cyan hover:bg-wolf-cyan/30"
-                    : "cursor-not-allowed bg-white/5 text-wolf-bone/40"
+                    ? "bg-[#447bff] text-white hover:bg-[#5d8cff]"
+                    : "cursor-not-allowed bg-[#e3e6f2] text-[#9aa5c3]"
                 }
               `}
               disabled={demo.status !== "open"}
@@ -58,7 +56,7 @@ export function VotingList() {
           </div>
         ))}
       </div>
-      <p className="text-xs text-wolf-bone/50">
+      <p className="text-xs text-[#44506b]">
         Las votaciones requieren verificación Self y nivel HOWL Lobo.
       </p>
     </div>

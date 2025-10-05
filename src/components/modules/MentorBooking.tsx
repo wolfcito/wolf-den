@@ -16,10 +16,10 @@ const slots = [
 
 export function MentorBooking() {
   return (
-    <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
-      <div className="rounded-2xl border border-white/10 bg-wolf-panel/40 p-6">
-        <h3 className="text-lg font-semibold text-wolf-bone">Agenda</h3>
-        <p className="mt-1 text-sm text-wolf-bone/60">
+    <div className="grid gap-6 text-[#0f1621] lg:grid-cols-[320px_1fr]">
+      <div className="rounded-2xl border border-[#e2e6f5] bg-white p-6 shadow-[0_32px_85px_-65px_rgba(15,22,33,0.55)]">
+        <h3 className="text-lg font-semibold">Agenda</h3>
+        <p className="mt-1 text-sm text-[#44506b]">
           Selecciona un slot y comparte tu objetivo.
         </p>
         <ul className="mt-4 space-y-3">
@@ -29,8 +29,8 @@ export function MentorBooking() {
               className={`rounded-2xl border px-4 py-3 text-sm transition
                 ${
                   slot.available
-                    ? "border-wolf-cyan/30 bg-wolf-cyan/10 text-wolf-cyan hover:bg-wolf-cyan/20"
-                    : "border-white/5 bg-white/5 text-wolf-bone/40"
+                    ? "border-[#447bff]/50 bg-[#eef2ff] text-[#0f1621] hover:border-[#447bff]"
+                    : "border-[#d1d7eb] bg-[#f1f3fa] text-[#9aa5c3]"
                 }
               `}
             >
@@ -42,16 +42,16 @@ export function MentorBooking() {
           ))}
         </ul>
       </div>
-      <div className="rounded-2xl border border-white/10 bg-wolf-panel/40 p-6">
-        <h4 className="text-base font-semibold text-wolf-bone">Preparación</h4>
-        <div className="mt-3 space-y-3 text-sm text-wolf-bone/70">
+      <div className="rounded-2xl border border-[#e2e6f5] bg-white p-6 shadow-[0_32px_85px_-65px_rgba(15,22,33,0.55)]">
+        <h4 className="text-base font-semibold">Preparación</h4>
+        <div className="mt-3 space-y-3 text-sm text-[#44506b]">
           <p>• Objetivo de la sesión (1 frase)</p>
           <p>• Repositorios relevantes</p>
           <p>• Pregunta clave para desbloquear</p>
         </div>
         <button
           type="button"
-          className="mt-5 rounded-xl bg-wolf-violet/30 px-4 py-3 text-sm font-medium text-wolf-bone transition hover:bg-wolf-violet/40"
+          className="mt-5 rounded-xl bg-[#447bff] px-4 py-3 text-sm font-medium text-white transition hover:bg-[#5d8cff]"
         >
           Reservar slot
         </button>

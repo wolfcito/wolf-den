@@ -42,24 +42,24 @@ export function SidebarNav() {
   const pathname = usePathname();
 
   return (
-    <div className="flex h-full flex-col justify-between p-4 text-sm text-wolf-bone/80">
+    <div className="flex h-full flex-col justify-between p-4 text-sm text-[#0f1621]">
       <div>
-        <div className="flex items-center gap-3 rounded-2xl bg-white/5 px-4 py-3 text-wolf-bone">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-wolf-cyan/20 text-lg">
-            <span className="font-semibold text-wolf-cyan">W</span>
+        <div className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-[#0f1621] shadow-[0_20px_50px_-40px_rgba(15,22,33,0.55)]">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#eef2ff] text-lg text-[#0f1621]">
+            <span className="font-semibold text-[#447bff]">W</span>
           </div>
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-wolf-bone/60">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#5e6a84]">
               Wolf Den
             </p>
             <p className="text-base font-semibold">Control Center</p>
           </div>
         </div>
 
-        <nav className="mt-8 space-y-8">
+        <nav className="mt-8 space-y-8 text-[#0f1621]">
           {navSections.map((section) => (
             <div key={section.title}>
-              <p className="mb-3 text-xs uppercase tracking-[0.3em] text-wolf-bone/50">
+              <p className="mb-3 text-xs uppercase tracking-[0.3em] text-[#8894b3]">
                 {section.title}
               </p>
               <ul className="space-y-2">
@@ -77,8 +77,8 @@ export function SidebarNav() {
                         className={`flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 transition-all duration-150
                           ${
                             isActive
-                              ? "border-wolf-cyan/50 bg-wolf-cyan/15 text-wolf-bone"
-                              : "hover:border-white/5 hover:bg-white/5"
+                              ? "border-[#447bff]/60 bg-[#447bff]/10 text-[#0b1320]"
+                              : "hover:border-[#d1d7eb] hover:bg-white/70"
                           }
                         `}
                       >
@@ -96,16 +96,6 @@ export function SidebarNav() {
             </div>
           ))}
         </nav>
-      </div>
-
-      <div className="rounded-2xl border border-white/5 bg-wolf-panel/50 p-4">
-        <p className="text-xs uppercase tracking-[0.3em] text-wolf-bone/50">
-          Notas
-        </p>
-        <p className="mt-2 text-sm text-wolf-bone/70">
-          Mantén la experiencia consistente: colores Wolf, bordes 2XL y copy
-          bilingüe.
-        </p>
       </div>
     </div>
   );

@@ -1,6 +1,17 @@
+import ThemeToggle from "@/components/ui/ThemeToggle";
+
 export default function SettingsPage() {
   return (
     <div className="space-y-6">
+      <section className="rounded-2xl border border-white/10 bg-wolf-panel/40 p-6">
+        <h3 className="text-lg font-semibold text-wolf-bone">Appearance</h3>
+        <p className="mt-2 text-sm text-wolf-bone/70">
+          Switch between light and dark mode to match your workspace.
+        </p>
+        <div className="mt-4">
+          <ThemeToggle />
+        </div>
+      </section>
       <section className="rounded-2xl border border-white/10 bg-wolf-panel/40 p-6">
         <h3 className="text-lg font-semibold text-wolf-bone">Idioma</h3>
         <div className="mt-3 flex flex-wrap gap-3 text-sm">
