@@ -1,7 +1,4 @@
 import Link from "next/link";
-import type { CSSProperties } from "react";
-
-const bitcountStyle: CSSProperties = { fontFamily: ""Bitcount Single Ink", var(--font-geist-sans)" } as const;
 
 const strategicPillars = [
   {
@@ -119,10 +116,7 @@ export default function HomeLanding() {
             <span className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#447bff] shadow-[0_15px_40px_-30px_rgba(16,22,33,0.6)]">
               Wolf Den Originals
             </span>
-            <h1
-              className="text-4xl font-semibold uppercase leading-tight text-[#0b1320] sm:text-5xl lg:text-6xl"
-              style={bitcountStyle}
-            >
+            <h1 className="text-4xl font-semibold uppercase leading-tight text-[#0b1320] sm:text-5xl lg:text-6xl">
               Wolf Den is the digital control center for the pack
             </h1>
             <p className="max-w-[42ch] text-lg text-[#2f3950]">
@@ -169,10 +163,7 @@ export default function HomeLanding() {
               <p className="text-xs uppercase tracking-[0.3em] text-[#447bff]">
                 Strategic Pillars
               </p>
-              <h2
-                className="mt-2 text-3xl font-semibold uppercase text-[#0b1320]"
-                style={bitcountStyle}
-              >
+              <h2 className="mt-2 text-3xl font-semibold uppercase text-[#0b1320]">
                 What powers the Den
               </h2>
             </div>
@@ -208,10 +199,7 @@ export default function HomeLanding() {
               <p className="text-xs uppercase tracking-[0.3em] text-[#447bff]">
                 Objectives
               </p>
-              <h2
-                className="mt-2 text-3xl font-semibold uppercase text-[#0b1320]"
-                style={bitcountStyle}
-              >
+              <h2 className="mt-2 text-3xl font-semibold uppercase text-[#0b1320]">
                 Targets for the pack
               </h2>
             </div>
@@ -233,10 +221,7 @@ export default function HomeLanding() {
             <p className="text-xs uppercase tracking-[0.3em] text-[#447bff]">
               Modules
             </p>
-            <h2
-              className="text-3xl font-semibold uppercase text-[#0b1320]"
-              style={bitcountStyle}
-            >
+            <h2 className="text-3xl font-semibold uppercase text-[#0b1320]">
               Mission surfaces across the Den
             </h2>
             <p className="max-w-[60ch] text-sm text-[#44506b]">
@@ -276,10 +261,7 @@ export default function HomeLanding() {
               <p className="text-xs uppercase tracking-[0.3em] text-[#447bff]">
                 Flows
               </p>
-              <h2
-                className="mt-2 text-3xl font-semibold uppercase text-[#0b1320]"
-                style={bitcountStyle}
-              >
+              <h2 className="mt-2 text-3xl font-semibold uppercase text-[#0b1320]">
                 Sequencing the pack journey
               </h2>
             </div>
@@ -315,10 +297,7 @@ export default function HomeLanding() {
               <p className="text-xs uppercase tracking-[0.3em] text-[#93a0c1]">
                 Join the pack
               </p>
-              <h2
-              className="text-3xl font-semibold uppercase text-[#0b1320]"
-              style={bitcountStyle}
-            >
+              <h2 className="text-3xl font-semibold uppercase text-[#0b1320]">
                 Ready to sync with Wolf Den?
               </h2>
               <p className="text-sm text-[#3f4c67]">

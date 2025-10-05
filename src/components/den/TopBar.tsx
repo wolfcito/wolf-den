@@ -60,19 +60,19 @@ export function TopBar() {
     : { title: "Wolf Den", description: "Sé parte de la manada." };
 
   return (
-    <header className="flex flex-wrap items-center justify-between gap-4 text-[#0f1621]">
-      <div className="flex flex-wrap items-center gap-4">
+    <header className="flex flex-col justify-between gap-4 text-[#0f1621]">
+      <div className="flex items-center gap-4">
         <Link
           href="/"
-          className="flex items-center gap-2 rounded-full border border-[#d1d7eb] bg-white/80 px-3 py-1 text-xs text-[#0f1621] transition hover:border-[#447bff]"
+          className="flex h-10 w-10 items-center gap-2 rounded-full border border-[#d1d7eb] bg-white/80 px-3 py-1 text-xs text-[#0f1621] transition hover:border-[#447bff]"
         >
           <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
-          <span>Back</span>
+          {/* <span>Back</span> */}
         </Link>
         <div className="flex items-center gap-3">
-          <div className="relative h-10 w-10 overflow-hidden rounded-xl border border-[#d1d7eb] bg-[#eef2ff]">
+          <div className="relative h-10 w-10">
             <Image
-              src="/images/wolfs-den-logo.svg"
+              src="/wolf-den-bn.png"
               alt="Wolf's Den"
               fill
               className="object-contain"
@@ -83,9 +83,6 @@ export function TopBar() {
               <h1 className="text-xl font-semibold text-[#0b1320]">
                 {meta.title}
               </h1>
-              <span className="rounded-full bg-[#eef2ff] px-3 py-1 text-xs uppercase tracking-[0.3em] text-[#447bff]">
-                Wolf Den Originals
-              </span>
             </div>
             <p className="text-sm text-[#44506b]">{meta.description}</p>
           </div>

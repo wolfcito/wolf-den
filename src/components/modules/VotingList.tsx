@@ -27,7 +27,6 @@ export function VotingList() {
     <div className="space-y-6 text-[#0f1621]">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h3 className="text-lg font-semibold">Demo Day</h3>
-        <SelfBadge status="pending" />
       </div>
       <div className="space-y-3">
         {demos.map((demo) => {

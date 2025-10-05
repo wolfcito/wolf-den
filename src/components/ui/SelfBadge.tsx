@@ -22,22 +22,22 @@ const statusCopy: Record<
 > = {
   unverified: {
     label: "Self: unverified",
-    tone: "bg-[#eef2ff] text-[#44506b] border-[#d1d7eb]",
+    tone: "text-[#44506b] border-[#d1d7eb]",
     icon: ShieldQuestion,
   },
   pending: {
     label: "Self: pending",
-    tone: "bg-[#e0e7ff] text-[#2f3950] border-[#447bff]/60",
+    tone: "text-[#2f3950] border-[#447bff]/60",
     icon: Loader2,
   },
   verified: {
     label: "Self: verified",
-    tone: "bg-[#447bff] text-white border-[#447bff]",
+    tone: "text-white border-[#447bff]",
     icon: ShieldCheck,
   },
   error: {
     label: "Self: error",
-    tone: "bg-[#ffe4e4] text-[#a61b2a] border-[#ffb2b2]",
+    tone: "text-[#a61b2a] border-[#ffb2b2]",
     icon: ShieldAlert,
   },
 };
@@ -50,7 +50,7 @@ export function SelfBadge({
 
   return (
     <span
-      className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs uppercase tracking-[0.2em] transition ${tone} ${className}`.trim()}
+      className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs tracking-[0.2em] transition ${tone} ${className}`.trim()}
     >
       <Icon
         className={`h-4 w-4 ${status === "pending" ? "animate-spin" : ""}`}

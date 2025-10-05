@@ -44,7 +44,7 @@ export default function MindGamesPage() {
 
   return (
     <div className="space-y-6 text-[#0f1621]">
-      <div className="rounded-2xl border border-[#e2e6f5] bg-white p-6 shadow-[0_35px_90px_-70px_rgba(15,22,33,0.55)]">
+      <div className="rounded-2xl y-6 shadow-[0_35px_90px_-70px_rgba(15,22,33,0.55)]">
         <p className="font-medium text-[#0f1621]">Mines</p>
         <p className="mt-1 text-sm text-[#44506b]">
           Flujos MVP de Mind Games. Mantén la estética original mientras
