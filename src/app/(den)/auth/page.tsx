@@ -32,7 +32,6 @@ export default function AuthPage() {
               </ul>
             </div>
           </div>
-          
         </div>
       </section>
     </div>

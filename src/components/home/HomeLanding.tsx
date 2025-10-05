@@ -2,46 +2,39 @@ import Link from "next/link";
 
 const strategicPillars = [
   {
-    title: "Identity First",
+    title: "Verified Trust",
     description:
-      "Self verification gates access to the pack. Every critical action is protected by cryptographic trust.",
+      "Self verification keeps every interaction high-signal so you can build with confidence.",
   },
   {
-    title: "Relentless Gamification",
+    title: "Gamified Progress",
     description:
-      "Quests, showcases, voting, and mind games keep builders earning HOWL, streaks, and recognition.",
+      "Quests, showcases, and voting reward contributions with HOWL streaks and future token perks.",
   },
   {
-    title: "Immersive Atmosphere",
+    title: "Community Momentum",
     description:
-      "A tactile HQ with crisp surfaces keeps the Den unmistakable while staying focused and calm.",
+      "Mentors, weekly events, and collaborative spaces help the pack ship faster together.",
   },
-];
-
-const objectives = [
-  "Increase weekly participation in quests and on-site happenings.",
-  "Verify 100% of voters and attendees through Self before action.",
-  "Match builders and mentors through clear, bookable slots.",
-  "Expose live progress across HOWL, streaks, and leaderboard standings.",
 ];
 
 const modules = [
   {
     title: "Quests",
     description:
-      "Mission control grid tracking available, submitted, and locked quests with point rewards and submissions.",
+      "Mission control for quests that pay you in HOWL progress and future token perks.",
     cta: { label: "Run Missions", href: "/quests" },
   },
   {
     title: "Check-in",
     description:
-      "QR-driven attendance backed by Self and wallet signatures anchoring real-world participation.",
+      "QR-driven attendance backed by Self so real-world moments count toward your streak.",
     cta: { label: "View Check-in", href: "/checkin" },
   },
   {
     title: "Mind Games",
     description:
-      "Mines MVP blending bet strategy, mine counts, and cashout momentum inside a cinematic grid.",
+      "Mines MVP blending strategy and stakes—earn bragging rights while gamification levels up.",
     cta: { label: "Enter Mind Games", href: "/mind-games" },
   },
   {
@@ -53,19 +46,19 @@ const modules = [
   {
     title: "Voting",
     description:
-      "Demo Day ballots with eligibility checks for HOWL level and Self verification before each vote.",
+      "Demo Day ballots gated by Self verification and HOWL tiers to reward meaningful votes.",
     cta: { label: "Start Voting", href: "/voting" },
   },
   {
     title: "Mentorship",
     description:
-      "Reserve mentor slots, share objectives, and unlock the next breakthrough faster.",
+      "Book mentors who have shipped before—arrive with goals, leave with unblockers.",
     cta: { label: "Book Mentors", href: "/mentorship" },
   },
   {
     title: "Stats",
     description:
-      "Analyze HOWL, streaks, and moon perks with badge-driven storytelling across the Den.",
+      "Analyze HOWL, streaks, and perks as you climb the ladder toward token-enabled rewards.",
     cta: { label: "Read Stats", href: "/stats" },
   },
   {
@@ -78,29 +71,19 @@ const modules = [
 
 const flows = [
   {
-    title: "Onboarding",
+    title: "Verify with Self",
     description:
-      "Landing on / pulls builders into mission context immediately, framing the Den as HQ from day zero.",
+      "Quick verification brings you into the trusted network so every contribution counts.",
   },
   {
-    title: "Self Verification",
+    title: "Complete Quests",
     description:
-      "QR scan, disclosures, and instant status upgrade to unlock the Den's gated experiences.",
+      "Ship projects, help others, and stack HOWL points through quests and weekly events.",
   },
   {
-    title: "Event Check-in",
+    title: "Level Up",
     description:
-      "Physical QR + wallet signature confirms presence and updates badges in real time.",
-  },
-  {
-    title: "Demo Day Voting",
-    description:
-      "Eligibility, evaluation, and votes in one seamless flow that captures the community pulse.",
-  },
-  {
-    title: "Mind Games Run",
-    description:
-      "Bet, reveal, and cash out in a high-tension loop purpose-built to reward bold builders.",
+      "Unlock mentorship, perks, and the upcoming HOWL token economy as you climb the ranks.",
   },
 ];
 
@@ -119,23 +102,26 @@ export default function HomeLanding() {
             <h1 className="text-4xl font-semibold uppercase leading-tight text-[#0b1320] sm:text-5xl lg:text-6xl">
               Wolf Den is the digital control center for the pack
             </h1>
+            <p className="text-xs uppercase tracking-[0.4em] text-[#8894b3]">
+              Build together. Get recognized. Level up.
+            </p>
             <p className="max-w-[42ch] text-lg text-[#2f3950]">
-              We orchestrate missions, mind games, and community engagement in a
-              precise, cool-toned HQ where every critical move is backed by Self
-              verification and HOWL-driven rewards.
+              Join a verified pack of builders who ship fast, earn recognition,
+              and unlock the future HOWL economy. Mentors, quests, and rewards
+              are here to accelerate your next release.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/showcase"
+                href="/auth"
                 className="rounded-full bg-[#0b1320] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#f2f4fb] transition hover:bg-[#131d30]"
               >
-                Enter the Den
+                Start Building Today
               </Link>
               <Link
-                href="/auth"
+                href="/showcase"
                 className="rounded-full border border-[#d1d7eb] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#0f1621] transition hover:border-[#447bff]"
               >
-                Verify with Self
+                Explore Projects
               </Link>
             </div>
           </div>
@@ -157,6 +143,41 @@ export default function HomeLanding() {
           </div>
         </section>
 
+        <section className="rounded-3xl border border-[#e2e6f5] bg-white/90 p-10 text-[#0f1621] shadow-[0_32px_85px_-65px_rgba(15,22,33,0.55)]">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-[36ch]">
+              <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
+                Join the pack
+              </p>
+              <h2 className="mt-2 text-3xl font-semibold uppercase text-[#0b1320]">
+                500+ verified builders
+              </h2>
+              <p className="mt-2 text-sm text-[#44506b]">
+                Build together, get recognized, and level up. Wolf Den is where
+                quests, mentors, and future HOWL rewards converge.
+              </p>
+            </div>
+            <div className="grid w-full grid-cols-2 gap-4 text-center text-[#0f1621] sm:grid-cols-4">
+              {[
+                { value: "500+", label: "Active Builders" },
+                { value: "50+", label: "Expert Mentors" },
+                { value: "100+", label: "Projects Shipped" },
+                { value: "20+", label: "Weekly Events" },
+              ].map((metric) => (
+                <div
+                  key={metric.label}
+                  className="rounded-2xl border border-[#d1d7eb] bg-[#eef2ff] px-4 py-3 shadow-[0_20px_55px_-50px_rgba(15,22,33,0.45)]"
+                >
+                  <p className="text-2xl font-semibold">{metric.value}</p>
+                  <p className="mt-1 text-xs uppercase tracking-[0.2em] text-[#8894b3]">
+                    {metric.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="space-y-14">
           <header className="flex flex-wrap items-end justify-between gap-6">
             <div>
@@ -168,9 +189,9 @@ export default function HomeLanding() {
               </h2>
             </div>
             <p className="max-w-[36ch] text-sm text-[#44506b]">
-              Built for builders who crave momentum: security, motivation, and
-              an unforgettable atmosphere work together to keep the pack in
-              sync.
+              Built for builders who crave momentum: verification, recognition,
+              and shared resources keep the pack moving while future HOWL
+              rewards await.
             </p>
           </header>
           <div className="grid gap-8 lg:grid-cols-3">
@@ -197,20 +218,25 @@ export default function HomeLanding() {
           <header className="flex flex-wrap items-center justify-between gap-6">
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-[#447bff]">
-                Objectives
+                Why Wolf Den
               </p>
               <h2 className="mt-2 text-3xl font-semibold uppercase text-[#0b1320]">
-                Targets for the pack
+                Grow faster with the pack
               </h2>
             </div>
           </header>
           <ul className="grid gap-6 sm:grid-cols-2">
-            {objectives.map((objective) => (
+            {[
+              "Earn recognition through quests, events, and verified contributions.",
+              "Book 1-on-1 mentorship with experts who have shipped real products.",
+              "Collaborate inside a trusted Self-verified network of builders.",
+              "Showcase progress, get feedback, and level up together.",
+            ].map((reason) => (
               <li
-                key={objective}
+                key={reason}
                 className="rounded-3xl border border-[#e2e6f5] bg-white px-6 py-6 text-sm text-[#3a475f] shadow-[0_28px_75px_-60px_rgba(15,22,33,0.55)]"
               >
-                {objective}
+                {reason}
               </li>
             ))}
           </ul>
@@ -255,6 +281,36 @@ export default function HomeLanding() {
           </div>
         </section>
 
+        <section className="space-y-12">
+          <header className="flex flex-wrap items-center justify-between gap-6">
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-[#447bff]">
+                Why builders choose Wolf Den
+              </p>
+              <h2 className="mt-2 text-3xl font-semibold uppercase text-[#0b1320]">
+                Rewards, mentors, and recognition
+              </h2>
+            </div>
+          </header>
+          <div className="grid gap-4 text-sm text-[#3f4c67] md:grid-cols-2">
+            {[
+              "Access to exclusive workshops and events",
+              "Direct mentorship from industry experts",
+              "Showcase your projects to the community",
+              "Earn rewards for contributions",
+              "Join a verified network of builders",
+              "Compete in weekly challenges",
+            ].map((item) => (
+              <div
+                key={item}
+                className="rounded-3xl border border-[#e2e6f5] bg-white px-6 py-5 shadow-[0_28px_75px_-60px_rgba(15,22,33,0.55)]"
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className="space-y-10">
           <header className="flex flex-wrap items-end justify-between gap-6">
             <div>
@@ -266,11 +322,11 @@ export default function HomeLanding() {
               </h2>
             </div>
             <p className="max-w-[34ch] text-sm text-[#44506b]">
-              Each flow keeps momentum high and safeguards the experience from
-              onboarding to high-stakes gameplay.
+              Each flow keeps momentum high: verify, contribute, and watch your
+              HOWL influence grow.
             </p>
           </header>
-          <div className="grid gap-6 lg:grid-cols-5">
+          <div className="grid gap-6 md:grid-cols-3">
             {flows.map((flow, index) => (
               <article
                 key={flow.title}
@@ -290,6 +346,60 @@ export default function HomeLanding() {
           </div>
         </section>
 
+        <section className="space-y-10">
+          <header className="flex flex-wrap items-center justify-between gap-6">
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-[#447bff]">
+                What's coming next
+              </p>
+              <h2 className="mt-2 text-3xl font-semibold uppercase text-[#0b1320]">
+                Building the future with HOWL
+              </h2>
+            </div>
+            <p className="max-w-[40ch] text-sm text-[#44506b]">
+              We are evolving the Wolf Den economy so every contribution can
+              earn more than kudos.
+            </p>
+          </header>
+          <div className="grid gap-4 md:grid-cols-3">
+            {[
+              {
+                title: "Enhanced Gamification",
+                status: "In Progress",
+                description:
+                  "More quest types, achievements, and progression systems to reward streaks.",
+              },
+              {
+                title: "HOWL Token Economy",
+                status: "Planned",
+                description:
+                  "Tradeable tokens for contributions, unlocking premium features and rewards.",
+              },
+              {
+                title: "Marketplace & Perks",
+                status: "Planned",
+                description:
+                  "Redeem points for exclusive swag, builder tools, and community opportunities.",
+              },
+            ].map((item) => (
+              <article
+                key={item.title}
+                className="rounded-3xl border border-[#e2e6f5] bg-white p-6 shadow-[0_32px_85px_-65px_rgba(15,22,33,0.55)]"
+              >
+                <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
+                  {item.status}
+                </p>
+                <h3 className="mt-2 text-lg font-semibold uppercase text-[#0b1320]">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm text-[#3f4c67]">
+                  {item.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="relative overflow-hidden rounded-[3rem] border border-[#e2e6f5] bg-white p-12 shadow-[0_45px_100px_-70px_rgba(15,22,33,0.55)]">
           <div className="absolute inset-x-12 top-0 h-24 rounded-b-[3rem] bg-[#edf0fb]" />
           <div className="relative z-10 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
@@ -301,8 +411,8 @@ export default function HomeLanding() {
                 Ready to sync with Wolf Den?
               </h2>
               <p className="text-sm text-[#3f4c67]">
-                Verify with Self, claim your HOWL badge, and explore every
-                module built for unstoppable builders.
+                Verify with Self, earn HOWL as you contribute, and unlock
+                mentors, perks, and future token rewards.
               </p>
             </div>
             <div className="flex flex-wrap gap-4">
@@ -316,7 +426,7 @@ export default function HomeLanding() {
                 href="/showcase"
                 className="rounded-full border border-[#d1d7eb] bg-[#f2f4fb] px-6 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-[#0f1621] transition hover:border-[#447bff]"
               >
-                Explore Showcase
+                View Leaderboard
               </Link>
             </div>
           </div>

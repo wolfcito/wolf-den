@@ -3,7 +3,6 @@
 import {
   BarChart3,
   Gamepad2,
-  Home,
   MapPinned,
   ScanQrCode,
   Settings,
@@ -57,7 +56,7 @@ export function SidebarNav() {
   return (
     <div className="flex h-full flex-col justify-between p-4 text-sm text-[#0f1621]">
       <div>
-        <div className="flex flex-col items-start gap-3 rounded-2xl">
+        <div className="flex flex-col items-start gap-3 px-4 py-3">
           <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl border border-[#d1d7eb] bg-[#eef2ff]">
             <Image
               src="/wolf-den-bn.png"
@@ -67,20 +66,20 @@ export function SidebarNav() {
             />
           </div>
           <div>
-            <h1 className="text-xl font-semibold text-[#0b1320]">
-              Wolf Den
-            </h1>
-            <p className="text-xs">Control Center</p>
+            <h1 className="text-xl font-semibold text-[#0b1320]">Wolf Den</h1>
+            <p className="text-xs uppercase tracking-[0.2em] text-[#5e6a84]">
+              Control Center
+            </p>
           </div>
         </div>
 
-        <nav className="mt-3 space-y-8 text-[#0f1621]">
+        <nav className="mt-6 space-y-8 text-[#0f1621]">
           {navSections.map((section) => (
             <div key={section.title}>
               <p className="mb-3 text-xs uppercase tracking-[0.3em] text-[#8894b3]">
                 {section.title}
               </p>
-              <ul className="space-y-0.5">
+              <ul className="space-y-2">
                 {section.items.map((item) => {
                   const isActive =
                     item.href === "/auth"

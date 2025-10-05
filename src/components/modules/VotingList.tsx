@@ -1,5 +1,4 @@
 import { Check, Lock } from "lucide-react";
-import SelfBadge from "@/components/ui/SelfBadge";
 
 const demos = [
   {

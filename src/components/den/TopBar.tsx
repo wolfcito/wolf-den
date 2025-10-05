@@ -70,14 +70,6 @@ export function TopBar() {
           {/* <span>Back</span> */}
         </Link>
         <div className="flex items-center gap-3">
-          <div className="relative h-10 w-10">
-            <Image
-              src="/wolf-den-bn.png"
-              alt="Wolf's Den"
-              fill
-              className="object-contain"
-            />
-          </div>
           <div>
             <div className="flex items-center gap-3">
               <h1 className="text-xl font-semibold text-[#0b1320]">
