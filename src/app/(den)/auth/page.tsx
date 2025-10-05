@@ -17,7 +17,7 @@ export default function AuthPage() {
         </div>
       </section>
 
-      <section className="rounded-2xl border border-[#e2e6f5] bg-white p-8 shadow-[0_35px_90px_-70px_rgba(15,22,33,0.55)]">
+      <section>
         <div className="grid lg:items-center">
           <SelfAuth />
           <div className="space-y-6">

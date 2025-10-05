@@ -7,7 +7,7 @@ const leaderboard = [
 
 export function LeaderboardList() {
   return (
-    <div className="rounded-2xl border border-[#e2e6f5] bg-white p-5 text-[#0f1621] shadow-[0_32px_85px_-65px_rgba(15,22,33,0.55)]">
+    <div>
       <h3 className="text-lg font-semibold">Leaderboard</h3>
       <p className="text-sm text-[#44506b]">Ranking semanal de la manada.</p>
       <div className="mt-4 space-y-3">

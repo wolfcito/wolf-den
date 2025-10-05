@@ -16,7 +16,7 @@ export function StatsPanel() {
         la Luna.
       </p>
     </div>
-      <div className="rounded-2xl border border-[#e2e6f5] bg-white p-5 shadow-[0_35px_90px_-70px_rgba(15,22,33,0.55)]">
+      <div>
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-semibold">Panel de métricas</h3>
         </div>

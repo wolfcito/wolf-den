@@ -18,7 +18,7 @@ export function CheckInPanel({ qrUrl, status }: CheckInPanelProps) {
           <li>3) ¡Listo! asistencia registrada.</li>
         </ol>
       </div>
-      <div className="rounded-2xl border border-[#e2e6f5] bg-white p-6 shadow-[0_32px_85px_-65px_rgba(15,22,33,0.55)]">
+      <div>
         <h3 className="text-lg font-semibold">Check-in</h3>
         <Image
           src={qrUrl}

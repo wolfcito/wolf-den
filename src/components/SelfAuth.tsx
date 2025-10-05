@@ -56,7 +56,7 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4 rounded-2xl border border-[#d1d7eb] bg-[#f5f7ff] p-8 text-center text-[#0f1621] shadow-[0_25px_70px_-60px_rgba(15,22,33,0.45)]">
+    <div className="flex flex-col items-center justify-center gap-4 rounded-2xl border border-[#d1d7eb] bg-[#f5f7ff] py-8 text-center text-[#0f1621] shadow-[0_25px_70px_-60px_rgba(15,22,33,0.45)]">
       {isVerified ? (
         <div>
           <div className="mb-2 text-4xl">✅</div>
