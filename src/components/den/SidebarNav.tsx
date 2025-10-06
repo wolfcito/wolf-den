@@ -9,7 +9,6 @@ import {
   ShieldCheck,
   Sparkles,
   SquareStack,
-  Trophy,
   UsersRound,
 } from "lucide-react";
 import Image from "next/image";
@@ -29,19 +28,18 @@ interface NavSection {
 
 const navSections: NavSection[] = [
   {
-    title: "Módulos",
+    title: "Experiencias",
     items: [
       { label: "Showcase", href: "/showcase", icon: SquareStack },
       { label: "Quests", href: "/quests", icon: MapPinned },
-      { label: "Check-in", href: "/checkin", icon: ScanQrCode },
-      { label: "Mentoría", href: "/mentorship", icon: UsersRound },
-      { label: "Voting", href: "/voting", icon: Trophy },
       { label: "Wolf Games", href: "/mind-games", icon: Gamepad2 },
+      { label: "Taberna", href: "/taberna", icon: UsersRound },
     ],
   },
   {
     title: "Utilidades",
     items: [
+      { label: "Check-in", href: "/checkin", icon: ScanQrCode },
       { label: "Self Auth", href: "/auth", icon: ShieldCheck },
       { label: "Stats", href: "/stats", icon: BarChart3 },
       { label: "Leaderboard", href: "/leaderboard", icon: Sparkles },

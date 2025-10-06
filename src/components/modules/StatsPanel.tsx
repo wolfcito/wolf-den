@@ -10,7 +10,8 @@ export function StatsPanel() {
       <div className="rounded-2xl border border-white/10 bg-wolf-panel/40 py-6 text-sm text-wolf-bone/70">
         <p className="font-medium text-wolf-bone">Recompensas de la Luna</p>
         <p className="mt-1 text-sm">
-        Completa quests avanzadas y vota en Demo Day para desbloquear perks y preparar tu balance para las futuras utilidades de HOWL.
+          Completa quests avanzadas y vota en Demo Day para desbloquear perks y
+          preparar tu balance para las futuras utilidades de HOWL.
         </p>
       </div>
       <div className="rounded-2xl border border-[#e2e6f5] bg-white p-5 shadow-[0_35px_90px_-70px_rgba(15,22,33,0.55)]">

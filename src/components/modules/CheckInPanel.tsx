@@ -8,7 +8,6 @@ interface CheckInPanelProps {
 
 export function CheckInPanel({ qrUrl, status }: CheckInPanelProps) {
   return (
-<div className="space-y-6 flex">
     <div className="grid gap-6 text-[#0f1621] lg:grid-cols-[340px_1fr]">
       <div className="rounded-2xl border border-[#e2e6f5] bg-white p-6 shadow-[0_32px_85px_-65px_rgba(15,22,33,0.55)]">
         <h3 className="text-lg font-semibold">Check-in</h3>
@@ -29,13 +28,18 @@ export function CheckInPanel({ qrUrl, status }: CheckInPanelProps) {
           Firmar con Manada
         </button>
       </div>
-    </div>
-    <div className="rounded-2xl border border-white/10 bg-wolf-panel/40 py-6 text-sm text-wolf-bone/70">
-    <p className="mt-1 text-sm">
-    El check-in verificado suma HOWL y habilita perks futuros dentro de la
-    economía del Den.
-    </p>
-  </div>
+      <div className="py-6">
+        <p className="text-base">Cómo funciona</p>
+        <ol className="mt-3 space-y-2 text-sm text-[#44506b]">
+          <li>* Escanea el QR desde la app Manada.</li>
+          <li>* Firma el reto con tu wallet (Privy).</li>
+          <li>* ¡Listo! asistencia registrada.</li>
+        </ol>
+        <p className="mt-4 text-xs text-[#8894b3]">
+          Cada check-in verificado suma HOWL y prepara tu cuenta para los
+          beneficios futuros del token.
+        </p>
+      </div>
     </div>
   );
 }

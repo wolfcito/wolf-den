@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowLeft } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HowlBadge } from "@/components/ui/HowlBadge";
@@ -57,7 +56,7 @@ export function TopBar() {
   );
   const meta = activeKey
     ? moduleMeta[activeKey]
-    : { title: "Wolf Den", description: "Sé parte de la manada." };
+    : { title: "Taberna - Wolf Den", description: "Sé parte de la manada." };
 
   return (
     <header className="flex flex-col justify-between gap-4 text-[#0f1621]">
