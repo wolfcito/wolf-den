@@ -12,6 +12,14 @@ function normalizeUrl(rawUrl: string) {
 export default function TabernaPage() {
   const configuredUrl = process.env.NEXT_PUBLIC_TABERNA_URL ?? "";
   const tabernaUrl = normalizeUrl(configuredUrl || DEFAULT_TABERNA_URL);
+  let iframeAllow = "camera; microphone; fullscreen";
+
+  try {
+    const origin = new URL(tabernaUrl).origin;
+    iframeAllow = `camera ${origin}; microphone ${origin}; fullscreen`;
+  } catch {
+    iframeAllow = "camera; microphone; fullscreen";
+  }
 
   return (
     <div className="grid gap-6 text-[#0f1621]">
@@ -20,7 +28,7 @@ export default function TabernaPage() {
           <iframe
             src={tabernaUrl}
             title="Wolf Den Taberna"
-            allow="camera; microphone; fullscreen"
+            allow={iframeAllow}
             className="aspect-[16/10] w-full rounded-2xl border border-[#d1d7eb] sm:min-h-[420px]"
           />
           <div className="flex items-center gap-3">
