@@ -1,17 +1,20 @@
+import { useTranslations } from "next-intl";
 import SelfAuth from "@/components/SelfAuth";
 
 export default function AuthPage() {
+  const t = useTranslations("AuthPage");
+  const tips = t.raw("tips") as string[];
+
   return (
     <div className="space-y-6 text-[#0f1621]">
       <section className="rounded-2xl">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
-              Identity & Trust
+              {t("hero.label")}
             </p>
             <p className="mt-2 max-w-[52ch] text-sm text-[#44506b]">
-              Asegura tu identidad para acceder a votaciones, check-ins y perks
-              de la manada. Escanea y confirma desde la app Self.
+              {t("hero.description")}
             </p>
           </div>
         </div>
@@ -23,12 +26,12 @@ export default function AuthPage() {
           <div className="space-y-6">
             <div className="rounded-2xl py-4 mb-2 text-sm text-[#0f1621]">
               <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
-                Tips de verificación
+                {t("tipsTitle")}
               </p>
               <ul className="mt-2 space-y-1 text-sm text-[#44506b]">
-                <li>• Mantén tu dispositivo Self a la mano.</li>
-                <li>• Asegúrate de estar en una red confiable.</li>
-                <li>• Si falla, refresca el QR e inténtalo de nuevo.</li>
+                {tips.map((tip) => (
+                  <li key={tip}>{tip}</li>
+                ))}
               </ul>
             </div>
           </div>

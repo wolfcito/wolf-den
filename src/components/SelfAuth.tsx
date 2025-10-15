@@ -6,6 +6,7 @@ import {
   SelfQRcodeWrapper,
 } from "@selfxyz/qrcode";
 import { ethers } from "ethers";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 interface SelfAuthProps {
@@ -14,16 +15,25 @@ interface SelfAuthProps {
 }
 
 export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
+  const t = useTranslations("SelfAuth");
   const [selfApp, setSelfApp] = useState<SelfApp | null>(null);
   const [userId] = useState(ethers.ZeroAddress);
   const [isVerified, setIsVerified] = useState(false);
+  const [isConfigMissing, setIsConfigMissing] = useState(false);
 
   useEffect(() => {
+    const endpoint = process.env.NEXT_PUBLIC_SELF_ENDPOINT;
+
+    if (!endpoint) {
+      setIsConfigMissing(true);
+      return;
+    }
+
     const app = new SelfAppBuilder({
       version: 2,
       appName: "Wolf Den",
       scope: "wolf-den",
-      endpoint: process.env.NEXT_PUBLIC_SELF_ENDPOINT || "",
+      endpoint,
       logoBase64: "https://i.postimg.cc/mrmVf9hm/self.png",
       userId,
       endpointType: "staging_https",
@@ -57,26 +67,34 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
 
   return (
     <div className="flex flex-col items-center justify-center gap-4 rounded-2xl border border-[#d1d7eb] bg-[#f5f7ff] py-8 text-center text-[#0f1621] shadow-[0_25px_70px_-60px_rgba(15,22,33,0.45)]">
-      {isVerified ? (
+      {isConfigMissing ? (
+        <div className="space-y-3">
+          <div className="text-4xl">⚠️</div>
+          <h3 className="text-lg font-semibold text-[#0b1320]">
+            {t("error.missingEndpoint.title")}
+          </h3>
+          <p className="text-sm text-[#44506b]">
+            {t("error.missingEndpoint.body")}
+          </p>
+          <p className="text-xs text-[#8894b3]">
+            {t("error.missingEndpoint.hint")}
+          </p>
+        </div>
+      ) : isVerified ? (
         <div>
           <div className="mb-2 text-4xl">✅</div>
           <h3 className="text-lg font-semibold text-[#0b1320]">
-            Verificación completada
+            {t("success.title")}
           </h3>
-          <p className="mt-2 text-sm text-[#44506b]">
-            Tu identidad está confirmada. ¡Explora el Wolf Den sin límites!
-          </p>
+          <p className="mt-2 text-sm text-[#44506b]">{t("success.body")}</p>
         </div>
       ) : (
         <div className="space-y-4">
           <div>
             <h2 className="text-xl font-semibold text-[#0b1320]">
-              Verifica con Self
+              {t("intro.title")}
             </h2>
-            <p className="mt-2 text-sm text-[#44506b]">
-              Escanea el QR con la app Self para sincronizar tu identidad con la
-              manada.
-            </p>
+            <p className="mt-2 text-sm text-[#44506b]">{t("intro.body")}</p>
           </div>
           {selfApp ? (
             <SelfQRcodeWrapper
@@ -85,7 +103,7 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
               onError={handleError}
             />
           ) : (
-            <p className="text-sm text-[#9aa5c3]">Generando QR…</p>
+            <p className="text-sm text-[#9aa5c3]">{t("intro.loading")}</p>
           )}
         </div>
       )}

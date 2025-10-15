@@ -12,43 +12,41 @@ import {
   UsersRound,
 } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/routing";
 
-interface NavItem {
-  label: string;
-  href: string;
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-}
-
-interface NavSection {
-  title: string;
-  items: NavItem[];
-}
-
-const navSections: NavSection[] = [
+const navSections = [
   {
-    title: "Experiencias",
+    key: "experiences",
     items: [
-      { label: "Showcase", href: "/showcase", icon: SquareStack },
-      { label: "Quests", href: "/quests", icon: MapPinned },
-      { label: "Wolf Games", href: "/mind-games", icon: Gamepad2 },
-      { label: "Taberna", href: "/taberna", icon: UsersRound },
-    ],
+      { key: "showcase", href: "/showcase", icon: SquareStack },
+      { key: "quests", href: "/quests", icon: MapPinned },
+      { key: "mindGames", href: "/mind-games", icon: Gamepad2 },
+      { key: "taberna", href: "/taberna", icon: UsersRound },
+    ] satisfies Array<{
+      key: "showcase" | "quests" | "mindGames" | "taberna";
+      href: string;
+      icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    }>,
   },
   {
-    title: "Utilidades",
+    key: "utilities",
     items: [
-      { label: "Check-in", href: "/checkin", icon: ScanQrCode },
-      { label: "Self Auth", href: "/auth", icon: ShieldCheck },
-      { label: "Stats", href: "/stats", icon: BarChart3 },
-      { label: "Leaderboard", href: "/leaderboard", icon: Sparkles },
-      { label: "Settings", href: "/settings", icon: Settings },
-    ],
+      { key: "checkin", href: "/checkin", icon: ScanQrCode },
+      { key: "auth", href: "/auth", icon: ShieldCheck },
+      { key: "stats", href: "/stats", icon: BarChart3 },
+      { key: "leaderboard", href: "/leaderboard", icon: Sparkles },
+      { key: "settings", href: "/settings", icon: Settings },
+    ] satisfies Array<{
+      key: "checkin" | "auth" | "stats" | "leaderboard" | "settings";
+      href: string;
+      icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    }>,
   },
-];
+] as const;
 
 export function SidebarNav() {
+  const t = useTranslations("SidebarNav");
   const pathname = usePathname();
 
   return (
@@ -58,24 +56,26 @@ export function SidebarNav() {
           <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl border border-[#d1d7eb] bg-[#eef2ff]">
             <Image
               src="/wolf-den-bn.png"
-              alt="Wolf's Den"
+              alt={t("branding.badgeAlt")}
               fill
               className="object-contain"
             />
           </div>
           <div>
-            <h1 className="text-xl font-semibold text-[#0b1320]">Wolf Den</h1>
+            <h1 className="text-xl font-semibold text-[#0b1320]">
+              {t("branding.title")}
+            </h1>
             <p className="text-xs uppercase tracking-[0.2em] text-[#5e6a84]">
-              Control Center
+              {t("branding.subtitle")}
             </p>
           </div>
         </div>
 
         <nav className="mt-6 space-y-8 text-[#0f1621]">
           {navSections.map((section) => (
-            <div key={section.title}>
+            <div key={section.key}>
               <p className="mb-3 text-xs uppercase tracking-[0.3em] text-[#8894b3]">
-                {section.title}
+                {t(`sections.${section.key}.title`)}
               </p>
               <ul className="space-y-2">
                 {section.items.map((item) => {
@@ -88,7 +88,7 @@ export function SidebarNav() {
                   const Icon = item.icon;
 
                   return (
-                    <li key={`${item.href}-${item.label}`}>
+                    <li key={`${item.href}-${item.key}`}>
                       <Link
                         href={item.href}
                         className={`flex items-center gap-3 rounded-full border border-transparent px-4 py-3 transition-all duration-150
@@ -101,7 +101,7 @@ export function SidebarNav() {
                       >
                         <Icon className="h-5 w-5" aria-hidden />
                         <span className="text-sm font-medium">
-                          {item.label}
+                          {t(`sections.${section.key}.items.${item.key}`)}
                         </span>
                       </Link>
                     </li>

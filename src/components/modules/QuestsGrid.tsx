@@ -1,52 +1,32 @@
 import { Target } from "lucide-react";
+import { useTranslations } from "next-intl";
+
+type QuestStatus = "available" | "submitted" | "locked";
 
 interface Quest {
   id: string;
   title: string;
   points: number;
-  status: "available" | "submitted" | "locked";
+  status: QuestStatus;
 }
 
-const sampleQuests: Quest[] = [
-  { id: "quest-1", title: "Primer commit", points: 50, status: "available" },
-  {
-    id: "quest-2",
-    title: "Post Demo en Warpcast",
-    points: 80,
-    status: "available",
-  },
-  {
-    id: "quest-3",
-    title: "Mentoría completada",
-    points: 40,
-    status: "submitted",
-  },
-  {
-    id: "quest-4",
-    title: "Feedback a otro equipo",
-    points: 30,
-    status: "locked",
-  },
-  {
-    id: "quest-5",
-    title: "Publica tu roadmap",
-    points: 60,
-    status: "available",
-  },
-];
-
-function questTone(status: Quest["status"]) {
-  if (status === "submitted")
+function questTone(status: QuestStatus) {
+  if (status === "submitted") {
     return "border-[#447bff]/60 bg-[#eef2ff] text-[#0f1621]";
-  if (status === "locked")
+  }
+  if (status === "locked") {
     return "border-[#d1d7eb] bg-[#eef1f8] text-[#9aa5c3]";
+  }
   return "border-[#e2e6f5] bg-white text-[#0f1621]";
 }
 
 export function QuestsGrid() {
+  const t = useTranslations("QuestsGrid");
+  const quests = t.raw("items") as Quest[];
+
   return (
     <div className="grid gap-4 text-[#0f1621] md:grid-cols-2 xl:grid-cols-4">
-      {sampleQuests.map((quest) => (
+      {quests.map((quest) => (
         <div
           key={quest.id}
           className={`flex h-full flex-col justify-between rounded-2xl border p-5 shadow-[0_28px_75px_-60px_rgba(15,22,33,0.55)] transition hover:-translate-y-1 hover:border-[#447bff]/60 hover:bg-[#eef2ff]/60 ${questTone(quest.status)}`}
@@ -55,14 +35,14 @@ export function QuestsGrid() {
             <Target className="h-5 w-5 text-[#447bff]" aria-hidden />
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
-                Quest
+                {t("tag")}
               </p>
               <h3 className="mt-2 text-lg font-semibold">{quest.title}</h3>
             </div>
           </div>
           <div className="mt-6 flex items-center justify-between text-sm">
             <span className="rounded-full bg-[#eef2ff] px-3 py-1 text-xs text-[#44506b]">
-              {quest.points} pts
+              {t("points", { count: quest.points })}
             </span>
             <button
               type="button"
@@ -75,11 +55,7 @@ export function QuestsGrid() {
               `}
               disabled={quest.status !== "available"}
             >
-              {quest.status === "submitted"
-                ? "En revisión"
-                : quest.status === "locked"
-                  ? "Bloqueada"
-                  : "Enviar prueba"}
+              {t(`actions.${quest.status}`)}
             </button>
           </div>
         </div>

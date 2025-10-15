@@ -1,35 +1,29 @@
+import { useTranslations } from "next-intl";
 import { MiniChat } from "@/components/ui/MiniChat";
 import { NotificationItem } from "@/components/ui/NotificationItem";
 
-const feedItems = [
-  {
-    title: "Verificación completada",
-    description: "Luna firmó su asistencia con Self",
-    timestamp: "hace 5 min",
-    accent: "cyan" as const,
-  },
-  {
-    title: "Nueva misión",
-    description: "Sube tu demo al Showcase",
-    timestamp: "hace 1 h",
-    accent: "violet" as const,
-  },
-];
-
-const recentItems = [
-  { title: "Misión: Primer commit", timestamp: "hoy • 09:12" },
-  { title: "Mentoría: Andrés", timestamp: "ayer • 18:00" },
-  { title: "Demo: Solana Kit", timestamp: "ayer • 16:30" },
-];
-
 export function ActivityRail() {
+  const t = useTranslations("ActivityRail");
+  const feedItems = t.raw("feed") as Array<{
+    title: string;
+    description: string;
+    timestamp: string;
+    accent: "cyan" | "violet" | "neutral";
+  }>;
+  const recentItems = t.raw("recent") as Array<{
+    title: string;
+    timestamp: string;
+  }>;
+
   return (
     <div className="flex h-full flex-col gap-4 text-[#0f1621]">
       <section className="py-4">
         <div className="mb-3 flex items-center justify-between">
-          <p className="text-sm font-semibold text-wolf-bone">Actividad</p>
+          <p className="text-sm font-semibold text-wolf-bone">
+            {t("sections.activity.title")}
+          </p>
           <span className="text-[11px] uppercase tracking-[0.3em] text-wolf-bone/40">
-            Feed
+            {t("sections.activity.label")}
           </span>
         </div>
         <div className="space-y-3">
@@ -41,9 +35,11 @@ export function ActivityRail() {
 
       <section className="py-4">
         <div className="mb-3 flex items-center justify-between">
-          <p className="text-sm font-semibold text-wolf-bone">Recent</p>
+          <p className="text-sm font-semibold text-wolf-bone">
+            {t("sections.recent.title")}
+          </p>
           <span className="text-[11px] uppercase tracking-[0.3em] text-wolf-bone/40">
-            Eventos
+            {t("sections.recent.label")}
           </span>
         </div>
         <ul className="space-y-2 text-sm text-wolf-bone/70">

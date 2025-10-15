@@ -1,62 +1,51 @@
 "use client";
 
 import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { HowlBadge } from "@/components/ui/HowlBadge";
 import { SelfBadge } from "@/components/ui/SelfBadge";
+import { Link, usePathname } from "@/i18n/routing";
 
-const moduleMeta: Record<string, { title: string; description: string }> = {
-  "/quests": {
-    title: "Quests",
-    description: "Misiones activas para la manada",
-  },
-  "/checkin": {
-    title: "Check-in",
-    description: "Escanea y registra asistencia",
-  },
-  "/mentorship": {
-    title: "Mentoría",
-    description: "Agenda sesiones con mentores",
-  },
-  "/showcase": {
-    title: "Showcase",
-    description: "Destaca proyectos y demos",
-  },
-  "/voting": {
-    title: "Voting",
-    description: "Demo Day y votaciones",
-  },
-  "/stats": {
-    title: "Stats",
-    description: "HOWL, streak y métricas",
-  },
-  "/leaderboard": {
-    title: "Leaderboard",
-    description: "Ranking de la manada",
-  },
-  "/settings": {
-    title: "Settings",
-    description: "Preferencias e idioma",
-  },
-  "/mind-games": {
-    title: "Mind Games",
-    description: "Flujos MVP y dinámicas",
-  },
-  "/auth": {
-    title: "Self Auth",
-    description: "Verifica tu identidad con Self",
-  },
+type ModuleKey =
+  | "quests"
+  | "checkin"
+  | "mentorship"
+  | "showcase"
+  | "voting"
+  | "stats"
+  | "leaderboard"
+  | "settings"
+  | "mindGames"
+  | "auth";
+
+const moduleKeys: Record<string, ModuleKey> = {
+  "/quests": "quests",
+  "/checkin": "checkin",
+  "/mentorship": "mentorship",
+  "/showcase": "showcase",
+  "/voting": "voting",
+  "/stats": "stats",
+  "/leaderboard": "leaderboard",
+  "/settings": "settings",
+  "/mind-games": "mindGames",
+  "/auth": "auth",
 };
 
 export function TopBar() {
+  const t = useTranslations("TopBar");
   const pathname = usePathname();
-  const activeKey = Object.keys(moduleMeta).find(
+  const activeKey = Object.keys(moduleKeys).find(
     (path) => pathname === path || pathname?.startsWith(`${path}/`),
   );
   const meta = activeKey
-    ? moduleMeta[activeKey]
-    : { title: "Taberna - Wolf Den", description: "Sé parte de la manada." };
+    ? {
+        title: t(`modules.${moduleKeys[activeKey]}.title`),
+        description: t(`modules.${moduleKeys[activeKey]}.description`),
+      }
+    : {
+        title: t("fallback.title"),
+        description: t("fallback.description"),
+      };
 
   return (
     <header className="flex flex-col justify-between gap-4 text-[#0f1621]">
@@ -66,7 +55,6 @@ export function TopBar() {
           className="flex h-10 w-10 items-center gap-2 rounded-full border border-[#d1d7eb] bg-white/80 px-3 py-1 text-xs text-[#0f1621] transition hover:border-[#447bff]"
         >
           <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
-          {/* <span>Back</span> */}
         </Link>
         <div className="flex items-center gap-3">
           <div>

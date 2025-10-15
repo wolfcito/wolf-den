@@ -1,0 +1,586 @@
+{
+  "TopBar": {
+    "fallback": {
+      "title": "Taberna - Wolf Den",
+      "description": "Sé parte de la manada."
+    },
+    "modules": {
+      "quests": {
+        "title": "Quests",
+        "description": "Misiones activas para la manada"
+      },
+      "checkin": {
+        "title": "Check-in",
+        "description": "Escanea y registra asistencia"
+      },
+      "mentorship": {
+        "title": "Mentoría",
+        "description": "Agenda sesiones con mentores"
+      },
+      "showcase": {
+        "title": "Showcase",
+        "description": "Destaca proyectos y demos"
+      },
+      "voting": {
+        "title": "Voting",
+        "description": "Demo Day y votaciones"
+      },
+      "stats": {
+        "title": "Stats",
+        "description": "HOWL, streak y métricas"
+      },
+      "leaderboard": {
+        "title": "Leaderboard",
+        "description": "Ranking de la manada"
+      },
+      "settings": {
+        "title": "Settings",
+        "description": "Preferencias e idioma"
+      },
+      "mindGames": {
+        "title": "Mind Games",
+        "description": "Flujos MVP y dinámicas"
+      },
+      "auth": {
+        "title": "Self Auth",
+        "description": "Verifica tu identidad con Self"
+      }
+    }
+  },
+  "SidebarNav": {
+    "branding": {
+      "badgeAlt": "Emblema de Wolf Den",
+      "title": "Wolf Den",
+      "subtitle": "Centro de control"
+    },
+    "sections": {
+      "experiences": {
+        "title": "Experiencias",
+        "items": {
+          "showcase": "Showcase",
+          "quests": "Quests",
+          "mindGames": "Wolf Games",
+          "taberna": "Taberna"
+        }
+      },
+      "utilities": {
+        "title": "Utilidades",
+        "items": {
+          "checkin": "Check-in",
+          "auth": "Self Auth",
+          "stats": "Stats",
+          "leaderboard": "Leaderboard",
+          "settings": "Settings"
+        }
+      }
+    }
+  },
+  "HowlBadge": {
+    "levels": {
+      "Cachorro": "HOWL • Cachorro",
+      "Lobo": "HOWL • Lobo",
+      "Alfa": "HOWL • Alfa"
+    }
+  },
+  "SelfBadge": {
+    "statuses": {
+      "unverified": "Self: sin verificar",
+      "pending": "Self: pendiente",
+      "verified": "Self: verificado",
+      "error": "Self: error"
+    }
+  },
+  "StatusPill": {
+    "statuses": {
+      "unverified": "Sin verificar",
+      "pending": "Pendiente",
+      "verified": "Verificado",
+      "error": "Error"
+    }
+  },
+  "ActivityRail": {
+    "sections": {
+      "activity": {
+        "title": "Actividad",
+        "label": "Feed"
+      },
+      "recent": {
+        "title": "Recientes",
+        "label": "Eventos"
+      }
+    },
+    "feed": [
+      {
+        "title": "Verificación completada",
+        "description": "Luna firmó su asistencia con Self",
+        "timestamp": "hace 5 min",
+        "accent": "cyan"
+      },
+      {
+        "title": "Nueva misión",
+        "description": "Sube tu demo al Showcase",
+        "timestamp": "hace 1 h",
+        "accent": "violet"
+      }
+    ],
+    "recent": [
+      {
+        "title": "Misión: Primer commit",
+        "timestamp": "hoy • 09:12"
+      },
+      {
+        "title": "Mentoría: Andrés",
+        "timestamp": "ayer • 18:00"
+      },
+      {
+        "title": "Demo: Solana Kit",
+        "timestamp": "ayer • 16:30"
+      }
+    ]
+  },
+  "MiniChat": {
+    "title": "Chat",
+    "label": "Farcaster",
+    "description": "Comparte actualizaciones rápidas con la manada.",
+    "placeholder": "Escribe un cast...",
+    "submit": "Enviar cast"
+  },
+  "CheckInPanel": {
+    "title": "Check-in",
+    "qrAlt": "QR para check-in",
+    "cta": "Firmar con la manada",
+    "howItWorks": {
+      "title": "Cómo funciona",
+      "steps": [
+        "* Escanea el QR desde la app Manada.",
+        "* Firma el reto con tu wallet (Privy).",
+        "* ¡Listo! asistencia registrada."
+      ]
+    },
+    "footnote": "Cada check-in verificado suma HOWL y prepara tu cuenta para los beneficios futuros del token."
+  },
+  "MentorBooking": {
+    "title": "Agenda",
+    "subtitle": "Selecciona un slot y comparte tu objetivo.",
+    "slots": [
+      {
+        "id": "slot-1",
+        "mentor": "Andrés • Producto",
+        "time": "Hoy 18:00",
+        "available": false
+      },
+      {
+        "id": "slot-2",
+        "mentor": "Vale • Growth",
+        "time": "Hoy 19:30",
+        "available": true
+      },
+      {
+        "id": "slot-3",
+        "mentor": "Rafa • Crypto",
+        "time": "Mañana 10:00",
+        "available": true
+      }
+    ],
+    "preparation": {
+      "title": "Preparación",
+      "items": [
+        "• Objetivo de la sesión (1 frase)",
+        "• Repositorios relevantes",
+        "• Pregunta clave para desbloquear"
+      ],
+      "cta": "Reservar slot"
+    }
+  },
+  "QuestsGrid": {
+    "tag": "Quest",
+    "points": "{count} pts",
+    "actions": {
+      "available": "Enviar prueba",
+      "submitted": "En revisión",
+      "locked": "Bloqueada"
+    },
+    "items": [
+      {
+        "id": "quest-1",
+        "title": "Primer commit",
+        "points": 50,
+        "status": "available"
+      },
+      {
+        "id": "quest-2",
+        "title": "Post Demo en Warpcast",
+        "points": 80,
+        "status": "available"
+      },
+      {
+        "id": "quest-3",
+        "title": "Mentoría completada",
+        "points": 40,
+        "status": "submitted"
+      },
+      {
+        "id": "quest-4",
+        "title": "Feedback a otro equipo",
+        "points": 30,
+        "status": "locked"
+      },
+      {
+        "id": "quest-5",
+        "title": "Publica tu roadmap",
+        "points": 60,
+        "status": "available"
+      }
+    ]
+  },
+  "QuestsPage": {
+    "title": "Misión del día",
+    "description": "Completa tu check-in, comparte progreso en Showcase y envía evidencia para sumar puntos HOWL."
+  },
+  "VotingList": {
+    "title": "Demo Day",
+    "actions": {
+      "open": "Votar",
+      "locked": "Requiere HOWL"
+    },
+    "demos": [
+      {
+        "id": "demo-1",
+        "name": "Moon Wallet",
+        "team": "Cosmic Labs",
+        "status": "open"
+      },
+      {
+        "id": "demo-2",
+        "name": "Lobo Tracker",
+        "team": "Wolf Stack",
+        "status": "locked"
+      },
+      {
+        "id": "demo-3",
+        "name": "Howl Rewards",
+        "team": "Collective XYZ",
+        "status": "open"
+      }
+    ],
+    "footnote": "Las votaciones requieren verificación Self y nivel HOWL Lobo."
+  },
+  "VotingPage": {
+    "title": "Requisitos de votación",
+    "description": "Necesitas verificación Self y nivel HOWL Lobo para votar. Mantén tu streak activa."
+  },
+  "StatsPanel": {
+    "hero": {
+      "title": "Recompensas de la Luna",
+      "description": "Completa quests avanzadas y vota en Demo Day para desbloquear perks y preparar tu balance para HOWL."
+    },
+    "metrics": {
+      "title": "Panel de métricas",
+      "description": "Revisa tu progreso dentro de la manada y proyecta tu impacto cuando llegue el token HOWL.",
+      "items": [
+        {
+          "label": "HOWL",
+          "value": "1,280",
+          "helper": "+120 esta semana"
+        },
+        {
+          "label": "Huella",
+          "value": "82%",
+          "helper": "Crecimiento sostenido"
+        },
+        {
+          "label": "Streak",
+          "value": "6 días",
+          "helper": "Mantén el momentum"
+        }
+      ]
+    }
+  },
+  "ShowcaseGrid": {
+    "projects": [
+      {
+        "id": "project-1",
+        "name": "Wolf Alerts",
+        "oneLiner": "Seguimiento en tiempo real para la manada.",
+        "repo": "github.com/wolf/alerts",
+        "demo": "demo.wolfalerts.xyz"
+      },
+      {
+        "id": "project-2",
+        "name": "Pack Streams",
+        "oneLiner": "Analítica de misiones en vivo.",
+        "repo": "github.com/wolf/streams",
+        "demo": "wolfstreams.vercel.app"
+      },
+      {
+        "id": "project-3",
+        "name": "HOWL Points",
+        "oneLiner": "Recompensas gamificadas para builders.",
+        "repo": "github.com/wolf/howl",
+        "demo": "howl.app"
+      }
+    ]
+  },
+  "ShowcasePage": {
+    "title": "Comparte tu demo",
+    "description": "Mantén tus links actualizados: repo, demo y documentación corta en Notion."
+  },
+  "LeaderboardList": {
+    "title": "Leaderboard",
+    "subtitle": "Ranking semanal de la manada.",
+    "points": "{count} pts",
+    "entries": [
+      {
+        "position": 1,
+        "team": "Lunares",
+        "points": 1480
+      },
+      {
+        "position": 2,
+        "team": "Pack Builders",
+        "points": 1340
+      },
+      {
+        "position": 3,
+        "team": "Cosmic Wolves",
+        "points": 1295
+      },
+      {
+        "position": 4,
+        "team": "Nebula Pack",
+        "points": 1102
+      }
+    ]
+  },
+  "SelfAuth": {
+    "success": {
+      "title": "Verificación completada",
+      "body": "Tu identidad está confirmada. ¡Explora Wolf Den sin límites!"
+    },
+    "intro": {
+      "title": "Verifica con Self",
+      "body": "Escanea el QR con la app Self para sincronizar tu identidad con la manada.",
+      "loading": "Generando QR…"
+    },
+    "error": {
+      "missingEndpoint": {
+        "title": "Verificación con Self no disponible",
+        "body": "Configura NEXT_PUBLIC_SELF_ENDPOINT con la URL base de Self antes de usar este flujo.",
+        "hint": "Agrega la variable al .env.local y reinicia el servidor de desarrollo."
+      }
+    }
+  },
+  "AuthPage": {
+    "hero": {
+      "label": "Identidad y confianza",
+      "description": "Asegura tu identidad para acceder a votaciones, check-ins y perks de la manada. Escanea y confirma desde la app Self."
+    },
+    "tipsTitle": "Tips de verificación",
+    "tips": [
+      "• Mantén tu dispositivo Self a la mano.",
+      "• Asegúrate de estar en una red confiable.",
+      "• Si falla, refresca el QR e inténtalo de nuevo."
+    ]
+  },
+  "MindGamesPage": {
+    "intro": {
+      "title": "Mines",
+      "description": "Flujos MVP de Mind Games. Mantén la estética original mientras agregamos lógica conectada a Self."
+    },
+    "summary": {
+      "balance": "Balance",
+      "profit": "Ganancia"
+    },
+    "controls": {
+      "mines": "Mines",
+      "bet": "Monto a apostar",
+      "start": "Iniciar",
+      "cashout": "Retirar"
+    }
+  },
+  "SettingsPage": {
+    "appearance": {
+      "title": "Apariencia",
+      "description": "Cambia entre modo claro y oscuro para adaptarte a tu espacio."
+    },
+    "language": {
+      "title": "Idioma",
+      "description": "Elige el idioma para navegación y contenido."
+    },
+    "privacy": {
+      "title": "Privacidad",
+      "items": [
+        {
+          "label": "Compartir streak con la manada",
+          "status": "Activo",
+          "tone": "cyan"
+        },
+        {
+          "label": "Mostrar repos públicos",
+          "status": "Personalizado",
+          "tone": "violet"
+        }
+      ]
+    }
+  },
+  "ThemeToggle": {
+    "light": "Claro",
+    "dark": "Oscuro"
+  },
+  "HomeLanding": {
+    "hero": {
+      "tagline": "Originales Wolf Den",
+      "title": "Wolf Den es el centro de control digital de la manada",
+      "subtitle": "Construye en comunidad. Recibe reconocimiento. Sube de nivel.",
+      "description": "Únete a una manada verificada de builders que lanzan rápido, ganan reconocimiento y desbloquean la futura economía HOWL. Mentores, quests y recompensas aceleran tu próximo release.",
+      "primaryCta": {
+        "label": "Comienza a construir hoy",
+        "href": "/auth"
+      },
+      "secondaryCta": {
+        "label": "Explorar proyectos",
+        "href": "/showcase"
+      },
+      "visionLabel": "Visión de producto",
+      "visionQuote": "\"Wolf Den funciona como el centro de control digital para coordinar misiones, mind games y participación comunitaria con un layout tríptico que mantiene a la manada enfocada.\"",
+      "visionSource": "Extraído de wolf-den-prd.md"
+    },
+    "metrics": {
+      "label": "Únete a la manada",
+      "title": "500+ builders verificados",
+      "description": "Construye junto a la manada, gana reconocimiento y sube de nivel. Aquí convergen quests, mentores y beneficios futuros de HOWL.",
+      "items": [
+        {
+          "value": "500+",
+          "label": "Builders activos"
+        },
+        {
+          "value": "50+",
+          "label": "Mentores expertos"
+        },
+        {
+          "value": "100+",
+          "label": "Proyectos lanzados"
+        },
+        {
+          "value": "20+",
+          "label": "Eventos semanales"
+        }
+      ]
+    },
+    "pillars": {
+      "label": "Pilares estratégicos",
+      "title": "Lo que alimenta al Den",
+      "description": "Diseñado para builders que buscan momentum: verificación, reconocimiento y recursos compartidos mantienen a la manada avanzando mientras llegan las recompensas HOWL.",
+      "items": [
+        {
+          "title": "Confianza verificada",
+          "description": "Self asegura que cada interacción sea de alta señal para que construyas con confianza."
+        },
+        {
+          "title": "Progreso gamificado",
+          "description": "Quests, showcases y votaciones premian tus contribuciones con streaks HOWL y perks futuros."
+        },
+        {
+          "title": "Momentum comunitario",
+          "description": "Mentores, eventos semanales y espacios colaborativos ayudan a la manada a shippear más rápido."
+        }
+      ]
+    },
+    "modulesLabel": "Módulos clave",
+    "modulesTitle": "Todo lo que vive en el Den",
+    "modulesDescription": "Un espacio unificado para verificar, construir y celebrar el progreso con la manada.",
+    "modules": [
+      {
+        "id": "quests",
+        "title": "Quests",
+        "description": "Misiones que impulsan tu HOWL y desbloquean futuros perks del token.",
+        "cta": {
+          "label": "Lanzar misiones",
+          "href": "/quests"
+        }
+      },
+      {
+        "id": "checkin",
+        "title": "Check-in",
+        "description": "Check-ins con QR respaldados por Self para que cada momento cuente en tu streak.",
+        "cta": {
+          "label": "Ver check-in",
+          "href": "/checkin"
+        }
+      },
+      {
+        "id": "mind-games",
+        "title": "Mind Games",
+        "description": "Mines MVP con estrategia y riesgo: gana bragging rights mientras sube la gamificación.",
+        "cta": {
+          "label": "Entrar a Mind Games",
+          "href": "/mind-games"
+        }
+      },
+      {
+        "id": "showcase",
+        "title": "Showcase",
+        "description": "Destaca demos con links a repos y productos para que la manada respalde builds activas.",
+        "cta": {
+          "label": "Abrir Showcase",
+          "href": "/showcase"
+        }
+      },
+      {
+        "id": "voting",
+        "title": "Voting",
+        "description": "Votaciones de Demo Day protegidas por Self y niveles HOWL para votos con impacto.",
+        "cta": {
+          "label": "Comenzar a votar",
+          "href": "/voting"
+        }
+      },
+      {
+        "id": "mentorship",
+        "title": "Mentoría",
+        "description": "Agenda mentores que ya shippearon: llega con objetivos, sal con desbloqueos.",
+        "cta": {
+          "label": "Agendar mentores",
+          "href": "/mentorship"
+        }
+      },
+      {
+        "id": "stats",
+        "title": "Stats",
+        "description": "Analiza HOWL, streaks y perks mientras escalas hacia recompensas habilitadas por tokens.",
+        "cta": {
+          "label": "Revisar stats",
+          "href": "/stats"
+        }
+      },
+      {
+        "id": "leaderboard",
+        "title": "Leaderboard",
+        "description": "Ranking semanal que celebra a las escuadras que empujan la frontera.",
+        "cta": {
+          "label": "Ver leaderboard",
+          "href": "/leaderboard"
+        }
+      }
+    ],
+    "flows": {
+      "label": "Recorrido del builder",
+      "title": "Cómo subes de nivel",
+      "items": [
+        {
+          "title": "Verifica con Self",
+          "description": "Una verificación rápida te integra a la red confiable y hace que cada aporte cuente."
+        },
+        {
+          "title": "Completa quests",
+          "description": "Lanza proyectos, ayuda a otros y acumula HOWL con quests y eventos semanales."
+        },
+        {
+          "title": "Sube de nivel",
+          "description": "Desbloquea mentoría, perks y la economía HOWL conforme escalas los rangos."
+        }
+      ]
+    }
+  }
+}

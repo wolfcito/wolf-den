@@ -1,15 +1,17 @@
-const leaderboard = [
-  { position: 1, team: "Lunares", points: 1480 },
-  { position: 2, team: "Pack Builders", points: 1340 },
-  { position: 3, team: "Cosmic Wolves", points: 1295 },
-  { position: 4, team: "Nebula Pack", points: 1102 },
-];
+import { useTranslations } from "next-intl";
 
 export function LeaderboardList() {
+  const t = useTranslations("LeaderboardList");
+  const leaderboard = t.raw("entries") as Array<{
+    position: number;
+    team: string;
+    points: number;
+  }>;
+
   return (
     <div>
-      <h3 className="text-lg font-semibold">Leaderboard</h3>
-      <p className="text-sm text-[#44506b]">Ranking semanal de la manada.</p>
+      <h3 className="text-lg font-semibold">{t("title")}</h3>
+      <p className="text-sm text-[#44506b]">{t("subtitle")}</p>
       <div className="mt-4 space-y-3">
         {leaderboard.map((entry) => (
           <div
@@ -22,7 +24,9 @@ export function LeaderboardList() {
               </span>
               <p className="font-medium">{entry.team}</p>
             </div>
-            <span className="text-sm text-[#44506b]">{entry.points} pts</span>
+            <span className="text-sm text-[#44506b]">
+              {t("points", { count: entry.points })}
+            </span>
           </div>
         ))}
       </div>

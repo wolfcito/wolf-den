@@ -1,0 +1,586 @@
+{
+  "TopBar": {
+    "fallback": {
+      "title": "Taberna - Wolf Den",
+      "description": "Join the pack."
+    },
+    "modules": {
+      "quests": {
+        "title": "Quests",
+        "description": "Active missions to grow your HOWL."
+      },
+      "checkin": {
+        "title": "Check-in",
+        "description": "Scan and log attendance in seconds."
+      },
+      "mentorship": {
+        "title": "Mentorship",
+        "description": "Book time with seasoned builders."
+      },
+      "showcase": {
+        "title": "Showcase",
+        "description": "Highlight live demos and repos."
+      },
+      "voting": {
+        "title": "Voting",
+        "description": "Demo Day ballots for verified wolves."
+      },
+      "stats": {
+        "title": "Stats",
+        "description": "HOWL streaks, momentum, and perks."
+      },
+      "leaderboard": {
+        "title": "Leaderboard",
+        "description": "Weekly rankings for the pack."
+      },
+      "settings": {
+        "title": "Settings",
+        "description": "Preferences and locale controls."
+      },
+      "mindGames": {
+        "title": "Mind Games",
+        "description": "MVP flows and game dynamics."
+      },
+      "auth": {
+        "title": "Self Auth",
+        "description": "Verify your identity with Self."
+      }
+    }
+  },
+  "SidebarNav": {
+    "branding": {
+      "badgeAlt": "Wolf Den emblem",
+      "title": "Wolf Den",
+      "subtitle": "Control Center"
+    },
+    "sections": {
+      "experiences": {
+        "title": "Experiences",
+        "items": {
+          "showcase": "Showcase",
+          "quests": "Quests",
+          "mindGames": "Wolf Games",
+          "taberna": "Taberna"
+        }
+      },
+      "utilities": {
+        "title": "Utilities",
+        "items": {
+          "checkin": "Check-in",
+          "auth": "Self Auth",
+          "stats": "Stats",
+          "leaderboard": "Leaderboard",
+          "settings": "Settings"
+        }
+      }
+    }
+  },
+  "HowlBadge": {
+    "levels": {
+      "Cachorro": "HOWL • Pup",
+      "Lobo": "HOWL • Wolf",
+      "Alfa": "HOWL • Alpha"
+    }
+  },
+  "SelfBadge": {
+    "statuses": {
+      "unverified": "Self: unverified",
+      "pending": "Self: pending",
+      "verified": "Self: verified",
+      "error": "Self: error"
+    }
+  },
+  "StatusPill": {
+    "statuses": {
+      "unverified": "Unverified",
+      "pending": "Pending",
+      "verified": "Verified",
+      "error": "Error"
+    }
+  },
+  "ActivityRail": {
+    "sections": {
+      "activity": {
+        "title": "Activity",
+        "label": "Feed"
+      },
+      "recent": {
+        "title": "Recent",
+        "label": "Events"
+      }
+    },
+    "feed": [
+      {
+        "title": "Verification complete",
+        "description": "Luna checked in with Self",
+        "timestamp": "5 min ago",
+        "accent": "cyan"
+      },
+      {
+        "title": "New quest unlocked",
+        "description": "Upload your demo to Showcase",
+        "timestamp": "1 h ago",
+        "accent": "violet"
+      }
+    ],
+    "recent": [
+      {
+        "title": "Quest: First commit",
+        "timestamp": "today • 09:12"
+      },
+      {
+        "title": "Mentorship: Andrés",
+        "timestamp": "yesterday • 18:00"
+      },
+      {
+        "title": "Demo: Solana Kit",
+        "timestamp": "yesterday • 16:30"
+      }
+    ]
+  },
+  "MiniChat": {
+    "title": "Chat",
+    "label": "Farcaster",
+    "description": "Share quick updates with the pack.",
+    "placeholder": "Write a cast...",
+    "submit": "Send cast"
+  },
+  "CheckInPanel": {
+    "title": "Check-in",
+    "qrAlt": "QR code for check-in",
+    "cta": "Sign with the pack",
+    "howItWorks": {
+      "title": "How it works",
+      "steps": [
+        "* Scan the QR from the Pack app.",
+        "* Sign the challenge with your wallet (Privy).",
+        "* Done! Attendance recorded."
+      ]
+    },
+    "footnote": "Every verified check-in adds HOWL and preps your wallet for future token perks."
+  },
+  "MentorBooking": {
+    "title": "Schedule",
+    "subtitle": "Pick a slot and share your objective.",
+    "slots": [
+      {
+        "id": "slot-1",
+        "mentor": "Andrés • Product",
+        "time": "Today 18:00",
+        "available": false
+      },
+      {
+        "id": "slot-2",
+        "mentor": "Vale • Growth",
+        "time": "Today 19:30",
+        "available": true
+      },
+      {
+        "id": "slot-3",
+        "mentor": "Rafa • Crypto",
+        "time": "Tomorrow 10:00",
+        "available": true
+      }
+    ],
+    "preparation": {
+      "title": "Preparation",
+      "items": [
+        "• Session goal (one sentence)",
+        "• Relevant repositories",
+        "• Key unblocker question"
+      ],
+      "cta": "Reserve slot"
+    }
+  },
+  "QuestsGrid": {
+    "tag": "Quest",
+    "points": "{count} pts",
+    "actions": {
+      "available": "Submit proof",
+      "submitted": "Under review",
+      "locked": "Locked"
+    },
+    "items": [
+      {
+        "id": "quest-1",
+        "title": "First commit",
+        "points": 50,
+        "status": "available"
+      },
+      {
+        "id": "quest-2",
+        "title": "Post demo on Warpcast",
+        "points": 80,
+        "status": "available"
+      },
+      {
+        "id": "quest-3",
+        "title": "Mentorship complete",
+        "points": 40,
+        "status": "submitted"
+      },
+      {
+        "id": "quest-4",
+        "title": "Feedback for another team",
+        "points": 30,
+        "status": "locked"
+      },
+      {
+        "id": "quest-5",
+        "title": "Publish your roadmap",
+        "points": 60,
+        "status": "available"
+      }
+    ]
+  },
+  "QuestsPage": {
+    "title": "Quest of the day",
+    "description": "Check in, share progress in Showcase, and ship evidence to earn HOWL points."
+  },
+  "VotingList": {
+    "title": "Demo Day",
+    "actions": {
+      "open": "Vote",
+      "locked": "Requires HOWL"
+    },
+    "demos": [
+      {
+        "id": "demo-1",
+        "name": "Moon Wallet",
+        "team": "Cosmic Labs",
+        "status": "open"
+      },
+      {
+        "id": "demo-2",
+        "name": "Lobo Tracker",
+        "team": "Wolf Stack",
+        "status": "locked"
+      },
+      {
+        "id": "demo-3",
+        "name": "Howl Rewards",
+        "team": "Collective XYZ",
+        "status": "open"
+      }
+    ],
+    "footnote": "Voting requires Self verification and HOWL Wolf tier."
+  },
+  "VotingPage": {
+    "title": "Voting requirements",
+    "description": "You need Self verification and HOWL Wolf level to vote. Keep your streak active."
+  },
+  "StatsPanel": {
+    "hero": {
+      "title": "Moon rewards",
+      "description": "Complete advanced quests and vote on Demo Day to unlock perks ahead of HOWL utility."
+    },
+    "metrics": {
+      "title": "Metrics dashboard",
+      "description": "Track your momentum inside the pack and project your impact once HOWL launches.",
+      "items": [
+        {
+          "label": "HOWL",
+          "value": "1,280",
+          "helper": "+120 this week"
+        },
+        {
+          "label": "Footprint",
+          "value": "82%",
+          "helper": "Consistent growth"
+        },
+        {
+          "label": "Streak",
+          "value": "6 days",
+          "helper": "Keep the momentum"
+        }
+      ]
+    }
+  },
+  "ShowcaseGrid": {
+    "projects": [
+      {
+        "id": "project-1",
+        "name": "Wolf Alerts",
+        "oneLiner": "Real-time tracking for the pack.",
+        "repo": "github.com/wolf/alerts",
+        "demo": "demo.wolfalerts.xyz"
+      },
+      {
+        "id": "project-2",
+        "name": "Pack Streams",
+        "oneLiner": "Live analytics for missions.",
+        "repo": "github.com/wolf/streams",
+        "demo": "wolfstreams.vercel.app"
+      },
+      {
+        "id": "project-3",
+        "name": "HOWL Points",
+        "oneLiner": "Gamified rewards for builders.",
+        "repo": "github.com/wolf/howl",
+        "demo": "howl.app"
+      }
+    ]
+  },
+  "ShowcasePage": {
+    "title": "Share your demo",
+    "description": "Keep your repo, demo, and short docs refreshed in Notion."
+  },
+  "LeaderboardList": {
+    "title": "Leaderboard",
+    "subtitle": "Weekly ranking across the pack.",
+    "points": "{count} pts",
+    "entries": [
+      {
+        "position": 1,
+        "team": "Lunares",
+        "points": 1480
+      },
+      {
+        "position": 2,
+        "team": "Pack Builders",
+        "points": 1340
+      },
+      {
+        "position": 3,
+        "team": "Cosmic Wolves",
+        "points": 1295
+      },
+      {
+        "position": 4,
+        "team": "Nebula Pack",
+        "points": 1102
+      }
+    ]
+  },
+  "SelfAuth": {
+    "success": {
+      "title": "Verification complete",
+      "body": "Your identity is confirmed. Explore Wolf Den without limits."
+    },
+    "intro": {
+      "title": "Verify with Self",
+      "body": "Scan the QR with the Self app to sync your identity with the pack.",
+      "loading": "Generating QR…"
+    },
+    "error": {
+      "missingEndpoint": {
+        "title": "Self verification unavailable",
+        "body": "Set NEXT_PUBLIC_SELF_ENDPOINT to the Self API base URL before using this flow.",
+        "hint": "Add the env var to .env.local and restart the dev server."
+      }
+    }
+  },
+  "AuthPage": {
+    "hero": {
+      "label": "Identity & Trust",
+      "description": "Secure your identity to unlock voting, check-ins, and pack perks. Scan with the Self app to confirm."
+    },
+    "tipsTitle": "Verification tips",
+    "tips": [
+      "• Keep your Self device handy.",
+      "• Make sure you're on a trusted network.",
+      "• If it fails, refresh the QR and try again."
+    ]
+  },
+  "MindGamesPage": {
+    "intro": {
+      "title": "Mines",
+      "description": "Mind Games MVP flows. Keep the original look while we wire Self-powered logic."
+    },
+    "summary": {
+      "balance": "Balance",
+      "profit": "Profit"
+    },
+    "controls": {
+      "mines": "Mines",
+      "bet": "Bet amount",
+      "start": "Start",
+      "cashout": "Cash out"
+    }
+  },
+  "SettingsPage": {
+    "appearance": {
+      "title": "Appearance",
+      "description": "Toggle themes to match your workspace."
+    },
+    "language": {
+      "title": "Language",
+      "description": "Choose the locale for navigation and content copy."
+    },
+    "privacy": {
+      "title": "Privacy",
+      "items": [
+        {
+          "label": "Share streak with the pack",
+          "status": "On",
+          "tone": "cyan"
+        },
+        {
+          "label": "Show public repos",
+          "status": "Custom",
+          "tone": "violet"
+        }
+      ]
+    }
+  },
+  "ThemeToggle": {
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "HomeLanding": {
+    "hero": {
+      "tagline": "Wolf Den Originals",
+      "title": "Wolf Den is the digital control center for the pack",
+      "subtitle": "Build together. Get recognized. Level up.",
+      "description": "Join a verified pack of builders who ship fast, earn recognition, and unlock the future HOWL economy. Mentors, quests, and rewards accelerate your next release.",
+      "primaryCta": {
+        "label": "Start Building Today",
+        "href": "/auth"
+      },
+      "secondaryCta": {
+        "label": "Explore Projects",
+        "href": "/showcase"
+      },
+      "visionLabel": "Product Vision",
+      "visionQuote": "\"Wolf Den acts as the digital control center for coordinating missions, mind games, and community engagement with a triptych layout that keeps the pack locked in.\"",
+      "visionSource": "Extracted from wolf-den-prd.md"
+    },
+    "metrics": {
+      "label": "Join the pack",
+      "title": "500+ verified builders",
+      "description": "Build together, get recognized, and level up. Wolf Den is where quests, mentors, and future HOWL rewards converge.",
+      "items": [
+        {
+          "value": "500+",
+          "label": "Active Builders"
+        },
+        {
+          "value": "50+",
+          "label": "Expert Mentors"
+        },
+        {
+          "value": "100+",
+          "label": "Projects Shipped"
+        },
+        {
+          "value": "20+",
+          "label": "Weekly Events"
+        }
+      ]
+    },
+    "pillars": {
+      "label": "Strategic Pillars",
+      "title": "What powers the Den",
+      "description": "Built for builders who crave momentum: verification, recognition, and shared resources keep the pack moving while future HOWL rewards await.",
+      "items": [
+        {
+          "title": "Verified Trust",
+          "description": "Self verification keeps every interaction high-signal so you can build with confidence."
+        },
+        {
+          "title": "Gamified Progress",
+          "description": "Quests, showcases, and voting reward contributions with HOWL streaks and future token perks."
+        },
+        {
+          "title": "Community Momentum",
+          "description": "Mentors, weekly events, and collaborative spaces help the pack ship faster together."
+        }
+      ]
+    },
+    "modulesLabel": "Mission Modules",
+    "modulesTitle": "Everything inside the Den",
+    "modulesDescription": "A unified workspace to verify, build, and celebrate progress with the pack.",
+    "modules": [
+      {
+        "id": "quests",
+        "title": "Quests",
+        "description": "Mission control for quests that pay you in HOWL progress and future token perks.",
+        "cta": {
+          "label": "Run Missions",
+          "href": "/quests"
+        }
+      },
+      {
+        "id": "checkin",
+        "title": "Check-in",
+        "description": "QR-driven attendance backed by Self so real-world moments count toward your streak.",
+        "cta": {
+          "label": "View Check-in",
+          "href": "/checkin"
+        }
+      },
+      {
+        "id": "mind-games",
+        "title": "Mind Games",
+        "description": "Mines MVP blending strategy and stakes—earn bragging rights while gamification levels up.",
+        "cta": {
+          "label": "Enter Mind Games",
+          "href": "/mind-games"
+        }
+      },
+      {
+        "id": "showcase",
+        "title": "Showcase",
+        "description": "Spotlight demos with repo and live links so the pack can rally behind active builds.",
+        "cta": {
+          "label": "Open Showcase",
+          "href": "/showcase"
+        }
+      },
+      {
+        "id": "voting",
+        "title": "Voting",
+        "description": "Demo Day ballots gated by Self verification and HOWL tiers to reward meaningful votes.",
+        "cta": {
+          "label": "Start Voting",
+          "href": "/voting"
+        }
+      },
+      {
+        "id": "mentorship",
+        "title": "Mentorship",
+        "description": "Book mentors who have shipped before—arrive with goals, leave with unblockers.",
+        "cta": {
+          "label": "Book Mentors",
+          "href": "/mentorship"
+        }
+      },
+      {
+        "id": "stats",
+        "title": "Stats",
+        "description": "Analyze HOWL, streaks, and perks as you climb the ladder toward token-enabled rewards.",
+        "cta": {
+          "label": "Read Stats",
+          "href": "/stats"
+        }
+      },
+      {
+        "id": "leaderboard",
+        "title": "Leaderboard",
+        "description": "Weekly pack rankings that celebrate squads pushing the frontier forward.",
+        "cta": {
+          "label": "See Leaderboard",
+          "href": "/leaderboard"
+        }
+      }
+    ],
+    "flows": {
+      "label": "Builder Journey",
+      "title": "How you level up",
+      "items": [
+        {
+          "title": "Verify with Self",
+          "description": "Quick verification brings you into the trusted network so every contribution counts."
+        },
+        {
+          "title": "Complete Quests",
+          "description": "Ship projects, help others, and stack HOWL points through quests and weekly events."
+        },
+        {
+          "title": "Level Up",
+          "description": "Unlock mentorship, perks, and the upcoming HOWL token economy as you climb the ranks."
+        }
+      ]
+    }
+  }
+}

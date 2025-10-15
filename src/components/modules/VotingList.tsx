@@ -1,31 +1,21 @@
 import { Check, Lock } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-const demos = [
-  {
-    id: "demo-1",
-    name: "Moon Wallet",
-    team: "Cosmic Labs",
-    status: "open" as const,
-  },
-  {
-    id: "demo-2",
-    name: "Lobo Tracker",
-    team: "Wolf Stack",
-    status: "locked" as const,
-  },
-  {
-    id: "demo-3",
-    name: "Howl Rewards",
-    team: "Collective XYZ",
-    status: "open" as const,
-  },
-];
+type DemoStatus = "open" | "locked";
 
 export function VotingList() {
+  const t = useTranslations("VotingList");
+  const demos = t.raw("demos") as Array<{
+    id: string;
+    name: string;
+    team: string;
+    status: DemoStatus;
+  }>;
+
   return (
     <div className="space-y-6 text-[#0f1621]">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h3 className="text-lg font-semibold">Demo Day</h3>
+        <h3 className="text-lg font-semibold">{t("title")}</h3>
       </div>
       <div className="space-y-3">
         {demos.map((demo) => {
@@ -53,15 +43,13 @@ export function VotingList() {
                 `}
                 disabled={demo.status !== "open"}
               >
-                {demo.status === "open" ? "Votar" : "Requiere HOWL"}
+                {t(`actions.${demo.status}`)}
               </button>
             </div>
           );
         })}
       </div>
-      <p className="text-xs text-[#44506b]">
-        Las votaciones requieren verificación Self y nivel HOWL Lobo.
-      </p>
+      <p className="text-xs text-[#44506b]">{t("footnote")}</p>
     </div>
   );
 }

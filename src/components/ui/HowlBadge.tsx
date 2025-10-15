@@ -1,40 +1,31 @@
+"use client";
+
 import { MoonStar } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface HowlBadgeProps {
   level?: "Cachorro" | "Lobo" | "Alfa";
   className?: string;
 }
 
-const levelConfig: Record<
-  Required<HowlBadgeProps>["level"],
-  { label: string; tone: string }
-> = {
-  Cachorro: {
-    label: "HOWL • Cachorro",
-    tone: "text-[#44506b] border-[#d1d7eb]",
-  },
-  Lobo: {
-    label: "HOWL • Wolf",
-    tone: "text-[#447bff] border-[#447bff]/40",
-  },
-  Alfa: {
-    label: "HOWL • Alfa",
-    tone: "text-[#0b1320] border-[#0b1320]/40",
-  },
+const levelTone: Record<Required<HowlBadgeProps>["level"], string> = {
+  Cachorro: "text-[#44506b] border-[#d1d7eb]",
+  Lobo: "text-[#447bff] border-[#447bff]/40",
+  Alfa: "text-[#0b1320] border-[#0b1320]/40",
 };
 
 export function HowlBadge({
   level = "Cachorro",
   className = "",
 }: HowlBadgeProps) {
-  const badge = levelConfig[level];
+  const t = useTranslations("HowlBadge");
 
   return (
     <span
-      className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-[0.2em] ${badge.tone} ${className}`.trim()}
+      className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-[0.2em] ${levelTone[level]} ${className}`.trim()}
     >
       <MoonStar className="h-4 w-4" aria-hidden />
-      {badge.label}
+      {t(`levels.${level}`)}
     </span>
   );
 }

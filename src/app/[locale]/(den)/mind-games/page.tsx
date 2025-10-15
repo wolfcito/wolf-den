@@ -1,9 +1,11 @@
 "use client";
 
 import { Gem, Skull } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 
 export default function MindGamesPage() {
+  const t = useTranslations("MindGamesPage");
   const [selectedCells, setSelectedCells] = useState<number[]>([]);
   const [mineCount, setMineCount] = useState(1);
   const [betAmount, setBetAmount] = useState(100);
@@ -45,11 +47,8 @@ export default function MindGamesPage() {
   return (
     <div className="space-y-6 text-[#0f1621]">
       <div className="rounded-2xl y-6 shadow-[0_35px_90px_-70px_rgba(15,22,33,0.55)]">
-        <p className="font-medium text-[#0f1621]">Mines</p>
-        <p className="mt-1 text-sm text-[#44506b]">
-          Flujos MVP de Mind Games. Mantén la estética original mientras
-          agregamos lógica conectada a Self.
-        </p>
+        <p className="font-medium text-[#0f1621]">{t("intro.title")}</p>
+        <p className="mt-1 text-sm text-[#44506b]">{t("intro.description")}</p>
       </div>
 
       <div className="flex flex-col gap-6 lg:flex-row">
@@ -57,7 +56,7 @@ export default function MindGamesPage() {
           <div className="flex items-center justify-between rounded-2xl border border-[#d1d7eb] bg-[#eef2ff] px-4 py-4">
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
-                Balance
+                {t("summary.balance")}
               </p>
               <p className="text-2xl font-semibold text-[#0f1621]">
                 € {balance.toLocaleString()}
@@ -65,7 +64,7 @@ export default function MindGamesPage() {
             </div>
             <div className="text-right">
               <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
-                Profit
+                {t("summary.profit")}
               </p>
               <p className="text-lg font-semibold text-[#0f1621]">
                 € {profit.toFixed(2)}
@@ -111,7 +110,7 @@ export default function MindGamesPage() {
               htmlFor={mineSelectId}
               className="text-xs uppercase tracking-[0.3em] text-[#8894b3]"
             >
-              Mines
+              {t("controls.mines")}
             </label>
             <select
               id={mineSelectId}
@@ -132,7 +131,7 @@ export default function MindGamesPage() {
               htmlFor={betInputId}
               className="text-xs uppercase tracking-[0.3em] text-[#8894b3]"
             >
-              Bet amount
+              {t("controls.bet")}
             </label>
             <input
               id={betInputId}
@@ -149,7 +148,7 @@ export default function MindGamesPage() {
               onClick={startGame}
               className="flex-1 rounded-xl bg-[#447bff] px-4 py-2 font-medium text-white transition hover:bg-[#5d8cff]"
             >
-              Start
+              {t("controls.start")}
             </button>
             <button
               type="button"
@@ -157,7 +156,7 @@ export default function MindGamesPage() {
               disabled={!isGameActive}
               className="flex-1 rounded-xl bg-[#0b1320] px-4 py-2 font-medium text-white transition hover:bg-[#131d30] disabled:cursor-not-allowed disabled:bg-[#e3e6f2] disabled:text-[#9aa5c3]"
             >
-              Cashout
+              {t("controls.cashout")}
             </button>
           </div>
         </aside>

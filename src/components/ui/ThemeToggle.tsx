@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 const STORAGE_KEY = "wolf-den-theme";
@@ -14,6 +15,7 @@ function resolveInitialTheme(): ThemeMode {
 }
 
 export function ThemeToggle() {
+  const t = useTranslations("ThemeToggle");
   const [mode, setMode] = useState<ThemeMode>("light");
 
   useEffect(() => {
@@ -46,13 +48,13 @@ export function ThemeToggle() {
         className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] transition-all
           ${mode === "light" ? "bg-[#447bff] text-white shadow-[0_12px_30px_-18px_rgba(68,123,255,0.8)]" : "text-[#0f1621]"}`}
       >
-        Light
+        {t("light")}
       </span>
       <span
         className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] transition-all
           ${mode === "dark" ? "bg-[#0b1320] text-white shadow-[0_12px_30px_-18px_rgba(11,19,32,0.9)]" : "text-[#0f1621]"}`}
       >
-        Dark
+        {t("dark")}
       </span>
     </button>
   );

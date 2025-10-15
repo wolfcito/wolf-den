@@ -1,30 +1,16 @@
 import { Github, Play } from "lucide-react";
-
-const projects = [
-  {
-    id: "project-1",
-    name: "Wolf Alerts",
-    oneLiner: "Seguimiento en tiempo real para la manada.",
-    repo: "github.com/wolf/alerts",
-    demo: "demo.wolfalerts.xyz",
-  },
-  {
-    id: "project-2",
-    name: "Pack Streams",
-    oneLiner: "Analítica de misiones en vivo.",
-    repo: "github.com/wolf/streams",
-    demo: "wolfstreams.vercel.app",
-  },
-  {
-    id: "project-3",
-    name: "HOWL Points",
-    oneLiner: "Recompensas gamificadas para builders.",
-    repo: "github.com/wolf/howl",
-    demo: "howl.app",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export function ShowcaseGrid() {
+  const t = useTranslations("ShowcaseGrid");
+  const projects = t.raw("projects") as Array<{
+    id: string;
+    name: string;
+    oneLiner: string;
+    repo: string;
+    demo: string;
+  }>;
+
   return (
     <div className="grid gap-4 text-[#0f1621] md:grid-cols-2 xl:grid-cols-3">
       {projects.map((project) => (
