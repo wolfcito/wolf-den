@@ -13,18 +13,10 @@ interface StatusPillProps {
 }
 
 const statusTone: Record<StatusPillProps["status"], string> = {
-  unverified: {
-    tone: "bg-[#eef2ff] text-[#5e6a84] border-[#d1d7eb]",
-  },
-  pending: {
-    tone: "bg-[#e0e7ff] text-[#2f3950] border-[#447bff]/50",
-  },
-  verified: {
-    tone: "bg-[#447bff] text-white border-[#447bff]",
-  },
-  error: {
-    tone: "bg-[#ffe4e4] text-[#a61b2a] border-[#ffb2b2]",
-  },
+  unverified: "bg-[#eef2ff] text-[#5e6a84] border-[#d1d7eb]",
+  pending: "bg-[#e0e7ff] text-[#2f3950] border-[#447bff]/50",
+  verified: "bg-[#447bff] text-white border-[#447bff]",
+  error: "bg-[#ffe4e4] text-[#a61b2a] border-[#ffb2b2]",
 };
 
 const statusIcon: Record<

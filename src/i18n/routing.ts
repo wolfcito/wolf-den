@@ -2,7 +2,7 @@ import { createSharedPathnamesNavigation } from "next-intl/navigation";
 
 export const routing = {
   locales: ["en", "es"] as const,
-  defaultLocale: "en",
+  defaultLocale: "en" as const,
 };
 
 export type Locale = (typeof routing.locales)[number];

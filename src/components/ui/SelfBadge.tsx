@@ -14,18 +14,10 @@ interface SelfBadgeProps {
 }
 
 const statusTone: Record<Required<SelfBadgeProps>["status"], string> = {
-  unverified: {
-    tone: "text-[#44506b] border-[#d1d7eb]",
-  },
-  pending: {
-    tone: "text-[#2f3950] border-[#447bff]/60",
-  },
-  verified: {
-    tone: "text-white border-[#447bff]",
-  },
-  error: {
-    tone: "text-[#a61b2a] border-[#ffb2b2]",
-  },
+  unverified: "text-[#44506b] border-[#d1d7eb]",
+  pending: "text-[#2f3950] border-[#447bff]/60",
+  verified: "text-white border-[#447bff]",
+  error: "text-[#a61b2a] border-[#ffb2b2]",
 };
 
 const statusIcon: Record<

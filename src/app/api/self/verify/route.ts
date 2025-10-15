@@ -1,8 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
 import {
+  type AttestationId,
   DefaultConfigStore,
   SelfBackendVerifier,
 } from "@selfxyz/core";
+import { type NextRequest, NextResponse } from "next/server";
 
 const scope = process.env.NEXT_PUBLIC_SELF_SCOPE ?? "";
 const endpoint = process.env.NEXT_PUBLIC_SELF_ENDPOINT ?? "";
@@ -19,7 +20,7 @@ const configStore = new DefaultConfigStore({
   ofac: true,
 });
 
-const allowedAttestations = new Map([[1, true]]);
+const allowedAttestations: Map<AttestationId, boolean> = new Map([[1, true]]);
 
 const verifier = new SelfBackendVerifier(
   scope,
@@ -30,19 +31,38 @@ const verifier = new SelfBackendVerifier(
   "uuid",
 );
 
+type ProofPayload = {
+  a: [string, string];
+  b: [[string, string], [string, string]];
+  c: [string, string];
+};
+
 type VerifyBody = {
   attestationId?: number;
-  proof?: unknown;
-  publicSignals?: unknown;
+  proof?: Partial<ProofPayload>;
+  publicSignals?: string[];
   userContextData?: string;
 };
+
+function isProofPayload(proof: Partial<ProofPayload>): proof is ProofPayload {
+  const { a, b, c } = proof;
+  return (
+    Array.isArray(a) &&
+    a.length === 2 &&
+    Array.isArray(b) &&
+    b.length === 2 &&
+    b.every((row) => Array.isArray(row) && row.length === 2) &&
+    Array.isArray(c) &&
+    c.length === 2
+  );
+}
 
 export async function POST(request: NextRequest) {
   let body: VerifyBody;
 
   try {
     body = await request.json();
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       { message: "Invalid JSON payload" },
       { status: 400 },
@@ -53,8 +73,10 @@ export async function POST(request: NextRequest) {
 
   if (
     attestationId == null ||
-    proof == null ||
-    publicSignals == null ||
+    !proof ||
+    !isProofPayload(proof) ||
+    !Array.isArray(publicSignals) ||
+    publicSignals.length === 0 ||
     typeof userContextData !== "string"
   ) {
     return NextResponse.json(
@@ -66,17 +88,29 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  if (attestationId !== 1) {
+    return NextResponse.json(
+      { message: "Unsupported attestationId" },
+      { status: 400 },
+    );
+  }
+
+  const typedAttestationId = attestationId as AttestationId;
   try {
     const result = await verifier.verify(
-      attestationId,
+      typedAttestationId,
       proof,
-      publicSignals as unknown[],
+      publicSignals,
       userContextData,
     );
 
     const validity = result.isValidDetails;
 
-    if (!validity.isValid || !validity.isMinimumAgeValid || !validity.isOfacValid) {
+    if (
+      !validity.isValid ||
+      !validity.isMinimumAgeValid ||
+      !validity.isOfacValid
+    ) {
       return NextResponse.json(
         {
           status: "error",
@@ -104,7 +138,9 @@ export async function POST(request: NextRequest) {
         status: "error",
         result: false,
         message:
-          error instanceof Error ? error.message : "Unexpected verification error",
+          error instanceof Error
+            ? error.message
+            : "Unexpected verification error",
       },
       { status: 500 },
     );
@@ -114,7 +150,8 @@ export async function POST(request: NextRequest) {
 export function GET() {
   return NextResponse.json(
     {
-      message: "Self verification endpoint. Use POST with verification payload.",
+      message:
+        "Self verification endpoint. Use POST with verification payload.",
     },
     { status: 200 },
   );
