@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  type SelfApp,
-  SelfAppBuilder,
-  SelfQRcodeWrapper,
-} from "@selfxyz/qrcode";
+import * as SelfQRModule from "@selfxyz/qrcode";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
@@ -13,12 +9,34 @@ interface SelfAuthProps {
   onError?: (error: Error) => void;
 }
 
+const { SelfAppBuilder } = SelfQRModule;
+type SelfApp = SelfQRModule.SelfApp;
+
+type SelfQRcodeWrapperComponent =
+  typeof SelfQRModule.SelfQRcodeWrapper extends (...args: infer P) => infer R
+    ? (...args: P) => R
+    : never;
+
+const SelfQRcodeWrapperRuntime = (() => {
+  const named = SelfQRModule.SelfQRcodeWrapper;
+  if (typeof named === "function") {
+    return named as SelfQRcodeWrapperComponent;
+  }
+  const defaultExport = (SelfQRModule as { default?: Record<string, unknown> })
+    .default;
+  const fallback = defaultExport?.SelfQRcodeWrapper;
+  return typeof fallback === "function"
+    ? (fallback as SelfQRcodeWrapperComponent)
+    : undefined;
+})();
+
 export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
   const t = useTranslations("SelfAuth");
   const [selfApp, setSelfApp] = useState<SelfApp | null>(null);
   const [isVerified, setIsVerified] = useState(false);
   const [missingConfig, setMissingConfig] = useState<string[]>([]);
   const userIdRef = useRef<string | null>(null);
+  const qrWrapper = SelfQRcodeWrapperRuntime;
 
   useEffect(() => {
     const endpoint = process.env.NEXT_PUBLIC_SELF_ENDPOINT ?? "";
@@ -61,6 +79,14 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
     setMissingConfig([]);
     setSelfApp(app);
   }, []);
+
+  useEffect(() => {
+    if (!qrWrapper) {
+      console.error(
+        "Self verification unavailable: SelfQRcodeWrapper export not found. Verify @selfxyz/qrcode version.",
+      );
+    }
+  }, [qrWrapper]);
 
   const handleSuccess = () => {
     setIsVerified(true);
@@ -112,11 +138,17 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
             <p className="mt-2 text-sm text-[#44506b]">{t("intro.body")}</p>
           </div>
           {selfApp ? (
-            <SelfQRcodeWrapper
-              selfApp={selfApp}
-              onSuccess={handleSuccess}
-              onError={handleError}
-            />
+            qrWrapper ? (
+              <qrWrapper
+                selfApp={selfApp}
+                onSuccess={handleSuccess}
+                onError={handleError}
+              />
+            ) : (
+              <p className="text-sm text-[#a61b2a]">
+                {t("error.missingWrapper")}
+              </p>
+            )
           ) : (
             <p className="text-sm text-[#9aa5c3]">{t("intro.loading")}</p>
           )}

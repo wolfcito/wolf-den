@@ -1,11 +1,15 @@
 import { notFound } from "next/navigation";
-import { getRequestConfig } from "next-intl/server";
+import { getRequestConfig, setRequestLocale } from "next-intl/server";
 import { type Locale, routing } from "@/i18n/routing";
 
-export default getRequestConfig(async ({ locale }) => {
-  const normalizedLocale = routing.locales.includes(locale as Locale)
-    ? (locale as Locale)
+export default getRequestConfig(async (params) => {
+  const requestedLocale =
+    (await params.requestLocale) ?? routing.defaultLocale;
+  const normalizedLocale = routing.locales.includes(requestedLocale as Locale)
+    ? (requestedLocale as Locale)
     : routing.defaultLocale;
+
+  setRequestLocale(normalizedLocale);
 
   try {
     return {

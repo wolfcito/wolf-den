@@ -367,6 +367,10 @@
         "title": "Verificación con Self no disponible",
         "body": "Configura estas variables de entorno antes de verificar: {vars}.",
         "hint": "Agrégalas a .env.local y reinicia el servidor de desarrollo."
+      },
+      "missingWrapper": {
+        "title": "QR de Self no disponible",
+        "body": "El componente de QR de @selfxyz/qrcode no está disponible. Revisa la versión del paquete."
       }
     }
   },
