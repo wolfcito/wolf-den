@@ -1,6 +1,6 @@
+import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
-import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import LocaleLangSetter from "@/components/app/LocaleLangSetter";
 import { type Locale, routing } from "@/i18n/routing";

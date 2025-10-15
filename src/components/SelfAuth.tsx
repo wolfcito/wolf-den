@@ -1,13 +1,11 @@
 "use client";
 
-import {
+import SelfQRcodeWrapper, {
   type SelfApp,
   SelfAppBuilder,
-  SelfQRcodeWrapper,
 } from "@selfxyz/qrcode";
-import { ethers } from "ethers";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface SelfAuthProps {
   onSuccess?: (data: unknown) => void;
@@ -17,28 +15,41 @@ interface SelfAuthProps {
 export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
   const t = useTranslations("SelfAuth");
   const [selfApp, setSelfApp] = useState<SelfApp | null>(null);
-  const [userId] = useState(ethers.ZeroAddress);
   const [isVerified, setIsVerified] = useState(false);
-  const [isConfigMissing, setIsConfigMissing] = useState(false);
+  const [missingConfig, setMissingConfig] = useState<string[]>([]);
+  const userIdRef = useRef<string | null>(null);
 
   useEffect(() => {
-    const endpoint = process.env.NEXT_PUBLIC_SELF_ENDPOINT;
+    const endpoint = process.env.NEXT_PUBLIC_SELF_ENDPOINT ?? "";
+    const appName = process.env.NEXT_PUBLIC_SELF_APP_NAME ?? "";
+    const scope = process.env.NEXT_PUBLIC_SELF_SCOPE ?? "";
 
-    if (!endpoint) {
-      setIsConfigMissing(true);
+    const missing: string[] = [];
+    if (!appName) missing.push("NEXT_PUBLIC_SELF_APP_NAME");
+    if (!scope) missing.push("NEXT_PUBLIC_SELF_SCOPE");
+    if (!endpoint) missing.push("NEXT_PUBLIC_SELF_ENDPOINT");
+
+    if (missing.length > 0) {
+      setMissingConfig(missing);
+      setSelfApp(null);
       return;
     }
 
+    if (!userIdRef.current) {
+      const randomId =
+        typeof globalThis !== "undefined" &&
+        typeof globalThis.crypto?.randomUUID === "function"
+          ? globalThis.crypto.randomUUID()
+          : Math.random().toString(36).slice(2);
+      userIdRef.current = randomId;
+    }
+
     const app = new SelfAppBuilder({
-      version: 2,
-      appName: "Wolf Den",
-      scope: "wolf-den",
+      appName,
+      scope,
       endpoint,
       logoBase64: "https://i.postimg.cc/mrmVf9hm/self.png",
-      userId,
-      endpointType: "staging_https",
-      userIdType: "hex",
-      userDefinedData: "Wolf Den Authentication",
+      userId: userIdRef.current ?? "",
       disclosures: {
         minimumAge: 18,
         nationality: true,
@@ -46,8 +57,9 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
       },
     }).build();
 
+    setMissingConfig([]);
     setSelfApp(app);
-  }, [userId]);
+  }, []);
 
   const handleSuccess = () => {
     setIsVerified(true);
@@ -67,17 +79,19 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
 
   return (
     <div className="flex flex-col items-center justify-center gap-4 rounded-2xl border border-[#d1d7eb] bg-[#f5f7ff] py-8 text-center text-[#0f1621] shadow-[0_25px_70px_-60px_rgba(15,22,33,0.45)]">
-      {isConfigMissing ? (
+      {missingConfig.length > 0 ? (
         <div className="space-y-3">
           <div className="text-4xl">⚠️</div>
           <h3 className="text-lg font-semibold text-[#0b1320]">
-            {t("error.missingEndpoint.title")}
+            {t("error.missingConfig.title")}
           </h3>
           <p className="text-sm text-[#44506b]">
-            {t("error.missingEndpoint.body")}
+            {t("error.missingConfig.body", {
+              vars: missingConfig.join(", "),
+            })}
           </p>
           <p className="text-xs text-[#8894b3]">
-            {t("error.missingEndpoint.hint")}
+            {t("error.missingConfig.hint")}
           </p>
         </div>
       ) : isVerified ? (

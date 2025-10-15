@@ -363,10 +363,10 @@
       "loading": "Generating QR…"
     },
     "error": {
-      "missingEndpoint": {
+      "missingConfig": {
         "title": "Self verification unavailable",
-        "body": "Set NEXT_PUBLIC_SELF_ENDPOINT to the Self API base URL before using this flow.",
-        "hint": "Add the env var to .env.local and restart the dev server."
+        "body": "Set the following env vars before verifying: {vars}.",
+        "hint": "Add them to .env.local and restart the dev server."
       }
     }
   },

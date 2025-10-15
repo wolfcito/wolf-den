@@ -363,10 +363,10 @@
       "loading": "Generando QR…"
     },
     "error": {
-      "missingEndpoint": {
+      "missingConfig": {
         "title": "Verificación con Self no disponible",
-        "body": "Configura NEXT_PUBLIC_SELF_ENDPOINT con la URL base de Self antes de usar este flujo.",
-        "hint": "Agrega la variable al .env.local y reinicia el servidor de desarrollo."
+        "body": "Configura estas variables de entorno antes de verificar: {vars}.",
+        "hint": "Agrégalas a .env.local y reinicia el servidor de desarrollo."
       }
     }
   },
