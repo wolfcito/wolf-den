@@ -36,7 +36,7 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
   const [isVerified, setIsVerified] = useState(false);
   const [missingConfig, setMissingConfig] = useState<string[]>([]);
   const userIdRef = useRef<string | null>(null);
-  const qrWrapper = SelfQRcodeWrapperRuntime;
+  const QrWrapper = SelfQRcodeWrapperRuntime;
 
   useEffect(() => {
     const endpoint = process.env.NEXT_PUBLIC_SELF_ENDPOINT ?? "";
@@ -81,12 +81,12 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
   }, []);
 
   useEffect(() => {
-    if (!qrWrapper) {
+    if (!QrWrapper) {
       console.error(
         "Self verification unavailable: SelfQRcodeWrapper export not found. Verify @selfxyz/qrcode version.",
       );
     }
-  }, [qrWrapper]);
+  }, [QrWrapper]);
 
   const handleSuccess = () => {
     setIsVerified(true);
@@ -138,8 +138,8 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
             <p className="mt-2 text-sm text-[#44506b]">{t("intro.body")}</p>
           </div>
           {selfApp ? (
-            qrWrapper ? (
-              <qrWrapper
+            QrWrapper ? (
+              <QrWrapper
                 selfApp={selfApp}
                 onSuccess={handleSuccess}
                 onError={handleError}
