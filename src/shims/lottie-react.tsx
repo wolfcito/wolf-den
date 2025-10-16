@@ -1,5 +1,5 @@
+import type { CSSProperties, ReactElement } from "react";
 import { useEffect } from "react";
-import type { CSSProperties } from "react";
 
 type LottieShimProps = {
   animationData?: unknown;
@@ -12,7 +12,7 @@ function LottieShim({
   loop = true,
   style,
   onComplete,
-}: LottieShimProps): JSX.Element {
+}: LottieShimProps): ReactElement {
   useEffect(() => {
     if (loop) {
       return;

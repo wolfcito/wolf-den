@@ -1,8 +1,8 @@
 "use client";
 
-import { SelfAppBuilder, type SelfApp } from "@selfxyz/qrcode";
+import { type SelfApp, SelfAppBuilder } from "@selfxyz/qrcode";
 import { useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
+import { type ReactElement, useEffect, useRef, useState } from "react";
 
 interface SelfAuthProps {
   onSuccess?: (data: unknown) => void;
@@ -11,11 +11,11 @@ interface SelfAuthProps {
 
 type QrWrapperProps = {
   selfApp: SelfApp;
-  onSuccess?: (data: unknown) => void;
-  onError?: (data: { error_code?: string; reason?: string }) => void;
+  onSuccess: () => void;
+  onError: (data: { error_code?: string; reason?: string }) => void;
 };
 
-type QrWrapperComponent = (props: QrWrapperProps) => JSX.Element | null;
+type QrWrapperComponent = (props: QrWrapperProps) => ReactElement | null;
 
 export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
   const t = useTranslations("SelfAuth");
@@ -88,16 +88,22 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
         if (!isActive) {
           return;
         }
+        type SelfQrModule = {
+          SelfQRcodeWrapper?: unknown;
+          SelfQRcode?: unknown;
+          default?: {
+            SelfQRcodeWrapper?: unknown;
+          };
+        };
+
+        const moduleExports = mod as unknown as SelfQrModule;
         const exportedWrapper =
-          mod.SelfQRcodeWrapper ??
-          (mod as { SelfQRcode?: QrWrapperComponent }).SelfQRcode ??
-          ((mod as { default?: Record<string, unknown> }).default?.SelfQRcodeWrapper
-            ? ((mod as { default: Record<string, unknown> }).default
-                .SelfQRcodeWrapper as QrWrapperComponent)
-            : undefined);
+          moduleExports.SelfQRcodeWrapper ??
+          moduleExports.SelfQRcode ??
+          moduleExports.default?.SelfQRcodeWrapper;
 
         if (typeof exportedWrapper === "function") {
-          setQrWrapper(() => exportedWrapper);
+          setQrWrapper(() => exportedWrapper as QrWrapperComponent);
           setQrWrapperError(false);
         } else {
           console.error(
@@ -124,9 +130,9 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
     };
   }, []);
 
-  const handleSuccess = (data: unknown) => {
+  const handleSuccess = () => {
     setIsVerified(true);
-    onSuccess?.(data);
+    onSuccess?.(undefined);
     console.log("Self verification successful!");
   };
 
@@ -183,9 +189,7 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
                 {t("error.missingWrapper")}
               </p>
             ) : (
-              <p className="text-sm text-[#9aa5c3]">
-                {t("intro.loading")}
-              </p>
+              <p className="text-sm text-[#9aa5c3]">{t("intro.loading")}</p>
             )
           ) : (
             <p className="text-sm text-[#9aa5c3]">{t("intro.loading")}</p>
