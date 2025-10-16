@@ -1,6 +1,6 @@
 "use client";
 
-import * as SelfQRModule from "@selfxyz/qrcode";
+import { SelfAppBuilder, type SelfApp } from "@selfxyz/qrcode";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
@@ -9,34 +9,23 @@ interface SelfAuthProps {
   onError?: (error: Error) => void;
 }
 
-const { SelfAppBuilder } = SelfQRModule;
-type SelfApp = SelfQRModule.SelfApp;
+type QrWrapperProps = {
+  selfApp: SelfApp;
+  onSuccess?: (data: unknown) => void;
+  onError?: (data: { error_code?: string; reason?: string }) => void;
+};
 
-type SelfQRcodeWrapperComponent =
-  typeof SelfQRModule.SelfQRcodeWrapper extends (...args: infer P) => infer R
-    ? (...args: P) => R
-    : never;
-
-const SelfQRcodeWrapperRuntime = (() => {
-  const named = SelfQRModule.SelfQRcodeWrapper;
-  if (typeof named === "function") {
-    return named as SelfQRcodeWrapperComponent;
-  }
-  const defaultExport = (SelfQRModule as { default?: Record<string, unknown> })
-    .default;
-  const fallback = defaultExport?.SelfQRcodeWrapper;
-  return typeof fallback === "function"
-    ? (fallback as SelfQRcodeWrapperComponent)
-    : undefined;
-})();
+type QrWrapperComponent = (props: QrWrapperProps) => JSX.Element | null;
 
 export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
   const t = useTranslations("SelfAuth");
   const [selfApp, setSelfApp] = useState<SelfApp | null>(null);
   const [isVerified, setIsVerified] = useState(false);
   const [missingConfig, setMissingConfig] = useState<string[]>([]);
+  const [qrWrapper, setQrWrapper] = useState<QrWrapperComponent | null>(null);
+  const [qrWrapperError, setQrWrapperError] = useState(false);
   const userIdRef = useRef<string | null>(null);
-  const QrWrapper = SelfQRcodeWrapperRuntime;
+  const Wrapper = qrWrapper;
 
   useEffect(() => {
     const endpoint = process.env.NEXT_PUBLIC_SELF_ENDPOINT ?? "";
@@ -63,12 +52,23 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
       userIdRef.current = randomId;
     }
 
+    const devModeSetting = process.env.NEXT_PUBLIC_SELF_DEV_MODE;
+    const devMode =
+      devModeSetting != null
+        ? devModeSetting === "true"
+        : process.env.NODE_ENV !== "production";
+    const endpointType = devMode ? "staging_celo" : "https";
+    const chainID = devMode ? 44787 : 42220;
+
     const app = new SelfAppBuilder({
       appName,
       scope,
       endpoint,
       logoBase64: "https://i.postimg.cc/mrmVf9hm/self.png",
       userId: userIdRef.current ?? "",
+      devMode,
+      endpointType,
+      chainID,
       disclosures: {
         minimumAge: 18,
         nationality: true,
@@ -81,18 +81,52 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
   }, []);
 
   useEffect(() => {
-    if (!QrWrapper) {
-      console.error(
-        "Self verification unavailable: SelfQRcodeWrapper export not found. Verify @selfxyz/qrcode version.",
-      );
-    }
-  }, [QrWrapper]);
+    let isActive = true;
 
-  const handleSuccess = () => {
+    void import("@selfxyz/qrcode")
+      .then((mod) => {
+        if (!isActive) {
+          return;
+        }
+        const exportedWrapper =
+          mod.SelfQRcodeWrapper ??
+          (mod as { SelfQRcode?: QrWrapperComponent }).SelfQRcode ??
+          ((mod as { default?: Record<string, unknown> }).default?.SelfQRcodeWrapper
+            ? ((mod as { default: Record<string, unknown> }).default
+                .SelfQRcodeWrapper as QrWrapperComponent)
+            : undefined);
+
+        if (typeof exportedWrapper === "function") {
+          setQrWrapper(() => exportedWrapper);
+          setQrWrapperError(false);
+        } else {
+          console.error(
+            "Self verification unavailable: SelfQRcodeWrapper export not found. Verify @selfxyz/qrcode version.",
+          );
+          setQrWrapper(null);
+          setQrWrapperError(true);
+        }
+      })
+      .catch((error) => {
+        if (!isActive) {
+          return;
+        }
+        console.error(
+          "Self verification unavailable: failed to load SelfQRcodeWrapper.",
+          error,
+        );
+        setQrWrapper(null);
+        setQrWrapperError(true);
+      });
+
+    return () => {
+      isActive = false;
+    };
+  }, []);
+
+  const handleSuccess = (data: unknown) => {
     setIsVerified(true);
-    if (onSuccess) {
-      onSuccess(null);
-    }
+    onSuccess?.(data);
     console.log("Self verification successful!");
   };
 
@@ -138,15 +172,19 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
             <p className="mt-2 text-sm text-[#44506b]">{t("intro.body")}</p>
           </div>
           {selfApp ? (
-            QrWrapper ? (
-              <QrWrapper
+            Wrapper ? (
+              <Wrapper
                 selfApp={selfApp}
                 onSuccess={handleSuccess}
                 onError={handleError}
               />
-            ) : (
+            ) : qrWrapperError ? (
               <p className="text-sm text-[#a61b2a]">
                 {t("error.missingWrapper")}
+              </p>
+            ) : (
+              <p className="text-sm text-[#9aa5c3]">
+                {t("intro.loading")}
               </p>
             )
           ) : (

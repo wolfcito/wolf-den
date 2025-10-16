@@ -1,7 +1,14 @@
+import path from "node:path";
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
+
+const reactSpinnersAliasTurbo = "./src/shims/react-spinners.tsx";
+const reactSpinnersAliasWebpack = path.resolve(
+  __dirname,
+  "src/shims/react-spinners.tsx",
+);
 
 const nextConfig: NextConfig = {
   images: {
@@ -11,6 +18,19 @@ const nextConfig: NextConfig = {
         hostname: "i.postimg.cc",
       },
     ],
+  },
+  experimental: {
+    turbo: {
+      resolveAlias: {
+        "react-spinners": reactSpinnersAliasTurbo,
+      },
+    },
+  },
+  webpack(config) {
+    config.resolve = config.resolve ?? {};
+    config.resolve.alias = config.resolve.alias ?? {};
+    config.resolve.alias["react-spinners"] = reactSpinnersAliasWebpack;
+    return config;
   },
 };
 

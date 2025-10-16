@@ -7,7 +7,11 @@ import { type NextRequest, NextResponse } from "next/server";
 
 const scope = process.env.NEXT_PUBLIC_SELF_SCOPE ?? "";
 const endpoint = process.env.NEXT_PUBLIC_SELF_ENDPOINT ?? "";
-const useMock = process.env.SELF_USE_SANDBOX === "true";
+const sandboxEnv = process.env.SELF_USE_SANDBOX;
+const useMock =
+  sandboxEnv != null
+    ? sandboxEnv === "true"
+    : process.env.NODE_ENV !== "production";
 
 if (!scope || !endpoint) {
   console.warn(
@@ -17,6 +21,7 @@ if (!scope || !endpoint) {
 
 const configStore = new DefaultConfigStore({
   minimumAge: 18,
+  excludedCountries: [],
   ofac: true,
 });
 
