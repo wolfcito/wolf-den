@@ -57,7 +57,7 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
       devModeSetting != null
         ? devModeSetting === "true"
         : process.env.NODE_ENV !== "production";
-    const endpointType = devMode ? "staging_celo" : "https";
+    const endpointType = "https";
     const chainID = devMode ? 44787 : 42220;
 
     const app = new SelfAppBuilder({

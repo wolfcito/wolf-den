@@ -9,6 +9,11 @@ const reactSpinnersAliasWebpack = path.resolve(
   __dirname,
   "src/shims/react-spinners.tsx",
 );
+const lottieReactAliasTurbo = "./src/shims/lottie-react.tsx";
+const lottieReactAliasWebpack = path.resolve(
+  __dirname,
+  "src/shims/lottie-react.tsx",
+);
 
 const nextConfig: NextConfig = {
   images: {
@@ -23,6 +28,7 @@ const nextConfig: NextConfig = {
     turbo: {
       resolveAlias: {
         "react-spinners": reactSpinnersAliasTurbo,
+        "lottie-react": lottieReactAliasTurbo,
       },
     },
   },
@@ -30,6 +36,7 @@ const nextConfig: NextConfig = {
     config.resolve = config.resolve ?? {};
     config.resolve.alias = config.resolve.alias ?? {};
     config.resolve.alias["react-spinners"] = reactSpinnersAliasWebpack;
+    config.resolve.alias["lottie-react"] = lottieReactAliasWebpack;
     return config;
   },
 };
