@@ -48,27 +48,25 @@ export function TopBar() {
       };
 
   return (
-    <header className="flex flex-col justify-between gap-4 text-[#0f1621]">
+    <header className="flex flex-col justify-between gap-4 text-wolf-foreground">
       <div className="flex items-center gap-4">
         <Link
           href="/"
-          className="flex h-10 w-10 items-center gap-2 rounded-full border border-[#d1d7eb] bg-white/80 px-3 py-1 text-xs text-[#0f1621] transition hover:border-[#447bff]"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-wolf-border bg-wolf-charcoal-60 text-xs text-wolf-foreground transition hover:border-wolf-border-xstrong"
         >
           <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
         </Link>
         <div className="flex items-center gap-3">
           <div>
             <div className="flex items-center gap-3">
-              <h1 className="text-xl font-semibold text-[#0b1320]">
-                {meta.title}
-              </h1>
+              <h1 className="text-xl font-semibold text-white">{meta.title}</h1>
             </div>
-            <p className="text-sm text-[#44506b]">{meta.description}</p>
+            <p className="text-sm text-wolf-text-subtle">{meta.description}</p>
           </div>
         </div>
       </div>
 
-      <div className="flex items-center gap-3 text-[#0f1621]">
+      <div className="flex items-center gap-3 text-wolf-foreground">
         <HowlBadge level="Lobo" />
         <SelfBadge status="pending" />
       </div>

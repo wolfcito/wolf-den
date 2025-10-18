@@ -14,10 +14,13 @@ interface SelfBadgeProps {
 }
 
 const statusTone: Record<Required<SelfBadgeProps>["status"], string> = {
-  unverified: "text-[#44506b] border-[#d1d7eb]",
-  pending: "text-[#2f3950] border-[#447bff]/60",
-  verified: "text-white border-[#447bff]",
-  error: "text-[#a61b2a] border-[#ffb2b2]",
+  unverified: "text-wolf-text-subtle border-wolf-border",
+  pending:
+    "text-wolf-emerald border-wolf-border-strong bg-wolf-emerald-soft shadow-[0_0_20px_rgba(123,255,120,0.15)]",
+  verified:
+    "text-wolf-soft border-wolf-emerald-border-strong bg-[linear-gradient(120deg,#74ff78,#3bcf5f)] shadow-[0_0_20px_rgba(123,255,120,0.3)]",
+  error:
+    "text-[#ff8f94] border-wolf-error-border bg-wolf-error-soft shadow-[0_0_18px_rgba(255,92,92,0.25)]",
 };
 
 const statusIcon: Record<
@@ -39,7 +42,7 @@ export function SelfBadge({
 
   return (
     <span
-      className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs tracking-[0.2em] transition ${statusTone[status]} ${className}`.trim()}
+      className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs uppercase tracking-[0.2em] transition ${statusTone[status]} ${className}`.trim()}
     >
       <Icon
         className={`h-4 w-4 ${status === "pending" ? "animate-spin" : ""}`}

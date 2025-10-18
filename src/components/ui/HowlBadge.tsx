@@ -9,9 +9,9 @@ interface HowlBadgeProps {
 }
 
 const levelTone: Record<Required<HowlBadgeProps>["level"], string> = {
-  Cachorro: "text-[#44506b] border-[#d1d7eb]",
-  Lobo: "text-[#447bff] border-[#447bff]/40",
-  Alfa: "text-[#0b1320] border-[#0b1320]/40",
+  Cachorro: "text-wolf-text-subtle border-wolf-border",
+  Lobo: "text-wolf-emerald border-wolf-border-strong",
+  Alfa: "text-white border-wolf-border-xstrong",
 };
 
 export function HowlBadge({
@@ -22,7 +22,7 @@ export function HowlBadge({
 
   return (
     <span
-      className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-[0.2em] ${levelTone[level]} ${className}`.trim()}
+      className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] ${levelTone[level]} ${className}`.trim()}
     >
       <MoonStar className="h-4 w-4" aria-hidden />
       {t(`levels.${level}`)}
