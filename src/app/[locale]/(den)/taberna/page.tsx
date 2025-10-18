@@ -22,17 +22,17 @@ export default function TabernaPage() {
   }
 
   return (
-    <div className="space-y-6 text-[color:var(--foreground)]">
-      <section className="wolf-card rounded-[2.1rem] border border-[rgba(123,255,104,0.22)] px-6 py-6 shadow-[0_35px_105px_-75px_rgba(0,0,0,0.75)]">
+    <div className="space-y-6 text-wolf-foreground">
+      <section className="wolf-card rounded-[2.1rem] border border-wolf-border-strong px-6 py-6 shadow-[0_35px_105px_-75px_rgba(0,0,0,0.75)]">
         <div className="space-y-5">
           <iframe
             src={tabernaUrl}
             title="Wolf Den Taberna"
             allow={iframeAllow}
-            className="aspect-[16/10] w-full rounded-[1.8rem] border border-[rgba(123,255,104,0.18)] bg-[rgba(13,13,13,0.75)] sm:min-h-[420px]"
+            className="aspect-[16/10] w-full rounded-[1.8rem] border border-wolf-border bg-wolf-charcoal-75 sm:min-h-[420px]"
           />
           <div className="flex flex-wrap items-center gap-3 text-sm">
-            <span className="wolf-pill bg-[rgba(123,255,120,0.12)] text-xs uppercase tracking-[0.28em] text-[color:var(--wolf-emerald)]">
+            <span className="wolf-pill bg-wolf-emerald-soft text-xs uppercase tracking-[0.28em] text-wolf-emerald">
               Live Mission Stream
             </span>
             <div className="ml-auto flex items-center gap-3">
@@ -42,7 +42,7 @@ export default function TabernaPage() {
                 title="GitHub"
                 aria-label="GitHub"
                 rel="noopener"
-                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[rgba(123,255,104,0.2)] bg-[rgba(13,13,13,0.7)] text-[color:var(--foreground)] transition hover:border-[rgba(123,255,104,0.32)] hover:text-[color:var(--wolf-emerald)]"
+                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-wolf-border bg-wolf-charcoal-70 text-wolf-foreground transition hover:border-wolf-border-xstrong hover:text-wolf-emerald"
               >
                 <svg
                   className="h-5 w-5"
@@ -63,7 +63,7 @@ export default function TabernaPage() {
                 title="X"
                 aria-label="X"
                 rel="noopener"
-                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[rgba(123,255,104,0.2)] bg-[rgba(13,13,13,0.7)] text-[color:var(--foreground)] transition hover:border-[rgba(123,255,104,0.32)] hover:text-[color:var(--wolf-emerald)]"
+                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-wolf-border bg-wolf-charcoal-70 text-wolf-foreground transition hover:border-wolf-border-xstrong hover:text-wolf-emerald"
               >
                 <svg
                   className="h-5 w-5"

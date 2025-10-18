@@ -11,16 +11,16 @@ export default function SettingsPage() {
   }>;
 
   const toneClass: Record<(typeof privacyItems)[number]["tone"], string> = {
-    cyan: "bg-[rgba(123,255,120,0.18)] text-[color:var(--wolf-emerald)] border border-[rgba(123,255,104,0.32)]",
+    cyan: "border border-wolf-border-xstrong bg-wolf-emerald-tint text-wolf-emerald",
     violet:
-      "bg-[rgba(147,141,255,0.18)] text-[#c1c4ff] border border-[rgba(147,141,255,0.35)]",
+      "border border-wolf-violet-border bg-wolf-violet-soft text-wolf-violet-accent",
     neutral:
-      "bg-[rgba(255,255,255,0.08)] text-white/70 border border-[rgba(255,255,255,0.12)]",
+      "border border-wolf-neutral-border bg-wolf-neutral-soft text-white/70",
   };
 
   return (
-    <div className="space-y-6 text-[color:var(--foreground)]">
-      <section className="wolf-card--muted rounded-[1.9rem] border border-[rgba(123,255,104,0.16)] p-6">
+    <div className="space-y-6 text-wolf-foreground">
+      <section className="wolf-card--muted rounded-[1.9rem] border border-wolf-border p-6">
         <h3 className="text-lg font-semibold text-white">
           {t("appearance.title")}
         </h3>
@@ -31,7 +31,7 @@ export default function SettingsPage() {
           <ThemeToggle />
         </div>
       </section>
-      <section className="wolf-card--muted rounded-[1.9rem] border border-[rgba(123,255,104,0.16)] p-6">
+      <section className="wolf-card--muted rounded-[1.9rem] border border-wolf-border p-6">
         <h3 className="text-lg font-semibold text-white">
           {t("language.title")}
         </h3>
@@ -40,7 +40,7 @@ export default function SettingsPage() {
         </p>
         <LanguageSwitcher className="mt-3" />
       </section>
-      <section className="wolf-card--muted rounded-[1.9rem] border border-[rgba(123,255,104,0.16)] p-6">
+      <section className="wolf-card--muted rounded-[1.9rem] border border-wolf-border p-6">
         <h3 className="text-lg font-semibold text-white">
           {t("privacy.title")}
         </h3>
@@ -48,7 +48,7 @@ export default function SettingsPage() {
           {privacyItems.map((item) => (
             <li
               key={item.label}
-              className="flex items-center justify-between rounded-xl border border-[rgba(123,255,104,0.12)] bg-[rgba(13,13,13,0.6)] px-4 py-3"
+              className="flex items-center justify-between rounded-xl border border-wolf-border-soft bg-wolf-charcoal-60 px-4 py-3"
             >
               <span>{item.label}</span>
               <span

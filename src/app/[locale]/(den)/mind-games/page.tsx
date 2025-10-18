@@ -45,17 +45,17 @@ export default function MindGamesPage() {
   };
 
   return (
-    <div className="space-y-8 text-[color:var(--foreground)]">
-      <div className="wolf-card--muted rounded-[1.9rem] border border-[rgba(123,255,104,0.16)] px-6 py-6 text-white/80">
+    <div className="space-y-8 text-wolf-foreground">
+      <div className="wolf-card--muted rounded-[1.9rem] border border-wolf-border px-6 py-6 text-white/80">
         <p className="font-medium text-white">{t("intro.title")}</p>
         <p className="mt-2 text-sm text-white/70">{t("intro.description")}</p>
       </div>
 
       <div className="flex flex-col gap-6 lg:flex-row">
-        <section className="wolf-card flex-1 space-y-6 rounded-[2rem] border border-[rgba(123,255,104,0.24)] p-6 shadow-[0_45px_120px_-80px_rgba(0,0,0,0.75)]">
-          <div className="flex items-center justify-between rounded-[1.5rem] border border-[rgba(123,255,104,0.24)] bg-[rgba(13,13,13,0.6)] px-4 py-4">
+        <section className="wolf-card flex-1 space-y-6 rounded-[2rem] border border-wolf-border-strong p-6 shadow-[0_45px_120px_-80px_rgba(0,0,0,0.75)]">
+          <div className="flex items-center justify-between rounded-[1.5rem] border border-wolf-border-strong bg-wolf-charcoal-60 px-4 py-4">
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--wolf-text-subtle)]">
+              <p className="text-xs uppercase tracking-[0.3em] text-wolf-text-subtle">
                 {t("summary.balance")}
               </p>
               <p className="text-2xl font-semibold text-white">
@@ -63,10 +63,10 @@ export default function MindGamesPage() {
               </p>
             </div>
             <div className="text-right">
-              <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--wolf-text-subtle)]">
+              <p className="text-xs uppercase tracking-[0.3em] text-wolf-text-subtle">
                 {t("summary.profit")}
               </p>
-              <p className="text-lg font-semibold text-[color:var(--wolf-emerald)]">
+              <p className="text-lg font-semibold text-wolf-emerald">
                 € {profit.toFixed(2)}
               </p>
             </div>
@@ -86,9 +86,9 @@ export default function MindGamesPage() {
                     ${
                       isSelected
                         ? isBomb
-                          ? "border-[rgba(255,109,109,0.45)] bg-[rgba(255,92,92,0.14)] text-[#ff969e]"
-                          : "border-[rgba(123,255,104,0.45)] bg-[rgba(123,255,120,0.18)] text-[color:var(--wolf-emerald)] shadow-[0_12px_35px_-25px_rgba(123,255,120,0.6)]"
-                        : "border-[rgba(123,255,104,0.08)] bg-[rgba(13,13,13,0.6)] text-white/80 hover:border-[rgba(123,255,104,0.18)]"
+                          ? "border-wolf-error-border-strong bg-wolf-error-glow text-[#ff969e]"
+                          : "border-wolf-border-glow bg-wolf-emerald-tint text-wolf-emerald shadow-[0_12px_35px_-25px_rgba(123,255,120,0.6)]"
+                        : "border-wolf-border-faint bg-wolf-charcoal-60 text-white/80 hover:border-wolf-border"
                     }
                   `}
                 >
@@ -104,11 +104,11 @@ export default function MindGamesPage() {
           </div>
         </section>
 
-        <aside className="wolf-card w-full max-w-sm space-y-4 rounded-[2rem] border border-[rgba(123,255,104,0.24)] p-6 shadow-[0_40px_110px_-80px_rgba(0,0,0,0.75)]">
+        <aside className="wolf-card w-full max-w-sm space-y-4 rounded-[2rem] border border-wolf-border-strong p-6 shadow-[0_40px_110px_-80px_rgba(0,0,0,0.75)]">
           <div className="space-y-2">
             <label
               htmlFor={mineSelectId}
-              className="text-xs uppercase tracking-[0.3em] text-[color:var(--wolf-text-subtle)]"
+              className="text-xs uppercase tracking-[0.3em] text-wolf-text-subtle"
             >
               {t("controls.mines")}
             </label>
@@ -116,7 +116,7 @@ export default function MindGamesPage() {
               id={mineSelectId}
               value={mineCount}
               onChange={(event) => setMineCount(Number(event.target.value))}
-              className="w-full rounded-xl border border-[rgba(123,255,104,0.18)] bg-[rgba(13,13,13,0.65)] px-3 py-2 text-white/85 focus:border-[rgba(123,255,104,0.35)] focus:outline-none"
+              className="w-full rounded-xl border border-wolf-border bg-wolf-charcoal-65 px-3 py-2 text-white/85 focus:border-wolf-border-xstrong focus:outline-none"
             >
               {[1, 2, 3, 24].map((option) => (
                 <option key={option} value={option}>
@@ -129,7 +129,7 @@ export default function MindGamesPage() {
           <div className="space-y-2">
             <label
               htmlFor={betInputId}
-              className="text-xs uppercase tracking-[0.3em] text-[color:var(--wolf-text-subtle)]"
+              className="text-xs uppercase tracking-[0.3em] text-wolf-text-subtle"
             >
               {t("controls.bet")}
             </label>
@@ -138,7 +138,7 @@ export default function MindGamesPage() {
               type="number"
               value={betAmount}
               onChange={(event) => setBetAmount(Number(event.target.value))}
-              className="w-full rounded-xl border border-[rgba(123,255,104,0.18)] bg-[rgba(13,13,13,0.65)] px-3 py-2 text-white/85 focus:border-[rgba(123,255,104,0.35)] focus:outline-none"
+              className="w-full rounded-xl border border-wolf-border bg-wolf-charcoal-65 px-3 py-2 text-white/85 focus:border-wolf-border-xstrong focus:outline-none"
             />
           </div>
 
@@ -156,8 +156,8 @@ export default function MindGamesPage() {
               disabled={!isGameActive}
               className={`flex-1 rounded-full px-4 py-2 font-semibold uppercase tracking-[0.2em] transition ${
                 isGameActive
-                  ? "bg-[rgba(123,255,120,0.18)] text-[color:var(--wolf-emerald)] hover:bg-[rgba(123,255,120,0.28)]"
-                  : "cursor-not-allowed bg-[rgba(255,255,255,0.06)] text-[color:var(--wolf-text-subtle)]"
+                  ? "bg-wolf-emerald-tint text-wolf-emerald hover:bg-wolf-emerald-strong"
+                  : "cursor-not-allowed bg-wolf-neutral-haze text-wolf-text-subtle"
               }`}
             >
               {t("controls.cashout")}

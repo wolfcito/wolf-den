@@ -145,7 +145,7 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
   };
 
   return (
-    <div className="wolf-card flex flex-col items-center justify-center gap-5 rounded-[1.9rem] border border-[rgba(123,255,104,0.22)] px-6 py-8 text-center text-[color:var(--foreground)]">
+    <div className="wolf-card flex flex-col items-center justify-center gap-5 rounded-[1.9rem] border border-wolf-border-strong px-6 py-8 text-center text-wolf-foreground">
       {missingConfig.length > 0 ? (
         <div className="space-y-3">
           <div className="text-4xl">⚠️</div>
@@ -157,7 +157,7 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
               vars: missingConfig.join(", "),
             })}
           </p>
-          <p className="text-xs text-[color:var(--wolf-text-subtle)]">
+          <p className="text-xs text-wolf-text-subtle">
             {t("error.missingConfig.hint")}
           </p>
         </div>
@@ -189,12 +189,12 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
                 {t("error.missingWrapper")}
               </p>
             ) : (
-              <p className="text-sm text-[color:var(--wolf-text-subtle)]">
+              <p className="text-sm text-wolf-text-subtle">
                 {t("intro.loading")}
               </p>
             )
           ) : (
-            <p className="text-sm text-[color:var(--wolf-text-subtle)]">
+            <p className="text-sm text-wolf-text-subtle">
               {t("intro.loading")}
             </p>
           )}

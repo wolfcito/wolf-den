@@ -9,26 +9,24 @@ export function LeaderboardList() {
   }>;
 
   return (
-    <div className="text-[color:var(--foreground)]">
+    <div className="text-wolf-foreground">
       <h3 className="text-lg font-semibold uppercase tracking-[0.18em] text-white/90">
         {t("title")}
       </h3>
-      <p className="mt-1 text-sm text-[color:var(--wolf-text-subtle)]">
-        {t("subtitle")}
-      </p>
+      <p className="mt-1 text-sm text-wolf-text-subtle">{t("subtitle")}</p>
       <div className="mt-4 space-y-3">
         {leaderboard.map((entry) => (
           <div
             key={entry.team}
-            className="wolf-card--muted flex items-center justify-between rounded-[1.75rem] border border-[rgba(123,255,104,0.14)] px-5 py-4"
+            className="wolf-card--muted flex items-center justify-between rounded-[1.75rem] border border-wolf-border-mid px-5 py-4"
           >
             <div className="flex items-center gap-3 text-sm">
-              <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-[rgba(123,255,120,0.18)] text-[color:var(--wolf-emerald)]">
+              <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-wolf-emerald-tint text-wolf-emerald">
                 #{entry.position}
               </span>
               <p className="font-medium text-white/85">{entry.team}</p>
             </div>
-            <span className="text-sm text-[color:var(--wolf-text-subtle)]">
+            <span className="text-sm text-wolf-text-subtle">
               {t("points", { count: entry.points })}
             </span>
           </div>

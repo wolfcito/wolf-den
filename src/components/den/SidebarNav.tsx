@@ -65,10 +65,10 @@ export function SidebarNav() {
   >(navSections[0].key);
 
   return (
-    <div className="flex h-full flex-col justify-between gap-8 p-5 text-[color:var(--foreground)]">
+    <div className="flex h-full flex-col justify-between gap-8 p-5 text-wolf-foreground">
       <div className="space-y-8">
-        <div className="wolf-card--muted flex items-center gap-3 rounded-[1.6rem] border border-[rgba(123,255,104,0.16)] px-4 py-4">
-          <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-[rgba(123,255,104,0.24)] bg-[rgba(13,13,13,0.85)] shadow-[0_18px_40px_-22px_rgba(123,255,120,0.35)]">
+        <div className="wolf-card--muted flex items-center gap-3 rounded-[1.6rem] border border-wolf-border px-4 py-4">
+          <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-wolf-border-strong bg-wolf-charcoal-85 shadow-[0_18px_40px_-22px_rgba(123,255,120,0.35)]">
             <Image
               src="/wolf-den-bn.png"
               alt={t("branding.badgeAlt")}
@@ -80,13 +80,13 @@ export function SidebarNav() {
             <h1 className="text-lg font-semibold uppercase tracking-[0.22em] text-white">
               {t("branding.title")}
             </h1>
-            <p className="text-[0.65rem] uppercase tracking-[0.3em] text-[color:var(--wolf-text-subtle)]">
+            <p className="text-[0.65rem] uppercase tracking-[0.3em] text-wolf-text-subtle">
               {t("branding.subtitle")}
             </p>
           </div>
         </div>
 
-        <nav className="space-y-8 text-[color:var(--foreground)]">
+        <nav className="space-y-8 text-wolf-foreground">
           {navSections.map((section) => (
             <div key={section.key} className="space-y-3">
               <button
@@ -98,8 +98,8 @@ export function SidebarNav() {
                 }
                 className={`group flex w-full items-center justify-between rounded-full border px-4 py-3 text-left transition ${
                   openSection === section.key
-                    ? "border-[rgba(123,255,104,0.45)] bg-[rgba(123,255,120,0.15)] text-white shadow-[0_18px_45px_-28px_rgba(123,255,120,0.45)]"
-                    : "border-[rgba(123,255,104,0.12)] bg-[rgba(13,13,13,0.6)] text-[color:var(--wolf-text-subtle)] hover:border-[rgba(123,255,104,0.2)] hover:text-white"
+                    ? "border-wolf-border-xstrong bg-wolf-emerald-mid text-white shadow-[0_18px_45px_-28px_rgba(123,255,120,0.45)]"
+                    : "border-wolf-border-soft bg-wolf-charcoal-60 text-wolf-text-subtle hover:border-wolf-border hover:text-white"
                 }`}
               >
                 <span className="flex items-center gap-3">
@@ -107,7 +107,7 @@ export function SidebarNav() {
                     className={`flex h-9 w-9 items-center justify-center rounded-full transition ${
                       openSection === section.key
                         ? "bg-[linear-gradient(120deg,#74ff78,#3bcf5f)] text-[#08120b]"
-                        : "bg-[rgba(123,255,120,0.16)] text-[color:var(--wolf-emerald)] group-hover:bg-[rgba(123,255,120,0.24)]"
+                        : "bg-wolf-emerald-mid text-wolf-emerald group-hover:bg-wolf-emerald-strong"
                     }`}
                   >
                     {(() => {
@@ -123,7 +123,7 @@ export function SidebarNav() {
                   className={`h-4 w-4 transition-transform ${
                     openSection === section.key
                       ? "rotate-180 text-white"
-                      : "text-[color:var(--wolf-text-subtle)]"
+                      : "text-wolf-text-subtle"
                   }`}
                   aria-hidden
                 />
@@ -150,15 +150,15 @@ export function SidebarNav() {
                         href={item.href}
                         className={`group relative flex items-center gap-4 rounded-full border px-4 py-3 pl-5 text-sm transition-all duration-150 ${
                           isActive
-                            ? "border-[rgba(123,255,104,0.4)] bg-[rgba(123,255,120,0.14)] text-white shadow-[0_18px_42px_-28px_rgba(123,255,120,0.45)]"
-                            : "border-[rgba(123,255,104,0.08)] bg-[rgba(13,13,13,0.6)] text-[color:var(--wolf-text-subtle)] hover:border-[rgba(123,255,104,0.18)] hover:text-white"
+                            ? "border-wolf-border-xstrong bg-wolf-emerald-mid text-white shadow-[0_18px_42px_-28px_rgba(123,255,120,0.45)]"
+                            : "border-wolf-border-faint bg-wolf-charcoal-60 text-wolf-text-subtle hover:border-wolf-border hover:text-white"
                         }`}
                       >
                         <span
                           className={`flex h-9 w-9 items-center justify-center rounded-full transition ${
                             isActive
                               ? "bg-[linear-gradient(120deg,#74ff78,#3bcf5f)] text-[#08120b]"
-                              : "bg-[rgba(123,255,120,0.16)] text-[color:var(--wolf-emerald)] group-hover:bg-[rgba(123,255,120,0.24)]"
+                              : "bg-wolf-emerald-mid text-wolf-emerald group-hover:bg-wolf-emerald-strong"
                           }`}
                         >
                           <Icon className="h-4 w-4" aria-hidden />
@@ -178,7 +178,7 @@ export function SidebarNav() {
           ))}
         </nav>
       </div>
-      <div className="wolf-card--muted rounded-[1.4rem] border border-[rgba(123,255,104,0.12)] px-4 py-3 text-[0.65rem] uppercase tracking-[0.28em] text-[color:var(--wolf-text-subtle)]">
+      <div className="wolf-card--muted rounded-[1.4rem] border border-wolf-border-soft px-4 py-3 text-[0.65rem] uppercase tracking-[0.28em] text-wolf-text-subtle">
         {t("footer.copy")}
       </div>
     </div>

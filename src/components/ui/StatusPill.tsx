@@ -13,14 +13,12 @@ interface StatusPillProps {
 }
 
 const statusTone: Record<StatusPillProps["status"], string> = {
-  unverified:
-    "bg-transparent text-[color:var(--wolf-text-subtle)] border border-[color:var(--wolf-border)]",
+  unverified: "bg-transparent text-wolf-text-subtle border border-wolf-border",
   pending:
-    "bg-[rgba(123,255,104,0.12)] border border-[color:var(--wolf-border-strong)] text-[color:var(--wolf-emerald)]",
+    "bg-wolf-emerald-soft border border-wolf-border-strong text-wolf-emerald",
   verified:
-    "bg-[linear-gradient(115deg,#74ff78,#3bcf5f)] text-[color:var(--wolf-soft)] border border-[rgba(41,197,94,0.45)] shadow-[0_0_20px_rgba(115,255,140,0.35)]",
-  error:
-    "bg-[rgba(255,75,75,0.12)] text-[#ff8f94] border border-[rgba(255,99,99,0.4)]",
+    "bg-[linear-gradient(115deg,#74ff78,#3bcf5f)] text-wolf-soft border border-wolf-emerald-border-strong shadow-[0_0_20px_rgba(115,255,140,0.35)]",
+  error: "bg-wolf-error-soft text-[#ff8f94] border border-wolf-error-border",
 };
 
 const statusIcon: Record<
