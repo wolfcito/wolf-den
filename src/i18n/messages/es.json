@@ -73,6 +73,9 @@
           "settings": "Settings"
         }
       }
+    },
+    "footer": {
+      "copy": "Protege a la manada"
     }
   },
   "HowlBadge": {

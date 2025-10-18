@@ -133,3 +133,36 @@ h5,
   background-clip: text;
   color: transparent;
 }
+
+.wolf-neon-backdrop {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.wolf-neon-backdrop::before,
+.wolf-neon-backdrop::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+  filter: blur(140px);
+  opacity: 0.85;
+}
+
+.wolf-neon-backdrop::before {
+  top: -45%;
+  left: -20%;
+  width: 620px;
+  height: 620px;
+  background: rgba(116, 255, 120, 0.22);
+}
+
+.wolf-neon-backdrop::after {
+  top: 15%;
+  right: -25%;
+  width: 520px;
+  height: 520px;
+  background: rgba(34, 51, 27, 0.55);
+  filter: blur(200px);
+}

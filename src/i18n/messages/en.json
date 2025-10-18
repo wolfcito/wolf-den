@@ -73,6 +73,9 @@
           "settings": "Settings"
         }
       }
+    },
+    "footer": {
+      "copy": "Secure the pack"
     }
   },
   "HowlBadge": {

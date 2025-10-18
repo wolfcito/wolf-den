@@ -5,22 +5,24 @@ import TopBar from "@/components/den/TopBar";
 
 export default function DenLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-wolf-bg text-wolf-bone">
-      <div className="mx-auto flex max-w-[1400px] flex-col gap-6 px-4 py-6 sm:px-6">
+    <div className="wolf-neon-backdrop text-[color:var(--foreground)]">
+      <div className="relative z-10 mx-auto flex max-w-[1400px] flex-col gap-6 px-4 py-8 sm:px-6">
         <div className="grid gap-6 lg:grid-cols-[260px_1fr_320px]">
-          <aside className="rounded-2xl border border-[#e2e6f5] bg-white/80 p-3 shadow-[0_25px_70px_-60px_rgba(15,22,33,0.55)] backdrop-blur">
+          <aside className="wolf-card--muted rounded-[1.9rem] border border-[rgba(123,255,104,0.18)] p-3 shadow-[0_30px_95px_-70px_rgba(0,0,0,0.75)] backdrop-blur">
             <SidebarNav />
           </aside>
-          <main className="rounded-2xl border border-[#e2e6f5] bg-white/90 p-6 shadow-[0_35px_90px_-70px_rgba(15,22,33,0.55)] backdrop-blur">
+          <main className="wolf-card rounded-[2.2rem] border border-[rgba(123,255,104,0.26)] p-6 shadow-[0_40px_110px_-80px_rgba(0,0,0,0.75)] backdrop-blur">
             <TopBar />
             <section className="mt-6">{children}</section>
           </main>
-          <aside className="hidden rounded-2xl border border-[#e2e6f5] bg-white/80 p-4 shadow-[0_25px_70px_-60px_rgba(15,22,33,0.55)] backdrop-blur lg:block">
-            <ActivityRail />
+          <aside className="hidden lg:block">
+            <div className="wolf-card--muted rounded-[1.9rem] border border-[rgba(123,255,104,0.18)] p-4 shadow-[0_30px_95px_-70px_rgba(0,0,0,0.75)] backdrop-blur">
+              <ActivityRail />
+            </div>
           </aside>
         </div>
         <div className="lg:hidden">
-          <div className="rounded-2xl border border-[#e2e6f5] bg-white/80 p-4 shadow-[0_25px_70px_-60px_rgba(15,22,33,0.55)] backdrop-blur">
+          <div className="wolf-card--muted rounded-[1.9rem] border border-[rgba(123,255,104,0.18)] p-4 shadow-[0_30px_95px_-70px_rgba(0,0,0,0.75)] backdrop-blur">
             <ActivityRail />
           </div>
         </div>
