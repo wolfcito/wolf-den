@@ -4,6 +4,8 @@ import { Gem, Skull } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 
+const PRESET_BOMB_INDICES = new Set<number>([3, 7, 14]);
+
 export default function MindGamesPage() {
   const t = useTranslations("MindGamesPage");
   const [selectedCells, setSelectedCells] = useState<number[]>([]);
@@ -75,7 +77,7 @@ export default function MindGamesPage() {
           <div className="grid grid-cols-5 gap-3">
             {cells.map(({ id, index }) => {
               const isSelected = selectedCells.includes(index);
-              const isBomb = isSelected && Math.random() > 0.9;
+              const isBomb = isSelected && PRESET_BOMB_INDICES.has(index);
 
               return (
                 <button

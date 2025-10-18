@@ -15,25 +15,25 @@ export function MiniChat() {
   };
 
   return (
-    <div className="space-y-3 text-[#0f1621]">
+    <div className="space-y-3 text-wolf-foreground">
       <div className="flex items-center justify-between">
-        <p className="text-sm font-medium">{t("title")}</p>
-        <span className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
+        <p className="text-sm font-medium text-white">{t("title")}</p>
+        <span className="text-xs uppercase tracking-[0.3em] text-wolf-text-subtle">
           {t("label")}
         </span>
       </div>
-      <p className="text-xs text-[#44506b]">{t("description")}</p>
+      <p className="text-xs text-wolf-text-subtle">{t("description")}</p>
       <form onSubmit={handleSubmit} className="space-y-2">
         <textarea
           value={message}
           onChange={(event) => setMessage(event.target.value)}
           rows={2}
           placeholder={t("placeholder")}
-          className="w-full rounded-xl border border-[#d1d7eb] bg-white px-3 py-2 text-sm text-[#0f1621] placeholder:text-[#9aa5c3] focus:border-[#447bff] focus:outline-none"
+          className="w-full rounded-xl border border-wolf-border bg-wolf-charcoal-60 px-3 py-2 text-sm text-wolf-foreground placeholder:text-wolf-text-subtle focus:border-wolf-border-xstrong focus:outline-none"
         />
         <button
           type="submit"
-          className="w-full rounded-xl bg-[#447bff] py-2 text-sm font-medium text-white transition hover:bg-[#5d8cff]"
+          className="w-full rounded-full bg-[linear-gradient(120deg,#74ff78,#3bcf5f)] py-2 text-sm font-medium uppercase tracking-[0.18em] text-[#08120b] transition hover:brightness-110"
         >
           {t("submit")}
         </button>

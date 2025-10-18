@@ -16,13 +16,13 @@ export function ActivityRail() {
   }>;
 
   return (
-    <div className="flex h-full flex-col gap-4 text-[#0f1621]">
-      <section className="py-4">
-        <div className="mb-3 flex items-center justify-between">
-          <p className="text-sm font-semibold text-wolf-bone">
+    <div className="flex h-full flex-col gap-4 text-wolf-foreground">
+      <section className="wolf-card--muted rounded-2xl border border-wolf-border-soft p-5">
+        <div className="mb-4 flex items-center justify-between">
+          <p className="text-sm font-semibold text-white">
             {t("sections.activity.title")}
           </p>
-          <span className="text-[11px] uppercase tracking-[0.3em] text-wolf-bone/40">
+          <span className="text-[11px] uppercase tracking-[0.3em] text-wolf-text-subtle">
             {t("sections.activity.label")}
           </span>
         </div>
@@ -33,23 +33,23 @@ export function ActivityRail() {
         </div>
       </section>
 
-      <section className="py-4">
-        <div className="mb-3 flex items-center justify-between">
-          <p className="text-sm font-semibold text-wolf-bone">
+      <section className="wolf-card--muted rounded-2xl border border-wolf-border-soft p-5">
+        <div className="mb-4 flex items-center justify-between">
+          <p className="text-sm font-semibold text-white">
             {t("sections.recent.title")}
           </p>
-          <span className="text-[11px] uppercase tracking-[0.3em] text-wolf-bone/40">
+          <span className="text-[11px] uppercase tracking-[0.3em] text-wolf-text-subtle">
             {t("sections.recent.label")}
           </span>
         </div>
-        <ul className="space-y-2 text-sm text-wolf-bone/70">
+        <ul className="space-y-2 text-sm text-white/75">
           {recentItems.map((item) => (
             <li
               key={item.title}
-              className="flex items-center justify-between rounded-xl bg-wolf-panel/40 px-4 py-2"
+              className="flex items-center justify-between rounded-xl border border-wolf-border-faint bg-wolf-charcoal-60 px-4 py-3"
             >
               <span>{item.title}</span>
-              <span className="text-xs text-wolf-bone/40">
+              <span className="text-xs text-wolf-text-subtle">
                 {item.timestamp}
               </span>
             </li>
@@ -57,7 +57,7 @@ export function ActivityRail() {
         </ul>
       </section>
 
-      <div className="py-4">
+      <div className="wolf-card--muted rounded-2xl border border-wolf-border-soft p-5">
         <MiniChat />
       </div>
     </div>
