@@ -19,6 +19,15 @@ if (!scope || !endpoint) {
   );
 }
 
+console.info(
+  "[SelfVerifier] configured",
+  JSON.stringify({
+    scope,
+    endpoint,
+    sandbox: useMock,
+  }),
+);
+
 const configStore = new DefaultConfigStore({
   minimumAge: 18,
   excludedCountries: [],

@@ -12,34 +12,48 @@ export function CheckInPanel({ qrUrl, status }: CheckInPanelProps) {
   const steps = t.raw("howItWorks.steps") as string[];
 
   return (
-    <div className="grid gap-6 text-[#0f1621] lg:grid-cols-[340px_1fr]">
-      <div className="rounded-2xl border border-[#e2e6f5] bg-white p-6 shadow-[0_32px_85px_-65px_rgba(15,22,33,0.55)]">
-        <h3 className="text-lg font-semibold">{t("title")}</h3>
-        <Image
-          src={qrUrl}
-          alt={t("qrAlt")}
-          width={256}
-          height={256}
-          className="mt-4 h-64 w-64 rounded-2xl border border-[#d1d7eb] object-cover object-center shadow-[0_25px_60px_-50px_rgba(15,22,33,0.45)]"
-        />
-        <div className="mt-4">
-          <StatusPill status={status} />
+    <div className="grid gap-6 text-[color:var(--foreground)] lg:grid-cols-[360px_1fr]">
+      <div className="wolf-card relative overflow-hidden p-6">
+        <div className="pointer-events-none absolute inset-x-6 top-4 h-28 rounded-[1.75rem] bg-[radial-gradient(circle_at_top,#74ff78_0%,rgba(12,16,24,0)_70%)] opacity-80" />
+        <div className="relative z-10 flex flex-col">
+          <div className="flex items-center justify-between">
+            <h3 className="text-lg font-semibold tracking-[0.08em] uppercase text-white/90">
+              {t("title")}
+            </h3>
+            <span className="wolf-pill bg-[rgba(123,255,120,0.12)] text-xs uppercase tracking-[0.3em] text-[color:var(--wolf-emerald)]">
+              HOWL Sync
+            </span>
+          </div>
+          <Image
+            src={qrUrl}
+            alt={t("qrAlt")}
+            width={256}
+            height={256}
+            className="mt-6 h-60 w-60 self-center rounded-[1.75rem] border border-[rgba(123,255,104,0.16)] bg-[rgba(14,18,27,0.85)] object-cover object-center p-4 shadow-[0_35px_90px_-60px_rgba(0,0,0,0.75)]"
+          />
+          <div className="mt-5">
+            <StatusPill status={status} />
+          </div>
+          <button
+            type="button"
+            className="mt-5 inline-flex items-center justify-center rounded-full bg-[linear-gradient(120deg,#74ff78,#3bcf5f)] px-5 py-3 text-sm font-semibold uppercase tracking-[0.22em] text-[#08120b] transition hover:brightness-110"
+          >
+            {t("cta")}
+          </button>
         </div>
-        <button
-          type="button"
-          className="mt-4 w-full rounded-xl bg-[#447bff] py-3 text-sm font-medium text-white transition hover:bg-[#5d8cff]"
-        >
-          {t("cta")}
-        </button>
       </div>
-      <div className="py-6">
-        <p className="text-base">{t("howItWorks.title")}</p>
-        <ol className="mt-3 space-y-2 text-sm text-[#44506b]">
+      <div className="wolf-card--muted px-8 py-7 text-[color:var(--foreground)]">
+        <p className="text-sm uppercase tracking-[0.32em] text-[color:var(--wolf-text-subtle)]">
+          {t("howItWorks.title")}
+        </p>
+        <ol className="mt-4 space-y-3 text-sm text-[color:var(--foreground)]/80">
           {steps.map((step) => (
             <li key={step}>{step}</li>
           ))}
         </ol>
-        <p className="mt-4 text-xs text-[#8894b3]">{t("footnote")}</p>
+        <p className="mt-5 text-xs text-[color:var(--wolf-text-subtle)]">
+          {t("footnote")}
+        </p>
       </div>
     </div>
   );

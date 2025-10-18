@@ -13,10 +13,14 @@ interface StatusPillProps {
 }
 
 const statusTone: Record<StatusPillProps["status"], string> = {
-  unverified: "bg-[#eef2ff] text-[#5e6a84] border-[#d1d7eb]",
-  pending: "bg-[#e0e7ff] text-[#2f3950] border-[#447bff]/50",
-  verified: "bg-[#447bff] text-white border-[#447bff]",
-  error: "bg-[#ffe4e4] text-[#a61b2a] border-[#ffb2b2]",
+  unverified:
+    "bg-transparent text-[color:var(--wolf-text-subtle)] border border-[color:var(--wolf-border)]",
+  pending:
+    "bg-[rgba(123,255,104,0.12)] border border-[color:var(--wolf-border-strong)] text-[color:var(--wolf-emerald)]",
+  verified:
+    "bg-[linear-gradient(115deg,#74ff78,#3bcf5f)] text-[color:var(--wolf-soft)] border border-[rgba(41,197,94,0.45)] shadow-[0_0_20px_rgba(115,255,140,0.35)]",
+  error:
+    "bg-[rgba(255,75,75,0.12)] text-[#ff8f94] border border-[rgba(255,99,99,0.4)]",
 };
 
 const statusIcon: Record<
@@ -34,11 +38,11 @@ export function StatusPill({ status }: StatusPillProps) {
   const Icon = statusIcon[status];
 
   return (
-    <span
-      className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm ${statusTone[status]}`}
-    >
+    <span className={`wolf-pill text-sm ${statusTone[status]}`}>
       <Icon
-        className={`h-4 w-4 ${status === "pending" ? "animate-spin" : ""}`}
+        className={`h-4 w-4 ${
+          status === "pending" ? "animate-spin" : ""
+        } text-current`}
         aria-hidden
       />
       {t(`statuses.${status}`)}

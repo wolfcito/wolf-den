@@ -13,9 +13,14 @@ export function VotingList() {
   }>;
 
   return (
-    <div className="space-y-6 text-[#0f1621]">
+    <div className="space-y-6 text-[color:var(--foreground)]">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h3 className="text-lg font-semibold">{t("title")}</h3>
+        <h3 className="text-lg font-semibold uppercase tracking-[0.2em] text-white/90">
+          {t("title")}
+        </h3>
+        <span className="wolf-pill bg-[rgba(123,255,120,0.12)] text-xs uppercase tracking-[0.26em] text-[color:var(--wolf-emerald)]">
+          Demo Day
+        </span>
       </div>
       <div className="space-y-3">
         {demos.map((demo) => {
@@ -23,22 +28,26 @@ export function VotingList() {
           return (
             <div
               key={demo.id}
-              className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[#e2e6f5] bg-white px-5 py-4 shadow-[0_32px_85px_-65px_rgba(15,22,33,0.55)]"
+              className="wolf-card flex flex-wrap items-center justify-between gap-4 rounded-[1.9rem] border border-[rgba(123,255,104,0.22)] px-5 py-4"
             >
               <div>
-                <p className="flex items-center gap-2 text-sm uppercase tracking-[0.3em] text-[#8894b3]">
-                  <Icon className="h-4 w-4" aria-hidden />
+                <p className="flex items-center gap-2 text-sm uppercase tracking-[0.3em] text-[color:var(--wolf-text-subtle)]">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[rgba(123,255,120,0.18)] text-[color:var(--wolf-emerald)]">
+                    <Icon className="h-4 w-4" aria-hidden />
+                  </span>
                   {demo.team}
                 </p>
-                <p className="text-lg font-semibold">{demo.name}</p>
+                <p className="mt-2 text-lg font-semibold text-white/90">
+                  {demo.name}
+                </p>
               </div>
               <button
                 type="button"
                 className={`rounded-xl px-4 py-2 text-sm font-medium transition
                   ${
                     demo.status === "open"
-                      ? "bg-[#447bff] text-white hover:bg-[#5d8cff]"
-                      : "cursor-not-allowed bg-[#e3e6f2] text-[#9aa5c3]"
+                      ? "rounded-full bg-[linear-gradient(120deg,#74ff78,#3bcf5f)] text-[#08120b] hover:brightness-110"
+                      : "rounded-full bg-[rgba(123,255,120,0.08)] text-[color:var(--wolf-text-subtle)]"
                   }
                 `}
                 disabled={demo.status !== "open"}
@@ -49,7 +58,9 @@ export function VotingList() {
           );
         })}
       </div>
-      <p className="text-xs text-[#44506b]">{t("footnote")}</p>
+      <p className="text-xs text-[color:var(--wolf-text-subtle)]">
+        {t("footnote")}
+      </p>
     </div>
   );
 }

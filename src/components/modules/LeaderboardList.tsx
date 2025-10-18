@@ -9,22 +9,26 @@ export function LeaderboardList() {
   }>;
 
   return (
-    <div>
-      <h3 className="text-lg font-semibold">{t("title")}</h3>
-      <p className="text-sm text-[#44506b]">{t("subtitle")}</p>
+    <div className="text-[color:var(--foreground)]">
+      <h3 className="text-lg font-semibold uppercase tracking-[0.18em] text-white/90">
+        {t("title")}
+      </h3>
+      <p className="mt-1 text-sm text-[color:var(--wolf-text-subtle)]">
+        {t("subtitle")}
+      </p>
       <div className="mt-4 space-y-3">
         {leaderboard.map((entry) => (
           <div
             key={entry.team}
-            className="flex items-center justify-between rounded-2xl border border-[#d1d7eb] bg-[#eef2ff] px-4 py-3"
+            className="wolf-card--muted flex items-center justify-between rounded-[1.75rem] border border-[rgba(123,255,104,0.14)] px-5 py-4"
           >
             <div className="flex items-center gap-3 text-sm">
-              <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#447bff]/15 text-[#447bff]">
+              <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-[rgba(123,255,120,0.18)] text-[color:var(--wolf-emerald)]">
                 #{entry.position}
               </span>
-              <p className="font-medium">{entry.team}</p>
+              <p className="font-medium text-white/85">{entry.team}</p>
             </div>
-            <span className="text-sm text-[#44506b]">
+            <span className="text-sm text-[color:var(--wolf-text-subtle)]">
               {t("points", { count: entry.points })}
             </span>
           </div>

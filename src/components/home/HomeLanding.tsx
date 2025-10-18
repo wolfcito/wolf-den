@@ -26,77 +26,79 @@ export default function HomeLanding() {
   }>;
 
   return (
-    <div className="relative overflow-hidden bg-[#f2f4fb] text-[#0f1621]">
-      <div className="pointer-events-none absolute -top-40 -left-32 h-[560px] w-[560px] rounded-full bg-[#ffffff] blur-[140px]" />
-      <div className="pointer-events-none absolute top-20 -right-24 h-[520px] w-[520px] rounded-full bg-[#dfe5fb] blur-[180px]" />
+    <div className="relative overflow-hidden text-[color:var(--foreground)]">
+      <div className="pointer-events-none absolute -top-60 -left-24 h-[620px] w-[620px] rounded-full bg-[rgba(116,255,120,0.18)] blur-[180px]" />
+      <div className="pointer-events-none absolute top-32 -right-32 h-[520px] w-[520px] rounded-full bg-[rgba(34,51,27,0.6)] blur-[220px]" />
 
-      <main className="mx-auto flex min-h-screen max-w-6xl flex-col gap-24 px-6 py-16 sm:px-10 lg:px-16">
+      <main className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col gap-24 px-6 py-16 sm:px-10 lg:px-16">
         <section className="relative grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div className="space-y-8">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#447bff] shadow-[0_15px_40px_-30px_rgba(16,22,33,0.6)]">
+            <span className="wolf-pill bg-[rgba(123,255,120,0.18)] text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--wolf-emerald)]">
               {t("hero.tagline")}
             </span>
-            <h1 className="text-4xl font-semibold uppercase leading-tight text-[#0b1320] sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-semibold uppercase leading-tight text-white sm:text-5xl lg:text-6xl">
               {t("hero.title")}
             </h1>
-            <p className="text-xs uppercase tracking-[0.4em] text-[#8894b3]">
+            <p className="text-xs uppercase tracking-[0.38em] text-[color:var(--wolf-text-subtle)]">
               {t("hero.subtitle")}
             </p>
-            <p className="max-w-[42ch] text-lg text-[#2f3950]">
+            <p className="max-w-[42ch] text-lg text-white/75">
               {t("hero.description")}
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
                 href={t("hero.primaryCta.href")}
-                className="rounded-full bg-[#0b1320] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#f2f4fb] transition hover:bg-[#131d30]"
+                className="rounded-full bg-[linear-gradient(120deg,#74ff78,#3bcf5f)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#08120b] transition hover:brightness-110"
               >
                 {t("hero.primaryCta.label")}
               </Link>
               <Link
                 href={t("hero.secondaryCta.href")}
-                className="rounded-full border border-[#d1d7eb] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#0f1621] transition hover:border-[#447bff]"
+                className="rounded-full border border-[rgba(123,255,104,0.22)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[color:var(--foreground)] transition hover:border-[rgba(123,255,104,0.38)]"
               >
                 {t("hero.secondaryCta.label")}
               </Link>
             </div>
           </div>
-          <div className="relative h-full min-h-[340px] rounded-[2.5rem] border border-[#e2e6f5] bg-white p-10 shadow-[0_40px_90px_-60px_rgba(15,22,33,0.55)]">
-            <div className="absolute inset-x-10 top-10 h-12 rounded-full bg-[#edf0fb]" />
+          <div className="wolf-card relative h-full min-h-[360px] overflow-hidden p-10">
+            <div className="pointer-events-none absolute inset-x-10 top-10 h-20 rounded-full bg-[radial-gradient(circle_at_top,#74ff78_0%,rgba(9,13,19,0)_75%)]" />
             <div className="relative z-10 flex h-full flex-col justify-between gap-8">
-              <p className="text-xs uppercase tracking-[0.4em] text-[#7f87a3]">
+              <p className="text-xs uppercase tracking-[0.4em] text-[color:var(--wolf-text-subtle)]">
                 {t("hero.visionLabel")}
               </p>
-              <p className="text-2xl font-semibold text-[#0f1621]">
+              <p className="text-2xl font-semibold text-white">
                 {t("hero.visionQuote")}
               </p>
-              <div className="text-xs uppercase tracking-[0.3em] text-[#9ca4c3]">
+              <div className="text-xs uppercase tracking-[0.32em] text-[color:var(--wolf-text-subtle)]">
                 {t("hero.visionSource")}
               </div>
             </div>
           </div>
         </section>
 
-        <section className="rounded-3xl border border-[#e2e6f5] bg-white/90 p-10 text-[#0f1621] shadow-[0_32px_85px_-65px_rgba(15,22,33,0.55)]">
+        <section className="wolf-card rounded-[2.5rem] border border-[rgba(123,255,104,0.24)] p-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-[36ch]">
-              <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
+              <p className="text-xs uppercase tracking-[0.32em] text-[color:var(--wolf-text-subtle)]">
                 {t("metrics.label")}
               </p>
-              <h2 className="mt-2 text-3xl font-semibold uppercase text-[#0b1320]">
+              <h2 className="mt-2 text-3xl font-semibold uppercase text-white">
                 {t("metrics.title")}
               </h2>
-              <p className="mt-2 text-sm text-[#44506b]">
+              <p className="mt-2 text-sm text-white/70">
                 {t("metrics.description")}
               </p>
             </div>
-            <div className="grid w-full grid-cols-2 gap-4 text-center text-[#0f1621] sm:grid-cols-4">
+            <div className="grid w-full grid-cols-2 gap-4 text-center sm:grid-cols-4">
               {metrics.map((metric) => (
                 <div
                   key={metric.label}
-                  className="rounded-2xl border border-[#d1d7eb] bg-[#eef2ff] px-4 py-3 shadow-[0_20px_55px_-50px_rgba(15,22,33,0.45)]"
+                  className="wolf-card--muted rounded-[1.6rem] border border-[rgba(123,255,104,0.14)] px-4 py-4 shadow-[0_20px_55px_-45px_rgba(0,0,0,0.6)]"
                 >
-                  <p className="text-2xl font-semibold">{metric.value}</p>
-                  <p className="mt-1 text-xs uppercase tracking-[0.2em] text-[#8894b3]">
+                  <p className="text-2xl font-semibold text-white/90">
+                    {metric.value}
+                  </p>
+                  <p className="mt-1 text-xs uppercase tracking-[0.22em] text-[color:var(--wolf-text-subtle)]">
                     {metric.label}
                   </p>
                 </div>
@@ -108,14 +110,14 @@ export default function HomeLanding() {
         <section className="space-y-14">
           <header className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-[#447bff]">
+              <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--wolf-emerald)]">
                 {t("pillars.label")}
               </p>
-              <h2 className="mt-2 text-3xl font-semibold uppercase text-[#0b1320]">
+              <h2 className="mt-2 text-3xl font-semibold uppercase text-white">
                 {t("pillars.title")}
               </h2>
             </div>
-            <p className="max-w-[36ch] text-sm text-[#44506b]">
+            <p className="max-w-[36ch] text-sm text-white/70">
               {t("pillars.description")}
             </p>
           </header>
@@ -123,12 +125,12 @@ export default function HomeLanding() {
             {strategicPillars.map((pillar) => (
               <article
                 key={pillar.title}
-                className="rounded-2xl border border-[#e2e6f5] bg-white p-6 shadow-[0_26px_80px_-60px_rgba(15,22,33,0.45)]"
+                className="wolf-card--muted rounded-[1.9rem] border border-[rgba(123,255,104,0.12)] p-6 shadow-[0_26px_80px_-60px_rgba(0,0,0,0.65)]"
               >
-                <h3 className="text-xl font-semibold text-[#0b1320]">
+                <h3 className="text-xl font-semibold text-white">
                   {pillar.title}
                 </h3>
-                <p className="mt-3 text-sm text-[#44506b]">
+                <p className="mt-3 text-sm text-white/75">
                   {pillar.description}
                 </p>
               </article>
@@ -136,37 +138,37 @@ export default function HomeLanding() {
           </div>
         </section>
 
-        <section className="space-y-16 rounded-3xl border border-[#e2e6f5] bg-white/80 p-10 shadow-[0_32px_85px_-65px_rgba(15,22,33,0.55)]">
+        <section className="wolf-card rounded-[2.5rem] border border-[rgba(123,255,104,0.24)] p-10">
           <header className="flex flex-wrap items-center justify-between gap-6">
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
+              <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--wolf-text-subtle)]">
                 {t("modulesLabel")}
               </p>
-              <h2 className="mt-2 text-3xl font-semibold uppercase text-[#0b1320]">
+              <h2 className="mt-2 text-3xl font-semibold uppercase text-white">
                 {t("modulesTitle")}
               </h2>
             </div>
-            <p className="max-w-[38ch] text-sm text-[#44506b]">
+            <p className="max-w-[38ch] text-sm text-white/70">
               {t("modulesDescription")}
             </p>
           </header>
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {modules.map((module) => (
               <article
                 key={module.id}
-                className="flex h-full flex-col justify-between rounded-2xl border border-[#d1d7eb] bg-white p-6 shadow-[0_30px_90px_-70px_rgba(15,22,33,0.55)] transition hover:-translate-y-1 hover:border-[#447bff]/60 hover:bg-[#eef2ff]"
+                className="wolf-card--muted flex h-full flex-col justify-between rounded-[1.9rem] border border-[rgba(123,255,104,0.16)] p-6 transition hover:-translate-y-1 hover:border-[rgba(123,255,104,0.32)] hover:shadow-[0_30px_90px_-60px_rgba(123,255,120,0.35)]"
               >
                 <div>
-                  <h3 className="text-lg font-semibold text-[#0b1320]">
+                  <h3 className="text-lg font-semibold text-white">
                     {module.title}
                   </h3>
-                  <p className="mt-3 text-sm text-[#44506b]">
+                  <p className="mt-3 text-sm text-white/70">
                     {module.description}
                   </p>
                 </div>
                 <Link
                   href={module.cta.href}
-                  className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#447bff] transition hover:text-[#5d8cff]"
+                  className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-[color:var(--wolf-emerald)] transition hover:text-white"
                 >
                   {module.cta.label}
                 </Link>
@@ -177,10 +179,10 @@ export default function HomeLanding() {
 
         <section className="space-y-10">
           <header>
-            <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
+            <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--wolf-text-subtle)]">
               {t("flows.label")}
             </p>
-            <h2 className="mt-2 text-3xl font-semibold uppercase text-[#0b1320]">
+            <h2 className="mt-2 text-3xl font-semibold uppercase text-white">
               {t("flows.title")}
             </h2>
           </header>
@@ -188,14 +190,12 @@ export default function HomeLanding() {
             {flows.map((flow) => (
               <article
                 key={flow.title}
-                className="rounded-2xl border border-[#e2e6f5] bg-white p-6 shadow-[0_30px_85px_-65px_rgba(15,22,33,0.55)]"
+                className="wolf-card--muted rounded-[1.9rem] border border-[rgba(123,255,104,0.14)] p-6 shadow-[0_30px_85px_-65px_rgba(0,0,0,0.6)]"
               >
-                <h3 className="text-xl font-semibold text-[#0b1320]">
+                <h3 className="text-xl font-semibold text-white">
                   {flow.title}
                 </h3>
-                <p className="mt-3 text-sm text-[#44506b]">
-                  {flow.description}
-                </p>
+                <p className="mt-3 text-sm text-white/75">{flow.description}</p>
               </article>
             ))}
           </div>
