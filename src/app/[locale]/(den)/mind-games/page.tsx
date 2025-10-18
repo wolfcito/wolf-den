@@ -45,28 +45,28 @@ export default function MindGamesPage() {
   };
 
   return (
-    <div className="space-y-6 text-[#0f1621]">
-      <div className="rounded-2xl y-6 shadow-[0_35px_90px_-70px_rgba(15,22,33,0.55)]">
-        <p className="font-medium text-[#0f1621]">{t("intro.title")}</p>
-        <p className="mt-1 text-sm text-[#44506b]">{t("intro.description")}</p>
+    <div className="space-y-8 text-[color:var(--foreground)]">
+      <div className="wolf-card--muted rounded-[1.9rem] border border-[rgba(123,255,104,0.16)] px-6 py-6 text-white/80">
+        <p className="font-medium text-white">{t("intro.title")}</p>
+        <p className="mt-2 text-sm text-white/70">{t("intro.description")}</p>
       </div>
 
       <div className="flex flex-col gap-6 lg:flex-row">
-        <section className="flex-1 space-y-6 rounded-2xl border border-[#e2e6f5] bg-white p-6 shadow-[0_40px_100px_-70px_rgba(15,22,33,0.55)]">
-          <div className="flex items-center justify-between rounded-2xl border border-[#d1d7eb] bg-[#eef2ff] px-4 py-4">
+        <section className="wolf-card flex-1 space-y-6 rounded-[2rem] border border-[rgba(123,255,104,0.24)] p-6 shadow-[0_45px_120px_-80px_rgba(0,0,0,0.75)]">
+          <div className="flex items-center justify-between rounded-[1.5rem] border border-[rgba(123,255,104,0.24)] bg-[rgba(13,13,13,0.6)] px-4 py-4">
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
+              <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--wolf-text-subtle)]">
                 {t("summary.balance")}
               </p>
-              <p className="text-2xl font-semibold text-[#0f1621]">
+              <p className="text-2xl font-semibold text-white">
                 € {balance.toLocaleString()}
               </p>
             </div>
             <div className="text-right">
-              <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
+              <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--wolf-text-subtle)]">
                 {t("summary.profit")}
               </p>
-              <p className="text-lg font-semibold text-[#0f1621]">
+              <p className="text-lg font-semibold text-[color:var(--wolf-emerald)]">
                 € {profit.toFixed(2)}
               </p>
             </div>
@@ -82,13 +82,13 @@ export default function MindGamesPage() {
                   key={id}
                   type="button"
                   onClick={() => handleCellClick(index)}
-                  className={`flex aspect-square items-center justify-center rounded-lg border-2 text-2xl transition-all duration-200
+                  className={`flex aspect-square items-center justify-center rounded-xl border-2 text-2xl transition-all duration-200
                     ${
                       isSelected
                         ? isBomb
-                          ? "bg-[#ffe4e4] border-[#ffb2b2] text-[#a61b2a]"
-                          : "bg-[#447bff] border-[#447bff] text-white"
-                        : "border-[#d1d7eb] bg-white hover:border-[#447bff] hover:bg-[#eef2ff]"
+                          ? "border-[rgba(255,109,109,0.45)] bg-[rgba(255,92,92,0.14)] text-[#ff969e]"
+                          : "border-[rgba(123,255,104,0.45)] bg-[rgba(123,255,120,0.18)] text-[color:var(--wolf-emerald)] shadow-[0_12px_35px_-25px_rgba(123,255,120,0.6)]"
+                        : "border-[rgba(123,255,104,0.08)] bg-[rgba(13,13,13,0.6)] text-white/80 hover:border-[rgba(123,255,104,0.18)]"
                     }
                   `}
                 >
@@ -96,7 +96,7 @@ export default function MindGamesPage() {
                     (isBomb ? (
                       <Skull className="h-6 w-6" aria-hidden />
                     ) : (
-                      <Gem className="h-6 w-6" aria-hidden />
+                      <Gem className="h-6 w-6 text-inherit" aria-hidden />
                     ))}
                 </button>
               );
@@ -104,11 +104,11 @@ export default function MindGamesPage() {
           </div>
         </section>
 
-        <aside className="w-full max-w-sm space-y-4 rounded-2xl border border-[#e2e6f5] bg-white p-6 shadow-[0_35px_90px_-70px_rgba(15,22,33,0.55)]">
+        <aside className="wolf-card w-full max-w-sm space-y-4 rounded-[2rem] border border-[rgba(123,255,104,0.24)] p-6 shadow-[0_40px_110px_-80px_rgba(0,0,0,0.75)]">
           <div className="space-y-2">
             <label
               htmlFor={mineSelectId}
-              className="text-xs uppercase tracking-[0.3em] text-[#8894b3]"
+              className="text-xs uppercase tracking-[0.3em] text-[color:var(--wolf-text-subtle)]"
             >
               {t("controls.mines")}
             </label>
@@ -116,7 +116,7 @@ export default function MindGamesPage() {
               id={mineSelectId}
               value={mineCount}
               onChange={(event) => setMineCount(Number(event.target.value))}
-              className="w-full rounded-xl border border-[#d1d7eb] bg-white px-3 py-2 text-[#0f1621]"
+              className="w-full rounded-xl border border-[rgba(123,255,104,0.18)] bg-[rgba(13,13,13,0.65)] px-3 py-2 text-white/85 focus:border-[rgba(123,255,104,0.35)] focus:outline-none"
             >
               {[1, 2, 3, 24].map((option) => (
                 <option key={option} value={option}>
@@ -129,7 +129,7 @@ export default function MindGamesPage() {
           <div className="space-y-2">
             <label
               htmlFor={betInputId}
-              className="text-xs uppercase tracking-[0.3em] text-[#8894b3]"
+              className="text-xs uppercase tracking-[0.3em] text-[color:var(--wolf-text-subtle)]"
             >
               {t("controls.bet")}
             </label>
@@ -138,7 +138,7 @@ export default function MindGamesPage() {
               type="number"
               value={betAmount}
               onChange={(event) => setBetAmount(Number(event.target.value))}
-              className="w-full rounded-xl border border-[#d1d7eb] bg-white px-3 py-2 text-[#0f1621]"
+              className="w-full rounded-xl border border-[rgba(123,255,104,0.18)] bg-[rgba(13,13,13,0.65)] px-3 py-2 text-white/85 focus:border-[rgba(123,255,104,0.35)] focus:outline-none"
             />
           </div>
 
@@ -146,7 +146,7 @@ export default function MindGamesPage() {
             <button
               type="button"
               onClick={startGame}
-              className="flex-1 rounded-xl bg-[#447bff] px-4 py-2 font-medium text-white transition hover:bg-[#5d8cff]"
+              className="flex-1 rounded-full bg-[linear-gradient(120deg,#74ff78,#3bcf5f)] px-4 py-2 font-semibold uppercase tracking-[0.2em] text-[#08120b] transition hover:brightness-110"
             >
               {t("controls.start")}
             </button>
@@ -154,7 +154,11 @@ export default function MindGamesPage() {
               type="button"
               onClick={cashout}
               disabled={!isGameActive}
-              className="flex-1 rounded-xl bg-[#0b1320] px-4 py-2 font-medium text-white transition hover:bg-[#131d30] disabled:cursor-not-allowed disabled:bg-[#e3e6f2] disabled:text-[#9aa5c3]"
+              className={`flex-1 rounded-full px-4 py-2 font-semibold uppercase tracking-[0.2em] transition ${
+                isGameActive
+                  ? "bg-[rgba(123,255,120,0.18)] text-[color:var(--wolf-emerald)] hover:bg-[rgba(123,255,120,0.28)]"
+                  : "cursor-not-allowed bg-[rgba(255,255,255,0.06)] text-[color:var(--wolf-text-subtle)]"
+              }`}
             >
               {t("controls.cashout")}
             </button>

@@ -11,42 +11,44 @@ export default function SettingsPage() {
   }>;
 
   const toneClass: Record<(typeof privacyItems)[number]["tone"], string> = {
-    cyan: "bg-wolf-cyan/20 text-wolf-cyan",
-    violet: "bg-wolf-violet/20 text-wolf-violet/80",
-    neutral: "bg-white/10 text-wolf-bone/70",
+    cyan: "bg-[rgba(123,255,120,0.18)] text-[color:var(--wolf-emerald)] border border-[rgba(123,255,104,0.32)]",
+    violet:
+      "bg-[rgba(147,141,255,0.18)] text-[#c1c4ff] border border-[rgba(147,141,255,0.35)]",
+    neutral:
+      "bg-[rgba(255,255,255,0.08)] text-white/70 border border-[rgba(255,255,255,0.12)]",
   };
 
   return (
-    <div className="space-y-6">
-      <section className="rounded-2xl border border-white/10 bg-wolf-panel/40 p-6">
-        <h3 className="text-lg font-semibold text-wolf-bone">
+    <div className="space-y-6 text-[color:var(--foreground)]">
+      <section className="wolf-card--muted rounded-[1.9rem] border border-[rgba(123,255,104,0.16)] p-6">
+        <h3 className="text-lg font-semibold text-white">
           {t("appearance.title")}
         </h3>
-        <p className="mt-2 text-sm text-wolf-bone/70">
+        <p className="mt-2 text-sm text-white/70">
           {t("appearance.description")}
         </p>
         <div className="mt-4">
           <ThemeToggle />
         </div>
       </section>
-      <section className="rounded-2xl border border-white/10 bg-wolf-panel/40 p-6">
-        <h3 className="text-lg font-semibold text-wolf-bone">
+      <section className="wolf-card--muted rounded-[1.9rem] border border-[rgba(123,255,104,0.16)] p-6">
+        <h3 className="text-lg font-semibold text-white">
           {t("language.title")}
         </h3>
-        <p className="mt-2 text-sm text-wolf-bone/70">
+        <p className="mt-2 text-sm text-white/70">
           {t("language.description")}
         </p>
         <LanguageSwitcher className="mt-3" />
       </section>
-      <section className="rounded-2xl border border-white/10 bg-wolf-panel/40 p-6">
-        <h3 className="text-lg font-semibold text-wolf-bone">
+      <section className="wolf-card--muted rounded-[1.9rem] border border-[rgba(123,255,104,0.16)] p-6">
+        <h3 className="text-lg font-semibold text-white">
           {t("privacy.title")}
         </h3>
-        <ul className="mt-3 space-y-2 text-sm text-wolf-bone/70">
+        <ul className="mt-3 space-y-2 text-sm text-white/75">
           {privacyItems.map((item) => (
             <li
               key={item.label}
-              className="flex items-center justify-between rounded-xl bg-white/5 px-4 py-3"
+              className="flex items-center justify-between rounded-xl border border-[rgba(123,255,104,0.12)] bg-[rgba(13,13,13,0.6)] px-4 py-3"
             >
               <span>{item.label}</span>
               <span

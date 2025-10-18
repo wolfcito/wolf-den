@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #06080d;
+  --background: #0d0d0d;
   --foreground: #f4f8ec;
-  --wolf-panel: rgba(16, 19, 27, 0.92);
-  --wolf-panel-muted: rgba(20, 24, 33, 0.75);
-  --wolf-soft: #11161f;
-  --wolf-surface: rgba(12, 16, 24, 0.95);
+  --wolf-panel: rgba(13, 13, 13, 0.94);
+  --wolf-panel-muted: rgba(13, 13, 13, 0.82);
+  --wolf-soft: #0d0d0d;
+  --wolf-surface: rgba(13, 13, 13, 0.96);
   --wolf-border: rgba(123, 255, 104, 0.16);
   --wolf-border-strong: rgba(123, 255, 104, 0.28);
   --wolf-glow: rgba(123, 255, 104, 0.4);
@@ -34,7 +34,7 @@
 }
 
 [data-theme="dark"] {
-  --background: #04060a;
+  --background: #0d0d0d;
   --foreground: #f4f8ec;
 }
 
@@ -56,8 +56,8 @@ body {
   background:
     linear-gradient(
       160deg,
-      rgba(20, 26, 36, 0.95) 0%,
-      rgba(10, 13, 19, 0.95) 100%
+      rgba(13, 13, 13, 0.98) 0%,
+      rgba(13, 13, 13, 0.92) 100%
     ), var(--wolf-surface);
   border: 1px solid var(--wolf-border);
   border-radius: var(--wolf-radius-2xl);
@@ -69,8 +69,8 @@ body {
 .wolf-card--muted {
   background: linear-gradient(
     180deg,
-    rgba(17, 22, 31, 0.92) 0%,
-    rgba(9, 12, 18, 0.92) 100%
+    rgba(13, 13, 13, 0.88) 0%,
+    rgba(13, 13, 13, 0.82) 100%
   );
   border: 1px solid rgba(123, 255, 104, 0.12);
   border-radius: var(--wolf-radius-xl);
@@ -118,8 +118,8 @@ h5,
 .wolf-glass {
   background: linear-gradient(
     150deg,
-    rgba(16, 23, 29, 0.8),
-    rgba(10, 14, 22, 0.8)
+    rgba(13, 13, 13, 0.82),
+    rgba(13, 13, 13, 0.76)
   );
   border: 1px solid rgba(123, 255, 104, 0.1);
   border-radius: var(--wolf-radius-xl);

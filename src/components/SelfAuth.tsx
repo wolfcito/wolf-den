@@ -145,37 +145,37 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4 rounded-2xl border border-[#d1d7eb] bg-[#f5f7ff] py-8 text-center text-[#0f1621] shadow-[0_25px_70px_-60px_rgba(15,22,33,0.45)]">
+    <div className="wolf-card flex flex-col items-center justify-center gap-5 rounded-[1.9rem] border border-[rgba(123,255,104,0.22)] px-6 py-8 text-center text-[color:var(--foreground)]">
       {missingConfig.length > 0 ? (
         <div className="space-y-3">
           <div className="text-4xl">⚠️</div>
-          <h3 className="text-lg font-semibold text-[#0b1320]">
+          <h3 className="text-lg font-semibold text-white">
             {t("error.missingConfig.title")}
           </h3>
-          <p className="text-sm text-[#44506b]">
+          <p className="text-sm text-white/70">
             {t("error.missingConfig.body", {
               vars: missingConfig.join(", "),
             })}
           </p>
-          <p className="text-xs text-[#8894b3]">
+          <p className="text-xs text-[color:var(--wolf-text-subtle)]">
             {t("error.missingConfig.hint")}
           </p>
         </div>
       ) : isVerified ? (
         <div>
           <div className="mb-2 text-4xl">✅</div>
-          <h3 className="text-lg font-semibold text-[#0b1320]">
+          <h3 className="text-lg font-semibold text-white">
             {t("success.title")}
           </h3>
-          <p className="mt-2 text-sm text-[#44506b]">{t("success.body")}</p>
+          <p className="mt-2 text-sm text-white/70">{t("success.body")}</p>
         </div>
       ) : (
         <div className="space-y-4">
           <div>
-            <h2 className="text-xl font-semibold text-[#0b1320]">
+            <h2 className="text-xl font-semibold text-white">
               {t("intro.title")}
             </h2>
-            <p className="mt-2 text-sm text-[#44506b]">{t("intro.body")}</p>
+            <p className="mt-2 text-sm text-white/70">{t("intro.body")}</p>
           </div>
           {selfApp ? (
             Wrapper ? (
@@ -185,14 +185,18 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
                 onError={handleError}
               />
             ) : qrWrapperError ? (
-              <p className="text-sm text-[#a61b2a]">
+              <p className="text-sm text-[#ff8f94]">
                 {t("error.missingWrapper")}
               </p>
             ) : (
-              <p className="text-sm text-[#9aa5c3]">{t("intro.loading")}</p>
+              <p className="text-sm text-[color:var(--wolf-text-subtle)]">
+                {t("intro.loading")}
+              </p>
             )
           ) : (
-            <p className="text-sm text-[#9aa5c3]">{t("intro.loading")}</p>
+            <p className="text-sm text-[color:var(--wolf-text-subtle)]">
+              {t("intro.loading")}
+            </p>
           )}
         </div>
       )}

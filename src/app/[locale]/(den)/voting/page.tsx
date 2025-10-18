@@ -5,10 +5,10 @@ export default function VotingPage() {
   const t = useTranslations("VotingPage");
 
   return (
-    <div className="space-y-6">
-      <div className="rounded-2xl border border-white/10 bg-wolf-panel/40 py-6 text-sm text-wolf-bone/70">
-        <p className="font-medium text-wolf-bone">{t("title")}</p>
-        <p className="mt-1">{t("description")}</p>
+    <div className="space-y-6 text-[color:var(--foreground)]">
+      <div className="wolf-card--muted rounded-[1.9rem] border border-[rgba(123,255,104,0.16)] px-6 py-6 text-sm text-white/80">
+        <p className="text-lg font-semibold text-white">{t("title")}</p>
+        <p className="mt-2 text-sm text-white/70">{t("description")}</p>
       </div>
       <VotingList />
     </div>

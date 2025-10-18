@@ -68,7 +68,7 @@ export function SidebarNav() {
     <div className="flex h-full flex-col justify-between gap-8 p-5 text-[color:var(--foreground)]">
       <div className="space-y-8">
         <div className="wolf-card--muted flex items-center gap-3 rounded-[1.6rem] border border-[rgba(123,255,104,0.16)] px-4 py-4">
-          <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-[rgba(123,255,104,0.24)] bg-[rgba(15,20,28,0.85)] shadow-[0_18px_40px_-22px_rgba(123,255,120,0.35)]">
+          <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-[rgba(123,255,104,0.24)] bg-[rgba(13,13,13,0.85)] shadow-[0_18px_40px_-22px_rgba(123,255,120,0.35)]">
             <Image
               src="/wolf-den-bn.png"
               alt={t("branding.badgeAlt")}
@@ -99,7 +99,7 @@ export function SidebarNav() {
                 className={`group flex w-full items-center justify-between rounded-full border px-4 py-3 text-left transition ${
                   openSection === section.key
                     ? "border-[rgba(123,255,104,0.45)] bg-[rgba(123,255,120,0.15)] text-white shadow-[0_18px_45px_-28px_rgba(123,255,120,0.45)]"
-                    : "border-[rgba(123,255,104,0.12)] bg-[rgba(15,20,28,0.6)] text-[color:var(--wolf-text-subtle)] hover:border-[rgba(123,255,104,0.2)] hover:text-white"
+                    : "border-[rgba(123,255,104,0.12)] bg-[rgba(13,13,13,0.6)] text-[color:var(--wolf-text-subtle)] hover:border-[rgba(123,255,104,0.2)] hover:text-white"
                 }`}
               >
                 <span className="flex items-center gap-3">
@@ -151,7 +151,7 @@ export function SidebarNav() {
                         className={`group relative flex items-center gap-4 rounded-full border px-4 py-3 pl-5 text-sm transition-all duration-150 ${
                           isActive
                             ? "border-[rgba(123,255,104,0.4)] bg-[rgba(123,255,120,0.14)] text-white shadow-[0_18px_42px_-28px_rgba(123,255,120,0.45)]"
-                            : "border-[rgba(123,255,104,0.08)] bg-[rgba(15,20,28,0.6)] text-[color:var(--wolf-text-subtle)] hover:border-[rgba(123,255,104,0.18)] hover:text-white"
+                            : "border-[rgba(123,255,104,0.08)] bg-[rgba(13,13,13,0.6)] text-[color:var(--wolf-text-subtle)] hover:border-[rgba(123,255,104,0.18)] hover:text-white"
                         }`}
                       >
                         <span

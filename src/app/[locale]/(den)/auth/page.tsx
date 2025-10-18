@@ -6,35 +6,27 @@ export default function AuthPage() {
   const tips = t.raw("tips") as string[];
 
   return (
-    <div className="space-y-6 text-[#0f1621]">
-      <section className="rounded-2xl">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
-              {t("hero.label")}
-            </p>
-            <p className="mt-2 max-w-[52ch] text-sm text-[#44506b]">
-              {t("hero.description")}
-            </p>
-          </div>
-        </div>
+    <div className="space-y-8 text-[color:var(--foreground)]">
+      <section className="wolf-card--muted rounded-[1.9rem] border border-[rgba(123,255,104,0.18)] px-6 py-6">
+        <p className="text-xs uppercase tracking-[0.32em] text-[color:var(--wolf-text-subtle)]">
+          {t("hero.label")}
+        </p>
+        <p className="mt-3 max-w-[52ch] text-sm text-white/75">
+          {t("hero.description")}
+        </p>
       </section>
 
-      <section>
-        <div className="grid lg:items-center">
-          <SelfAuth />
-          <div className="space-y-6">
-            <div className="rounded-2xl py-4 mb-2 text-sm text-[#0f1621]">
-              <p className="text-xs uppercase tracking-[0.3em] text-[#8894b3]">
-                {t("tipsTitle")}
-              </p>
-              <ul className="mt-2 space-y-1 text-sm text-[#44506b]">
-                {tips.map((tip) => (
-                  <li key={tip}>{tip}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
+      <section className="grid gap-6 lg:grid-cols-[minmax(0,420px)_1fr] lg:items-start">
+        <SelfAuth />
+        <div className="wolf-card--muted rounded-[1.9rem] border border-[rgba(123,255,104,0.16)] px-6 py-6 text-sm text-white/75">
+          <p className="text-xs uppercase tracking-[0.32em] text-[color:var(--wolf-text-subtle)]">
+            {t("tipsTitle")}
+          </p>
+          <ul className="mt-3 space-y-2">
+            {tips.map((tip) => (
+              <li key={tip}>{tip}</li>
+            ))}
+          </ul>
         </div>
       </section>
     </div>
