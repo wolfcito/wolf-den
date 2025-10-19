@@ -4,7 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "flattenBase": "npx hardhat flatten ./contracts/Spray.sol  > out/SprayFlatten.sol"
+    "flatten": "mkdir -p out && hardhat flatten ./contracts/Spray.sol > out/SprayFlatten.sol",
+    "deploy:localhost": "hardhat run scripts/Spray.ts --network localhost",
+    "deploy:alfajores": "hardhat run scripts/Spray.ts --network alfajores",
+    "deploy:celo": "hardhat run scripts/Spray.ts --network celo",
+    "verify:alfajores": "hardhat verify --network alfajores",
+    "verify:celo": "hardhat verify --network celo"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "2.0.0",

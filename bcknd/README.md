@@ -35,7 +35,12 @@ function disperseToken(
 
 ### Available Scripts
 
-- `pnpm flattenBase`: Flattens the Spray contract
+- `pnpm flattenBase`: Flattens the Spray contract into `out/SprayFlatten.sol`
+- `pnpm run deploy:localhost`: Deploys `Spray.ts` against a local node (`localhost` network)
+- `pnpm run deploy:alfajores`: Deploys `Spray.ts` to Celo Alfajores (requires `CELO_PRIVATE_KEY`)
+- `pnpm run deploy:celo`: Deploys `Spray.ts` to Celo mainnet (requires `CELO_PRIVATE_KEY`)
+- `pnpm run verify:alfajores -- <address> [constructor args...]`: Verifies a deployment on Celo Alfajores
+- `pnpm run verify:celo -- <address> [constructor args...]`: Verifies a deployment on Celo mainnet
 
 ### Testing
 
@@ -59,7 +64,32 @@ CELO_PRIVATE_KEY=0x...
 CELOSCAN_API_KEY=...
 ```
 
-Leave the values empty to compile locally without injecting live accounts.
+Leave the values empty to compile locally without injecting live accounts. Populate them when deploying or verifying live networks.
+
+### Deployment
+
+Deploy the Spray contract using the bundled Hardhat scripts:
+
+```bash
+pnpm run deploy:alfajores
+# or
+pnpm run deploy:celo
+```
+
+Each command runs `scripts/Spray.ts`. Make sure `CELO_PRIVATE_KEY` is funded on the target chain before deploying.
+
+### Contract Verification
+
+1. Deploy the contract and note the deployed address.
+2. Run the verification command for the target network, passing the address (and constructor arguments if any):
+
+```bash
+pnpm run verify:alfajores -- 0xYourDeploymentAddress
+# or
+pnpm run verify:celo -- 0xYourDeploymentAddress
+```
+
+Hardhat uses `CELOSCAN_API_KEY` for both networks. Constructor arguments should match the deployment order.
 
 
 ## Security
