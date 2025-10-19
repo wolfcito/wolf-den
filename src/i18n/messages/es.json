@@ -78,6 +78,16 @@
       "copy": "Protege a la manada"
     }
   },
+  "MobileDenLayout": {
+    "tabs": {
+      "main": "Inicio",
+      "menu": "Explorar",
+      "activity": "Pulso"
+    },
+    "aria": {
+      "navigation": "Navegación móvil de Wolf Den"
+    }
+  },
   "HowlBadge": {
     "levels": {
       "Cachorro": "HOWL • Cachorro",

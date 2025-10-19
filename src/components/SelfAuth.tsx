@@ -13,6 +13,8 @@ type QrWrapperProps = {
   selfApp: SelfApp;
   onSuccess: () => void;
   onError: (data: { error_code?: string; reason?: string }) => void;
+  size?: number;
+  darkMode?: boolean;
 };
 
 type QrWrapperComponent = (props: QrWrapperProps) => ReactElement | null;
@@ -179,11 +181,15 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
           </div>
           {selfApp ? (
             Wrapper ? (
-              <Wrapper
-                selfApp={selfApp}
-                onSuccess={handleSuccess}
-                onError={handleError}
-              />
+              <div className="mx-auto w-full max-w-[260px] sm:max-w-[300px] [&>div>div:first-child]:hidden [&>div>div:last-child]:overflow-hidden [&>div>div:last-child]:rounded-[1.15rem] [&>div>div:last-child]:border [&>div>div:last-child]:border-wolf-border-soft [&>div>div:last-child]:bg-wolf-charcoal-90/85 [&>div>div:last-child]:shadow-[0_28px_75px_-55px_rgba(0,0,0,0.7)]">
+                <Wrapper
+                  selfApp={selfApp}
+                  onSuccess={handleSuccess}
+                  onError={handleError}
+                  size={260}
+                  darkMode
+                />
+              </div>
             ) : qrWrapperError ? (
               <p className="text-sm text-[#ff8f94]">
                 {t("error.missingWrapper")}

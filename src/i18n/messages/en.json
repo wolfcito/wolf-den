@@ -78,6 +78,16 @@
       "copy": "Secure the pack"
     }
   },
+  "MobileDenLayout": {
+    "tabs": {
+      "main": "Home",
+      "menu": "Explore",
+      "activity": "Pulse"
+    },
+    "aria": {
+      "navigation": "Wolf Den mobile navigation"
+    }
+  },
   "HowlBadge": {
     "levels": {
       "Cachorro": "HOWL • Pup",

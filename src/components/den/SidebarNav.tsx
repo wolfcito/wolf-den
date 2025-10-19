@@ -57,7 +57,13 @@ const sectionIcons: Record<
   utilities: Settings2,
 };
 
-export function SidebarNav() {
+type SidebarNavVariant = "desktop" | "mobile";
+
+type SidebarNavProps = {
+  variant?: SidebarNavVariant;
+};
+
+export function SidebarNav({ variant = "desktop" }: SidebarNavProps) {
   const t = useTranslations("SidebarNav");
   const pathname = usePathname();
   const [openSection, setOpenSection] = useState<
@@ -65,7 +71,13 @@ export function SidebarNav() {
   >(navSections[0].key);
 
   return (
-    <div className="flex h-full flex-col justify-between gap-8 p-5 text-wolf-foreground">
+    <div
+      className={`${
+        variant === "mobile"
+          ? "flex flex-col gap-6 p-4 text-wolf-foreground"
+          : "flex h-full flex-col justify-between gap-8 p-5 text-wolf-foreground"
+      }`}
+    >
       <div className="space-y-8">
         <div className="wolf-card--muted flex items-center gap-3 rounded-[1.6rem] border border-wolf-border px-4 py-4">
           <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-wolf-border-strong bg-wolf-charcoal-85 shadow-[0_18px_40px_-22px_rgba(165,205,96,0.35)]">
@@ -178,7 +190,11 @@ export function SidebarNav() {
           ))}
         </nav>
       </div>
-      <div className="wolf-card--muted rounded-[1.4rem] border border-wolf-border-soft px-4 py-3 text-[0.65rem] uppercase tracking-[0.28em] text-wolf-text-subtle">
+      <div
+        className={`wolf-card--muted rounded-[1.4rem] border border-wolf-border-soft px-4 py-3 uppercase tracking-[0.28em] text-wolf-text-subtle ${
+          variant === "mobile" ? "text-[0.6rem]" : "text-[0.65rem]"
+        }`}
+      >
         {t("footer.copy")}
       </div>
     </div>
