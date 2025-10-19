@@ -89,7 +89,7 @@ export default function MindGamesPage() {
                       isSelected
                         ? isBomb
                           ? "border-wolf-error-border-strong bg-wolf-error-glow text-[#ff969e]"
-                          : "border-wolf-border-glow bg-wolf-emerald-tint text-wolf-emerald shadow-[0_12px_35px_-25px_rgba(123,255,120,0.6)]"
+                          : "border-wolf-border-glow bg-wolf-emerald-tint text-wolf-emerald shadow-[0_12px_35px_-25px_rgba(165,205,96,0.6)]"
                         : "border-wolf-border-faint bg-wolf-charcoal-60 text-white/80 hover:border-wolf-border"
                     }
                   `}
@@ -148,7 +148,7 @@ export default function MindGamesPage() {
             <button
               type="button"
               onClick={startGame}
-              className="flex-1 rounded-full bg-[linear-gradient(120deg,#74ff78,#3bcf5f)] px-4 py-2 font-semibold uppercase tracking-[0.2em] text-[#08120b] transition hover:brightness-110"
+              className="flex-1 rounded-full bg-[linear-gradient(120deg,#a5cd60,#7ba142)] px-4 py-2 font-semibold uppercase tracking-[0.2em] text-[#08120b] transition hover:brightness-110"
             >
               {t("controls.start")}
             </button>

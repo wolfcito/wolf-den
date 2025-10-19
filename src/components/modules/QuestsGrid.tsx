@@ -29,7 +29,7 @@ export function QuestsGrid() {
       {quests.map((quest) => (
         <div
           key={quest.id}
-          className={`flex h-full flex-col justify-between rounded-[1.8rem] p-5 transition hover:-translate-y-1 hover:shadow-[0_25px_80px_-55px_rgba(123,255,120,0.35)] ${questTone(
+          className={`flex h-full flex-col justify-between rounded-[1.8rem] p-5 transition hover:-translate-y-1 hover:shadow-[0_25px_80px_-55px_rgba(165,205,96,0.35)] ${questTone(
             quest.status,
           )}`}
         >
@@ -57,7 +57,7 @@ export function QuestsGrid() {
                   ? "cursor-not-allowed bg-wolf-emerald-faint text-wolf-text-subtle"
                   : quest.status === "submitted"
                     ? "bg-wolf-emerald-tint text-wolf-emerald"
-                    : "bg-[linear-gradient(120deg,#74ff78,#3bcf5f)] text-[#08120b] hover:brightness-110"
+                    : "bg-[linear-gradient(120deg,#a5cd60,#7ba142)] text-[#08120b] hover:brightness-110"
               }`}
               disabled={quest.status !== "available"}
             >

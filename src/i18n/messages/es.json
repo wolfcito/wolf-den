@@ -436,7 +436,7 @@
   },
   "HomeLanding": {
     "hero": {
-      "tagline": "Originales Wolf Den",
+      "tagline": "Wolf Den",
       "title": "Wolf Den es el centro de control digital de la manada",
       "subtitle": "Construye en comunidad. Recibe reconocimiento. Sube de nivel.",
       "description": "Únete a una manada verificada de builders que lanzan rápido, ganan reconocimiento y desbloquean la futura economía HOWL. Mentores, quests y recompensas aceleran tu próximo release.",
@@ -450,7 +450,7 @@
       },
       "visionLabel": "Visión de producto",
       "visionQuote": "\"Wolf Den funciona como el centro de control digital para coordinar misiones, mind games y participación comunitaria con un layout tríptico que mantiene a la manada enfocada.\"",
-      "visionSource": "Extraído de wolf-den-prd.md"
+      "visionSource": "@AKAwolfcito"
     },
     "metrics": {
       "label": "Únete a la manada",

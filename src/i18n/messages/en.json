@@ -436,7 +436,7 @@
   },
   "HomeLanding": {
     "hero": {
-      "tagline": "Wolf Den Originals",
+      "tagline": "Wolf Den",
       "title": "Wolf Den is the digital control center for the pack",
       "subtitle": "Build together. Get recognized. Level up.",
       "description": "Join a verified pack of builders who ship fast, earn recognition, and unlock the future HOWL economy. Mentors, quests, and rewards accelerate your next release.",
@@ -450,7 +450,7 @@
       },
       "visionLabel": "Product Vision",
       "visionQuote": "\"Wolf Den acts as the digital control center for coordinating missions, mind games, and community engagement with a triptych layout that keeps the pack locked in.\"",
-      "visionSource": "Extracted from wolf-den-prd.md"
+      "visionSource": "@AKAwolfcito"
     },
     "metrics": {
       "label": "Join the pack",

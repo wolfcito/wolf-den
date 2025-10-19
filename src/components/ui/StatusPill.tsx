@@ -17,7 +17,7 @@ const statusTone: Record<StatusPillProps["status"], string> = {
   pending:
     "bg-wolf-emerald-soft border border-wolf-border-strong text-wolf-emerald",
   verified:
-    "bg-[linear-gradient(115deg,#74ff78,#3bcf5f)] text-wolf-soft border border-wolf-emerald-border-strong shadow-[0_0_20px_rgba(115,255,140,0.35)]",
+    "bg-[linear-gradient(115deg,#a5cd60,#7ba142)] text-wolf-soft border border-wolf-emerald-border-strong shadow-[0_0_20px_rgba(165,205,96,0.35)]",
   error: "bg-wolf-error-soft text-[#ff8f94] border border-wolf-error-border",
 };
 

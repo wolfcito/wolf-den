@@ -33,7 +33,7 @@ export function MiniChat() {
         />
         <button
           type="submit"
-          className="w-full rounded-full bg-[linear-gradient(120deg,#74ff78,#3bcf5f)] py-2 text-sm font-medium uppercase tracking-[0.18em] text-[#08120b] transition hover:brightness-110"
+          className="w-full rounded-full bg-[linear-gradient(120deg,#a5cd60,#7ba142)] py-2 text-sm font-medium uppercase tracking-[0.18em] text-[#08120b] transition hover:brightness-110"
         >
           {t("submit")}
         </button>

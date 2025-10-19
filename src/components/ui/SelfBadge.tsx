@@ -16,9 +16,9 @@ interface SelfBadgeProps {
 const statusTone: Record<Required<SelfBadgeProps>["status"], string> = {
   unverified: "text-wolf-text-subtle border-wolf-border",
   pending:
-    "text-wolf-emerald border-wolf-border-strong bg-wolf-emerald-soft shadow-[0_0_20px_rgba(123,255,120,0.15)]",
+    "text-wolf-emerald border-wolf-border-strong bg-wolf-emerald-soft shadow-[0_0_20px_rgba(165,205,96,0.15)]",
   verified:
-    "text-wolf-soft border-wolf-emerald-border-strong bg-[linear-gradient(120deg,#74ff78,#3bcf5f)] shadow-[0_0_20px_rgba(123,255,120,0.3)]",
+    "text-wolf-soft border-wolf-emerald-border-strong bg-[linear-gradient(120deg,#a5cd60,#7ba142)] shadow-[0_0_20px_rgba(165,205,96,0.3)]",
   error:
     "text-[#ff8f94] border-wolf-error-border bg-wolf-error-soft shadow-[0_0_18px_rgba(255,92,92,0.25)]",
 };

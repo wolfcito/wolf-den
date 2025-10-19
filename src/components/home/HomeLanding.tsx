@@ -48,7 +48,7 @@ export default function HomeLanding() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href={t("hero.primaryCta.href")}
-                className="rounded-full bg-[linear-gradient(120deg,#74ff78,#3bcf5f)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#08120b] transition hover:brightness-110"
+                className="rounded-full bg-[linear-gradient(120deg,#a5cd60,#7ba142)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#08120b] transition hover:brightness-110"
               >
                 {t("hero.primaryCta.label")}
               </Link>
@@ -61,7 +61,7 @@ export default function HomeLanding() {
             </div>
           </div>
           <div className="wolf-card relative h-full min-h-[360px] overflow-hidden p-10">
-            <div className="pointer-events-none absolute inset-x-10 top-10 h-20 rounded-full bg-[radial-gradient(circle_at_top,#74ff78_0%,rgba(9,13,19,0)_75%)]" />
+            <div className="pointer-events-none absolute inset-x-10 top-10 h-20 rounded-full bg-[radial-gradient(circle_at_top,#a5cd60_0%,rgba(9,13,19,0)_75%)]" />
             <div className="relative z-10 flex h-full flex-col justify-between gap-8">
               <p className="text-xs uppercase tracking-[0.4em] text-wolf-text-subtle">
                 {t("hero.visionLabel")}
@@ -156,7 +156,7 @@ export default function HomeLanding() {
             {modules.map((module) => (
               <article
                 key={module.id}
-                className="wolf-card--muted flex h-full flex-col justify-between rounded-[1.9rem] border border-wolf-border p-6 transition hover:-translate-y-1 hover:border-wolf-border-xstrong hover:shadow-[0_30px_90px_-60px_rgba(123,255,120,0.35)]"
+                className="wolf-card--muted flex h-full flex-col justify-between rounded-[1.9rem] border border-wolf-border p-6 transition hover:-translate-y-1 hover:border-wolf-border-xstrong hover:shadow-[0_30px_90px_-60px_rgba(165,205,96,0.35)]"
               >
                 <div>
                   <h3 className="text-lg font-semibold text-white">

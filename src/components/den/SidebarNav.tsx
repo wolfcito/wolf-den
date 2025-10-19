@@ -68,7 +68,7 @@ export function SidebarNav() {
     <div className="flex h-full flex-col justify-between gap-8 p-5 text-wolf-foreground">
       <div className="space-y-8">
         <div className="wolf-card--muted flex items-center gap-3 rounded-[1.6rem] border border-wolf-border px-4 py-4">
-          <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-wolf-border-strong bg-wolf-charcoal-85 shadow-[0_18px_40px_-22px_rgba(123,255,120,0.35)]">
+          <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-wolf-border-strong bg-wolf-charcoal-85 shadow-[0_18px_40px_-22px_rgba(165,205,96,0.35)]">
             <Image
               src="/wolf-den-bn.png"
               alt={t("branding.badgeAlt")}
@@ -98,7 +98,7 @@ export function SidebarNav() {
                 }
                 className={`group flex w-full items-center justify-between rounded-full border px-4 py-3 text-left transition ${
                   openSection === section.key
-                    ? "border-wolf-border-xstrong bg-wolf-emerald-mid text-white shadow-[0_18px_45px_-28px_rgba(123,255,120,0.45)]"
+                    ? "border-wolf-border-xstrong bg-wolf-emerald-mid text-white shadow-[0_18px_45px_-28px_rgba(165,205,96,0.45)]"
                     : "border-wolf-border-soft bg-wolf-charcoal-60 text-wolf-text-subtle hover:border-wolf-border hover:text-white"
                 }`}
               >
@@ -106,7 +106,7 @@ export function SidebarNav() {
                   <span
                     className={`flex h-9 w-9 items-center justify-center rounded-full transition ${
                       openSection === section.key
-                        ? "bg-[linear-gradient(120deg,#74ff78,#3bcf5f)] text-[#08120b]"
+                        ? "bg-[linear-gradient(120deg,#a5cd60,#7ba142)] text-[#08120b]"
                         : "bg-wolf-emerald-mid text-wolf-emerald group-hover:bg-wolf-emerald-strong"
                     }`}
                   >
@@ -150,14 +150,14 @@ export function SidebarNav() {
                         href={item.href}
                         className={`group relative flex items-center gap-4 rounded-full border px-4 py-3 pl-5 text-sm transition-all duration-150 ${
                           isActive
-                            ? "border-wolf-border-xstrong bg-wolf-emerald-mid text-white shadow-[0_18px_42px_-28px_rgba(123,255,120,0.45)]"
+                            ? "border-wolf-border-xstrong bg-wolf-emerald-mid text-white shadow-[0_18px_42px_-28px_rgba(165,205,96,0.45)]"
                             : "border-wolf-border-faint bg-wolf-charcoal-60 text-wolf-text-subtle hover:border-wolf-border hover:text-white"
                         }`}
                       >
                         <span
                           className={`flex h-9 w-9 items-center justify-center rounded-full transition ${
                             isActive
-                              ? "bg-[linear-gradient(120deg,#74ff78,#3bcf5f)] text-[#08120b]"
+                            ? "bg-[linear-gradient(120deg,#a5cd60,#7ba142)] text-[#08120b]"
                               : "bg-wolf-emerald-mid text-wolf-emerald group-hover:bg-wolf-emerald-strong"
                           }`}
                         >
@@ -167,7 +167,7 @@ export function SidebarNav() {
                           {t(`sections.${section.key}.items.${item.key}`)}
                         </span>
                         {isActive ? (
-                          <span className="absolute -bottom-1 left-1/2 h-1 w-12 -translate-x-1/2 rounded-full bg-[linear-gradient(120deg,#74ff78,#3bcf5f)] shadow-[0_0_20px_rgba(123,255,120,0.45)]" />
+                          <span className="absolute -bottom-1 left-1/2 h-1 w-12 -translate-x-1/2 rounded-full bg-[linear-gradient(120deg,#a5cd60,#7ba142)] shadow-[0_0_20px_rgba(165,205,96,0.45)]" />
                         ) : null}
                       </Link>
                     </li>
