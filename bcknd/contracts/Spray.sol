@@ -8,39 +8,35 @@ import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 
 /// @custom:security-contact wolfcito.learn+security@gmail.com
 contract Spray is Ownable {
-    event TokenDispersed(
+    event NativeDispersed(
         address indexed sender,
         address[] recipients,
-        uint256[] values,
-        address token
+        uint256[] amounts,
+        uint256 totalValue
+    );
+
+    event TokenDispersed(
+        address indexed sender,
+        address token,
+        address[] recipients,
+        uint256[] amounts,
+        uint256 totalValue
     );
 
     constructor(address initialOwner) Ownable(initialOwner) {}
 
-    function disperse(
+    function disperseNative(
         address[] memory _recipients,
         uint256[] memory _amounts
     ) external payable {
-        require(
-            _recipients.length == _amounts.length,
-            'Number of recipients must be equal to the number of corresponding values'
-        );
-
-        require(_recipients.length > 0, 'Recipients array cannot be empty');
-
-        uint256 totalValue = 0;
-
-        for (uint256 i = 0; i < _recipients.length; i++) {
-            totalValue += _amounts[i];
-        }
-
+        uint256 totalValue = _validateRecipients(_recipients, _amounts);
         require(address(this).balance >= totalValue, 'Insufficient balance');
 
         for (uint256 i = 0; i < _recipients.length; i++) {
             Address.sendValue(payable(_recipients[i]), _amounts[i]);
         }
 
-        emit TokenDispersed(msg.sender, _recipients, _amounts, address(0));
+        emit NativeDispersed(msg.sender, _recipients, _amounts, totalValue);
     }
 
     function disperseToken(
@@ -50,27 +46,17 @@ contract Spray is Ownable {
     ) external {
         require(tokenAddress != address(0), 'Invalid token address');
 
-        require(
-            _recipients.length == _amounts.length,
-            'Number of recipients must be equal to the number of corresponding values'
-        );
-
-        require(_recipients.length > 0, 'Recipients array cannot be empty');
+        uint256 totalValue = _validateRecipients(_recipients, _amounts);
 
         IERC20 token = IERC20(tokenAddress);
 
-        uint256 total = 0;
-        for (uint256 i = 0; i < _recipients.length; i++) {
-            total += _amounts[i];
-        }
-
         require(
-            token.allowance(msg.sender, address(this)) >= total,
+            token.allowance(msg.sender, address(this)) >= totalValue,
             'Not enough tokens approved'
         );
 
         require(
-            token.transferFrom(msg.sender, address(this), total),
+            token.transferFrom(msg.sender, address(this), totalValue),
             'TransferFrom failed'
         );
 
@@ -81,6 +67,28 @@ contract Spray is Ownable {
             );
         }
 
-        emit TokenDispersed(msg.sender, _recipients, _amounts, tokenAddress);
+        emit TokenDispersed(
+            msg.sender,
+            tokenAddress,
+            _recipients,
+            _amounts,
+            totalValue
+        );
+    }
+
+    function _validateRecipients(
+        address[] memory recipients,
+        uint256[] memory amounts
+    ) private pure returns (uint256 totalValue) {
+        require(
+            recipients.length == amounts.length,
+            'Number of recipients must be equal to the number of corresponding values'
+        );
+
+        require(recipients.length > 0, 'Recipients array cannot be empty');
+
+        for (uint256 i = 0; i < recipients.length; i++) {
+            totalValue += amounts[i];
+        }
     }
 }

@@ -22,7 +22,7 @@ async function deploySprayFixture() {
 }
 
 describe('Spray', () => {
-  describe('disperse', () => {
+  describe('disperseNative', () => {
     it('distributes native currency to multiple recipients', async () => {
       const { spray, owner, recipient1, recipient2 } = await loadFixture(
         deploySprayFixture,
@@ -39,7 +39,7 @@ describe('Spray', () => {
 
       const tx = await spray
         .connect(owner)
-        .disperse(recipients, amounts, { value: valueSent })
+        .disperseNative(recipients, amounts, { value: valueSent })
       await tx.wait()
 
       expect(await provider.getBalance(contractAddress)).to.equal(0n)
@@ -51,8 +51,8 @@ describe('Spray', () => {
       )
 
       await expect(tx)
-        .to.emit(spray, 'TokenDispersed')
-        .withArgs(owner.address, recipients, amounts, ethers.ZeroAddress)
+        .to.emit(spray, 'NativeDispersed')
+        .withArgs(owner.address, recipients, amounts, valueSent)
     })
 
     it('reverts when recipients and amounts length differ', async () => {
@@ -63,7 +63,7 @@ describe('Spray', () => {
       await expect(
         spray
           .connect(owner)
-          .disperse(
+          .disperseNative(
             [recipient1.address, recipient2.address],
             [ethers.parseEther('1')],
             { value: ethers.parseEther('1') },
@@ -81,7 +81,7 @@ describe('Spray', () => {
       await expect(
         spray
           .connect(owner)
-          .disperse(
+          .disperseNative(
             [recipient1.address, recipient2.address],
             [ethers.parseEther('1'), ethers.parseEther('2')],
             { value: ethers.parseEther('2') },
@@ -110,7 +110,13 @@ describe('Spray', () => {
 
       await expect(tx)
         .to.emit(spray, 'TokenDispersed')
-        .withArgs(owner.address, recipients, amounts, await usdcw.getAddress())
+        .withArgs(
+          owner.address,
+          await usdcw.getAddress(),
+          recipients,
+          amounts,
+          total,
+        )
     })
 
     it('reverts when allowance is insufficient', async () => {
