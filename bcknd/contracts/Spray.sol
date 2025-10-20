@@ -30,6 +30,8 @@ contract Spray is Ownable {
         uint256[] memory _amounts
     ) external payable {
         uint256 totalValue = _validateRecipients(_recipients, _amounts);
+        require(msg.value == totalValue, 'Incorrect ether value supplied');
+
         require(address(this).balance >= totalValue, 'Insufficient balance');
 
         for (uint256 i = 0; i < _recipients.length; i++) {

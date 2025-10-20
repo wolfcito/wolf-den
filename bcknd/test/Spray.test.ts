@@ -73,7 +73,7 @@ describe('Spray', () => {
       )
     })
 
-    it('reverts when the contract balance is insufficient', async () => {
+    it('reverts when ether sent does not match total amount', async () => {
       const { spray, owner, recipient1, recipient2 } = await loadFixture(
         deploySprayFixture,
       )
@@ -86,7 +86,17 @@ describe('Spray', () => {
             [ethers.parseEther('1'), ethers.parseEther('2')],
             { value: ethers.parseEther('2') },
           ),
-      ).to.be.revertedWith('Insufficient balance')
+      ).to.be.revertedWith('Incorrect ether value supplied')
+
+      await expect(
+        spray
+          .connect(owner)
+          .disperseNative(
+            [recipient1.address, recipient2.address],
+            [ethers.parseEther('1'), ethers.parseEther('2')],
+            { value: ethers.parseEther('4') },
+          ),
+      ).to.be.revertedWith('Incorrect ether value supplied')
     })
   })
 
