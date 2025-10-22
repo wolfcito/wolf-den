@@ -1,5 +1,6 @@
 "use client";
 
+import type { VerificationConfig } from "@selfxyz/core";
 import { type SelfApp, SelfAppBuilder } from "@selfxyz/qrcode";
 import { useTranslations } from "next-intl";
 import { type ReactElement, useEffect, useRef, useState } from "react";
@@ -65,9 +66,12 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
     const endpointType = devMode ? "staging_https" : "https";
     const chainID = devMode ? 44787 : 42220;
 
-    const compliance = {
+    const compliance: Pick<
+      VerificationConfig,
+      "minimumAge" | "excludedCountries" | "ofac"
+    > = {
       minimumAge: 18,
-      excludedCountries: [] as string[],
+      excludedCountries: [],
       ofac: !devMode,
     };
 

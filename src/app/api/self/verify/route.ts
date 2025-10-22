@@ -39,8 +39,8 @@ const configStore = new DefaultConfigStore({
 });
 
 const allowedAttestations: Map<AttestationId, boolean> = useMock
-  ? AllIds
-  : new Map([[1, true]]);
+  ? (AllIds as Map<AttestationId, boolean>)
+  : new Map<AttestationId, boolean>([[1, true]]);
 
 const verifier = new SelfBackendVerifier(
   scope,
