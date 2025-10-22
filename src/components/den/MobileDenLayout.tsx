@@ -1,8 +1,8 @@
 "use client";
 
-import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { Home, LayoutGrid, Sparkles } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { usePathname } from "@/i18n/routing";
 
 type MobilePanelKey = "main" | "menu" | "activity";
@@ -34,22 +34,19 @@ export function MobileDenLayout({
   const [activePanel, setActivePanel] = useState<MobilePanelKey>("main");
 
   useEffect(() => {
+    if (!pathname) {
+      return;
+    }
     setActivePanel("main");
   }, [pathname]);
 
   const renderPanel = useMemo(() => {
     if (activePanel === "menu") {
-      return (
-        <div className="max-h-[65vh] overflow-y-auto pr-1">
-          {menu}
-        </div>
-      );
+      return <div className="max-h-[65vh] overflow-y-auto pr-1">{menu}</div>;
     }
 
     if (activePanel === "activity") {
-      return (
-        <div className="space-y-4">{activity}</div>
-      );
+      return <div className="space-y-4">{activity}</div>;
     }
 
     return main;

@@ -1,81 +1,81 @@
 {
   "TopBar": {
     "fallback": {
-      "title": "Taberna - Wolf Den",
-      "description": "Join the pack."
+      "title": "Taberna - Wolf Den Labs",
+      "description": "Enter the event lab."
     },
     "modules": {
       "quests": {
         "title": "Quests",
-        "description": "Active missions to grow your HOWL."
+        "description": "Builder-made missions and automations that extend every event loop."
       },
       "checkin": {
-        "title": "Check-in",
-        "description": "Scan and log attendance in seconds."
+        "title": "Event Panel",
+        "description": "Log attendance, capture wallets, and fire instant payouts."
       },
       "mentorship": {
         "title": "Mentorship",
-        "description": "Book time with seasoned builders."
+        "description": "Coordinate Taberna routes so mentors catch attendees at peak momentum."
       },
       "showcase": {
-        "title": "Showcase",
-        "description": "Highlight live demos and repos."
+        "title": "Sponsor Showcase",
+        "description": "Highlight partners, prizes, and winning teams in real time."
       },
       "voting": {
         "title": "Voting",
-        "description": "Demo Day ballots for verified wolves."
+        "description": "Run Demo Day ballots for verified wolves during live activations."
       },
       "stats": {
-        "title": "Stats",
-        "description": "HOWL streaks, momentum, and perks."
+        "title": "Insights",
+        "description": "Engagement, payouts, and retention analytics across events."
       },
       "leaderboard": {
         "title": "Leaderboard",
-        "description": "Weekly rankings for the pack."
+        "description": "Live rankings that keep squads and sponsors invested."
       },
       "settings": {
         "title": "Settings",
         "description": "Preferences and locale controls."
       },
       "mindGames": {
-        "title": "Mind Games",
-        "description": "MVP flows and game dynamics."
+        "title": "Mini-Games Lab",
+        "description": "Spin up ruleta and animal races with sponsor-ready overlays."
       },
       "auth": {
         "title": "Self Auth",
-        "description": "Verify your identity with Self."
+        "description": "Verify staff and attendees with Self."
       }
     }
   },
   "SidebarNav": {
     "branding": {
       "badgeAlt": "Wolf Den emblem",
-      "title": "Wolf Den",
-      "subtitle": "Control Center"
+      "title": "Wolf Den Labs",
+      "subtitle": "Event Lab Command"
     },
     "sections": {
       "experiences": {
-        "title": "Experiences",
+        "title": "Event Ops",
         "items": {
-          "showcase": "Showcase",
-          "quests": "Quests",
-          "mindGames": "Wolf Games",
-          "taberna": "Taberna"
+          "showcase": "Sponsor Showcase",
+          "quests": "Builder Extensions",
+          "mindGames": "Mini-Games Lab",
+          "taberna": "Taberna Mentorship"
         }
       },
       "utilities": {
-        "title": "Utilities",
+        "title": "Command Tools",
         "items": {
-          "checkin": "Check-in",
+          "checkin": "Event Panel",
           "auth": "Self Auth",
-          "stats": "Stats",
+          "stats": "Insights",
           "leaderboard": "Leaderboard",
           "settings": "Settings"
         }
       }
     },
     "footer": {
-      "copy": "Secure the pack"
+      "copy": "Ship fast. Play smarter."
     }
   },
   "MobileDenLayout": {
@@ -446,156 +446,138 @@
   },
   "HomeLanding": {
     "hero": {
-      "tagline": "Wolf Den",
-      "title": "Wolf Den is the digital control center for the pack",
-      "subtitle": "Build together. Get recognized. Level up.",
-      "description": "Join a verified pack of builders who ship fast, earn recognition, and unlock the future HOWL economy. Mentors, quests, and rewards accelerate your next release.",
+      "tagline": "Wolf Den Labs — ship fast. play smarter.",
+      "title": "The pack’s on-chain event lab and digital command center",
+      "subtitle": "For builders, organizers, mentors, and sponsors running crypto-powered experiences.",
+      "description": "Spin up ruleta and animal race mini-games, trigger instant payouts, and guide your community through mentorship routes without leaving the lab. Wolf Den Labs keeps the pack’s builder DNA alive while event captains orchestrate unforgettable on-chain moments.",
       "primaryCta": {
-        "label": "Start Building Today",
+        "label": "Launch an Event",
         "href": "/auth"
       },
       "secondaryCta": {
-        "label": "Explore Projects",
-        "href": "/showcase"
+        "label": "Review the Playbook",
+        "href": "/taberna"
       },
       "visionLabel": "Product Vision",
-      "visionQuote": "\"Wolf Den acts as the digital control center for coordinating missions, mind games, and community engagement with a triptych layout that keeps the pack locked in.\"",
+      "visionQuote": "\"Wolf Den Labs unifies our builder control center with live event ops so every payout, mentor slot, and sponsor touchpoint runs in the same flow.\"",
       "visionSource": "@AKAwolfcito"
     },
     "metrics": {
-      "label": "Join the pack",
-      "title": "500+ verified builders",
-      "description": "Build together, get recognized, and level up. Wolf Den is where quests, mentors, and future HOWL rewards converge.",
+      "label": "Why packs choose the lab",
+      "title": "Event ops supercharged by builders",
+      "description": "From instant payouts to Taberna itineraries, Wolf Den Labs keeps organizers, mentors, and sponsors aligned in one command center.",
       "items": [
         {
-          "value": "500+",
-          "label": "Active Builders"
+          "value": "5 min",
+          "label": "From setup to launch"
         },
         {
-          "value": "50+",
-          "label": "Expert Mentors"
+          "value": "95%",
+          "label": "On-chain payouts automated"
         },
         {
-          "value": "100+",
-          "label": "Projects Shipped"
+          "value": "60%",
+          "label": "Mentor slots filled via Taberna"
         },
         {
-          "value": "20+",
-          "label": "Weekly Events"
+          "value": "3+",
+          "label": "Sponsor touchpoints live"
         }
       ]
     },
     "pillars": {
       "label": "Strategic Pillars",
-      "title": "What powers the Den",
-      "description": "Built for builders who crave momentum: verification, recognition, and shared resources keep the pack moving while future HOWL rewards await.",
+      "title": "How the lab delivers",
+      "description": "The original Wolf Den control center now powers event organizers with live payouts, mentorship loops, and sponsor-ready surfaces.",
       "items": [
         {
-          "title": "Verified Trust",
-          "description": "Self verification keeps every interaction high-signal so you can build with confidence."
+          "title": "Builder Core",
+          "description": "Modular Next.js infrastructure from the pack keeps every mini-game, quest, and data feed easy to extend."
         },
         {
-          "title": "Gamified Progress",
-          "description": "Quests, showcases, and voting reward contributions with HOWL streaks and future token perks."
+          "title": "Live Event Ops",
+          "description": "Organizers import attendees, wire prize pools, and launch ruleta or races with instant crypto rewards."
         },
         {
-          "title": "Community Momentum",
-          "description": "Mentors, weekly events, and collaborative spaces help the pack ship faster together."
+          "title": "Mentor & Sponsor Loop",
+          "description": "Taberna itineraries and branded skins stay in sync so learning and monetization happen in the same experience."
         }
       ]
     },
-    "modulesLabel": "Mission Modules",
-    "modulesTitle": "Everything inside the Den",
-    "modulesDescription": "A unified workspace to verify, build, and celebrate progress with the pack.",
+    "modulesLabel": "Lab Modules",
+    "modulesTitle": "Everything organizers and builders need",
+    "modulesDescription": "Operate events, extend mini-games, and keep the pack aligned without leaving the Wolf Den Labs command center.",
     "modules": [
       {
-        "id": "quests",
-        "title": "Quests",
-        "description": "Mission control for quests that pay you in HOWL progress and future token perks.",
+        "id": "events",
+        "title": "Event Control Panel",
+        "description": "Import attendees, capture wallets, and trigger payouts from one screen.",
         "cta": {
-          "label": "Run Missions",
-          "href": "/quests"
-        }
-      },
-      {
-        "id": "checkin",
-        "title": "Check-in",
-        "description": "QR-driven attendance backed by Self so real-world moments count toward your streak.",
-        "cta": {
-          "label": "View Check-in",
+          "label": "Open Event Panel",
           "href": "/checkin"
         }
       },
       {
         "id": "mind-games",
-        "title": "Mind Games",
-        "description": "Mines MVP blending strategy and stakes—earn bragging rights while gamification levels up.",
+        "title": "Mini-Games Lab",
+        "description": "Launch ruleta and animal race engines with sponsor skins and live leaderboards.",
         "cta": {
-          "label": "Enter Mind Games",
+          "label": "Enter Mini-Games",
           "href": "/mind-games"
         }
       },
       {
-        "id": "showcase",
-        "title": "Showcase",
-        "description": "Spotlight demos with repo and live links so the pack can rally behind active builds.",
+        "id": "taberna",
+        "title": "Taberna Mentorship",
+        "description": "Route players into mentorship missions before and after each event.",
         "cta": {
-          "label": "Open Showcase",
+          "label": "Open Taberna",
+          "href": "/taberna"
+        }
+      },
+      {
+        "id": "quests",
+        "title": "Builder Extensions",
+        "description": "Deploy quests and automations from the builder collective to enhance your event loop.",
+        "cta": {
+          "label": "Browse Quests",
+          "href": "/quests"
+        }
+      },
+      {
+        "id": "showcase",
+        "title": "Sponsor Showcase",
+        "description": "Feature partners, prizes, and proofs-of-win with live links and media.",
+        "cta": {
+          "label": "Highlight Sponsors",
           "href": "/showcase"
         }
       },
       {
-        "id": "voting",
-        "title": "Voting",
-        "description": "Demo Day ballots gated by Self verification and HOWL tiers to reward meaningful votes.",
-        "cta": {
-          "label": "Start Voting",
-          "href": "/voting"
-        }
-      },
-      {
-        "id": "mentorship",
-        "title": "Mentorship",
-        "description": "Book mentors who have shipped before—arrive with goals, leave with unblockers.",
-        "cta": {
-          "label": "Book Mentors",
-          "href": "/mentorship"
-        }
-      },
-      {
         "id": "stats",
-        "title": "Stats",
-        "description": "Analyze HOWL, streaks, and perks as you climb the ladder toward token-enabled rewards.",
+        "title": "Insights & Reporting",
+        "description": "Review payouts, engagement, and retention metrics to plan the next activation.",
         "cta": {
-          "label": "Read Stats",
+          "label": "View Insights",
           "href": "/stats"
-        }
-      },
-      {
-        "id": "leaderboard",
-        "title": "Leaderboard",
-        "description": "Weekly pack rankings that celebrate squads pushing the frontier forward.",
-        "cta": {
-          "label": "See Leaderboard",
-          "href": "/leaderboard"
         }
       }
     ],
     "flows": {
-      "label": "Builder Journey",
-      "title": "How you level up",
+      "label": "Organizer Journey",
+      "title": "How you run the lab",
       "items": [
         {
-          "title": "Verify with Self",
-          "description": "Quick verification brings you into the trusted network so every contribution counts."
+          "title": "Set up your event",
+          "description": "Import attendees, lock prize pools, and assign mentor routes in minutes."
         },
         {
-          "title": "Complete Quests",
-          "description": "Ship projects, help others, and stack HOWL points through quests and weekly events."
+          "title": "Run live mini-games",
+          "description": "Fire ruleta or animal races, reward winners instantly, and showcase sponsors on-screen."
         },
         {
-          "title": "Level Up",
-          "description": "Unlock mentorship, perks, and the upcoming HOWL token economy as you climb the ranks."
+          "title": "Close the loop",
+          "description": "Send players to Taberna mentorship, export insights, and tee up the next activation."
         }
       ]
     }

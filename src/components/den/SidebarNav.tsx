@@ -169,7 +169,7 @@ export function SidebarNav({ variant = "desktop" }: SidebarNavProps) {
                         <span
                           className={`flex h-9 w-9 items-center justify-center rounded-full transition ${
                             isActive
-                            ? "bg-[linear-gradient(120deg,#a5cd60,#7ba142)] text-[#08120b]"
+                              ? "bg-[linear-gradient(120deg,#a5cd60,#7ba142)] text-[#08120b]"
                               : "bg-wolf-emerald-mid text-wolf-emerald group-hover:bg-wolf-emerald-strong"
                           }`}
                         >

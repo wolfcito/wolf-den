@@ -1,81 +1,81 @@
 {
   "TopBar": {
     "fallback": {
-      "title": "Taberna - Wolf Den",
-      "description": "Sé parte de la manada."
+      "title": "Taberna - Wolf Den Labs",
+      "description": "Entra al laboratorio de eventos."
     },
     "modules": {
       "quests": {
         "title": "Quests",
-        "description": "Misiones activas para la manada"
+        "description": "Misiones y automatizaciones creadas por builders que extienden cada evento."
       },
       "checkin": {
-        "title": "Check-in",
-        "description": "Escanea y registra asistencia"
+        "title": "Panel de evento",
+        "description": "Registra asistencia, captura wallets y dispara payouts al instante."
       },
       "mentorship": {
         "title": "Mentoría",
-        "description": "Agenda sesiones con mentores"
+        "description": "Coordina rutas Taberna para que mentores conecten en el momento de mayor momentum."
       },
       "showcase": {
-        "title": "Showcase",
-        "description": "Destaca proyectos y demos"
+        "title": "Showcase de patrocinio",
+        "description": "Destaca partners, premios y equipos ganadores en tiempo real."
       },
       "voting": {
         "title": "Voting",
-        "description": "Demo Day y votaciones"
+        "description": "Gestiona votaciones de Demo Day para lobos verificados durante las activaciones en vivo."
       },
       "stats": {
-        "title": "Stats",
-        "description": "HOWL, streak y métricas"
+        "title": "Insights",
+        "description": "Analítica de engagement, payouts y retención entre eventos."
       },
       "leaderboard": {
         "title": "Leaderboard",
-        "description": "Ranking de la manada"
+        "description": "Rankings en vivo que mantienen motivadas a escuadras y sponsors."
       },
       "settings": {
         "title": "Settings",
         "description": "Preferencias e idioma"
       },
       "mindGames": {
-        "title": "Mind Games",
-        "description": "Flujos MVP y dinámicas"
+        "title": "Laboratorio de minijuegos",
+        "description": "Activa ruleta y carreras con overlays listos para patrocinio."
       },
       "auth": {
         "title": "Self Auth",
-        "description": "Verifica tu identidad con Self"
+        "description": "Verifica staff y asistentes con Self."
       }
     }
   },
   "SidebarNav": {
     "branding": {
       "badgeAlt": "Emblema de Wolf Den",
-      "title": "Wolf Den",
-      "subtitle": "Centro de control"
+      "title": "Wolf Den Labs",
+      "subtitle": "Comando del laboratorio"
     },
     "sections": {
       "experiences": {
-        "title": "Experiencias",
+        "title": "Operación de eventos",
         "items": {
-          "showcase": "Showcase",
-          "quests": "Quests",
-          "mindGames": "Wolf Games",
-          "taberna": "Taberna"
+          "showcase": "Showcase de patrocinio",
+          "quests": "Extensiones builder",
+          "mindGames": "Laboratorio de minijuegos",
+          "taberna": "Mentoría Taberna"
         }
       },
       "utilities": {
-        "title": "Utilidades",
+        "title": "Herramientas de comando",
         "items": {
-          "checkin": "Check-in",
+          "checkin": "Panel de evento",
           "auth": "Self Auth",
-          "stats": "Stats",
+          "stats": "Insights",
           "leaderboard": "Leaderboard",
           "settings": "Settings"
         }
       }
     },
     "footer": {
-      "copy": "Protege a la manada"
+      "copy": "Ship fast. Play smarter."
     }
   },
   "MobileDenLayout": {
@@ -446,156 +446,138 @@
   },
   "HomeLanding": {
     "hero": {
-      "tagline": "Wolf Den",
-      "title": "Wolf Den es el centro de control digital de la manada",
-      "subtitle": "Construye en comunidad. Recibe reconocimiento. Sube de nivel.",
-      "description": "Únete a una manada verificada de builders que lanzan rápido, ganan reconocimiento y desbloquean la futura economía HOWL. Mentores, quests y recompensas aceleran tu próximo release.",
+      "tagline": "Wolf Den Labs — ship fast. play smarter.",
+      "title": "El laboratorio on-chain de la manada y su centro de control digital",
+      "subtitle": "Para builders, organizadores, mentores y patrocinadores que operan experiencias con cripto.",
+      "description": "Activa minijuegos de ruleta y carreras, dispara payouts instantáneos y guía a tu comunidad por rutas de mentoría sin salir del laboratorio. Wolf Den Labs preserva el ADN builder mientras las y los capitanes de evento orquestan momentos on-chain inolvidables.",
       "primaryCta": {
-        "label": "Comienza a construir hoy",
+        "label": "Lanzar un evento",
         "href": "/auth"
       },
       "secondaryCta": {
-        "label": "Explorar proyectos",
-        "href": "/showcase"
+        "label": "Revisar el playbook",
+        "href": "/taberna"
       },
       "visionLabel": "Visión de producto",
-      "visionQuote": "\"Wolf Den funciona como el centro de control digital para coordinar misiones, mind games y participación comunitaria con un layout tríptico que mantiene a la manada enfocada.\"",
+      "visionQuote": "\"Wolf Den Labs unifica nuestro centro de control builder con la operación de eventos en vivo para que cada payout, mentoría y espacio de patrocinio sucedan en el mismo flujo.\"",
       "visionSource": "@AKAwolfcito"
     },
     "metrics": {
-      "label": "Únete a la manada",
-      "title": "500+ builders verificados",
-      "description": "Construye junto a la manada, gana reconocimiento y sube de nivel. Aquí convergen quests, mentores y beneficios futuros de HOWL.",
+      "label": "Por qué las manadas eligen el laboratorio",
+      "title": "Operación de eventos con poder builder",
+      "description": "Desde payouts instantáneos hasta itinerarios en Taberna, Wolf Den Labs mantiene alineados a organizadores, mentores y patrocinadores en un solo comando.",
       "items": [
         {
-          "value": "500+",
-          "label": "Builders activos"
+          "value": "5 min",
+          "label": "Del setup al lanzamiento"
         },
         {
-          "value": "50+",
-          "label": "Mentores expertos"
+          "value": "95%",
+          "label": "Payouts automatizados on-chain"
         },
         {
-          "value": "100+",
-          "label": "Proyectos lanzados"
+          "value": "60%",
+          "label": "Mentorías llenas vía Taberna"
         },
         {
-          "value": "20+",
-          "label": "Eventos semanales"
+          "value": "3+",
+          "label": "Touchpoints activos de patrocinio"
         }
       ]
     },
     "pillars": {
       "label": "Pilares estratégicos",
-      "title": "Lo que alimenta al Den",
-      "description": "Diseñado para builders que buscan momentum: verificación, reconocimiento y recursos compartidos mantienen a la manada avanzando mientras llegan las recompensas HOWL.",
+      "title": "Cómo entrega el laboratorio",
+      "description": "El centro de control original de Wolf Den ahora potencia a los organizadores con payouts en vivo, loops de mentoría y superficies listas para patrocinio.",
       "items": [
         {
-          "title": "Confianza verificada",
-          "description": "Self asegura que cada interacción sea de alta señal para que construyas con confianza."
+          "title": "Núcleo builder",
+          "description": "Infraestructura modular en Next.js creada por la manada para extender minijuegos, quests y flujos de datos sin fricción."
         },
         {
-          "title": "Progreso gamificado",
-          "description": "Quests, showcases y votaciones premian tus contribuciones con streaks HOWL y perks futuros."
+          "title": "Operaciones en vivo",
+          "description": "Organizadores importan asistentes, preparan pools y lanzan ruleta o carreras con recompensas cripto instantáneas."
         },
         {
-          "title": "Momentum comunitario",
-          "description": "Mentores, eventos semanales y espacios colaborativos ayudan a la manada a shippear más rápido."
+          "title": "Loop mentor + sponsor",
+          "description": "Itinerarios en Taberna y skins patrocinadas permanecen sincronizados para que aprendizaje y monetización convivan en la misma experiencia."
         }
       ]
     },
-    "modulesLabel": "Módulos clave",
-    "modulesTitle": "Todo lo que vive en el Den",
-    "modulesDescription": "Un espacio unificado para verificar, construir y celebrar el progreso con la manada.",
+    "modulesLabel": "Módulos del laboratorio",
+    "modulesTitle": "Todo lo que necesitan organizadores y builders",
+    "modulesDescription": "Opera eventos, extiende minijuegos y mantiene a la manada alineada sin salir del comando de Wolf Den Labs.",
     "modules": [
       {
-        "id": "quests",
-        "title": "Quests",
-        "description": "Misiones que impulsan tu HOWL y desbloquean futuros perks del token.",
+        "id": "events",
+        "title": "Panel de control de eventos",
+        "description": "Importa asistentes, captura wallets y dispara payouts desde una sola pantalla.",
         "cta": {
-          "label": "Lanzar misiones",
-          "href": "/quests"
-        }
-      },
-      {
-        "id": "checkin",
-        "title": "Check-in",
-        "description": "Check-ins con QR respaldados por Self para que cada momento cuente en tu streak.",
-        "cta": {
-          "label": "Ver check-in",
+          "label": "Abrir panel de evento",
           "href": "/checkin"
         }
       },
       {
         "id": "mind-games",
-        "title": "Mind Games",
-        "description": "Mines MVP con estrategia y riesgo: gana bragging rights mientras sube la gamificación.",
+        "title": "Laboratorio de minijuegos",
+        "description": "Lanza ruleta y carreras con skins patrocinadas y leaderboards en vivo.",
         "cta": {
-          "label": "Entrar a Mind Games",
+          "label": "Entrar al laboratorio",
           "href": "/mind-games"
         }
       },
       {
-        "id": "showcase",
-        "title": "Showcase",
-        "description": "Destaca demos con links a repos y productos para que la manada respalde builds activas.",
+        "id": "taberna",
+        "title": "Mentoría Taberna",
+        "description": "Redirige a las y los participantes a misiones de mentoría antes y después del evento.",
         "cta": {
-          "label": "Abrir Showcase",
+          "label": "Abrir Taberna",
+          "href": "/taberna"
+        }
+      },
+      {
+        "id": "quests",
+        "title": "Extensiones builder",
+        "description": "Despliega quests y automatizaciones creadas por la manada para potenciar tu loop de evento.",
+        "cta": {
+          "label": "Explorar quests",
+          "href": "/quests"
+        }
+      },
+      {
+        "id": "showcase",
+        "title": "Showcase de patrocinio",
+        "description": "Destaca partners, premios y pruebas de victoria con links y contenido en vivo.",
+        "cta": {
+          "label": "Destacar patrocinio",
           "href": "/showcase"
         }
       },
       {
-        "id": "voting",
-        "title": "Voting",
-        "description": "Votaciones de Demo Day protegidas por Self y niveles HOWL para votos con impacto.",
-        "cta": {
-          "label": "Comenzar a votar",
-          "href": "/voting"
-        }
-      },
-      {
-        "id": "mentorship",
-        "title": "Mentoría",
-        "description": "Agenda mentores que ya shippearon: llega con objetivos, sal con desbloqueos.",
-        "cta": {
-          "label": "Agendar mentores",
-          "href": "/mentorship"
-        }
-      },
-      {
         "id": "stats",
-        "title": "Stats",
-        "description": "Analiza HOWL, streaks y perks mientras escalas hacia recompensas habilitadas por tokens.",
+        "title": "Insights y reportes",
+        "description": "Revisa payouts, engagement y retención para planear la siguiente activación.",
         "cta": {
-          "label": "Revisar stats",
+          "label": "Ver insights",
           "href": "/stats"
-        }
-      },
-      {
-        "id": "leaderboard",
-        "title": "Leaderboard",
-        "description": "Ranking semanal que celebra a las escuadras que empujan la frontera.",
-        "cta": {
-          "label": "Ver leaderboard",
-          "href": "/leaderboard"
         }
       }
     ],
     "flows": {
-      "label": "Recorrido del builder",
-      "title": "Cómo subes de nivel",
+      "label": "Recorrido de organizadores",
+      "title": "Cómo operas el laboratorio",
       "items": [
         {
-          "title": "Verifica con Self",
-          "description": "Una verificación rápida te integra a la red confiable y hace que cada aporte cuente."
+          "title": "Configura tu evento",
+          "description": "Importa asistentes, asegura pools de premios y asigna rutas de mentoría en minutos."
         },
         {
-          "title": "Completa quests",
-          "description": "Lanza proyectos, ayuda a otros y acumula HOWL con quests y eventos semanales."
+          "title": "Corre minijuegos en vivo",
+          "description": "Activa ruleta o carreras, recompensa al instante y da visibilidad a patrocinadores en pantalla."
         },
         {
-          "title": "Sube de nivel",
-          "description": "Desbloquea mentoría, perks y la economía HOWL conforme escalas los rangos."
+          "title": "Cierra el loop",
+          "description": "Envía a la comunidad a Taberna, exporta insights y prepara la próxima activación."
         }
       ]
     }

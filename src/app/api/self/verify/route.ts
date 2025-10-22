@@ -1,12 +1,16 @@
 import {
+  AllIds,
   type AttestationId,
   DefaultConfigStore,
   SelfBackendVerifier,
 } from "@selfxyz/core";
 import { type NextRequest, NextResponse } from "next/server";
+import { normalizeSelfEndpoint } from "@/lib/selfEndpoint";
 
 const scope = process.env.NEXT_PUBLIC_SELF_SCOPE ?? "";
-const endpoint = process.env.NEXT_PUBLIC_SELF_ENDPOINT ?? "";
+const endpoint = normalizeSelfEndpoint(
+  process.env.NEXT_PUBLIC_SELF_ENDPOINT ?? "",
+);
 const sandboxEnv = process.env.SELF_USE_SANDBOX;
 const useMock =
   sandboxEnv != null
@@ -31,10 +35,12 @@ console.info(
 const configStore = new DefaultConfigStore({
   minimumAge: 18,
   excludedCountries: [],
-  ofac: true,
+  ofac: !useMock,
 });
 
-const allowedAttestations: Map<AttestationId, boolean> = new Map([[1, true]]);
+const allowedAttestations: Map<AttestationId, boolean> = useMock
+  ? AllIds
+  : new Map([[1, true]]);
 
 const verifier = new SelfBackendVerifier(
   scope,
@@ -78,8 +84,8 @@ export async function POST(request: NextRequest) {
     body = await request.json();
   } catch (_error) {
     return NextResponse.json(
-      { message: "Invalid JSON payload" },
-      { status: 400 },
+      { status: "error", result: false, reason: "Invalid JSON payload" },
+      { status: 200 },
     );
   }
 
@@ -95,17 +101,19 @@ export async function POST(request: NextRequest) {
   ) {
     return NextResponse.json(
       {
-        message:
+        status: "error",
+        result: false,
+        reason:
           "attestationId, proof, publicSignals, and userContextData are required",
       },
-      { status: 400 },
+      { status: 200 },
     );
   }
 
   if (attestationId !== 1) {
     return NextResponse.json(
-      { message: "Unsupported attestationId" },
-      { status: 400 },
+      { status: "error", result: false, reason: "Unsupported attestationId" },
+      { status: 200 },
     );
   }
 
@@ -121,18 +129,18 @@ export async function POST(request: NextRequest) {
     const validity = result.isValidDetails;
 
     if (
-      !validity.isValid ||
-      !validity.isMinimumAgeValid ||
-      !validity.isOfacValid
+      !validity?.isValid ||
+      validity.isMinimumAgeValid === false ||
+      validity.isOfacValid === false
     ) {
       return NextResponse.json(
         {
           status: "error",
           result: false,
-          message: "Verification failed",
+          reason: "Verification failed",
           details: validity,
         },
-        { status: 401 },
+        { status: 200 },
       );
     }
 
@@ -151,12 +159,12 @@ export async function POST(request: NextRequest) {
       {
         status: "error",
         result: false,
-        message:
+        reason:
           error instanceof Error
             ? error.message
             : "Unexpected verification error",
       },
-      { status: 500 },
+      { status: 200 },
     );
   }
 }

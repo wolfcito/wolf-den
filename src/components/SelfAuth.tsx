@@ -3,6 +3,7 @@
 import { type SelfApp, SelfAppBuilder } from "@selfxyz/qrcode";
 import { useTranslations } from "next-intl";
 import { type ReactElement, useEffect, useRef, useState } from "react";
+import { normalizeSelfEndpoint } from "@/lib/selfEndpoint";
 
 interface SelfAuthProps {
   onSuccess?: (data: unknown) => void;
@@ -30,7 +31,9 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
   const Wrapper = qrWrapper;
 
   useEffect(() => {
-    const endpoint = process.env.NEXT_PUBLIC_SELF_ENDPOINT ?? "";
+    const endpoint = normalizeSelfEndpoint(
+      process.env.NEXT_PUBLIC_SELF_ENDPOINT ?? "",
+    );
     const appName = process.env.NEXT_PUBLIC_SELF_APP_NAME ?? "";
     const scope = process.env.NEXT_PUBLIC_SELF_SCOPE ?? "";
 
@@ -59,8 +62,14 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
       devModeSetting != null
         ? devModeSetting === "true"
         : process.env.NODE_ENV !== "production";
-    const endpointType = "https";
+    const endpointType = devMode ? "staging_https" : "https";
     const chainID = devMode ? 44787 : 42220;
+
+    const compliance = {
+      minimumAge: 18,
+      excludedCountries: [] as string[],
+      ofac: !devMode,
+    };
 
     const app = new SelfAppBuilder({
       appName,
@@ -68,11 +77,12 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
       endpoint,
       logoBase64: "https://i.postimg.cc/mrmVf9hm/self.png",
       userId: userIdRef.current ?? "",
+      userIdType: "uuid",
       devMode,
       endpointType,
       chainID,
       disclosures: {
-        minimumAge: 18,
+        ...compliance,
         nationality: true,
         gender: true,
       },
