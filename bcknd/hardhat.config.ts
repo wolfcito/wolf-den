@@ -6,7 +6,13 @@ import '@openzeppelin/hardhat-upgrades'
 import * as dotenv from 'dotenv'
 dotenv.config()
 
-const { CELO_PRIVATE_KEY, CELOSCAN_API_KEY } = process.env
+const {
+  CELO_PRIVATE_KEY,
+  CELOSCAN_API_KEY,
+  CELO_RPC_URL,
+  CELO_ALFAJORES_RPC_URL,
+  CELO_SEPOLIA_RPC_URL,
+} = process.env
 
 const resolveAccounts = (key?: string) =>
   key && key.trim().length > 0 ? [key] : []
@@ -19,13 +25,20 @@ const config: HardhatUserConfig = {
       chainId: 31337,
     },
     celo: {
-      url: 'https://forno.celo.org',
+      url: CELO_RPC_URL ?? '',
       chainId: 42220,
       accounts: resolveAccounts(CELO_PRIVATE_KEY),
     },
     alfajores: {
-      url: 'https://alfajores-forno.celo-testnet.org',
+      url:
+        CELO_ALFAJORES_RPC_URL ?? '',
       chainId: 44787,
+      accounts: resolveAccounts(CELO_PRIVATE_KEY),
+    },
+    sepolia: {
+      url:
+        CELO_SEPOLIA_RPC_URL ?? '',
+      chainId: 11142220,
       accounts: resolveAccounts(CELO_PRIVATE_KEY),
     },
   },
@@ -50,6 +63,7 @@ const config: HardhatUserConfig = {
     apiKey: {
       celo: CELOSCAN_API_KEY ?? '',
       alfajores: CELOSCAN_API_KEY ?? '',
+      sepolia: CELOSCAN_API_KEY ?? '',
     },
     customChains: [
       {
@@ -66,6 +80,14 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: 'https://api-alfajores.celoscan.io/api',
           browserURL: 'https://alfajores.celoscan.io',
+        },
+      },
+      {
+        network: 'sepolia',
+        chainId: 11142220,
+        urls: {
+          apiURL: 'https://api-celo-sepolia.blockscout.com/api',
+          browserURL: 'https://celo-sepolia.blockscout.com',
         },
       },
     ],

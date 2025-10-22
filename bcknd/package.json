@@ -8,6 +8,9 @@
     "deploy:localhost": "hardhat run scripts/Spray.ts --network localhost",
     "deploy:alfajores": "hardhat run scripts/Spray.ts --network alfajores",
     "deploy:celo": "hardhat run scripts/Spray.ts --network celo",
+    "deploy:sepolia": "hardhat run scripts/Spray.ts --network sepolia",
+    "test:spray:localhost": "hardhat test --network localhost test/Spray.test.ts",
+    "spray:demo:localhost": "hardhat run scripts/SprayDisperse.ts --network localhost",
     "verify:alfajores": "hardhat verify --network alfajores",
     "verify:celo": "hardhat verify --network celo"
   },
