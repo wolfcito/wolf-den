@@ -373,6 +373,10 @@
     "intro": {
       "title": "Verify with Self",
       "body": "Scan the QR with the Self app to sync your identity with the pack.",
+      "mobile": "Open the Self app on this device to sync your identity with the pack.",
+      "mobileCta": "Open Self App",
+      "mobileHint": "The button launches the Self app. Once approved, you’ll return here automatically.",
+      "mobileUnavailable": "Mobile deep link not configured yet. Set NEXT_PUBLIC_SELF_DEEPLINK_CALLBACK to enable the button.",
       "loading": "Generating QR…"
     },
     "error": {

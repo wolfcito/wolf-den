@@ -373,6 +373,10 @@
     "intro": {
       "title": "Verifica con Self",
       "body": "Escanea el QR con la app Self para sincronizar tu identidad con la manada.",
+      "mobile": "Abre la app Self en este dispositivo para sincronizar tu identidad con la manada.",
+      "mobileCta": "Abrir Self",
+      "mobileHint": "El botón abrirá la app Self. Tras aprobar, regresarás aquí automáticamente.",
+      "mobileUnavailable": "El deep link móvil no está configurado. Define NEXT_PUBLIC_SELF_DEEPLINK_CALLBACK para habilitar el botón.",
       "loading": "Generando QR…"
     },
     "error": {

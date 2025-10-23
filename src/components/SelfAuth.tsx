@@ -1,9 +1,16 @@
 "use client";
 
-import type { VerificationConfig } from "@selfxyz/core";
+import { getUniversalLink, type VerificationConfig } from "@selfxyz/core";
 import { type SelfApp, SelfAppBuilder } from "@selfxyz/qrcode";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { type ReactElement, useEffect, useRef, useState } from "react";
+import {
+  type ReactElement,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { normalizeSelfEndpoint } from "@/lib/selfEndpoint";
 
 interface SelfAuthProps {
@@ -26,10 +33,44 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
   const [selfApp, setSelfApp] = useState<SelfApp | null>(null);
   const [isVerified, setIsVerified] = useState(false);
   const [missingConfig, setMissingConfig] = useState<string[]>([]);
+  const [isMobile, setIsMobile] = useState(false);
+  const [universalLink, setUniversalLink] = useState<string | null>(null);
+  const [deeplinkConfigured, setDeeplinkConfigured] = useState(false);
   const [qrWrapper, setQrWrapper] = useState<QrWrapperComponent | null>(null);
   const [qrWrapperError, setQrWrapperError] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const userIdRef = useRef<string | null>(null);
+  const sessionIdRef = useRef<string | null>(null);
   const Wrapper = qrWrapper;
+
+  useEffect(() => {
+    const detectMobile = () => {
+      if (typeof window === "undefined") {
+        return false;
+      }
+      const ua = window.navigator.userAgent || "";
+      const hasTouch =
+        "ontouchstart" in window ||
+        window.navigator.maxTouchPoints > 0 ||
+        window.navigator.msMaxTouchPoints > 0;
+      const isSmallViewport = window.innerWidth <= 768;
+      const isUserAgentMobile = /android|iphone|ipad|ipod/i.test(ua);
+      return (hasTouch && isSmallViewport) || isUserAgentMobile;
+    };
+
+    const updateMobileState = () => {
+      setIsMobile(detectMobile());
+    };
+
+    updateMobileState();
+    window.addEventListener("resize", updateMobileState);
+
+    return () => {
+      window.removeEventListener("resize", updateMobileState);
+    };
+  }, []);
 
   useEffect(() => {
     const endpoint = normalizeSelfEndpoint(
@@ -58,6 +99,15 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
       userIdRef.current = randomId;
     }
 
+    if (!sessionIdRef.current) {
+      const randomSessionId =
+        typeof globalThis !== "undefined" &&
+        typeof globalThis.crypto?.randomUUID === "function"
+          ? globalThis.crypto.randomUUID()
+          : Math.random().toString(36).slice(2);
+      sessionIdRef.current = randomSessionId;
+    }
+
     const devModeSetting = process.env.NEXT_PUBLIC_SELF_DEV_MODE;
     const devMode =
       devModeSetting != null
@@ -75,6 +125,17 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
       ofac: !devMode,
     };
 
+    let deeplinkCallback = process.env.NEXT_PUBLIC_SELF_DEEPLINK_CALLBACK ?? "";
+    if (!deeplinkCallback && typeof window !== "undefined") {
+      try {
+        const url = new URL(window.location.origin + pathname);
+        url.searchParams.set("selfStatus", "verified");
+        deeplinkCallback = url.toString();
+      } catch (error) {
+        console.warn("Failed to derive deeplink callback URL", error);
+      }
+    }
+
     const app = new SelfAppBuilder({
       appName,
       scope,
@@ -85,6 +146,8 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
       devMode,
       endpointType,
       chainID,
+      sessionId: sessionIdRef.current ?? undefined,
+      deeplinkCallback,
       disclosures: {
         ...compliance,
         nationality: true,
@@ -94,7 +157,14 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
 
     setMissingConfig([]);
     setSelfApp(app);
-  }, []);
+    if (deeplinkCallback) {
+      setUniversalLink(getUniversalLink(app));
+      setDeeplinkConfigured(true);
+    } else {
+      setUniversalLink(null);
+      setDeeplinkConfigured(false);
+    }
+  }, [pathname]);
 
   useEffect(() => {
     let isActive = true;
@@ -146,6 +216,33 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
     };
   }, []);
 
+  useEffect(() => {
+    if (typeof window === "undefined" || !searchParams) {
+      return;
+    }
+    const status = searchParams.get("selfStatus");
+    if (!status) {
+      return;
+    }
+
+    const nextUrl = new URL(window.location.href);
+    nextUrl.searchParams.delete("selfStatus");
+
+    if (status === "verified" && !isVerified) {
+      setIsVerified(true);
+      onSuccess?.(undefined);
+      console.log("Self verification successful via deeplink!");
+    } else if (status === "error") {
+      const error = new Error("Verification failed");
+      onError?.(error);
+      console.error("Self verification error via deeplink.");
+    }
+
+    void router.replace(`${nextUrl.pathname}${nextUrl.search}${nextUrl.hash}`, {
+      scroll: false,
+    });
+  }, [isVerified, onError, onSuccess, router, searchParams]);
+
   const handleSuccess = () => {
     setIsVerified(true);
     onSuccess?.(undefined);
@@ -159,6 +256,15 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
     }
     console.error("Self verification error:", data);
   };
+
+  const handleOpenSelfApp = useCallback(() => {
+    if (!universalLink) {
+      return;
+    }
+    if (typeof window !== "undefined") {
+      window.location.assign(universalLink);
+    }
+  }, [universalLink]);
 
   return (
     <div className="wolf-card flex flex-col items-center justify-center gap-5 rounded-[1.9rem] border border-wolf-border-strong px-6 py-8 text-center text-wolf-foreground">
@@ -191,8 +297,27 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
             <h2 className="text-xl font-semibold text-white">
               {t("intro.title")}
             </h2>
-            <p className="mt-2 text-sm text-white/70">{t("intro.body")}</p>
+            <p className="mt-2 text-sm text-white/70">
+              {isMobile ? t("intro.mobile") : t("intro.body")}
+            </p>
           </div>
+          {isMobile ? (
+            <div className="space-y-3">
+              <button
+                type="button"
+                onClick={handleOpenSelfApp}
+                disabled={!universalLink}
+                className="inline-flex w-full items-center justify-center rounded-full bg-[linear-gradient(120deg,#a5cd60,#7ba142)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.22em] text-[#08120b] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:brightness-100"
+              >
+                {t("intro.mobileCta")}
+              </button>
+              <p className="text-xs text-white/60">
+                {deeplinkConfigured
+                  ? t("intro.mobileHint")
+                  : t("intro.mobileUnavailable")}
+              </p>
+            </div>
+          ) : null}
           {selfApp ? (
             Wrapper ? (
               <div className="mx-auto w-full max-w-[260px] sm:max-w-[300px] [&>div>div:first-child]:hidden [&>div>div:last-child]:overflow-hidden [&>div>div:last-child]:rounded-[1.15rem] [&>div>div:last-child]:border [&>div>div:last-child]:border-wolf-border-soft [&>div>div:last-child]:bg-wolf-charcoal-90/85 [&>div>div:last-child]:shadow-[0_28px_75px_-55px_rgba(0,0,0,0.7)]">
