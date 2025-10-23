@@ -36,6 +36,7 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
   const [isMobile, setIsMobile] = useState(false);
   const [universalLink, setUniversalLink] = useState<string | null>(null);
   const [deeplinkConfigured, setDeeplinkConfigured] = useState(false);
+  const [showQr, setShowQr] = useState(false);
   const [qrWrapper, setQrWrapper] = useState<QrWrapperComponent | null>(null);
   const [qrWrapperError, setQrWrapperError] = useState(false);
   const router = useRouter();
@@ -51,10 +52,13 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
         return false;
       }
       const ua = window.navigator.userAgent || "";
+      const navigatorInfo = window.navigator as Navigator & {
+        msMaxTouchPoints?: number;
+      };
       const hasTouch =
         "ontouchstart" in window ||
-        window.navigator.maxTouchPoints > 0 ||
-        window.navigator.msMaxTouchPoints > 0;
+        navigatorInfo.maxTouchPoints > 0 ||
+        (navigatorInfo.msMaxTouchPoints ?? 0) > 0;
       const isSmallViewport = window.innerWidth <= 768;
       const isUserAgentMobile = /android|iphone|ipad|ipod/i.test(ua);
       return (hasTouch && isSmallViewport) || isUserAgentMobile;
@@ -266,6 +270,16 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
     }
   }, [universalLink]);
 
+  const handleQrToggle = (value: "hide" | "show") => {
+    setShowQr(value === "show");
+  };
+
+  useEffect(() => {
+    if (!isMobile) {
+      setShowQr(true);
+    }
+  }, [isMobile]);
+
   return (
     <div className="wolf-card flex flex-col items-center justify-center gap-5 rounded-[1.9rem] border border-wolf-border-strong px-6 py-8 text-center text-wolf-foreground">
       {missingConfig.length > 0 ? (
@@ -302,7 +316,7 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
             </p>
           </div>
           {isMobile ? (
-            <div className="space-y-3">
+            <div className="space-y-4">
               <button
                 type="button"
                 onClick={handleOpenSelfApp}
@@ -316,26 +330,61 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
                   ? t("intro.mobileHint")
                   : t("intro.mobileUnavailable")}
               </p>
+              <fieldset className="space-y-2 rounded-[1.15rem] border border-wolf-border-soft px-4 py-3 text-left">
+                <legend className="text-xs font-semibold uppercase tracking-[0.28em] text-white/60">
+                  {t("intro.mobileQrLabel")}
+                </legend>
+                <div className="flex flex-col gap-2 text-sm text-white/80 sm:flex-row">
+                  <label className="inline-flex items-center gap-2">
+                    <input
+                      type="radio"
+                      name="mobile-qr-toggle"
+                      value="hide"
+                      checked={!showQr}
+                      onChange={() => handleQrToggle("hide")}
+                      className="h-4 w-4 accent-[#a5cd60]"
+                    />
+                    <span>{t("intro.mobileQrHide")}</span>
+                  </label>
+                  <label className="inline-flex items-center gap-2">
+                    <input
+                      type="radio"
+                      name="mobile-qr-toggle"
+                      value="show"
+                      checked={showQr}
+                      onChange={() => handleQrToggle("show")}
+                      className="h-4 w-4 accent-[#a5cd60]"
+                    />
+                    <span>{t("intro.mobileQrShow")}</span>
+                  </label>
+                </div>
+              </fieldset>
             </div>
           ) : null}
           {selfApp ? (
-            Wrapper ? (
-              <div className="mx-auto w-full max-w-[260px] sm:max-w-[300px] [&>div>div:first-child]:hidden [&>div>div:last-child]:overflow-hidden [&>div>div:last-child]:rounded-[1.15rem] [&>div>div:last-child]:border [&>div>div:last-child]:border-wolf-border-soft [&>div>div:last-child]:bg-wolf-charcoal-90/85 [&>div>div:last-child]:shadow-[0_28px_75px_-55px_rgba(0,0,0,0.7)]">
-                <Wrapper
-                  selfApp={selfApp}
-                  onSuccess={handleSuccess}
-                  onError={handleError}
-                  size={260}
-                  darkMode
-                />
-              </div>
-            ) : qrWrapperError ? (
-              <p className="text-sm text-[#ff8f94]">
-                {t("error.missingWrapper")}
-              </p>
+            !isMobile || showQr ? (
+              Wrapper ? (
+                <div className="mx-auto w-full max-w-[260px] sm:max-w-[300px] [&>div>div:first-child]:hidden [&>div>div:last-child]:overflow-hidden [&>div>div:last-child]:rounded-[1.15rem] [&>div>div:last-child]:border [&>div>div:last-child]:border-wolf-border-soft [&>div>div:last-child]:bg-wolf-charcoal-90/85 [&>div>div:last-child]:shadow-[0_28px_75px_-55px_rgba(0,0,0,0.7)]">
+                  <Wrapper
+                    selfApp={selfApp}
+                    onSuccess={handleSuccess}
+                    onError={handleError}
+                    size={260}
+                    darkMode
+                  />
+                </div>
+              ) : qrWrapperError ? (
+                <p className="text-sm text-[#ff8f94]">
+                  {t("error.missingWrapper")}
+                </p>
+              ) : (
+                <p className="text-sm text-wolf-text-subtle">
+                  {t("intro.loading")}
+                </p>
+              )
             ) : (
               <p className="text-sm text-wolf-text-subtle">
-                {t("intro.loading")}
+                {t("intro.mobileQrHidden")}
               </p>
             )
           ) : (

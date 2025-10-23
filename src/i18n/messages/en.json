@@ -377,6 +377,10 @@
       "mobileCta": "Open Self App",
       "mobileHint": "The button launches the Self app. Once approved, you’ll return here automatically.",
       "mobileUnavailable": "Mobile deep link not configured yet. Set NEXT_PUBLIC_SELF_DEEPLINK_CALLBACK to enable the button.",
+      "mobileQrLabel": "QR visibility",
+      "mobileQrHide": "Hide QR (recommended)",
+      "mobileQrShow": "Show QR anyway",
+      "mobileQrHidden": "QR hidden on mobile. Enable it above if you need to scan from another device.",
       "loading": "Generating QR…"
     },
     "error": {
