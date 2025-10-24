@@ -54,14 +54,23 @@ export default function SelfAuth({ onSuccess, onError }: SelfAuthProps) {
       const ua = window.navigator.userAgent || "";
       const navigatorInfo = window.navigator as Navigator & {
         msMaxTouchPoints?: number;
+        userAgentData?: {
+          mobile?: boolean;
+        };
       };
+      if (typeof navigatorInfo.userAgentData?.mobile === "boolean") {
+        return navigatorInfo.userAgentData.mobile;
+      }
+      if (/Mobi|Android|iPhone|iPod|Phone/i.test(ua)) {
+        return true;
+      }
+      const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+      const smallViewport = window.matchMedia("(max-width: 640px)").matches;
       const hasTouch =
         "ontouchstart" in window ||
         navigatorInfo.maxTouchPoints > 0 ||
         (navigatorInfo.msMaxTouchPoints ?? 0) > 0;
-      const isSmallViewport = window.innerWidth <= 768;
-      const isUserAgentMobile = /android|iphone|ipad|ipod/i.test(ua);
-      return (hasTouch && isSmallViewport) || isUserAgentMobile;
+      return (coarsePointer || hasTouch) && smallViewport;
     };
 
     const updateMobileState = () => {

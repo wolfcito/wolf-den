@@ -454,10 +454,10 @@
   },
   "HomeLanding": {
     "hero": {
-      "tagline": "Wolf Den Labs — ship fast. play smarter.",
-      "title": "The pack’s on-chain event lab and digital command center",
-      "subtitle": "For builders, organizers, mentors, and sponsors running crypto-powered experiences.",
-      "description": "Spin up ruleta and animal race mini-games, trigger instant payouts, and guide your community through mentorship routes without leaving the lab. Wolf Den Labs keeps the pack’s builder DNA alive while event captains orchestrate unforgettable on-chain moments.",
+      "tagline": "ship fast. play smarter.",
+      "title": "Instant payouts + verified mentorship for events",
+      "subtitle": "One control lab for Ops Leads, sponsors, mentors, and attendees.",
+      "description": "Configure ruleta and race engines, disperse prizes on-chain in seconds, and route Self.xyz-verified mentors through Taberna itineraries — all from the Wolf Den Labs control panel. Replace spreadsheets and wallet chases with auditable analytics and community continuity.",
       "primaryCta": {
         "label": "Launch an Event",
         "href": "/auth"
@@ -467,59 +467,67 @@
         "href": "/taberna"
       },
       "visionLabel": "Product Vision",
-      "visionQuote": "\"Wolf Den Labs unifies our builder control center with live event ops so every payout, mentor slot, and sponsor touchpoint runs in the same flow.\"",
-      "visionSource": "@AKAwolfcito"
+      "visionQuote": "\"Auto payouts, sponsor analytics, and verified mentor loops in a single flow — that’s the Wolf Den Labs promise.\"",
+      "visionSource": "Wolf Den PRD v0.2"
     },
     "metrics": {
-      "label": "Why packs choose the lab",
-      "title": "Event ops supercharged by builders",
-      "description": "From instant payouts to Taberna itineraries, Wolf Den Labs keeps organizers, mentors, and sponsors aligned in one command center.",
+      "label": "KPIs we're locking in",
+      "title": "Pilot targets grounded in product vision",
+      "description": "Wolf Den Labs measures success through automated payouts, satisfied organizers, activated sponsors, and mentors verified with Self.xyz.",
       "items": [
         {
-          "value": "5 min",
-          "label": "From setup to launch"
-        },
-        {
           "value": "95%",
-          "label": "On-chain payouts automated"
+          "label": "Auto payouts fired live"
         },
         {
-          "value": "60%",
-          "label": "Mentor slots filled via Taberna"
+          "value": "8/10",
+          "label": "Organizer NPS after pilot"
+        },
+        {
+          "value": "70%",
+          "label": "Attendees playing a mini-game"
         },
         {
           "value": "3+",
-          "label": "Sponsor touchpoints live"
+          "label": "Sponsor activations per event"
+        },
+        {
+          "value": "100%",
+          "label": "Mentors verified via Self.xyz"
+        },
+        {
+          "value": "50%",
+          "label": "Attendees returning next event"
         }
       ]
     },
     "pillars": {
       "label": "Strategic Pillars",
-      "title": "How the lab delivers",
-      "description": "The original Wolf Den control center now powers event organizers with live payouts, mentorship loops, and sponsor-ready surfaces.",
+      "title": "How the lab delivers the vision",
+      "description": "Wolf Den Labs merges our builder DNA with live operations so payouts, mentorship, and sponsor value stay in the same flow.",
       "items": [
         {
-          "title": "Builder Core",
-          "description": "Modular Next.js infrastructure from the pack keeps every mini-game, quest, and data feed easy to extend."
+          "title": "Instant Rewards Engine",
+          "description": "Ruleta and race mini-games wired to smart contracts unlock on-chain payouts the moment winners are declared."
         },
         {
-          "title": "Live Event Ops",
-          "description": "Organizers import attendees, wire prize pools, and launch ruleta or races with instant crypto rewards."
+          "title": "Unified Ops Panel",
+          "description": "Ops Leads configure events, monitor pools, and broadcast experiences from a single command interface."
         },
         {
-          "title": "Mentor & Sponsor Loop",
-          "description": "Taberna itineraries and branded skins stay in sync so learning and monetization happen in the same experience."
+          "title": "Verified Community Loop",
+          "description": "Self.xyz verification and Taberna itineraries keep mentors, attendees, and sponsors engaged before and after the event."
         }
       ]
     },
     "modulesLabel": "Lab Modules",
-    "modulesTitle": "Everything organizers and builders need",
-    "modulesDescription": "Operate events, extend mini-games, and keep the pack aligned without leaving the Wolf Den Labs command center.",
+    "modulesTitle": "What the lab includes today",
+    "modulesDescription": "Operate events, automate payouts, activate sponsors, and guide community follow-ups without leaving Wolf Den Labs.",
     "modules": [
       {
         "id": "events",
         "title": "Event Control Panel",
-        "description": "Import attendees, capture wallets, and trigger payouts from one screen.",
+        "description": "Configure the event, import attendees, and arm prize pools with audit-ready payouts.",
         "cta": {
           "label": "Open Event Panel",
           "href": "/checkin"
@@ -527,65 +535,74 @@
       },
       {
         "id": "mind-games",
-        "title": "Mini-Games Lab",
-        "description": "Launch ruleta and animal race engines with sponsor skins and live leaderboards.",
+        "title": "Auto Payout Engines",
+        "description": "Launch ruleta and race mini-games wired to the smart contract for instant prize distribution.",
         "cta": {
           "label": "Enter Mini-Games",
           "href": "/mind-games"
         }
       },
       {
+        "id": "self-verification",
+        "title": "Self.xyz Mentor Verification",
+        "description": "Validate mentors before sessions and surface verified facilitators across the lab.",
+        "cta": {
+          "label": "Review Mentors",
+          "href": "/mentorship"
+        }
+      },
+      {
         "id": "taberna",
         "title": "Taberna Mentorship",
-        "description": "Route players into mentorship missions before and after each event.",
+        "description": "Guide attendees into mentorship itineraries that extend the event’s momentum.",
         "cta": {
           "label": "Open Taberna",
           "href": "/taberna"
         }
       },
       {
-        "id": "quests",
-        "title": "Builder Extensions",
-        "description": "Deploy quests and automations from the builder collective to enhance your event loop.",
+        "id": "stats",
+        "title": "Analytics & Reporting",
+        "description": "Track payouts, engagement, and retention with exportable, sponsor-ready dashboards.",
         "cta": {
-          "label": "Browse Quests",
-          "href": "/quests"
+          "label": "View Insights",
+          "href": "/stats"
         }
       },
       {
         "id": "showcase",
-        "title": "Sponsor Showcase",
-        "description": "Feature partners, prizes, and proofs-of-win with live links and media.",
+        "title": "Sponsor Activations",
+        "description": "Orchestrate branded skins, micro-dispersions, and recap packages for partners.",
         "cta": {
           "label": "Highlight Sponsors",
           "href": "/showcase"
         }
       },
       {
-        "id": "stats",
-        "title": "Insights & Reporting",
-        "description": "Review payouts, engagement, and retention metrics to plan the next activation.",
+        "id": "quests",
+        "title": "Builder Extensions",
+        "description": "Deploy quests and automations from the pack to expand your event loop.",
         "cta": {
-          "label": "View Insights",
-          "href": "/stats"
+          "label": "Browse Quests",
+          "href": "/quests"
         }
       }
     ],
     "flows": {
-      "label": "Organizer Journey",
-      "title": "How you run the lab",
+      "label": "End-to-end Journey",
+      "title": "How Ops Leads run Wolf Den Labs",
       "items": [
         {
-          "title": "Set up your event",
-          "description": "Import attendees, lock prize pools, and assign mentor routes in minutes."
+          "title": "Configure & verify",
+          "description": "Set the agenda, import attendees, define prize pools, and confirm mentors with Self.xyz checks."
         },
         {
-          "title": "Run live mini-games",
-          "description": "Fire ruleta or animal races, reward winners instantly, and showcase sponsors on-screen."
+          "title": "Run live experiences",
+          "description": "Trigger ruleta and race engines, execute smart-contract payouts, and spotlight sponsor activations."
         },
         {
-          "title": "Close the loop",
-          "description": "Send players to Taberna mentorship, export insights, and tee up the next activation."
+          "title": "Measure & extend",
+          "description": "Review live analytics, export results, and route the community into Taberna follow-ups."
         }
       ]
     }

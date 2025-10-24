@@ -89,7 +89,7 @@ export default function HomeLanding() {
                 {t("metrics.description")}
               </p>
             </div>
-            <div className="grid w-full grid-cols-2 gap-4 text-center sm:grid-cols-4">
+            <div className="grid w-full grid-cols-2 gap-4 text-center sm:grid-cols-3 lg:grid-cols-6">
               {metrics.map((metric) => (
                 <div
                   key={metric.label}

@@ -454,10 +454,10 @@
   },
   "HomeLanding": {
     "hero": {
-      "tagline": "Wolf Den Labs — ship fast. play smarter.",
-      "title": "El laboratorio on-chain de la manada y su centro de control digital",
-      "subtitle": "Para builders, organizadores, mentores y patrocinadores que operan experiencias con cripto.",
-      "description": "Activa minijuegos de ruleta y carreras, dispara payouts instantáneos y guía a tu comunidad por rutas de mentoría sin salir del laboratorio. Wolf Den Labs preserva el ADN builder mientras las y los capitanes de evento orquestan momentos on-chain inolvidables.",
+      "tagline": "ship fast. play smarter.",
+      "title": "Payouts instantáneos + mentoría verificada para eventos",
+      "subtitle": "Un mismo laboratorio para Ops Leads, patrocinadores, mentores y asistentes.",
+      "description": "Configura motores de ruleta y carreras, dispersa premios on-chain en segundos y enruta mentores verificados con Self.xyz a itinerarios en Taberna — todo desde el panel de Wolf Den Labs. Sustituye hojas de cálculo y persecución de wallets por analítica auditable y continuidad de comunidad.",
       "primaryCta": {
         "label": "Lanzar un evento",
         "href": "/auth"
@@ -467,59 +467,67 @@
         "href": "/taberna"
       },
       "visionLabel": "Visión de producto",
-      "visionQuote": "\"Wolf Den Labs unifica nuestro centro de control builder con la operación de eventos en vivo para que cada payout, mentoría y espacio de patrocinio sucedan en el mismo flujo.\"",
-      "visionSource": "@AKAwolfcito"
+      "visionQuote": "\"Payouts automáticos, analítica para patrocinadores y loops de mentoría verificada en un mismo flujo: esa es la promesa de Wolf Den Labs.\"",
+      "visionSource": "Wolf Den PRD v0.2"
     },
     "metrics": {
-      "label": "Por qué las manadas eligen el laboratorio",
-      "title": "Operación de eventos con poder builder",
-      "description": "Desde payouts instantáneos hasta itinerarios en Taberna, Wolf Den Labs mantiene alineados a organizadores, mentores y patrocinadores en un solo comando.",
+      "label": "KPIs que blindamos",
+      "title": "Metas del piloto alineadas al PRD",
+      "description": "Wolf Den Labs mide el éxito con payouts automatizados, organizadores satisfechos, patrocinadores activados y mentores verificados con Self.xyz.",
       "items": [
         {
-          "value": "5 min",
-          "label": "Del setup al lanzamiento"
-        },
-        {
           "value": "95%",
-          "label": "Payouts automatizados on-chain"
+          "label": "Payouts automáticos en vivo"
         },
         {
-          "value": "60%",
-          "label": "Mentorías llenas vía Taberna"
+          "value": "8/10",
+          "label": "NPS de organizador tras el piloto"
+        },
+        {
+          "value": "70%",
+          "label": "Asistentes jugando un minijuego"
         },
         {
           "value": "3+",
-          "label": "Touchpoints activos de patrocinio"
+          "label": "Activaciones de patrocinio por evento"
+        },
+        {
+          "value": "100%",
+          "label": "Mentores verificados vía Self.xyz"
+        },
+        {
+          "value": "50%",
+          "label": "Asistentes que regresan al siguiente evento"
         }
       ]
     },
     "pillars": {
       "label": "Pilares estratégicos",
-      "title": "Cómo entrega el laboratorio",
-      "description": "El centro de control original de Wolf Den ahora potencia a los organizadores con payouts en vivo, loops de mentoría y superficies listas para patrocinio.",
+      "title": "Cómo el laboratorio cumple la visión",
+      "description": "Wolf Den Labs combina el ADN builder con operaciones en vivo para que payouts, mentoría y valor de patrocinio vivan en un mismo flujo.",
       "items": [
         {
-          "title": "Núcleo builder",
-          "description": "Infraestructura modular en Next.js creada por la manada para extender minijuegos, quests y flujos de datos sin fricción."
+          "title": "Motor de recompensas instantáneas",
+          "description": "Minijuegos de ruleta y carreras conectados a contratos inteligentes entregan premios al momento."
         },
         {
-          "title": "Operaciones en vivo",
-          "description": "Organizadores importan asistentes, preparan pools y lanzan ruleta o carreras con recompensas cripto instantáneas."
+          "title": "Panel de operaciones unificado",
+          "description": "Las Ops Leads configuran eventos, monitorean pools y transmiten experiencias desde una sola interfaz."
         },
         {
-          "title": "Loop mentor + sponsor",
-          "description": "Itinerarios en Taberna y skins patrocinadas permanecen sincronizados para que aprendizaje y monetización convivan en la misma experiencia."
+          "title": "Loop de comunidad verificada",
+          "description": "Self.xyz y Taberna mantienen conectados a mentores, asistentes y patrocinadores antes y después del evento."
         }
       ]
     },
     "modulesLabel": "Módulos del laboratorio",
-    "modulesTitle": "Todo lo que necesitan organizadores y builders",
-    "modulesDescription": "Opera eventos, extiende minijuegos y mantiene a la manada alineada sin salir del comando de Wolf Den Labs.",
+    "modulesTitle": "Lo que el laboratorio ofrece hoy",
+    "modulesDescription": "Opera eventos, automatiza payouts, activa patrocinadores y guía la comunidad sin salir de Wolf Den Labs.",
     "modules": [
       {
         "id": "events",
         "title": "Panel de control de eventos",
-        "description": "Importa asistentes, captura wallets y dispara payouts desde una sola pantalla.",
+        "description": "Configura el evento, importa asistentes y arma pools de premios auditables.",
         "cta": {
           "label": "Abrir panel de evento",
           "href": "/checkin"
@@ -527,20 +535,47 @@
       },
       {
         "id": "mind-games",
-        "title": "Laboratorio de minijuegos",
-        "description": "Lanza ruleta y carreras con skins patrocinadas y leaderboards en vivo.",
+        "title": "Motores de payouts automáticos",
+        "description": "Lanza ruleta y carreras conectadas al contrato para dispersar premios al instante.",
         "cta": {
           "label": "Entrar al laboratorio",
           "href": "/mind-games"
         }
       },
       {
+        "id": "self-verification",
+        "title": "Verificación Self.xyz",
+        "description": "Valida mentores antes de las sesiones y señala facilitadores verificados en todo el laboratorio.",
+        "cta": {
+          "label": "Revisar mentores",
+          "href": "/mentorship"
+        }
+      },
+      {
         "id": "taberna",
         "title": "Mentoría Taberna",
-        "description": "Redirige a las y los participantes a misiones de mentoría antes y después del evento.",
+        "description": "Guía a las personas asistentes por itinerarios de mentoría que extienden el momentum del evento.",
         "cta": {
           "label": "Abrir Taberna",
           "href": "/taberna"
+        }
+      },
+      {
+        "id": "stats",
+        "title": "Analítica y reportes",
+        "description": "Monitorea payouts, engagement y retención con dashboards exportables para patrocinadores.",
+        "cta": {
+          "label": "Ver insights",
+          "href": "/stats"
+        }
+      },
+      {
+        "id": "showcase",
+        "title": "Activaciones de patrocinio",
+        "description": "Orquesta skins, micro-dispersión y paquetes de recap para partners.",
+        "cta": {
+          "label": "Destacar patrocinio",
+          "href": "/showcase"
         }
       },
       {
@@ -551,41 +586,23 @@
           "label": "Explorar quests",
           "href": "/quests"
         }
-      },
-      {
-        "id": "showcase",
-        "title": "Showcase de patrocinio",
-        "description": "Destaca partners, premios y pruebas de victoria con links y contenido en vivo.",
-        "cta": {
-          "label": "Destacar patrocinio",
-          "href": "/showcase"
-        }
-      },
-      {
-        "id": "stats",
-        "title": "Insights y reportes",
-        "description": "Revisa payouts, engagement y retención para planear la siguiente activación.",
-        "cta": {
-          "label": "Ver insights",
-          "href": "/stats"
-        }
       }
     ],
     "flows": {
-      "label": "Recorrido de organizadores",
-      "title": "Cómo operas el laboratorio",
+      "label": "Recorrido end-to-end",
+      "title": "Cómo las Ops Leads corren Wolf Den Labs",
       "items": [
         {
-          "title": "Configura tu evento",
-          "description": "Importa asistentes, asegura pools de premios y asigna rutas de mentoría en minutos."
+          "title": "Configura y verifica",
+          "description": "Define la agenda, importa asistentes, arma pools y confirma mentores con verificaciones Self.xyz."
         },
         {
-          "title": "Corre minijuegos en vivo",
-          "description": "Activa ruleta o carreras, recompensa al instante y da visibilidad a patrocinadores en pantalla."
+          "title": "Ejecuta experiencias en vivo",
+          "description": "Activa ruleta y carreras, ejecuta payouts del smart contract y exhibe activaciones de patrocinio."
         },
         {
-          "title": "Cierra el loop",
-          "description": "Envía a la comunidad a Taberna, exporta insights y prepara la próxima activación."
+          "title": "Mide y extiende",
+          "description": "Revisa analítica en vivo, exporta resultados y encamina a la comunidad hacia seguimiento en Taberna."
         }
       ]
     }
