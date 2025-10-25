@@ -1,13 +1,14 @@
-# Wolf Den
+# Wolf Den Labs
 
- Wolf Den is the intelligence nerve center for the pack’s builder collective, orchestrating AI agents with blockchain-
-  native workflows while introducing onboarding mini-games that ease Web2 builders into Web3 habits. Its locale-aware
-  dashboard unifies quests, mentorship, taberna experiences, on-chain stats, and Self-powered identity verification so contributors can learn, play, and collaborate securely across every territory.
+ Wolf Den Labs is the pack’s on-chain event lab and digital command center. Organizers spin up mini-games with instant
+ crypto payouts, sponsors light up customized touchpoints, and mentors extend momentum through the Taberna itinerary—
+ all running on the original builder-grade Wolf Den infrastructure so the pack keeps shipping fast and playing smarter.
 
 ## Highlights
-- Locale-aware routing with `next-intl`, shipping English (`en`) and Spanish (`es`) packs out of the box
+- Event control panel that imports attendees, defines crypto prize pools, and launches ruleta/carrera mini-games with on-chain payouts
+- Locale-aware routing with `next-intl` so organizers, mentors, and sponsors can navigate in English (`en`) and Spanish (`es`)
 - Feature surface grouped under `src/app/[locale]/(den)` with reusable modules in `src/components/{den,modules,ui}`
-- Self identity verification via `@selfxyz/core`/`@selfxyz/qrcode` and the `/api/self/verify` endpoint
+- Self identity verification via `@selfxyz/core`/`@selfxyz/qrcode` pairing check-ins with trusted identities
 - Tailwind CSS v4 (PostCSS pipeline) layered with custom “wolf” tokens for consistent visuals
 - Biome-enforced TypeScript 5 + React 19 codebase using Next.js 15 and Turbopack in development
 
