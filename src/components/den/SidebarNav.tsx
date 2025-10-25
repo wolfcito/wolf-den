@@ -21,28 +21,37 @@ import { Link, usePathname } from "@/i18n/routing";
 
 const navSections = [
   {
-    key: "experiences",
+    key: "essentials",
     items: [
-      { key: "showcase", href: "/showcase", icon: SquareStack },
-      { key: "quests", href: "/quests", icon: MapPinned },
-      { key: "mindGames", href: "/mind-games", icon: Gamepad2 },
+      { key: "auth", href: "/auth", icon: ShieldCheck },
       { key: "taberna", href: "/taberna", icon: UsersRound },
+      { key: "checkin", href: "/checkin", icon: ScanQrCode },
     ] satisfies Array<{
-      key: "showcase" | "quests" | "mindGames" | "taberna";
+      key: "auth" | "taberna" | "checkin";
       href: string;
       icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     }>,
   },
   {
-    key: "utilities",
+    key: "lab",
     items: [
-      { key: "checkin", href: "/checkin", icon: ScanQrCode },
-      { key: "auth", href: "/auth", icon: ShieldCheck },
+      { key: "mindGames", href: "/mind-games", icon: Gamepad2 },
+      { key: "quests", href: "/quests", icon: MapPinned },
+      { key: "showcase", href: "/showcase", icon: SquareStack },
+    ] satisfies Array<{
+      key: "mindGames" | "quests" | "showcase";
+      href: string;
+      icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    }>,
+  },
+  {
+    key: "insights",
+    items: [
       { key: "stats", href: "/stats", icon: BarChart3 },
       { key: "leaderboard", href: "/leaderboard", icon: Sparkles },
       { key: "settings", href: "/settings", icon: Settings },
     ] satisfies Array<{
-      key: "checkin" | "auth" | "stats" | "leaderboard" | "settings";
+      key: "stats" | "leaderboard" | "settings";
       href: string;
       icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     }>,
@@ -53,8 +62,9 @@ const sectionIcons: Record<
   (typeof navSections)[number]["key"],
   React.ComponentType<React.SVGProps<SVGSVGElement>>
 > = {
-  experiences: LayoutGrid,
-  utilities: Settings2,
+  essentials: ShieldCheck,
+  lab: LayoutGrid,
+  insights: Settings2,
 };
 
 type SidebarNavVariant = "desktop" | "mobile";

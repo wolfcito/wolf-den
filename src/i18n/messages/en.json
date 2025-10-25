@@ -54,20 +54,25 @@
       "subtitle": "Event Lab Command"
     },
     "sections": {
-      "experiences": {
-        "title": "Event Ops",
+      "essentials": {
+        "title": "Pilot Essentials",
         "items": {
-          "showcase": "Sponsor Showcase",
-          "quests": "Builder Extensions",
-          "mindGames": "Mini-Games Lab",
-          "taberna": "Taberna Mentorship"
+          "auth": "Self.xyz Auth",
+          "taberna": "Taberna Mentorship",
+          "checkin": "Event Check-In"
         }
       },
-      "utilities": {
-        "title": "Command Tools",
+      "lab": {
+        "title": "Lab Playground",
         "items": {
-          "checkin": "Event Panel",
-          "auth": "Self Auth",
+          "mindGames": "Mini-Games Lab",
+          "quests": "Builder Extensions",
+          "showcase": "Sponsor Showcase"
+        }
+      },
+      "insights": {
+        "title": "Analytics & Admin",
+        "items": {
           "stats": "Insights",
           "leaderboard": "Leaderboard",
           "settings": "Settings"

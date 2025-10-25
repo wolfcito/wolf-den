@@ -54,20 +54,25 @@
       "subtitle": "Comando del laboratorio"
     },
     "sections": {
-      "experiences": {
-        "title": "Operación de eventos",
+      "essentials": {
+        "title": "Esenciales del piloto",
         "items": {
-          "showcase": "Showcase de patrocinio",
-          "quests": "Extensiones builder",
-          "mindGames": "Laboratorio de minijuegos",
-          "taberna": "Mentoría Taberna"
+          "auth": "Autorización Self.xyz",
+          "taberna": "Mentoría Taberna",
+          "checkin": "Check-in de evento"
         }
       },
-      "utilities": {
-        "title": "Herramientas de comando",
+      "lab": {
+        "title": "Playground del laboratorio",
         "items": {
-          "checkin": "Panel de evento",
-          "auth": "Self Auth",
+          "mindGames": "Laboratorio de minijuegos",
+          "quests": "Extensiones builder",
+          "showcase": "Showcase de patrocinio"
+        }
+      },
+      "insights": {
+        "title": "Analítica y administración",
+        "items": {
           "stats": "Insights",
           "leaderboard": "Leaderboard",
           "settings": "Settings"
