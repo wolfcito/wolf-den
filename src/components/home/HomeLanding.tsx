@@ -1,4 +1,6 @@
 import { useTranslations } from "next-intl";
+import BlogHighlights from "@/components/den/BlogHighlights";
+import VerificationBadge from "@/components/ui/VerificationBadge";
 import { Link } from "@/i18n/routing";
 
 interface ModuleCard {
@@ -24,6 +26,10 @@ export default function HomeLanding() {
     value: string;
     label: string;
   }>;
+  const highlights = t.raw("highlights.items") as Array<{
+    title: string;
+    description: string;
+  }>;
 
   return (
     <div className="relative overflow-hidden text-wolf-foreground">
@@ -45,6 +51,7 @@ export default function HomeLanding() {
             <p className="max-w-[42ch] text-lg text-white/75">
               {t("hero.description")}
             </p>
+            <VerificationBadge className="mt-2" />
             <div className="flex flex-wrap gap-4">
               <Link
                 href={t("hero.primaryCta.href")}
@@ -73,6 +80,35 @@ export default function HomeLanding() {
                 {t("hero.visionSource")}
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="wolf-card rounded-[2.5rem] border border-wolf-border-strong p-10">
+          <header className="flex flex-col gap-3">
+            <p className="text-xs uppercase tracking-[0.3em] text-wolf-text-subtle">
+              {t("highlights.label")}
+            </p>
+            <h2 className="text-3xl font-semibold uppercase text-white">
+              {t("highlights.title")}
+            </h2>
+            <p className="max-w-[46ch] text-sm text-white/70">
+              {t("highlights.description")}
+            </p>
+          </header>
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {highlights.map((highlight) => (
+              <article
+                key={highlight.title}
+                className="wolf-card--muted rounded-[1.9rem] border border-wolf-border-mid p-6 shadow-[0_30px_85px_-65px_rgba(0,0,0,0.6)]"
+              >
+                <h3 className="text-lg font-semibold text-white">
+                  {highlight.title}
+                </h3>
+                <p className="mt-3 text-sm text-white/75">
+                  {highlight.description}
+                </p>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -165,6 +201,9 @@ export default function HomeLanding() {
                   <p className="mt-3 text-sm text-white/70">
                     {module.description}
                   </p>
+                  {module.id === "showcase" ? (
+                    <VerificationBadge className="mt-4" />
+                  ) : null}
                 </div>
                 <Link
                   href={module.cta.href}
@@ -200,6 +239,8 @@ export default function HomeLanding() {
             ))}
           </div>
         </section>
+
+        <BlogHighlights />
       </main>
     </div>
   );

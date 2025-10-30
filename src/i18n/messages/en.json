@@ -459,21 +459,40 @@
   },
   "HomeLanding": {
     "hero": {
-      "tagline": "ship fast. play smarter.",
-      "title": "Instant payouts + verified mentorship for events",
-      "subtitle": "One control lab for Ops Leads, sponsors, mentors, and attendees.",
-      "description": "Configure ruleta and race engines, disperse prizes on-chain in seconds, and route Self.xyz-verified mentors through Taberna itineraries — all from the Wolf Den Labs control panel. Replace spreadsheets and wallet chases with auditable analytics and community continuity.",
+      "tagline": "On-chain events without the guesswork",
+      "title": "Run verified experiences your sponsors can trust",
+      "subtitle": "Import attendees, trigger instant payouts, and narrate every win from one control lab.",
+      "description": "Wolf Den Labs is the operations hub for Web3 organizers: launch ruleta and race engines, push crypto rewards in real time, and keep the story flowing to the blog with Self.xyz-verified humans. No more spreadsheets, manual payouts, or dubious wallets.",
       "primaryCta": {
-        "label": "Launch an Event",
+        "label": "Launch Your Event",
         "href": "/auth"
       },
       "secondaryCta": {
-        "label": "Review the Playbook",
+        "label": "Talk with the Team",
         "href": "/taberna"
       },
       "visionLabel": "Product Vision",
-      "visionQuote": "\"Auto payouts, sponsor analytics, and verified mentor loops in a single flow — that’s the Wolf Den Labs promise.\"",
+      "visionQuote": "\"Auto payouts, sponsor analytics, and verified humans in the same loop — that’s the Wolf Den Labs promise.\"",
       "visionSource": "Wolf Den PRD v0.2"
+    },
+    "highlights": {
+      "label": "Why organizers pick the lab",
+      "title": "Three moves sponsors notice instantly",
+      "description": "Every activation stays verifiable: payouts fire on-chain, Self.xyz guards the points economy, and the recap hits your blog before attendees head home.",
+      "items": [
+        {
+          "title": "Instant on-chain payouts",
+          "description": "Mini-games trigger smart contracts the moment a winner is declared — with hashes surfaced for every sponsor."
+        },
+        {
+          "title": "Self.xyz anti-sybil gate",
+          "description": "Attendees log in, complete Self verification, and only then earn points or rewards. Bots stay out, metrics stay clean."
+        },
+        {
+          "title": "Blog-ready recaps",
+          "description": "Verified results flow straight into the storytelling engine so you can publish trusted recaps and sponsor highlights."
+        }
+      ]
     },
     "metrics": {
       "label": "KPIs we're locking in",
@@ -549,10 +568,10 @@
       },
       {
         "id": "self-verification",
-        "title": "Self.xyz Mentor Verification",
-        "description": "Validate mentors before sessions and surface verified facilitators across the lab.",
+        "title": "Self.xyz Identity Gate",
+        "description": "Validate mentors and attendees before sessions, gating access to rewards and dashboards for real humans only.",
         "cta": {
-          "label": "Review Mentors",
+          "label": "Review Verification Rules",
           "href": "/mentorship"
         }
       },
@@ -608,6 +627,28 @@
         {
           "title": "Measure & extend",
           "description": "Review live analytics, export results, and route the community into Taberna follow-ups."
+        }
+      ]
+    },
+    "blogHighlights": {
+      "label": "Storytelling Engine",
+      "title": "Turn every activation into proof",
+      "cta": {
+        "label": "Visit the Blog",
+        "href": "/blog"
+      },
+      "items": [
+        {
+          "title": "Verified recaps",
+          "description": "Publish event summaries backed by Self.xyz data so sponsors and community see the real impact."
+        },
+        {
+          "title": "Mentor spotlights",
+          "description": "Highlight facilitators and Taberna sessions that kept momentum alive beyond the main stage."
+        },
+        {
+          "title": "Sponsor storytelling",
+          "description": "Package activations, payouts, and community reactions into ready-to-share narratives."
         }
       ]
     }

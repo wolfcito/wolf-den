@@ -459,21 +459,40 @@
   },
   "HomeLanding": {
     "hero": {
-      "tagline": "ship fast. play smarter.",
-      "title": "Payouts instantáneos + mentoría verificada para eventos",
-      "subtitle": "Un mismo laboratorio para Ops Leads, patrocinadores, mentores y asistentes.",
-      "description": "Configura motores de ruleta y carreras, dispersa premios on-chain en segundos y enruta mentores verificados con Self.xyz a itinerarios en Taberna — todo desde el panel de Wolf Den Labs. Sustituye hojas de cálculo y persecución de wallets por analítica auditable y continuidad de comunidad.",
+      "tagline": "Eventos on-chain sin conjeturas",
+      "title": "Corre experiencias verificadas que tus sponsors confíen",
+      "subtitle": "Importa asistentes, dispara payouts instantáneos y narra cada logro desde un solo laboratorio.",
+      "description": "Wolf Den Labs es el hub operativo para organizadores Web3: lanza ruleta y carreras, libera recompensas cripto en tiempo real y alimenta el blog con historias de humanos verificados con Self.xyz. Se acabaron las hojas de cálculo, los payouts manuales y las wallets dudosas.",
       "primaryCta": {
-        "label": "Lanzar un evento",
+        "label": "Lanza tu evento",
         "href": "/auth"
       },
       "secondaryCta": {
-        "label": "Revisar el playbook",
+        "label": "Habla con el equipo",
         "href": "/taberna"
       },
       "visionLabel": "Visión de producto",
-      "visionQuote": "\"Payouts automáticos, analítica para patrocinadores y loops de mentoría verificada en un mismo flujo: esa es la promesa de Wolf Den Labs.\"",
+      "visionQuote": "\"Payouts automáticos, analítica para patrocinadores e identidades verificadas en el mismo loop: esa es la promesa de Wolf Den Labs.\"",
       "visionSource": "Wolf Den PRD v0.2"
+    },
+    "highlights": {
+      "label": "Por qué nos eligen",
+      "title": "Tres jugadas que tus sponsors notan",
+      "description": "Cada activación se vuelve verificable: payouts on-chain, Self.xyz blindando la economía de puntos y recaps listos para el blog antes de que termine el evento.",
+      "items": [
+        {
+          "title": "Payouts on-chain inmediatos",
+          "description": "Los minijuegos disparan el smart contract en cuanto eliges a la persona ganadora, mostrando hashes auditables."
+        },
+        {
+          "title": "Frontera anti-sybil Self.xyz",
+          "description": "Las personas asistentes inician sesión, completan Self y recién entonces ganan puntos o premios. Bots fuera, métricas limpias."
+        },
+        {
+          "title": "Recaps listos para el blog",
+          "description": "Los resultados verificados alimentan el motor de storytelling para publicar recaps y highlights de patrocinio confiables."
+        }
+      ]
     },
     "metrics": {
       "label": "KPIs que blindamos",
@@ -549,10 +568,10 @@
       },
       {
         "id": "self-verification",
-        "title": "Verificación Self.xyz",
-        "description": "Valida mentores antes de las sesiones y señala facilitadores verificados en todo el laboratorio.",
+        "title": "Frontera Self.xyz",
+        "description": "Valida mentores y asistentes antes de las sesiones, restringiendo recompensas y paneles solo a personas reales.",
         "cta": {
-          "label": "Revisar mentores",
+          "label": "Revisar reglas de verificación",
           "href": "/mentorship"
         }
       },
@@ -608,6 +627,28 @@
         {
           "title": "Mide y extiende",
           "description": "Revisa analítica en vivo, exporta resultados y encamina a la comunidad hacia seguimiento en Taberna."
+        }
+      ]
+    },
+    "blogHighlights": {
+      "label": "Motor de storytelling",
+      "title": "Convierte cada activación en evidencia",
+      "cta": {
+        "label": "Visitar el blog",
+        "href": "/blog"
+      },
+      "items": [
+        {
+          "title": "Recaps verificados",
+          "description": "Publica resúmenes respaldados por Self.xyz para que sponsors y comunidad vean el impacto real."
+        },
+        {
+          "title": "Mentor spotlights",
+          "description": "Destaca facilitadores y sesiones de Taberna que mantuvieron vivo el momentum."
+        },
+        {
+          "title": "Storytelling para sponsors",
+          "description": "Empaqueta activaciones, payouts y reacciones en narrativas listas para compartir."
         }
       ]
     }
