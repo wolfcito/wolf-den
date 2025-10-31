@@ -652,5 +652,83 @@
         }
       ]
     }
+  },
+  "SprayDisperser": {
+    "badge": "Consola Spray",
+    "heading": "Dispersa tokens a toda la manada",
+    "description": "Conecta una wallet en Celo para rociar recompensas en CELO o ERC20 a múltiples destinatarios.",
+    "actions": {
+      "connect": "Conectar wallet",
+      "connected": "Conectado: {address}",
+      "remove": "Eliminar",
+      "addRecipient": "Agregar destinatario",
+      "approve": "Aprobar gasto",
+      "approving": "Aprobando...",
+      "send": "Enviar dispersión",
+      "submitting": "Enviando..."
+    },
+    "network": {
+      "prompt": "Conecta una wallet para activar Spray.",
+      "ready": "Celo mainnet detectado",
+      "switch": "Cambia a Celo mainnet"
+    },
+    "modes": {
+      "native": "Nativo (CELO)",
+      "token": "ERC20"
+    },
+    "form": {
+      "tokenLabel": "Contrato del token",
+      "tokenPlaceholder": "0x...",
+      "tokenLoading": "Cargando metadata del token...",
+      "tokenResolved": "{symbol} detectado · {decimals} decimales",
+      "recipientLabel": "Destinatario #{index}",
+      "addressPlaceholder": "Wallet del destinatario",
+      "amountPlaceholder": "Monto"
+    },
+    "summary": {
+      "recipients": "{count, plural, one {1 destinatario} other {{count} destinatarios}}",
+      "totalNative": "Total: {amount} CELO",
+      "totalToken": "Total: {amount} {symbol}",
+      "tokenPlaceholder": "TOKEN"
+    },
+    "tips": {
+      "title": "Runbook",
+      "items": [
+        "Los montos se capturan en unidades enteras del token (18 decimales para CELO).",
+        "Para tokens ERC20 primero aprueba al contrato Spray como spender.",
+        "Consulta los recibos en tu wallet o en Celoscan para confirmar el settlement."
+      ]
+    },
+    "history": {
+      "title": "Actividad",
+      "empty": "Aún no hay dispersión—dispara tu primer spray.",
+      "native": "Nativo",
+      "token": "Token",
+      "status": {
+        "pending": "Pendiente",
+        "success": "Confirmada",
+        "error": "Fallida"
+      },
+      "summary": "{recipients, plural, one {1 destinatario} other {{recipients} destinatarios}} · {total}"
+    },
+    "messages": {
+      "alreadyApproved": "La allowance ya cubre esta dispersión.",
+      "approvalSent": "Transacción de aprobación enviada.",
+      "approvalComplete": "Aprobación confirmada.",
+      "transactionSent": "Dispersión enviada a la red.",
+      "transactionConfirmed": "Dispersión confirmada."
+    },
+    "errors": {
+      "noWallet": "No se detectó un proveedor de wallet.",
+      "connectFailed": "No se pudo conectar la wallet.",
+      "switchFailed": "No se pudo cambiar a Celo.",
+      "tokenLookupFailed": "No se pudo obtener la metadata del token.",
+      "invalidToken": "Proporciona una dirección ERC20 válida.",
+      "invalidRecipient": "Todos los destinatarios deben ser direcciones válidas.",
+      "invalidAmount": "Ingresa montos positivos para cada destinatario.",
+      "needsApproval": "Aprueba el gasto del token para el contrato Spray primero.",
+      "approvalFailed": "Falló la aprobación del token.",
+      "transactionFailed": "Falló la transacción de dispersión."
+    }
   }
 }
