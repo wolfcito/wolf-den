@@ -132,6 +132,8 @@ export default function SprayDisperser() {
       return;
     }
 
+    const activeProvider = provider;
+
     const normalized = tokenAddress.trim();
     if (!isAddress(normalized)) {
       setTokenInfo(null);
@@ -140,11 +142,11 @@ export default function SprayDisperser() {
 
     let isCancelled = false;
 
-    async function fetchTokenDetails() {
+    async function fetchTokenDetails(targetProvider: BrowserProvider) {
       setIsFetchingTokenInfo(true);
       setError(null);
       try {
-        const signer = await provider!.getSigner();
+        const signer = await targetProvider.getSigner();
         const erc20 = new Contract(normalized, ERC20_ABI, signer);
         const [symbol, decimals] = await Promise.all([
           erc20.symbol(),
@@ -165,7 +167,7 @@ export default function SprayDisperser() {
       }
     }
 
-    fetchTokenDetails();
+    fetchTokenDetails(activeProvider);
 
     return () => {
       isCancelled = true;
@@ -421,7 +423,10 @@ export default function SprayDisperser() {
 
       if (mode === "native") {
         const amounts = amountsInput.map((amount) => parseEther(amount));
-        const totalValue = amounts.reduce((acc, value) => acc + value, BigInt(0));
+        const totalValue = amounts.reduce(
+          (acc, value) => acc + value,
+          BigInt(0),
+        );
 
         const tx = await contract.disperseNative(recipients, amounts, {
           value: totalValue,
