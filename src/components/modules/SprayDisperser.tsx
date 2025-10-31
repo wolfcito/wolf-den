@@ -11,7 +11,10 @@ import {
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 
-const SPRAY_ADDRESS = "0x9b091AC8f8Db060B134A2FCE33563b3eF4A74015";
+const SPRAY_ADDRESS = (
+  process.env.NEXT_PUBLIC_SPRAY_ADDRESS ??
+  "0x9b091AC8f8Db060B134A2FCE33563b3eF4A74015"
+).trim();
 const CELO_CHAIN_ID = 42220;
 const CELO_CHAIN_HEX = "0xa4ec";
 
