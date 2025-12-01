@@ -1,6 +1,7 @@
 "use client";
 
 import { useDenUser } from "@/hooks/useDenUser";
+import useMissions from "@/hooks/useMissions";
 import { getActiveRun, type MissionType } from "@/lib/runs";
 
 const TYPE_LABEL: Record<MissionType, string> = {
@@ -21,6 +22,11 @@ export default function MissionsPage() {
       </div>
     );
   }
+
+  const { getStatus, setStatus } = useMissions({
+    runId: run.id,
+    walletAddress: user.walletAddress,
+  });
 
   const bannerCopy = !walletConnected
     ? "Connect your wallet to see and track your missions."
@@ -52,11 +58,15 @@ export default function MissionsPage() {
           const requiresSelfGate =
             walletConnected && mission.requiresSelf && !user.selfVerified;
           const missionLocked = !walletConnected || requiresSelfGate;
+          const status = getStatus(mission.id);
+          const isCompleted = status === "completed";
           const badgeLabel = !walletConnected
             ? "Wallet required"
             : requiresSelfGate
               ? "Self required"
-              : "Available";
+              : isCompleted
+                ? "Completed"
+                : "Available";
           const buttonLabel = !walletConnected
             ? "Connect wallet"
             : requiresSelfGate
@@ -84,6 +94,11 @@ export default function MissionsPage() {
                 <p className="text-xs uppercase tracking-[0.3em] text-white/60">
                   Base reward: {mission.baseHowl ?? "TBD"} HOWL
                 </p>
+                {isCompleted ? (
+                  <span className="wolf-pill border border-wolf-emerald/50 bg-wolf-emerald-soft px-2 py-1 text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-wolf-emerald">
+                    Completed
+                  </span>
+                ) : null}
                 {lockHint ? (
                   <p className="text-xs text-white/55">{lockHint}</p>
                 ) : null}
@@ -92,13 +107,24 @@ export default function MissionsPage() {
                 <span className="wolf-pill border border-wolf-border-mid px-3 py-1 uppercase tracking-[0.28em] text-white/70">
                   {badgeLabel}
                 </span>
-                <button
-                  type="button"
-                  disabled={!walletConnected}
-                  className="rounded-lg bg-[linear-gradient(180deg,#c8ff64_0%,#8bea4e_55%,#3b572a_100%)] px-4 py-2 text-[0.75rem] font-semibold uppercase tracking-[0.24em] text-[#0b1407] shadow-[0_0_24px_rgba(186,255,92,0.45)] transition enabled:hover:shadow-[0_0_30px_rgba(186,255,92,0.6)] disabled:opacity-40 disabled:shadow-none"
-                >
-                  {buttonLabel}
-                </button>
+                {missionLocked ? (
+                  <button
+                    type="button"
+                    disabled={!walletConnected}
+                    className="rounded-lg bg-[linear-gradient(180deg,#c8ff64_0%,#8bea4e_55%,#3b572a_100%)] px-4 py-2 text-[0.75rem] font-semibold uppercase tracking-[0.24em] text-[#0b1407] shadow-[0_0_24px_rgba(186,255,92,0.45)] transition enabled:hover:shadow-[0_0_30px_rgba(186,255,92,0.6)] disabled:opacity-40 disabled:shadow-none"
+                  >
+                    {buttonLabel}
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setStatus(mission.id, "completed")}
+                    disabled={isCompleted}
+                    className="rounded-lg bg-[linear-gradient(180deg,#c8ff64_0%,#8bea4e_55%,#3b572a_100%)] px-4 py-2 text-[0.75rem] font-semibold uppercase tracking-[0.24em] text-[#0b1407] shadow-[0_0_24px_rgba(186,255,92,0.45)] transition enabled:hover:shadow-[0_0_30px_rgba(186,255,92,0.6)] disabled:opacity-40 disabled:shadow-none"
+                  >
+                    {isCompleted ? "Completed" : "Mark as completed"}
+                  </button>
+                )}
               </div>
             </article>
           );
