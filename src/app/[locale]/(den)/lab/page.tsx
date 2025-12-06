@@ -9,7 +9,6 @@ import {
   Lock,
   Puzzle,
   Search,
-  Settings,
   Shield,
   ShieldCheck,
   Store,
@@ -22,8 +21,6 @@ import type { ComponentType, ReactNode } from "react";
 import { DenMain, DenRightRail } from "@/components/den/RailSlots";
 import { requireProfile } from "@/lib/accessGuards";
 import type { LabUserProfile } from "@/lib/userProfile";
-
-const LAB_NAME = process.env.NEXT_PUBLIC_LAB_NAME ?? "DenLabs";
 
 const LAB_TABS = ["Overview", "Activity", "Rewards", "Signals"];
 
@@ -138,7 +135,7 @@ function LabMain({ locale, profile }: LabMainProps) {
     Math.max(0, Math.round((holdScore / holdMax) * 100)),
   );
   const stats = [
-    { label: "Hold score", value: holdScore.toString(), meta: "Out of 120" },
+    { label: "HOWL score", value: holdScore.toString(), meta: "Out of 120" },
     { label: "Sessions", value: "3", meta: "This week" },
     { label: "Rewards", value: "2", meta: "Claimed" },
     { label: "Streak", value: "5 days", meta: "Check-ins" },
@@ -171,18 +168,10 @@ function LabMain({ locale, profile }: LabMainProps) {
   ];
   const hasWallet = Boolean(profile.wallet_address);
   const handle = formatHandle(profile.name);
-  const mobileApps = MINI_APPS.filter((app) => app.status === "LIVE");
+  const liveMiniApps = MINI_APPS.filter((app) => app.status === "LIVE");
 
   return (
     <div className="space-y-6 text-wolf-foreground">
-      <header className="space-y-1">
-        <p className="text-xs font-medium uppercase tracking-[0.35em] text-wolf-text-subtle">
-          Lab Profile – {LAB_NAME}
-        </p>
-        <p className="text-sm text-white/70">
-          Your footprint and tools inside this lab.
-        </p>
-      </header>
       <section className="wolf-card rounded-3xl border border-wolf-border p-6 text-white">
         <div className="flex flex-col gap-6 md:flex-row md:items-center">
           <div className="flex items-center gap-4">
@@ -198,18 +187,9 @@ function LabMain({ locale, profile }: LabMainProps) {
             </div>
           </div>
           <div className="flex flex-wrap gap-2 md:ml-auto">
-            <StatusBadge label={`HOLD SCORE: ${holdScore}`} />
             <StatusBadge
               icon={<UserCircle className="h-3.5 w-3.5" aria-hidden />}
               label={`ROLE: ${profile.role === "organizer" ? "OPERATOR" : "PLAYER"}`}
-            />
-            <StatusBadge
-              icon={<Shield className="h-3.5 w-3.5" aria-hidden />}
-              label={`SELF: ${profile.self_verified ? "VERIFIED" : "NOT VERIFIED"}`}
-            />
-            <StatusBadge
-              icon={<Wallet className="h-3.5 w-3.5" aria-hidden />}
-              label={`WALLET: ${hasWallet ? "LINKED" : "MISSING"}`}
             />
           </div>
         </div>
@@ -240,12 +220,11 @@ function LabMain({ locale, profile }: LabMainProps) {
       </section>
       <section className="wolf-card--muted rounded-2xl border border-wolf-border-mid p-5 lg:hidden">
         <div className="mb-3 flex items-center justify-between">
-          <p className="text-sm font-semibold text-white">Lab Mini Apps</p>
+          <p className="text-sm font-semibold text-white">Shortcuts</p>
           <LayoutGrid className="h-4 w-4 text-white/60" aria-hidden />
         </div>
-        <p className="text-xs text-white/60">Quick shortcuts for this run.</p>
         <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {mobileApps.map((app) => (
+          {liveMiniApps.map((app) => (
             <Link
               key={app.id}
               href={`${localePrefix}${app.href ?? "#"}`}
@@ -280,11 +259,11 @@ function LabStats({ holdProgress, holdScore, stats }: LabStatsProps) {
   return (
     <section className="wolf-card--muted rounded-2xl border border-wolf-border-mid p-5 text-white">
       <h2 className="text-xs font-semibold uppercase tracking-[0.32em] text-wolf-text-subtle">
-        Lab stats
+        Stats
       </h2>
       <div className="mt-4">
         <div className="flex items-center justify-between text-sm">
-          <span className="text-white/70">HOLD progress</span>
+          <span className="text-white/70">HOWL progress</span>
           <span className="font-semibold text-[#89e24a]">{holdScore} pts</span>
         </div>
         <div className="mt-2 h-2 rounded-full bg-white/10">
@@ -376,13 +355,14 @@ function QuestAction({ quest }: { quest: QuestItem }) {
 
 function LabRightSidebar({ locale }: { locale: string }) {
   const localePrefix = `/${locale}`;
+  const liveApps = MINI_APPS.filter((app) => app.status === "LIVE");
   return (
     <aside className="hidden flex-col gap-6 lg:flex text-wolf-foreground">
       <div className="relative">
         <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
         <input
           type="text"
-          placeholder="Search casts, channels and users"
+          placeholder="Search casts, channels, and users"
           className="w-full rounded-full border border-wolf-border bg-wolf-panel/80 py-2.5 pl-10 pr-14 text-sm text-white placeholder:text-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#89e24a]"
         />
         <kbd className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 rounded-md border border-wolf-border bg-wolf-panel px-2 py-0.5 text-[10px] text-white/60">
@@ -392,19 +372,9 @@ function LabRightSidebar({ locale }: { locale: string }) {
       <section className="wolf-card--muted rounded-2xl border border-wolf-border-mid p-5">
         <div className="mb-1 flex items-center justify-between">
           <div>
-            <p className="text-sm font-semibold text-white">Lab Mini Apps</p>
-            <p className="text-xs text-white/60">
-              Quick shortcuts for this run.
-            </p>
+            <p className="text-sm font-semibold text-white">Shortcuts</p>
           </div>
           <div className="flex items-center gap-1">
-            <button
-              type="button"
-              className="rounded-md p-1.5 text-white/60 hover:bg-white/10"
-            >
-              <Settings className="h-4 w-4" aria-hidden />
-              <span className="sr-only">Customize mini apps</span>
-            </button>
             <button
               type="button"
               className="rounded-md p-1.5 text-white/60 hover:bg-white/10"
@@ -415,7 +385,7 @@ function LabRightSidebar({ locale }: { locale: string }) {
           </div>
         </div>
         <div className="mt-4 grid grid-cols-3 gap-3">
-          {MINI_APPS.map((app) => {
+          {liveApps.map((app) => {
             const Icon = app.icon;
             const isLive = app.status === "LIVE";
             const href =
@@ -467,13 +437,6 @@ function LabRightSidebar({ locale }: { locale: string }) {
         <span>•</span>
         <Link href="#" className="hover:text-white">
           Terms
-        </Link>
-        <span>•</span>
-        <Link
-          href="https://github.com/GOOD-WOLF-LABS"
-          className="hover:text-white"
-        >
-          Developers
         </Link>
       </div>
     </aside>

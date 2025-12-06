@@ -1,10 +1,14 @@
 {
   "TopBar": {
     "fallback": {
-      "title": "Taberna - Wolf Den Labs",
-      "description": "Entra al laboratorio de eventos."
+      "title": "Perfil",
+      "description": "Mi laboratorio de eventos."
     },
     "modules": {
+      "profile": {
+        "title": "Perfil",
+        "description": "Mi laboratorio de eventos."
+      },
       "quests": {
         "title": "Quests",
         "description": "Misiones y automatizaciones creadas por builders que extienden cada evento."
@@ -69,8 +73,8 @@
       "lab": {
         "title": "Lab",
         "items": {
-          "labHome": "Inicio del Lab",
-          "taberna": "Taberna del Lab",
+          "labHome": "Perfil",
+          "taberna": "Espacio de mentores",
           "spray": "Recompensas Spray",
           "trustIdentity": "Confianza e Identidad"
         }
@@ -106,18 +110,14 @@
     }
   },
   "HowlBadge": {
-    "levels": {
-      "Cachorro": "HOWL • Cachorro",
-      "Lobo": "HOWL • Lobo",
-      "Alfa": "HOWL • Alfa"
-    }
+    "score": "HOLD SCORE: {value} pts"
   },
   "SelfBadge": {
     "statuses": {
-      "unverified": "Self: sin verificar",
-      "pending": "Self: pendiente",
-      "verified": "Self: verificado",
-      "error": "Self: error"
+      "unverified": "SELF: NO VERIFICADO",
+      "pending": "SELF: VERIFICANDO",
+      "verified": "SELF: VERIFICADO",
+      "error": "SELF: ERROR"
     }
   },
   "StatusPill": {

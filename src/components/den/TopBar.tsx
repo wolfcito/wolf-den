@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
 
 type ModuleKey =
+  | "profile"
   | "quests"
   | "checkin"
   | "mentorship"
@@ -18,6 +19,7 @@ type ModuleKey =
   | "spray";
 
 const moduleKeys: Record<string, ModuleKey> = {
+  "/lab": "profile",
   "/quests": "quests",
   "/checkin": "checkin",
   "/mentorship": "mentorship",

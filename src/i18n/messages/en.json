@@ -1,10 +1,14 @@
 {
   "TopBar": {
     "fallback": {
-      "title": "Taberna - Wolf Den Labs",
-      "description": "Enter the event lab."
+      "title": "Profile",
+      "description": "My event lab."
     },
     "modules": {
+      "profile": {
+        "title": "Profile",
+        "description": "My event lab."
+      },
       "quests": {
         "title": "Quests",
         "description": "Builder-made missions and automations that extend every event loop."
@@ -69,8 +73,8 @@
       "lab": {
         "title": "Lab",
         "items": {
-          "labHome": "Lab Home",
-          "taberna": "Taberna Lab",
+          "labHome": "Profile",
+          "taberna": "Mentors Space",
           "spray": "Spray Rewards",
           "trustIdentity": "Trust & Identity"
         }
@@ -106,18 +110,14 @@
     }
   },
   "HowlBadge": {
-    "levels": {
-      "Cachorro": "HOWL • Pup",
-      "Lobo": "HOWL • Wolf",
-      "Alfa": "HOWL • Alpha"
-    }
+    "score": "HOLD SCORE: {value} pts"
   },
   "SelfBadge": {
     "statuses": {
-      "unverified": "Self: unverified",
-      "pending": "Self: pending",
-      "verified": "Self: verified",
-      "error": "Self: error"
+      "unverified": "SELF: NOT VERIFIED",
+      "pending": "SELF: VERIFYING",
+      "verified": "SELF: VERIFIED",
+      "error": "SELF: ERROR"
     }
   },
   "StatusPill": {
