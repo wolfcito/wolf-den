@@ -1,51 +1,61 @@
-import type { ComponentType, ReactNode } from "react";
-import Link from "next/link";
 import {
+  Award,
+  BadgeCheck,
   BarChart3,
+  Droplets,
   Gamepad2,
+  Grid3X3,
   LayoutGrid,
   Lock,
   Puzzle,
+  Search,
   Settings,
+  Shield,
   ShieldCheck,
-  Sparkles,
   Store,
+  Trophy,
+  UserCircle,
   Wallet,
 } from "lucide-react";
+import Link from "next/link";
+import type { ComponentType, ReactNode } from "react";
+import { DenMain, DenRightRail } from "@/components/den/RailSlots";
 import { requireProfile } from "@/lib/accessGuards";
 import type { LabUserProfile } from "@/lib/userProfile";
 
 const LAB_NAME = process.env.NEXT_PUBLIC_LAB_NAME ?? "DenLabs";
 
-type MiniAppDefinition = {
+const LAB_TABS = ["Overview", "Activity", "Rewards", "Signals"];
+
+type MiniApp = {
   id: string;
-  name: string;
+  label: string;
   status: "LIVE" | "SOON";
   href?: string;
   icon: ComponentType<{ className?: string }>;
   description: string;
 };
 
-const MINI_APPS: MiniAppDefinition[] = [
+const MINI_APPS: MiniApp[] = [
   {
     id: "spray",
-    name: "Spray Disperser",
+    label: "Spray Disperser",
     status: "LIVE",
     href: "/spray",
-    icon: Sparkles,
+    icon: Droplets,
     description: "Send rewards in bulk.",
   },
   {
     id: "taberna",
-    name: "Taberna Mentorship",
+    label: "Taberna Mentorship",
     status: "LIVE",
     href: "/taberna",
     icon: Store,
-    description: "Live sessions & rooms.",
+    description: "Join live rooms.",
   },
   {
     id: "self",
-    name: "Self.xyz Auth",
+    label: "Self.xyz Auth",
     status: "LIVE",
     href: "/self-auth",
     icon: ShieldCheck,
@@ -53,42 +63,42 @@ const MINI_APPS: MiniAppDefinition[] = [
   },
   {
     id: "mini-games",
-    name: "Mini-Games Lab",
+    label: "Mini-Games Lab",
     status: "SOON",
     icon: Gamepad2,
-    description: "Play & earn inside Runs.",
+    description: "Play and earn inside runs.",
   },
   {
     id: "sponsor",
-    name: "Sponsor Showcase",
+    label: "Sponsor Showcase",
     status: "SOON",
-    icon: Wallet,
+    icon: Award,
     description: "Highlights for partners.",
   },
   {
     id: "extensions",
-    name: "Builder Extensions",
+    label: "Builder Extensions",
     status: "SOON",
     icon: Puzzle,
-    description: "Custom run add-ons.",
+    description: "Custom experiences.",
   },
   {
     id: "insights",
-    name: "Insights",
+    label: "Insights",
     status: "SOON",
     icon: BarChart3,
-    description: "Metrics & live KPIs.",
+    description: "Metrics and KPIs.",
   },
   {
     id: "leaderboard",
-    name: "Leaderboard",
+    label: "Leaderboard",
     status: "SOON",
-    icon: LayoutGrid,
+    icon: Trophy,
     description: "Top builders per run.",
   },
   {
     id: "coming-soon",
-    name: "More coming soon",
+    label: "More coming soon",
     status: "SOON",
     icon: Lock,
     description: "Reserved slot.",
@@ -102,18 +112,25 @@ export default async function LabPage({
 }) {
   const { locale } = await params;
   const profile = await requireProfile({ locale, nextPath: "/lab" });
-  return <LabShell locale={locale} profile={profile} />;
+  return (
+    <>
+      <DenMain>
+        <LabMain locale={locale} profile={profile} />
+      </DenMain>
+      <DenRightRail>
+        <LabRightSidebar locale={locale} />
+      </DenRightRail>
+    </>
+  );
 }
 
-type LabShellProps = {
+type LabMainProps = {
   locale: string;
   profile: LabUserProfile;
 };
 
-function LabShell({ locale, profile }: LabShellProps) {
+function LabMain({ locale, profile }: LabMainProps) {
   const localePrefix = `/${locale}`;
-  const handle = formatHandle(profile.name);
-  const hasWallet = Boolean(profile.wallet_address);
   const holdScore = Number(profile.hold_score ?? 0);
   const holdMax = 120;
   const holdProgress = Math.min(
@@ -121,168 +138,172 @@ function LabShell({ locale, profile }: LabShellProps) {
     Math.max(0, Math.round((holdScore / holdMax) * 100)),
   );
   const stats = [
-    { label: "HOLD score", value: holdScore.toString(), meta: "Out of 120" },
+    { label: "Hold score", value: holdScore.toString(), meta: "Out of 120" },
     { label: "Sessions", value: "3", meta: "This week" },
     { label: "Rewards", value: "2", meta: "Claimed" },
     { label: "Streak", value: "5 days", meta: "Check-ins" },
   ];
-  const quests = [
+  const quests: QuestItem[] = [
     {
       id: "self",
-      label: "Verify with Self (+10 HOLD)",
-      completed: Boolean(profile.self_verified),
+      title: "Verify with Self (+10 HOLD)",
+      description: "Boost trust and unlock gated quests.",
       href: `${localePrefix}/self-auth`,
-      cta: "Start",
+      status: profile.self_verified ? "done" : "available",
+      actionLabel: profile.self_verified ? "Done" : "Start",
     },
     {
       id: "taberna",
-      label: "Open Taberna",
-      completed: false,
+      title: "Open Taberna",
+      description: "Join the live room with builders.",
       href: `${localePrefix}/taberna`,
-      cta: "Open",
+      status: "available",
+      actionLabel: "Open",
     },
     {
       id: "spray",
-      label: "Send a test Spray",
-      completed: false,
+      title: "Send a test Spray",
+      description: "Send a dry-run Spray before your run.",
       href: `${localePrefix}/spray`,
-      cta: "Open",
-      disabled: profile.role !== "organizer",
+      status: profile.role === "organizer" ? "available" : "locked",
+      actionLabel: profile.role === "organizer" ? "Open" : "Locked",
     },
   ];
+  const hasWallet = Boolean(profile.wallet_address);
+  const handle = formatHandle(profile.name);
+  const mobileApps = MINI_APPS.filter((app) => app.status === "LIVE");
 
   return (
-    <div className="space-y-6 text-white">
+    <div className="space-y-6 text-wolf-foreground">
       <header className="space-y-1">
-        <p className="text-xs uppercase tracking-[0.32em] text-white/50">
+        <p className="text-xs font-medium uppercase tracking-[0.35em] text-wolf-text-subtle">
           Lab Profile – {LAB_NAME}
         </p>
         <p className="text-sm text-white/70">
           Your footprint and tools inside this lab.
         </p>
       </header>
-      <div className="flex flex-col gap-8 lg:flex-row">
-        <section className="flex-1 space-y-6">
-          <ProfileHeaderCard
-            profile={profile}
-            handle={handle}
-            hasWallet={hasWallet}
-          />
-          <div className="rounded-3xl border border-white/10 bg-[#0b1119] px-4 py-4">
-            <nav className="flex items-center gap-2 overflow-x-auto rounded-full border border-white/10 bg-[#05070c] px-2 py-2 text-sm">
-              <span className="rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#05070c]">
-                Overview
-              </span>
-              <InactiveTab label="Activity" />
-              <InactiveTab label="Rewards" />
-              <InactiveTab label="Signals" />
-            </nav>
-            <div className="mt-6 grid gap-6 xl:grid-cols-2">
-              <LabStatsCard
-                holdProgress={holdProgress}
-                holdScore={holdScore}
-                stats={stats}
-              />
-              <NextStepsCard quests={quests} />
+      <section className="wolf-card rounded-3xl border border-wolf-border p-6 text-white">
+        <div className="flex flex-col gap-6 md:flex-row md:items-center">
+          <div className="flex items-center gap-4">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#89e24a]/40 to-[#56f0d5]/30 text-3xl">
+              🐺
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h1 className="text-2xl font-semibold">{profile.name}</h1>
+                <BadgeCheck className="h-5 w-5 text-[#89e24a]" aria-hidden />
+              </div>
+              <p className="text-sm text-white/70">{handle}</p>
             </div>
           </div>
-          <MobileMiniApps apps={MINI_APPS} localePrefix={localePrefix} />
-        </section>
-        <aside className="hidden w-80 shrink-0 lg:block">
-          <MiniAppsPanel apps={MINI_APPS} localePrefix={localePrefix} />
-        </aside>
-      </div>
+          <div className="flex flex-wrap gap-2 md:ml-auto">
+            <StatusBadge label={`HOLD SCORE: ${holdScore}`} />
+            <StatusBadge
+              icon={<UserCircle className="h-3.5 w-3.5" aria-hidden />}
+              label={`ROLE: ${profile.role === "organizer" ? "OPERATOR" : "PLAYER"}`}
+            />
+            <StatusBadge
+              icon={<Shield className="h-3.5 w-3.5" aria-hidden />}
+              label={`SELF: ${profile.self_verified ? "VERIFIED" : "NOT VERIFIED"}`}
+            />
+            <StatusBadge
+              icon={<Wallet className="h-3.5 w-3.5" aria-hidden />}
+              label={`WALLET: ${hasWallet ? "LINKED" : "MISSING"}`}
+            />
+          </div>
+        </div>
+      </section>
+      <nav className="flex gap-1 border-b border-wolf-border">
+        {LAB_TABS.map((tab, index) => (
+          <button
+            key={tab}
+            type="button"
+            className={`relative px-4 py-3 text-sm font-semibold uppercase tracking-[0.2em] transition-colors ${
+              index === 0 ? "text-white" : "text-white/50 hover:text-white"
+            }`}
+          >
+            {tab}
+            {index === 0 ? (
+              <span className="absolute inset-x-1 bottom-0 h-0.5 rounded-full bg-[#89e24a]" />
+            ) : null}
+          </button>
+        ))}
+      </nav>
+      <section className="grid gap-6 lg:grid-cols-2">
+        <LabStats
+          holdProgress={holdProgress}
+          holdScore={holdScore}
+          stats={stats}
+        />
+        <QuestList items={quests} />
+      </section>
+      <section className="wolf-card--muted rounded-2xl border border-wolf-border-mid p-5 lg:hidden">
+        <div className="mb-3 flex items-center justify-between">
+          <p className="text-sm font-semibold text-white">Lab Mini Apps</p>
+          <LayoutGrid className="h-4 w-4 text-white/60" aria-hidden />
+        </div>
+        <p className="text-xs text-white/60">Quick shortcuts for this run.</p>
+        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          {mobileApps.map((app) => (
+            <Link
+              key={app.id}
+              href={`${localePrefix}${app.href ?? "#"}`}
+              className="rounded-xl border border-wolf-border-soft bg-wolf-panel/70 p-3 text-center text-xs text-white transition hover:bg-wolf-panel focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#89e24a]"
+            >
+              <app.icon className="mx-auto mb-2 h-5 w-5 text-white/60" />
+              <span className="font-medium">{app.label}</span>
+            </Link>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
 
-function ProfileHeaderCard({
-  profile,
-  handle,
-  hasWallet,
-}: {
-  profile: LabUserProfile;
-  handle: string;
-  hasWallet: boolean;
-}) {
-  const chips = [
-    { label: `HOLD score: ${profile.hold_score ?? 0}` },
-    { label: `Role: ${profile.role === "organizer" ? "Organizer" : "Player"}` },
-    {
-      label: `Self: ${profile.self_verified ? "Verified" : "Not verified"}`,
-    },
-    { label: `Wallet: ${hasWallet ? "Linked" : "No wallet"}` },
-  ];
-
+function StatusBadge({ icon, label }: { icon?: ReactNode; label: string }) {
   return (
-    <section className="rounded-3xl border border-white/10 bg-gradient-to-r from-[#0d141f] via-[#101a29] to-[#141f30] px-6 py-6 shadow-[0_45px_85px_-65px_rgba(0,0,0,0.85)]">
-      <div className="flex flex-col gap-5 md:flex-row md:items-center">
-        <div className="flex items-center gap-4">
-          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[#11ffee]/60 to-[#8477ff]/40 text-2xl">
-            🐺
-          </div>
-          <div>
-            <p className="text-2xl font-semibold">{profile.name}</p>
-            <p className="text-sm text-white/60">{handle}</p>
-          </div>
-        </div>
-        <div className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.28em] text-white/70">
-          {chips.map((chip) => (
-            <span
-              key={chip.label}
-              className="rounded-full border border-white/15 px-4 py-2"
-            >
-              {chip.label}
-            </span>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function InactiveTab({ label }: { label: string }) {
-  return (
-    <span className="rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/40">
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-wolf-border-soft bg-wolf-neutral-soft px-3 py-1 text-[11px] font-semibold tracking-[0.25em] text-white">
+      {icon}
       {label}
     </span>
   );
 }
 
-type LabStatsCardProps = {
+type LabStatsProps = {
   holdProgress: number;
   holdScore: number;
   stats: Array<{ label: string; value: string; meta: string }>;
 };
 
-function LabStatsCard({ holdProgress, holdScore, stats }: LabStatsCardProps) {
+function LabStats({ holdProgress, holdScore, stats }: LabStatsProps) {
   return (
-    <section className="rounded-3xl border border-white/10 bg-[#04070c]/80 px-5 py-5">
-      <p className="text-xs uppercase tracking-[0.32em] text-white/50">
+    <section className="wolf-card--muted rounded-2xl border border-wolf-border-mid p-5 text-white">
+      <h2 className="text-xs font-semibold uppercase tracking-[0.32em] text-wolf-text-subtle">
         Lab stats
-      </p>
-      <div className="mt-4 space-y-3">
+      </h2>
+      <div className="mt-4">
         <div className="flex items-center justify-between text-sm">
-          <p className="text-white/70">HOLD progress</p>
-          <span className="font-semibold text-white">{holdScore} pts</span>
+          <span className="text-white/70">HOLD progress</span>
+          <span className="font-semibold text-[#89e24a]">{holdScore} pts</span>
         </div>
-        <div className="h-2 w-full rounded-full bg-white/10">
+        <div className="mt-2 h-2 rounded-full bg-white/10">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-[#56f0d5] to-[#68a1ff]"
+            className="h-2 rounded-full bg-gradient-to-r from-[#89e24a] to-[#56f0d5] transition-all"
             style={{ width: `${holdProgress}%` }}
           />
         </div>
       </div>
-      <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
+      <div className="mt-4 grid grid-cols-2 gap-3">
         {stats.map((stat) => (
           <div
             key={stat.label}
-            className="rounded-2xl border border-white/10 px-4 py-3"
+            className="rounded-xl border border-wolf-border-soft bg-wolf-panel/70 p-4"
           >
-            <p className="text-xs uppercase tracking-[0.3em] text-white/40">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/55">
               {stat.label}
             </p>
-            <p className="mt-2 text-xl font-semibold text-white">
+            <p className="mt-2 text-2xl font-semibold text-white">
               {stat.value}
             </p>
             <p className="text-xs text-white/60">{stat.meta}</p>
@@ -293,171 +314,169 @@ function LabStatsCard({ holdProgress, holdScore, stats }: LabStatsCardProps) {
   );
 }
 
-type Quest = {
+type QuestStatus = "available" | "locked" | "done";
+
+type QuestItem = {
   id: string;
-  label: string;
-  completed: boolean;
+  title: string;
+  description: string;
   href: string;
-  cta: string;
-  disabled?: boolean;
+  status: QuestStatus;
+  actionLabel: string;
 };
 
-function NextStepsCard({ quests }: { quests: Quest[] }) {
+function QuestList({ items }: { items: QuestItem[] }) {
   return (
-    <section className="rounded-3xl border border-white/10 bg-[#050a12]/80 px-5 py-5">
-      <p className="text-xs uppercase tracking-[0.32em] text-white/50">
-        Next steps / Quests
-      </p>
-      <div className="mt-4 space-y-4">
-        {quests.map((quest) => (
-          <div
+    <section className="wolf-card--muted rounded-2xl border border-wolf-border-mid p-5 text-white">
+      <h2 className="text-xs font-semibold uppercase tracking-[0.32em] text-wolf-text-subtle">
+        Next steps / quests
+      </h2>
+      <div className="mt-4 space-y-3">
+        {items.map((quest) => (
+          <article
             key={quest.id}
-            className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 md:flex-row md:items-center md:justify-between"
+            className="flex flex-col gap-3 rounded-xl border border-wolf-border-soft bg-wolf-panel/70 p-4 md:flex-row md:items-center md:justify-between"
           >
             <div>
-              <p className="text-sm font-semibold text-white">
-                {quest.label}
-              </p>
-              {!quest.completed ? (
-                <p className="text-xs text-white/60">
-                  {quest.id === "self"
-                    ? "Boost trust and unlock gated quests."
-                    : quest.id === "taberna"
-                      ? "Join the live room with builders."
-                      : "Send a dry-run Spray before your run."}
-                </p>
-              ) : (
-                <p className="text-xs text-[#56f0d5]">Completed</p>
-              )}
+              <p className="text-sm font-semibold text-white">{quest.title}</p>
+              <p className="text-xs text-white/70">{quest.description}</p>
             </div>
-            {quest.disabled || quest.completed ? (
-              <span
-                className={`inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] ${
-                  quest.completed
-                    ? "border border-[#56f0d5]/30 text-[#56f0d5]/70"
-                    : "border border-white/20 text-white/30"
-                }`}
-              >
-                {quest.completed ? "Done" : "Locked"}
-              </span>
-            ) : (
-              <Link
-                href={quest.href}
-                className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-[#05070c] transition hover:bg-white/90"
-              >
-                {quest.cta}
-              </Link>
-            )}
-          </div>
+            <QuestAction quest={quest} />
+          </article>
         ))}
       </div>
     </section>
   );
 }
 
-type MiniAppsPanelProps = {
-  apps: MiniAppDefinition[];
-  localePrefix: string;
-};
-
-function MiniAppsPanel({ apps, localePrefix }: MiniAppsPanelProps) {
+function QuestAction({ quest }: { quest: QuestItem }) {
+  if (quest.status === "done") {
+    return (
+      <span className="inline-flex items-center rounded-full border border-[#56f0d5]/40 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.3em] text-[#56f0d5]">
+        Done
+      </span>
+    );
+  }
+  if (quest.status === "locked") {
+    return (
+      <span className="inline-flex items-center rounded-full border border-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.3em] text-white/40">
+        Locked
+      </span>
+    );
+  }
   return (
-    <section className="rounded-3xl border border-white/10 bg-[#050a12]/90 px-5 py-5">
-      <header className="mb-4 flex items-center justify-between text-sm text-white/70">
-        <div>
-          <p className="text-xs uppercase tracking-[0.32em] text-white/40">
-            Lab Mini Apps
-          </p>
-          <p className="text-xs text-white/60">Quick shortcuts for this run.</p>
-        </div>
-        <button
-          type="button"
-          className="rounded-full border border-white/15 p-2 text-white/70 hover:text-white"
-          aria-label="Customize mini apps (coming soon)"
-        >
-          <Settings className="h-4 w-4" />
-        </button>
-      </header>
-      <MiniAppsGrid apps={apps} localePrefix={localePrefix} />
-    </section>
+    <Link
+      href={quest.href}
+      className="inline-flex items-center rounded-full border border-[#89e24a] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.3em] text-[#89e24a] transition hover:bg-[#89e24a] hover:text-[#05090f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#89e24a]"
+    >
+      {quest.actionLabel}
+    </Link>
   );
 }
 
-function MobileMiniApps({
-  apps,
-  localePrefix,
-}: {
-  apps: MiniAppDefinition[];
-  localePrefix: string;
-}) {
+function LabRightSidebar({ locale }: { locale: string }) {
+  const localePrefix = `/${locale}`;
   return (
-    <section className="lg:hidden">
-      <details className="rounded-3xl border border-white/10 bg-[#050a12]/80 px-5 py-4">
-        <summary className="flex cursor-pointer items-center justify-between text-sm text-white/80">
-          <span className="inline-flex items-center gap-2">
-            <LayoutGrid className="h-4 w-4" />
-            Mini Apps
-          </span>
-          <span className="text-xs text-white/50">Tap to open</span>
-        </summary>
-        <div className="mt-4">
-          <MiniAppsGrid apps={apps} localePrefix={localePrefix} />
-        </div>
-      </details>
-    </section>
-  );
-}
-
-function MiniAppsGrid({
-  apps,
-  localePrefix,
-}: {
-  apps: MiniAppDefinition[];
-  localePrefix: string;
-}) {
-  return (
-    <div className="grid grid-cols-3 gap-4">
-      {apps.map((app) => {
-        const Icon = app.icon;
-        const href = app.href ? `${localePrefix}${app.href}` : undefined;
-        const content = (
-          <div
-            className={`flex flex-col items-center rounded-2xl border px-3 py-4 text-center text-xs ${
-              app.status === "LIVE"
-                ? "border-white/15 bg-white/5 text-white"
-                : "border-white/5 bg-white/5 text-white/40"
-            }`}
-            title={app.description}
-          >
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10">
-              <Icon className="h-5 w-5" />
-            </span>
-            <p className="mt-3 font-semibold">{app.name}</p>
-            <span
-              className={`mt-2 rounded-full px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] ${
-                app.status === "LIVE"
-                  ? "bg-[#56f0d5]/20 text-[#56f0d5]"
-                  : "bg-white/5 text-white/40"
-              }`}
+    <aside className="hidden flex-col gap-6 lg:flex text-wolf-foreground">
+      <div className="relative">
+        <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
+        <input
+          type="text"
+          placeholder="Search casts, channels and users"
+          className="w-full rounded-full border border-wolf-border bg-wolf-panel/80 py-2.5 pl-10 pr-14 text-sm text-white placeholder:text-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#89e24a]"
+        />
+        <kbd className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 rounded-md border border-wolf-border bg-wolf-panel px-2 py-0.5 text-[10px] text-white/60">
+          ⌘K
+        </kbd>
+      </div>
+      <section className="wolf-card--muted rounded-2xl border border-wolf-border-mid p-5">
+        <div className="mb-1 flex items-center justify-between">
+          <div>
+            <p className="text-sm font-semibold text-white">Lab Mini Apps</p>
+            <p className="text-xs text-white/60">
+              Quick shortcuts for this run.
+            </p>
+          </div>
+          <div className="flex items-center gap-1">
+            <button
+              type="button"
+              className="rounded-md p-1.5 text-white/60 hover:bg-white/10"
             >
-              {app.status}
-            </span>
+              <Settings className="h-4 w-4" aria-hidden />
+              <span className="sr-only">Customize mini apps</span>
+            </button>
+            <button
+              type="button"
+              className="rounded-md p-1.5 text-white/60 hover:bg-white/10"
+            >
+              <Grid3X3 className="h-4 w-4" aria-hidden />
+              <span className="sr-only">Open apps grid</span>
+            </button>
           </div>
-        );
-        if (href && app.status === "LIVE") {
-          return (
-            <Link key={app.id} href={href}>
-              {content}
-            </Link>
-          );
-        }
-        return (
-          <div key={app.id} className="cursor-not-allowed">
-            {content}
-          </div>
-        );
-      })}
-    </div>
+        </div>
+        <div className="mt-4 grid grid-cols-3 gap-3">
+          {MINI_APPS.map((app) => {
+            const Icon = app.icon;
+            const isLive = app.status === "LIVE";
+            const href =
+              isLive && app.href ? `${localePrefix}${app.href}` : null;
+            const content = (
+              <div className="flex flex-col items-center gap-2 rounded-xl border border-wolf-border-soft bg-wolf-panel/60 p-3 text-center text-xs text-white transition hover:bg-wolf-panel">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-wolf-neutral-soft">
+                  <Icon
+                    className={`h-5 w-5 ${
+                      isLive ? "text-[#89e24a]" : "text-white/40"
+                    }`}
+                  />
+                </div>
+                <span className="leading-tight">{app.label}</span>
+                <span
+                  className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${
+                    isLive
+                      ? "bg-[#89e24a]/20 text-[#89e24a]"
+                      : "bg-white/10 text-white/50"
+                  }`}
+                >
+                  {app.status}
+                </span>
+              </div>
+            );
+            if (href) {
+              return (
+                <Link key={app.id} href={href}>
+                  {content}
+                </Link>
+              );
+            }
+            return (
+              <div key={app.id} className="cursor-not-allowed opacity-70">
+                {content}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+      <div className="mt-auto flex flex-wrap gap-2 text-[11px] text-white/50">
+        <Link href="#" className="hover:text-white">
+          Support
+        </Link>
+        <span>•</span>
+        <Link href="#" className="hover:text-white">
+          Privacy
+        </Link>
+        <span>•</span>
+        <Link href="#" className="hover:text-white">
+          Terms
+        </Link>
+        <span>•</span>
+        <Link
+          href="https://github.com/GOOD-WOLF-LABS"
+          className="hover:text-white"
+        >
+          Developers
+        </Link>
+      </div>
+    </aside>
   );
 }
 
