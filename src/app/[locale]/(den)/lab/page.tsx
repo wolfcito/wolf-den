@@ -149,26 +149,12 @@ function LabMain({ locale, profile }: LabMainProps) {
       status: profile.self_verified ? "done" : "available",
       actionLabel: profile.self_verified ? "Done" : "Start",
     },
-    {
-      id: "taberna",
-      title: "Open Taberna",
-      description: "Join the live room with builders.",
-      href: `${localePrefix}/taberna`,
-      status: "available",
-      actionLabel: "Open",
-    },
-    {
-      id: "spray",
-      title: "Send a test Spray",
-      description: "Send a dry-run Spray before your run.",
-      href: `${localePrefix}/spray`,
-      status: profile.role === "organizer" ? "available" : "locked",
-      actionLabel: profile.role === "organizer" ? "Open" : "Locked",
-    },
   ];
   const hasWallet = Boolean(profile.wallet_address);
   const handle = formatHandle(profile.name);
-  const liveMiniApps = MINI_APPS.filter((app) => app.status === "LIVE");
+  const liveMiniApps = MINI_APPS.filter(
+    (app) => app.status === "LIVE" && app.id !== "self",
+  );
 
   return (
     <div className="space-y-6 text-wolf-foreground">
@@ -273,7 +259,7 @@ function LabStats({ holdProgress, holdScore, stats }: LabStatsProps) {
           />
         </div>
       </div>
-      <div className="mt-4 grid grid-cols-2 gap-3">
+      <div className="mt-4 space-y-3">
         {stats.map((stat) => (
           <div
             key={stat.label}
@@ -355,14 +341,16 @@ function QuestAction({ quest }: { quest: QuestItem }) {
 
 function LabRightSidebar({ locale }: { locale: string }) {
   const localePrefix = `/${locale}`;
-  const liveApps = MINI_APPS.filter((app) => app.status === "LIVE");
+  const liveApps = MINI_APPS.filter(
+    (app) => app.status === "LIVE" && app.id !== "self",
+  );
   return (
     <aside className="hidden flex-col gap-6 lg:flex text-wolf-foreground">
       <div className="relative">
         <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
         <input
           type="text"
-          placeholder="Search casts, channels, and users"
+          placeholder="Search experiments"
           className="w-full rounded-full border border-wolf-border bg-wolf-panel/80 py-2.5 pl-10 pr-14 text-sm text-white placeholder:text-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#89e24a]"
         />
         <kbd className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 rounded-md border border-wolf-border bg-wolf-panel px-2 py-0.5 text-[10px] text-white/60">
