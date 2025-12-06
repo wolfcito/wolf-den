@@ -66,33 +66,29 @@
       "helper": ""
     },
     "sections": {
-      "essentials": {
-        "title": "Pilot Essentials",
-        "description": "Everything you need to verify teams and kickoff events",
-        "items": {
-          "auth": "Self.xyz Auth",
-          "taberna": "Taberna Mentorship",
-          "checkin": "Event Check-In"
-        }
-      },
       "lab": {
-        "title": "Lab Playground",
-        "description": "Experiment, reward, and showcase the builds in flight",
+        "title": "Lab",
         "items": {
-          "mindGames": "Mini-Games Lab",
-          "quests": "Builder Extensions",
-          "showcase": "Sponsor Showcase",
-          "spray": "Spray Disperser"
+          "labHome": "Lab Home",
+          "taberna": "Taberna Lab",
+          "spray": "Spray Rewards",
+          "trustIdentity": "Trust & Identity"
         }
       },
-      "insights": {
-        "title": "Analytics & Admin",
-        "description": "Track performance and keep operations running smoothly",
+      "experiments": {
+        "title": "Experiments",
+        "badge": "Soon",
         "items": {
-          "stats": "Insights",
-          "leaderboard": "Leaderboard",
-          "settings": "Settings"
+          "checkin": "Event Check-In",
+          "miniGames": "Mini-Games Lab",
+          "sponsor": "Sponsor Showcase",
+          "builderExtensions": "Builder Extensions",
+          "insights": "Insights",
+          "leaderboard": "Leaderboard"
         }
+      },
+      "settings": {
+        "title": "Settings"
       }
     },
     "footer": {

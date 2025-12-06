@@ -340,21 +340,6 @@ body::after {
   backdrop-filter: blur(var(--den-blur-glass));
 }
 
-.wolf-card--muted::before {
-  content: "";
-  position: absolute;
-  inset: -50% -30% auto;
-  height: 60%;
-  background: radial-gradient(
-    circle at top,
-    rgba(137, 226, 74, 0.18),
-    transparent 65%
-  );
-  opacity: 0.5;
-  pointer-events: none;
-  filter: blur(80px);
-}
-
 .wolf-pill {
   position: relative;
   display: inline-flex;
