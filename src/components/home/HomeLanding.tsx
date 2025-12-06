@@ -4,7 +4,6 @@ import { FlaskConical } from "lucide-react";
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
-import ConnectWalletButton from "@/components/ui/ConnectWalletButton";
 import { Link } from "@/i18n/routing";
 import { fetchUserProfile } from "@/lib/userClient";
 
@@ -152,7 +151,6 @@ export default function HomeLanding() {
                 />
                 <span>Enter lab</span>
               </Link>
-              <ConnectWalletButton />
             </div>
             <div className="mt-6 flex w-full max-w-[420px] gap-6 text-white/80 justify-between">
               <svg

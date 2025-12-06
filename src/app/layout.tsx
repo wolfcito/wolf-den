@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { DM_Sans, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Inter } from "next/font/google";
 import AppKitProvider from "@/providers/AppKitProvider";
 
 const geistMono = Geist_Mono({
@@ -8,10 +8,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const dmSans = DM_Sans({
+const inter = Inter({
   variable: "--font-den-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
 });
 
 const themeInitializer = `(() => {
@@ -42,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="dark" suppressHydrationWarning>
-      <body className={`${dmSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${inter.variable} ${geistMono.variable} antialiased`}>
         {/* biome-ignore lint/security/noDangerouslySetInnerHtml: theme bootstrap */}
         <script dangerouslySetInnerHTML={{ __html: themeInitializer }} />
         <AppKitProvider>{children}</AppKitProvider>
