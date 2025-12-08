@@ -64,9 +64,7 @@ export function MobileDenLayout({ main, activity }: MobileDenLayoutProps) {
           {renderPanel}
         </div>
       </div>
-      <nav
-        className="pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-4"
-      >
+      <nav className="pointer-events-none fixed inset-x-0 bottom-4 z-50 flex justify-center px-4">
         <div className="pointer-events-auto w-full max-w-md">
           <LimelightNav
             items={navItems}
