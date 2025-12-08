@@ -101,9 +101,9 @@
   },
   "MobileDenLayout": {
     "tabs": {
-      "main": "Inicio",
-      "menu": "Explorar",
-      "activity": "Pulso"
+      "profile": "Perfil",
+      "spray": "Spray",
+      "self": "Self"
     },
     "aria": {
       "navigation": "Navegación móvil de Wolf Den"
@@ -493,12 +493,12 @@
       "walletConnected": "Wallet conectada."
     },
     "profile": {
-      "title": "1. Crea tu perfil",
-      "copy": "Cuéntanos quién eres para personalizar tu experiencia en el lab.",
+      "title": "2. Reclama tu handle",
+      "copy": "Elige un handle único para desbloquear el lab. Es obligatorio antes de entrar.",
       "nameLabel": "Handle",
       "namePlaceholder": "ej: imbuilder",
-      "handleHint": "Usa 3–24 caracteres: letras, números, . _ -",
-      "handleInvalid": "El handle debe tener 3–24 letras, números, . _ - (sin espacios).",
+      "handleHint": "Usa 3–32 caracteres: letras, números, . _ -",
+      "handleInvalid": "El handle debe tener 3–32 letras, números, . _ - (sin espacios).",
       "roleLabel": "Rol",
       "rolePlaceholder": "Elige un rol",
       "roles": {
@@ -506,7 +506,7 @@
         "player": "Jugador",
         "sponsor": "Patrocinador"
       },
-      "saveCta": "Continuar",
+      "saveCta": "Guardar handle",
       "saving": "Guardando…"
     },
     "wallet": {
@@ -515,9 +515,9 @@
         "copy": "Opcional. Necesaria para payouts y rewards."
       },
       "required": {
-        "title": "2. Conecta tu wallet para continuar",
+        "title": "1. Conecta tu wallet para continuar",
         "copy": "Spray necesita una wallet para enviar rewards on-chain.",
-        "blocker": "Conecta una wallet para continuar hacia Spray."
+        "blocker": "Conecta una wallet para continuar."
       },
       "statusLabel": "Estado",
       "messages": {
@@ -541,7 +541,7 @@
       "skip": "Sin prisa — vuelve cuando quieras verificar."
     },
     "steps": {
-      "profile": "Crea tu perfil",
+      "profile": "Reclama tu handle",
       "walletOptional": "Conecta una wallet",
       "walletRequired": "Conecta una wallet para continuar",
       "self": "Refuerza tu score",
@@ -557,8 +557,8 @@
     },
     "continue": {
       "title": "Entrar al Lab",
-      "hintProfile": "Guarda tu perfil para entrar al lab.",
       "hintWallet": "Conecta una wallet para continuar a Spray.",
+      "hintHandle": "Reclama un handle para entrar al lab.",
       "hintReady": "Listo. Entra al lab.",
       "loading": "Cargando…",
       "cta": "Entrar al Lab"

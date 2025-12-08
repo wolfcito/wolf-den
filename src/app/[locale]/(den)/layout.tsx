@@ -2,7 +2,6 @@
 
 import type { ReactNode } from "react";
 import ActivityBottomSheet from "@/components/den/ActivityBottomSheet";
-import ActivityRail from "@/components/den/ActivityRail";
 import MobileDenLayout from "@/components/den/MobileDenLayout";
 import {
   DenLayoutVariantProvider,
@@ -81,7 +80,6 @@ function MobileLayout({ children }: { children: ReactNode }) {
             <section className="mt-6 space-y-6">{children}</section>
           </>
         }
-        activity={<ActivityRail />}
       />
     </div>
   );

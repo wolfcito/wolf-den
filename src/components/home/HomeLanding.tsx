@@ -5,7 +5,7 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { Link } from "@/i18n/routing";
-import { fetchUserProfile } from "@/lib/userClient";
+import { fetchUserSession } from "@/lib/userClient";
 
 const HOW_IT_WORKS_STEPS = [
   {
@@ -90,9 +90,9 @@ export default function HomeLanding() {
 
   useEffect(() => {
     let cancelled = false;
-    fetchUserProfile()
-      .then((profile) => {
-        if (!cancelled && profile) {
+    fetchUserSession()
+      .then((session) => {
+        if (!cancelled && session?.hasProfile) {
           setEnterLabHref("/lab");
         }
       })

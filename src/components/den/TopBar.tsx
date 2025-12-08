@@ -1,7 +1,8 @@
 "use client";
 
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Menu } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useSidebar } from "@/components/ui/sidebar";
 import { Link, usePathname } from "@/i18n/routing";
 
 type ModuleKey =
@@ -35,7 +36,9 @@ const moduleKeys: Record<string, ModuleKey> = {
 
 export function TopBar() {
   const t = useTranslations("TopBar");
+  const sidebarCopy = useTranslations("SidebarNav");
   const pathname = usePathname();
+  const { toggleMobile } = useSidebar();
   const activeKey = Object.keys(moduleKeys).find(
     (path) => pathname === path || pathname?.startsWith(`${path}/`),
   );
@@ -52,6 +55,15 @@ export function TopBar() {
   return (
     <header className="flex flex-col gap-4 text-wolf-foreground">
       <div className="flex items-center gap-4">
+        <button
+          type="button"
+          onClick={toggleMobile}
+          aria-label={sidebarCopy("aria.toggle")}
+          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-wolf-border bg-wolf-charcoal-60 text-white/80 transition hover:text-white"
+        >
+          <Menu className="h-4 w-4" aria-hidden />
+          <span className="sr-only">{sidebarCopy("aria.toggle")}</span>
+        </button>
         <Link
           href="/"
           className="flex h-10 w-10 items-center justify-center rounded-lg border border-wolf-border bg-wolf-charcoal-60 text-xs text-wolf-foreground transition hover:border-wolf-border-xstrong"

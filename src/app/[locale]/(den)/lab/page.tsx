@@ -9,12 +9,10 @@ import {
   Lock,
   Puzzle,
   Search,
-  Shield,
   ShieldCheck,
   Store,
   Trophy,
   UserCircle,
-  Wallet,
 } from "lucide-react";
 import Link from "next/link";
 import type { ComponentType, ReactNode } from "react";
@@ -150,8 +148,11 @@ function LabMain({ locale, profile }: LabMainProps) {
       actionLabel: profile.self_verified ? "Done" : "Start",
     },
   ];
-  const hasWallet = Boolean(profile.wallet_address);
-  const handle = formatHandle(profile.name);
+  const handle = formatHandle(profile.handle ?? profile.wallet_address ?? null);
+  const displayName =
+    profile.display_name ||
+    formatWalletFallback(profile.wallet_address ?? null) ||
+    "Den Builder";
   const liveMiniApps = MINI_APPS.filter(
     (app) => app.status === "LIVE" && app.id !== "self",
   );
@@ -166,7 +167,7 @@ function LabMain({ locale, profile }: LabMainProps) {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-2xl font-semibold">{profile.name}</h1>
+                <h1 className="text-2xl font-semibold">{displayName}</h1>
                 <BadgeCheck className="h-5 w-5 text-[#89e24a]" aria-hidden />
               </div>
               <p className="text-sm text-white/70">{handle}</p>
@@ -431,7 +432,20 @@ function LabRightSidebar({ locale }: { locale: string }) {
   );
 }
 
-function formatHandle(name: string) {
-  const safe = name.replace(/\s+/g, "").toLowerCase();
-  return `@${safe || "denbuilder"}`;
+function formatHandle(value: string | null) {
+  if (!value) {
+    return "@denbuilder";
+  }
+  const sanitized = value.replace(/^@/, "").replace(/\s+/g, "").toLowerCase();
+  return `@${sanitized || "denbuilder"}`;
+}
+
+function formatWalletFallback(value: string | null) {
+  if (!value) {
+    return null;
+  }
+  if (value.length <= 10) {
+    return value;
+  }
+  return `${value.slice(0, 6)}…${value.slice(-4)}`;
 }

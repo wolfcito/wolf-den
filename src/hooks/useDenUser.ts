@@ -1,12 +1,12 @@
 "use client";
 
 import { useAppKitAccount } from "@reown/appkit/react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   getSelfVerification,
   subscribeToSelfVerification,
 } from "@/lib/selfVerification";
-import { fetchUserProfile } from "@/lib/userClient";
+import { fetchUserSession, type UserSession } from "@/lib/userClient";
 
 export type DenUser = {
   walletAddress: `0x${string}` | null;
@@ -23,6 +23,7 @@ export function useDenUser(): DenUser {
   const { address } = useAppKitAccount();
   const [selfVerified, setSelfVerified] = useState(false);
   const [holdScore, setHoldScore] = useState<number | null>(null);
+  const [session, setSession] = useState<UserSession | null>(null);
 
   useEffect(() => {
     setSelfVerified(getSelfVerification());
@@ -31,13 +32,14 @@ export function useDenUser(): DenUser {
 
   useEffect(() => {
     let cancelled = false;
-    fetchUserProfile()
-      .then((profile) => {
-        if (cancelled || !profile) {
+    fetchUserSession()
+      .then((data) => {
+        if (cancelled) {
           return;
         }
-        setHoldScore(profile.hold_score ?? 0);
-        setSelfVerified(profile.self_verified ?? false);
+        setSession(data);
+        setHoldScore(data.holdScore ?? 0);
+        setSelfVerified(data.isSelfVerified ?? false);
       })
       .catch(() => {
         if (!cancelled) {
@@ -49,10 +51,15 @@ export function useDenUser(): DenUser {
     };
   }, []);
 
-  const normalizedAddress =
-    typeof address === "string" && address.startsWith("0x")
-      ? (address as `0x${string}`)
-      : null;
+  const normalizedAddress = useMemo(() => {
+    if (session?.walletAddress) {
+      return session.walletAddress;
+    }
+    if (typeof address === "string" && address.startsWith("0x")) {
+      return address as `0x${string}`;
+    }
+    return null;
+  }, [address, session?.walletAddress]);
 
   const isBuilder = normalizedAddress !== null;
   const roles = isBuilder ? ["BUILDER"] : [];
