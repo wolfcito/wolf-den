@@ -1,0 +1,278 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "Doc Targets Mapping",
+  "description": "Machine-readable mapping of file paths to documentation targets for doc drift detection",
+  "version": "1.0.0",
+  "mappings": [
+    {
+      "pattern": "^src/app/\\[locale\\]/.*\\.tsx$",
+      "targets": ["CLAUDE.md § Key Directories"],
+      "description": "App pages and layouts"
+    },
+    {
+      "pattern": "^src/app/\\[locale\\]/access/",
+      "targets": [
+        "CLAUDE.md § Access Flow",
+        "docs/new-implementation-onboarding.md",
+        "docs/STATUS.md"
+      ],
+      "description": "Access/onboarding flow"
+    },
+    {
+      "pattern": "^src/app/\\[locale\\]/\\(den\\)/lab/",
+      "targets": [
+        "CLAUDE.md § Core Pages",
+        "docs/new-profile-lab.md",
+        "docs/STATUS.md"
+      ],
+      "description": "Lab/profile page"
+    },
+    {
+      "pattern": "^src/app/\\[locale\\]/\\(den\\)/missions/",
+      "targets": [
+        "CLAUDE.md § Adding a New Mission",
+        "docs/structure.md",
+        "docs/STATUS.md"
+      ],
+      "description": "Missions module"
+    },
+    {
+      "pattern": "^src/app/\\[locale\\]/\\(den\\)/spray/",
+      "targets": [
+        "docs/spray-console.md",
+        "CLAUDE.md § Spray Console",
+        "docs/STATUS.md"
+      ],
+      "description": "Spray disperser module"
+    },
+    {
+      "pattern": "^src/app/\\[locale\\]/\\(den\\)/gooddollar/",
+      "targets": [
+        "docs/gooddolar.md",
+        "CLAUDE.md § GoodDollar Rewards",
+        "docs/STATUS.md"
+      ],
+      "description": "GoodDollar rewards module"
+    },
+    {
+      "pattern": "^src/app/\\[locale\\]/\\(den\\)/taberna/",
+      "targets": ["CLAUDE.md § Navigation Structure", "docs/STATUS.md"],
+      "description": "Taberna live rooms"
+    },
+    {
+      "pattern": "^src/app/\\[locale\\]/\\(den\\)/auth/",
+      "targets": ["CLAUDE.md § Self Verification", "docs/STATUS.md"],
+      "description": "Self.xyz verification flow"
+    },
+    {
+      "pattern": "^src/app/api/",
+      "targets": ["CLAUDE.md § API Routes", "docs/STATUS.md"],
+      "description": "API endpoints"
+    },
+    {
+      "pattern": "^src/app/api/auth/",
+      "targets": [
+        "CLAUDE.md § API Routes",
+        "CLAUDE.md § Access Flow",
+        "docs/STATUS.md"
+      ],
+      "description": "Auth API endpoints"
+    },
+    {
+      "pattern": "^src/app/api/profile/",
+      "targets": [
+        "CLAUDE.md § API Routes",
+        "CLAUDE.md § State Management",
+        "docs/STATUS.md"
+      ],
+      "description": "Profile API endpoints"
+    },
+    {
+      "pattern": "^src/app/api/trust/",
+      "targets": [
+        "CLAUDE.md § API Routes",
+        "CLAUDE.md § Self Verification",
+        "docs/STATUS.md"
+      ],
+      "description": "Trust/Self verification API"
+    },
+    {
+      "pattern": "^src/components/den/",
+      "targets": [
+        "CLAUDE.md § Key Directories",
+        "CLAUDE.md § Navigation Structure",
+        "docs/STATUS.md"
+      ],
+      "description": "Den shell components"
+    },
+    {
+      "pattern": "^src/components/modules/",
+      "targets": [
+        "CLAUDE.md § Key Directories",
+        "docs/structure.md",
+        "docs/STATUS.md"
+      ],
+      "description": "Feature modules"
+    },
+    {
+      "pattern": "^src/components/ui/",
+      "targets": ["CLAUDE.md § Key Directories"],
+      "description": "UI components"
+    },
+    {
+      "pattern": "^src/hooks/",
+      "targets": ["CLAUDE.md § State Management", "docs/STATUS.md"],
+      "description": "React hooks"
+    },
+    {
+      "pattern": "^src/hooks/useDenUser\\.ts$",
+      "targets": [
+        "CLAUDE.md § State Management",
+        "CLAUDE.md § Core Concepts",
+        "docs/STATUS.md"
+      ],
+      "description": "Core user state hook"
+    },
+    {
+      "pattern": "^src/hooks/useMissions\\.ts$",
+      "targets": ["CLAUDE.md § Adding a New Mission", "docs/STATUS.md"],
+      "description": "Missions state hook"
+    },
+    {
+      "pattern": "^src/hooks/useGoodDollar\\.ts$",
+      "targets": [
+        "docs/gooddolar.md",
+        "CLAUDE.md § GoodDollar Rewards",
+        "docs/STATUS.md"
+      ],
+      "description": "GoodDollar integration hook"
+    },
+    {
+      "pattern": "^src/lib/runs\\.ts$",
+      "targets": [
+        "CLAUDE.md § Data Models",
+        "CLAUDE.md § Adding a New Mission",
+        "docs/structure.md",
+        "docs/STATUS.md"
+      ],
+      "description": "Runs and missions data models"
+    },
+    {
+      "pattern": "^src/lib/spray.*\\.ts$",
+      "targets": [
+        "docs/spray-console.md",
+        "CLAUDE.md § Spray Console",
+        "docs/STATUS.md"
+      ],
+      "description": "Spray module utilities"
+    },
+    {
+      "pattern": "^src/lib/selfVerification\\.ts$",
+      "targets": ["CLAUDE.md § Self Verification", "docs/STATUS.md"],
+      "description": "Self.xyz verification utilities"
+    },
+    {
+      "pattern": "^src/lib/gooddollar\\.ts$",
+      "targets": [
+        "docs/gooddolar.md",
+        "CLAUDE.md § GoodDollar Rewards",
+        "docs/STATUS.md"
+      ],
+      "description": "GoodDollar utilities"
+    },
+    {
+      "pattern": "^src/lib/supabaseAdmin\\.ts$",
+      "targets": [
+        "CLAUDE.md § State Management",
+        "docs/STATUS.md § Database Schema"
+      ],
+      "description": "Supabase admin client"
+    },
+    {
+      "pattern": "^src/lib/userProfile\\.ts$",
+      "targets": ["CLAUDE.md § Data Models", "docs/STATUS.md"],
+      "description": "User profile types"
+    },
+    {
+      "pattern": "^src/lib/appkitConfig\\.ts$",
+      "targets": ["CLAUDE.md § External Integrations", "docs/STATUS.md"],
+      "description": "Reown AppKit configuration"
+    },
+    {
+      "pattern": "^src/i18n/messages/.*\\.json$",
+      "targets": ["CLAUDE.md § Localization", "docs/STATUS.md"],
+      "description": "Translation files"
+    },
+    {
+      "pattern": "^src/i18n/routing\\.ts$",
+      "targets": ["CLAUDE.md § Localization", "docs/STATUS.md"],
+      "description": "i18n routing config"
+    },
+    {
+      "pattern": "^src/middleware\\.ts$",
+      "targets": ["CLAUDE.md § Localization", "docs/STATUS.md"],
+      "description": "Next.js middleware"
+    },
+    {
+      "pattern": "^package\\.json$",
+      "targets": ["CLAUDE.md § Tech Stack", "docs/STATUS.md § Dependencies"],
+      "description": "Package dependencies"
+    },
+    {
+      "pattern": "^\\.env\\.example$",
+      "targets": [
+        "CLAUDE.md § Environment Variables",
+        "docs/STATUS.md § Environment Variables"
+      ],
+      "description": "Environment variables template"
+    },
+    {
+      "pattern": "^next\\.config\\.ts$",
+      "targets": ["CLAUDE.md § Deployment", "docs/STATUS.md"],
+      "description": "Next.js configuration"
+    },
+    {
+      "pattern": "^biome\\.json$",
+      "targets": ["CLAUDE.md § Code Style"],
+      "description": "Biome linter config"
+    },
+    {
+      "pattern": "^tailwind\\.config\\.ts$",
+      "targets": ["CLAUDE.md § Styling & Theming"],
+      "description": "Tailwind CSS config"
+    },
+    {
+      "pattern": "^tsconfig\\.json$",
+      "targets": ["CLAUDE.md § Tech Stack"],
+      "description": "TypeScript config"
+    },
+    {
+      "pattern": "^migrations/.*\\.sql$",
+      "targets": ["docs/STATUS.md § Database Schema"],
+      "description": "Database migrations"
+    },
+    {
+      "pattern": "^PROJECT_FLOW\\.md$",
+      "targets": ["progress.json"],
+      "description": "Project roadmap"
+    },
+    {
+      "pattern": "^progress\\.json$",
+      "targets": ["PROJECT_FLOW.md § Dónde me quedé"],
+      "description": "Progress tracker"
+    }
+  ],
+  "functionalChangeIndicators": {
+    "description": "Patterns that indicate functional changes requiring docs/STATUS.md update",
+    "patterns": [
+      "^src/app/\\[locale\\]/.*page\\.tsx$",
+      "^src/app/api/",
+      "^src/lib/.*\\.ts$",
+      "^src/hooks/.*\\.ts$",
+      "^package\\.json$",
+      "^\\.env\\.example$",
+      "^migrations/",
+      "^next\\.config\\.ts$"
+    ]
+  }
+}
